@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: bandmate
+      POSTGRES_PASSWORD: bandmate
+      POSTGRES_DB: bandmate
+    volumes:
+      - bandmate_pg:/var/lib/postgresql/data
+
+volumes:
+  bandmate_pg:
