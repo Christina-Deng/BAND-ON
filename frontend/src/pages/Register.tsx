@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import { getApiErrorMessage } from '../api/client';
 import { useAuth } from '../hooks/useAuth';
 
 export function RegisterPage() {
@@ -16,8 +17,8 @@ export function RegisterPage() {
     setError('');
     try {
       await register(email, password, displayName);
-    } catch {
-      setError('注册失败，邮箱可能已被使用');
+    } catch (err) {
+      setError(getApiErrorMessage(err, '注册失败，请稍后重试'));
     }
   }
 

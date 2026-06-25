@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
 import * as authService from '../services/authService.js';
 import { authenticate } from '../middleware/authenticate.js';
+import { toHttpError } from '../lib/httpError.js';
 
 export async function registerAuthRoutes(app: FastifyInstance) {
   app.post('/auth/register', async (request, reply) => {
@@ -24,7 +25,7 @@ export async function registerAuthRoutes(app: FastifyInstance) {
       });
       return reply.status(201).send({ user });
     } catch (error) {
-      const err = error as Error & { statusCode?: number };
+      const err = toHttpError(error);
       return reply.status(err.statusCode ?? 500).send({
         error: { code: 'REGISTER_FAILED', message: err.message },
       });
@@ -52,7 +53,7 @@ export async function registerAuthRoutes(app: FastifyInstance) {
       });
       return { user };
     } catch (error) {
-      const err = error as Error & { statusCode?: number };
+      const err = toHttpError(error);
       return reply.status(err.statusCode ?? 500).send({
         error: { code: 'LOGIN_FAILED', message: err.message },
       });

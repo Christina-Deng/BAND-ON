@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import { getApiErrorMessage } from '../api/client';
 import { useAuth } from '../hooks/useAuth';
 
 export function LoginPage() {
@@ -15,8 +16,8 @@ export function LoginPage() {
     setError('');
     try {
       await login(email, password);
-    } catch {
-      setError('登录失败，请检查邮箱和密码');
+    } catch (err) {
+      setError(getApiErrorMessage(err, '登录失败，请检查邮箱和密码'));
     }
   }
 
