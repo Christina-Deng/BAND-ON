@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useBand } from '../../hooks/useBand';
 
-export function JoinBandForm() {
+export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
   const { joinBand } = useBand();
   const [inviteCode, setInviteCode] = useState('');
   const [error, setError] = useState('');
@@ -13,8 +13,10 @@ export function JoinBandForm() {
     setError('');
     try {
       await joinBand(inviteCode.trim());
+      setInviteCode('');
+      onSuccess?.();
     } catch {
-      setError('邀请码无效或你已加入乐队');
+      setError('邀请码无效或你已加入该乐队');
     } finally {
       setLoading(false);
     }

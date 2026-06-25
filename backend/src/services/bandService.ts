@@ -10,23 +10,11 @@ function generateInviteCode(): string {
   return crypto.randomBytes(4).toString('hex');
 }
 
-async function getUserMembership(userId: string) {
-  return prisma.bandMember.findFirst({
-    where: { userId },
-    include: { band: true },
-  });
-}
-
 export async function createBand(input: {
   userId: string;
   name: string;
   stylePreferences?: string[];
 }) {
-  const existing = await getUserMembership(input.userId);
-  if (existing) {
-    throw Object.assign(new Error('User already belongs to a band'), { statusCode: 409 });
-  }
-
   let inviteCode = generateInviteCode();
   while (await prisma.band.findUnique({ where: { inviteCode } })) {
     inviteCode = generateInviteCode();
@@ -60,14 +48,16 @@ export async function createBand(input: {
 }
 
 export async function joinBand(input: { userId: string; inviteCode: string }) {
-  const existing = await getUserMembership(input.userId);
-  if (existing) {
-    throw Object.assign(new Error('User already belongs to a band'), { statusCode: 409 });
-  }
-
   const band = await prisma.band.findUnique({ where: { inviteCode: input.inviteCode } });
   if (!band) {
-    throw Object.assign(new Error('Invalid invite code'), { statusCode: 404 });
+    throw Object.assign(new Error('邀请码无效'), { statusCode: 404 });
+  }
+
+  const alreadyMember = await prisma.bandMember.findUnique({
+    where: { bandId_userId: { bandId: band.id, userId: input.userId } },
+  });
+  if (alreadyMember) {
+    throw Object.assign(new Error('你已加入该乐队'), { statusCode: 409 });
   }
 
   await prisma.bandMember.create({
@@ -102,10 +92,16 @@ export async function getBand(bandId: string, userId: string) {
   });
 }
 
-export async function getMyBand(userId: string) {
-  const membership = await getUserMembership(userId);
-  if (!membership) return null;
-  return getBand(membership.bandId, userId);
+export async function getMyBands(userId: string) {
+  const memberships = await prisma.bandMember.findMany({
+    where: { userId },
+    select: { bandId: true },
+    orderBy: { joinedAt: 'asc' },
+  });
+
+  if (memberships.length === 0) return [];
+
+  return Promise.all(memberships.map((m) => getBand(m.bandId, userId)));
 }
 
 export async function updateMyMemberProfile(input: {

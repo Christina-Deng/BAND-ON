@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useBand } from '../../hooks/useBand';
 import { StyleMultiSelect } from '../shared/StyleMultiSelect';
 
-export function CreateBandForm() {
+export function CreateBandForm({ onSuccess }: { onSuccess?: () => void }) {
   const { createBand } = useBand();
   const [name, setName] = useState('');
   const [stylePreferences, setStylePreferences] = useState<string[]>([]);
@@ -15,6 +15,9 @@ export function CreateBandForm() {
     setError('');
     try {
       await createBand(name, stylePreferences.length > 0 ? stylePreferences : undefined);
+      setName('');
+      setStylePreferences([]);
+      onSuccess?.();
     } catch {
       setError('创建失败，请重试');
     } finally {

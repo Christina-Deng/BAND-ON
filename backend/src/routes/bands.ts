@@ -51,8 +51,8 @@ export async function registerBandRoutes(app: FastifyInstance) {
   });
 
   app.get('/bands/me', { preHandler: authenticate }, async (request) => {
-    const band = await bandService.getMyBand(request.userId!);
-    return { band };
+    const bands = await bandService.getMyBands(request.userId!);
+    return { bands, band: bands[0] ?? null };
   });
 
   app.get('/bands/:id', { preHandler: authenticate }, async (request, reply) => {

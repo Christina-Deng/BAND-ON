@@ -11,9 +11,12 @@ export async function joinBand(inviteCode: string) {
   return data.band;
 }
 
-export async function getMyBand() {
-  const { data } = await api.get<{ band: Band | null }>('/bands/me');
-  return data.band;
+export async function getMyBands(): Promise<Band[]> {
+  const { data } = await api.get<{ bands?: Band[]; band?: Band | null }>('/bands/me');
+  if (Array.isArray(data.bands)) return data.bands;
+  // Backward compat: older backend returned a single band
+  if (data.band) return [data.band];
+  return [];
 }
 
 export async function updateMyProfile(

@@ -1,14 +1,19 @@
 import { useState } from 'react';
+import type { Band } from '../../types/band';
+import { BandPicker } from '../band/BandPicker';
 
 interface Props {
+  bands: Band[];
   onSubmit: (input: {
+    bandIds: string[];
     durationMinutes: number;
     note?: string;
     audio?: File;
   }) => Promise<void>;
 }
 
-export function CheckInForm({ onSubmit }: Props) {
+export function CheckInForm({ bands, onSubmit }: Props) {
+  const [selectedBandIds, setSelectedBandIds] = useState<string[]>([]);
   const [durationMinutes, setDurationMinutes] = useState(30);
   const [note, setNote] = useState('');
   const [audio, setAudio] = useState<File | undefined>();
@@ -17,14 +22,23 @@ export function CheckInForm({ onSubmit }: Props) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (selectedBandIds.length === 0) {
+      setError('请至少选择一个乐队');
+      return;
+    }
     setLoading(true);
     setError('');
     try {
-      await onSubmit({ durationMinutes, note: note || undefined, audio });
+      await onSubmit({
+        bandIds: selectedBandIds,
+        durationMinutes,
+        note: note || undefined,
+        audio,
+      });
       setNote('');
       setAudio(undefined);
     } catch {
-      setError('打卡失败，可能今天已经打卡过了');
+      setError('打卡失败，部分乐队可能今天已经打卡过了');
     } finally {
       setLoading(false);
     }
@@ -33,6 +47,16 @@ export function CheckInForm({ onSubmit }: Props) {
   return (
     <form onSubmit={handleSubmit} className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
       <h3 className="font-semibold">今日打卡</h3>
+
+      <BandPicker
+        bands={bands}
+        selectedIds={selectedBandIds}
+        onChange={setSelectedBandIds}
+        label="选择乐队"
+        hint="可多选，为每个选中的乐队分别打卡"
+        multiple
+      />
+
       <label className="block text-sm">
         练习时长（分钟）
         <input
