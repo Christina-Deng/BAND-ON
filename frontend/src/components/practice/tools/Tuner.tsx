@@ -1,13 +1,55 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useAudioContext } from '../../../hooks/useAudioContext';
 import {
+  BASS_STRINGS,
   detectPitch,
   frequencyToNote,
   GUITAR_STRINGS,
+  nearestTuningString,
   type DetectedNote,
+  type TuningString,
 } from '../../../lib/audio/pitch';
 
 type TunerState = 'idle' | 'listening' | 'error';
+
+const INSTRUMENT_LABELS = {
+  guitar: '吉他',
+  bass: '贝斯',
+} as const;
+
+function ReferenceStringButtons({
+  title,
+  strings,
+  referenceHz,
+  onSelect,
+}: {
+  title: string;
+  strings: readonly TuningString[];
+  referenceHz: number | null;
+  onSelect: (frequency: number) => void;
+}) {
+  return (
+    <div>
+      <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">{title}</p>
+      <div className="flex flex-wrap gap-2">
+        {strings.map((string) => (
+          <button
+            key={`${string.instrument}-${string.label}`}
+            type="button"
+            onClick={() => onSelect(string.frequency)}
+            className={`rounded-lg border px-2.5 py-1 text-xs tabular-nums transition-colors ${
+              referenceHz === string.frequency
+                ? 'border-accent-600 bg-accent-600/15 text-emphasis'
+                : 'border-slate-700 text-slate-400 hover:border-slate-500'
+            }`}
+          >
+            {string.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function Tuner() {
   const { getContext } = useAudioContext();
@@ -20,6 +62,11 @@ export function Tuner() {
   const rafRef = useRef<number | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const bufferRef = useRef<Float32Array<ArrayBuffer> | null>(null);
+
+  const nearestMatch = useMemo(
+    () => (note ? nearestTuningString(note.frequency) : null),
+    [note],
+  );
 
   const stop = useCallback(() => {
     if (rafRef.current !== null) {
@@ -103,6 +150,18 @@ export function Tuner() {
         <p className="mt-2 text-sm text-slate-400 tabular-nums">
           {note ? `${note.frequency.toFixed(1)} Hz` : '等待输入…'}
         </p>
+        {nearestMatch && (
+          <p className="mt-3 text-sm text-slate-300">
+            最接近{' '}
+            <span className="font-medium text-emphasis">
+              {INSTRUMENT_LABELS[nearestMatch.string.instrument]} {nearestMatch.string.label}
+            </span>
+            <span className="ml-1 text-slate-500 tabular-nums">
+              ({nearestMatch.diffHz > 0 ? '+' : ''}
+              {nearestMatch.diffHz.toFixed(1)} Hz)
+            </span>
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
@@ -122,32 +181,24 @@ export function Tuner() {
         </div>
       </div>
 
-      <div>
-        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
-          吉他参考音
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {GUITAR_STRINGS.map((string) => (
-            <button
-              key={string.label}
-              type="button"
-              onClick={() => setReferenceHz(string.frequency)}
-              className={`rounded-lg border px-2.5 py-1 text-xs tabular-nums transition-colors ${
-                referenceHz === string.frequency
-                  ? 'border-accent-600 bg-accent-600/15 text-emphasis'
-                  : 'border-slate-700 text-slate-400 hover:border-slate-500'
-              }`}
-            >
-              {string.label}
-            </button>
-          ))}
-        </div>
+      <div className="space-y-4 rounded-xl border border-slate-700/80 bg-slate-950/30 p-3">
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">参考音</p>
+        <ReferenceStringButtons
+          title="吉他标准调弦 (E A D G B E)"
+          strings={GUITAR_STRINGS}
+          referenceHz={referenceHz}
+          onSelect={setReferenceHz}
+        />
+        <ReferenceStringButtons
+          title="贝斯标准调弦 (E A D G)"
+          strings={BASS_STRINGS}
+          referenceHz={referenceHz}
+          onSelect={setReferenceHz}
+        />
         {referenceHz !== null && (
-          <p className="mt-2 text-xs text-slate-500 tabular-nums">
+          <p className="text-xs text-slate-500 tabular-nums">
             目标 {referenceHz.toFixed(2)} Hz
-            {note
-              ? ` · 偏差 ${(note.frequency - referenceHz).toFixed(1)} Hz`
-              : ''}
+            {note ? ` · 偏差 ${(note.frequency - referenceHz).toFixed(1)} Hz` : ''}
           </p>
         )}
       </div>

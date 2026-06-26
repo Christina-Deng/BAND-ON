@@ -76,15 +76,46 @@ export function detectPitch(samples: Float32Array<ArrayBufferLike>, sampleRate: 
   const refinedLag = maxLag + (y3 - y1) / (2 * (2 * y2 - y1 - y3));
 
   const frequency = sampleRate / refinedLag;
-  if (frequency < 50 || frequency > 2000) return -1;
+  if (frequency < 35 || frequency > 2000) return -1;
   return frequency;
 }
 
 export const GUITAR_STRINGS = [
-  { label: 'E₂', frequency: 82.41 },
-  { label: 'A₂', frequency: 110.0 },
-  { label: 'D₃', frequency: 146.83 },
-  { label: 'G₃', frequency: 196.0 },
-  { label: 'B₃', frequency: 246.94 },
-  { label: 'E₄', frequency: 329.63 },
+  { label: 'E₂', frequency: 82.41, instrument: 'guitar' as const },
+  { label: 'A₂', frequency: 110.0, instrument: 'guitar' as const },
+  { label: 'D₃', frequency: 146.83, instrument: 'guitar' as const },
+  { label: 'G₃', frequency: 196.0, instrument: 'guitar' as const },
+  { label: 'B₃', frequency: 246.94, instrument: 'guitar' as const },
+  { label: 'E₄', frequency: 329.63, instrument: 'guitar' as const },
 ] as const;
+
+export const BASS_STRINGS = [
+  { label: 'E₁', frequency: 41.2, instrument: 'bass' as const },
+  { label: 'A₁', frequency: 55.0, instrument: 'bass' as const },
+  { label: 'D₂', frequency: 73.42, instrument: 'bass' as const },
+  { label: 'G₂', frequency: 98.0, instrument: 'bass' as const },
+] as const;
+
+export type TuningString = (typeof GUITAR_STRINGS)[number] | (typeof BASS_STRINGS)[number];
+
+export const ALL_TUNING_STRINGS: readonly TuningString[] = [...GUITAR_STRINGS, ...BASS_STRINGS];
+
+export function nearestTuningString(frequency: number): {
+  string: TuningString;
+  diffHz: number;
+} | null {
+  if (frequency <= 0) return null;
+
+  let best = ALL_TUNING_STRINGS[0];
+  let bestDiff = Math.abs(frequency - best.frequency);
+
+  for (const candidate of ALL_TUNING_STRINGS) {
+    const diff = Math.abs(frequency - candidate.frequency);
+    if (diff < bestDiff) {
+      best = candidate;
+      bestDiff = diff;
+    }
+  }
+
+  return { string: best, diffHz: frequency - best.frequency };
+}
