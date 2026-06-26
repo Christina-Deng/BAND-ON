@@ -33,7 +33,7 @@ export function MemberCard({
           <p className="text-sm text-slate-400">{INSTRUMENT_LABELS[member.instrument]}</p>
         </div>
         {!complete && (
-          <span className="rounded bg-slate-700 px-2 py-0.5 text-xs text-slate-200">
+          <span className="profile-incomplete-badge rounded px-2 py-0.5 text-xs">
             资料未完善
           </span>
         )}

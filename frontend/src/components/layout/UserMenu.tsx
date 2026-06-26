@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -6,6 +7,8 @@ export function UserMenu() {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -14,15 +17,17 @@ export function UserMenu() {
       if (e.key === 'Escape') setOpen(false);
     }
 
-    function onMouseDown(e: MouseEvent) {
-      if (!menuRef.current?.contains(e.target as Node)) setOpen(false);
+    function onPointerDown(e: PointerEvent) {
+      const target = e.target as Node;
+      if (menuRef.current?.contains(target) || panelRef.current?.contains(target)) return;
+      setOpen(false);
     }
 
     document.addEventListener('keydown', onKeyDown);
-    document.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('pointerdown', onPointerDown);
     return () => {
       document.removeEventListener('keydown', onKeyDown);
-      document.removeEventListener('mousedown', onMouseDown);
+      document.removeEventListener('pointerdown', onPointerDown);
     };
   }, [open]);
 
@@ -33,9 +38,19 @@ export function UserMenu() {
     await logout();
   }
 
+  const triggerRect = triggerRef.current?.getBoundingClientRect();
+  const panelStyle =
+    open && triggerRect
+      ? {
+          top: triggerRect.bottom + 8,
+          left: Math.max(8, triggerRect.right - 160),
+        }
+      : undefined;
+
   return (
     <div ref={menuRef} className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-1.5 rounded-lg border border-slate-600 px-2.5 py-1.5 hover:border-slate-500 hover:bg-slate-800"
@@ -43,33 +58,38 @@ export function UserMenu() {
         aria-haspopup="menu"
         aria-label="账户菜单"
       >
-        <span className="font-display-heavy text-base tracking-wide text-emphasis">{user.displayName}</span>
+        <span className="text-sm font-semibold text-emphasis">{user.displayName}</span>
         <ChevronIcon open={open} />
       </button>
 
-      {open && (
-        <div
-          role="menu"
-          className="absolute right-0 z-50 mt-2 min-w-[10rem] rounded-xl border border-slate-700 bg-slate-900 py-1 shadow-xl"
-        >
-          <Link
-            to="/settings"
-            role="menuitem"
-            className="block px-4 py-2.5 text-sm text-slate-200 hover:bg-slate-800 hover:text-emphasis"
-            onClick={() => setOpen(false)}
+      {open &&
+        panelStyle &&
+        createPortal(
+          <div
+            ref={panelRef}
+            role="menu"
+            className="fixed z-[200] min-w-[10rem] rounded-xl border border-slate-700 bg-slate-900 py-1 shadow-xl"
+            style={panelStyle}
           >
-            账户设置
-          </Link>
-          <button
-            type="button"
-            role="menuitem"
-            onClick={() => void handleLogout()}
-            className="block w-full px-4 py-2.5 text-left text-sm text-slate-300 hover:bg-slate-800 hover:text-emphasis"
-          >
-            退出登录
-          </button>
-        </div>
-      )}
+            <Link
+              to="/settings"
+              role="menuitem"
+              className="block px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-emphasis"
+              onClick={() => setOpen(false)}
+            >
+              账户设置
+            </Link>
+            <button
+              type="button"
+              role="menuitem"
+              onClick={() => void handleLogout()}
+              className="block w-full px-4 py-2.5 text-left text-sm text-slate-300 hover:bg-slate-800 hover:text-emphasis"
+            >
+              退出登录
+            </button>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

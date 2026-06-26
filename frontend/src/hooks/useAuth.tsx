@@ -9,7 +9,7 @@ import {
 } from 'react';
 import * as authApi from '../api/auth';
 import type { AuthUser } from '../api/auth';
-import { isThemeId } from '../lib/theme';
+import { normalizeThemeId } from '../lib/theme';
 import { registerThemeAccountSync } from '../lib/themeAccountSync';
 
 interface AuthContextValue {
@@ -108,5 +108,5 @@ export function useAuth() {
 }
 
 export function useAuthThemePreference(user: AuthUser | null) {
-  return user?.themePreference && isThemeId(user.themePreference) ? user.themePreference : null;
+  return normalizeThemeId(user?.themePreference ?? null);
 }

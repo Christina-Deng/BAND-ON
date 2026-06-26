@@ -32,12 +32,13 @@ export function PracticeCalendar({
   }
 
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-900 p-4">
-      <div className="mb-3 flex items-center justify-between">
+    <div className="poster-card rounded-xl p-4">
+      <p className="rock-kicker">TOUR DATES</p>
+      <div className="mb-3 mt-1 flex items-center justify-between">
         <button type="button" onClick={() => shiftMonth(-1)} className="px-2 text-slate-400 hover:text-emphasis">
           ←
         </button>
-        <span className="font-medium">{month}</span>
+        <span className="font-display text-lg tracking-wide text-emphasis">{month}</span>
         <button type="button" onClick={() => shiftMonth(1)} className="px-2 text-slate-400 hover:text-emphasis">
           →
         </button>
@@ -53,11 +54,11 @@ export function PracticeCalendar({
               key={day}
               type="button"
               onClick={() => onSelectDate(selected ? null : dateStr)}
-              className={`rounded-lg py-2 ${
+              className={`rounded-lg py-2 transition-colors ${
                 selected
-                  ? 'bg-accent-600 text-white'
+                  ? 'rock-cal-day-active text-white'
                   : hasLog
-                    ? 'bg-slate-700 text-white'
+                    ? 'rock-cal-day-has-log'
                     : 'text-slate-400 hover:bg-slate-800'
               }`}
             >

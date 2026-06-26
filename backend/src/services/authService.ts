@@ -3,7 +3,12 @@ import jwt from 'jsonwebtoken';
 import { prisma } from '../lib/prisma.js';
 
 const JWT_SECRET = process.env.JWT_SECRET ?? 'dev-secret-change-in-production';
-const VALID_THEMES = new Set(['indigo', 'rock', 'amber', 'light']);
+const VALID_THEMES = new Set(['indigo', 'rock', 'paper', 'light']);
+
+function normalizeThemePreference(theme: string | null): string | null {
+  if (theme === 'amber') return 'paper';
+  return theme;
+}
 
 export interface AuthUser {
   id: string;
@@ -22,7 +27,7 @@ function toAuthUser(user: {
     id: user.id,
     email: user.email,
     displayName: user.displayName,
-    themePreference: user.themePreference,
+    themePreference: normalizeThemePreference(user.themePreference),
   };
 }
 
@@ -93,10 +98,11 @@ export async function updateMe(
   }
 
   if (input.themePreference !== undefined) {
-    if (input.themePreference !== null && !VALID_THEMES.has(input.themePreference)) {
+    const themePreference = normalizeThemePreference(input.themePreference);
+    if (themePreference !== null && !VALID_THEMES.has(themePreference)) {
       throw Object.assign(new Error('Invalid theme preference'), { statusCode: 400 });
     }
-    data.themePreference = input.themePreference;
+    data.themePreference = themePreference;
   }
 
   if (Object.keys(data).length === 0) {

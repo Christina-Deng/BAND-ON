@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { PageHeader } from '../components/layout/PageHeader';
 import { CreateBandForm } from '../components/band/CreateBandForm';
 import { JoinBandForm } from '../components/band/JoinBandForm';
 import { BandSection } from '../components/band/BandSection';
@@ -33,14 +34,14 @@ export function BandHomePage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">我的乐队</h1>
-        <p className="mt-1 text-sm text-slate-400">
-          {bands.length === 0
+      <PageHeader
+        title="我的乐队"
+        lead={
+          bands.length === 0
             ? '你还没有加入任何乐队，可以在下方创建或加入'
-            : `共 ${bands.length} 个乐队`}
-        </p>
-      </div>
+            : `共 ${bands.length} 个乐队`
+        }
+      />
 
       {error && (
         <p className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-4 py-3 text-sm text-red-400">

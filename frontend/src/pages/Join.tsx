@@ -69,7 +69,7 @@ export function JoinPage() {
   if (!inviteCode) {
     return (
       <JoinShell>
-        <h1 className="text-2xl font-bold">邀请链接无效</h1>
+        <h1 className="page-title text-2xl">邀请链接无效</h1>
         <p className="mt-2 text-sm text-slate-400">链接缺少邀请码，请让队友重新分享邀请。</p>
         {user ? (
           <Link to="/" className="mt-6 inline-block text-accent-500 hover:text-accent-400">
@@ -87,8 +87,8 @@ export function JoinPage() {
   if (!user) {
     return (
       <JoinShell>
-        <h1 className="text-2xl font-bold">加入乐队</h1>
-        <p className="mt-2 text-sm text-slate-300">
+        <h1 className="page-title text-2xl">加入乐队</h1>
+        <p className="page-lead mt-2">
           你收到了乐队邀请，邀请码为{' '}
           <code className="rounded bg-slate-800 px-2 py-0.5">{inviteCode}</code>。登录或注册后会自动加入。
         </p>
@@ -127,7 +127,7 @@ export function JoinPage() {
   if (error) {
     return (
       <JoinShell>
-        <h1 className="text-2xl font-bold">未能加入乐队</h1>
+        <h1 className="page-title text-2xl">未能加入乐队</h1>
         <p className="mt-2 text-sm text-red-400">{error}</p>
         <div className="mt-6 flex flex-wrap gap-2">
           <button
@@ -154,12 +154,12 @@ export function JoinPage() {
 
 function JoinShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto max-w-md px-4 py-8">
+    <div className="auth-shell mx-auto max-w-md px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <span className="font-display-heavy text-2xl tracking-widest text-accent-600">BandMate</span>
         <AppearanceMenu />
       </div>
-      <div className="rounded-xl border border-slate-700 bg-slate-900 p-6">{children}</div>
+      <div className="poster-card rounded-xl p-6">{children}</div>
     </div>
   );
 }

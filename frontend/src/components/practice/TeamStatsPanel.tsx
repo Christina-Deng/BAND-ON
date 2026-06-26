@@ -6,35 +6,51 @@ export function TeamStatsPanel({ stats, bandName }: { stats: BandPracticeStats; 
     teamToday.total > 0 ? Math.round((teamToday.checkedIn / teamToday.total) * 100) : 0;
 
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-900 p-4">
-      <h3 className="font-semibold text-emphasis">{bandName} · 团队练习</h3>
+    <div className="poster-card rounded-xl p-5">
+      <p className="rock-kicker">CREW STATUS</p>
+      <h3 className="section-title mt-1">{bandName}</h3>
+      <p className="page-lead mt-0.5 text-xs">团队练习</p>
 
-      <div className="mt-3 space-y-3">
-        <div>
-          <div className="flex items-baseline justify-between text-sm">
-            <span className="text-slate-300">
-              今日 {teamToday.checkedIn}/{teamToday.total} 人已练
-            </span>
-            <span className="text-slate-400">合计 {teamToday.totalMinutes} 分钟</span>
+      <div className="mt-4 space-y-4">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="rock-label">TODAY</p>
+            <p className="mt-1 text-[0.6875rem] text-slate-500">今日到练</p>
+            <p className="mt-1">
+              <span className="stat-number">{teamToday.checkedIn}</span>
+              <span className="stat-number text-slate-500">/{teamToday.total}</span>
+            </p>
           </div>
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-800">
-            <div
-              className={`h-full rounded-full transition-all ${
-                teamToday.allCheckedIn ? 'bg-accent-500' : 'bg-accent-600'
-              }`}
-              style={{ width: `${progress}%` }}
-            />
+          <div className="text-right">
+            <p className="rock-label">MINS</p>
+            <p className="mt-1">
+              <span className="font-display text-2xl tracking-wide text-emphasis">{teamToday.totalMinutes}</span>
+              <span className="stat-unit">分钟</span>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div className="rock-progress-track">
+            <div className="rock-progress-fill transition-all" style={{ width: `${progress}%` }} />
           </div>
           {teamToday.allCheckedIn && teamToday.total > 0 && (
-            <p className="mt-2 text-xs text-accent-400">🎉 今日全员到齐！</p>
+            <p className="mt-2 flex items-center gap-2 text-xs text-accent-400">
+              <span className="rock-tag">FULL CREW</span>
+              今日全员到齐
+            </p>
           )}
         </div>
 
-        <div className="rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-2 text-sm">
-          <p className="text-slate-300">本周乐队共练习 {weekMinutes} 分钟</p>
+        <div className="stat-cell rounded-lg px-3 py-3">
+          <p className="rock-label">THIS WEEK</p>
+          <p className="mt-1">
+            <span className="stat-number">{weekMinutes}</span>
+            <span className="stat-unit">分钟</span>
+          </p>
           {weekMostActive && weekMostActive.checkInDays > 0 ? (
             <p className="mt-1 text-xs text-slate-500">
-              本周最勤：{weekMostActive.displayName}（打卡 {weekMostActive.checkInDays} 天）
+              最勤 {weekMostActive.displayName} · {weekMostActive.checkInDays} 天
             </p>
           ) : (
             <p className="mt-1 text-xs text-slate-500">本周还没有打卡记录</p>

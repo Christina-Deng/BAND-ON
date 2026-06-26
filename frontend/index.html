@@ -15,8 +15,12 @@
       (function () {
         try {
           var t = localStorage.getItem('bandmate-theme');
-          if (t === 'indigo' || t === 'rock' || t === 'amber' || t === 'light') {
+          if (t === 'amber') t = 'paper';
+          if (t === 'indigo' || t === 'rock' || t === 'paper' || t === 'light') {
             document.documentElement.setAttribute('data-theme', t);
+            if (t !== localStorage.getItem('bandmate-theme')) {
+              localStorage.setItem('bandmate-theme', t);
+            }
           } else {
             document.documentElement.setAttribute('data-theme', 'rock');
           }

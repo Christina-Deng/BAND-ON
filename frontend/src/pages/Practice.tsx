@@ -7,6 +7,7 @@ import {
   submitPractice,
 } from '../api/practices';
 import { BandPicker } from '../components/band/BandPicker';
+import { PageHeader } from '../components/layout/PageHeader';
 import { CheckInForm, type CheckInResult } from '../components/practice/CheckInForm';
 import { PersonalStatsPanel } from '../components/practice/PersonalStatsPanel';
 import { PracticeCalendar } from '../components/practice/PracticeCalendar';
@@ -190,12 +191,15 @@ export function PracticePage() {
   return (
     <div className="space-y-6">
       <ToastStack toasts={toasts} onDismiss={dismissToast} />
-      <div>
-        <h1 className="text-2xl font-bold">练习打卡</h1>
-        <p className="mt-1 text-sm text-slate-400">
-          {bands.length > 1 ? '你加入了多个乐队，可分别打卡和查看团队状态' : viewBand?.name}
-        </p>
-      </div>
+
+      <PageHeader
+        title="练习打卡"
+        lead={
+          bands.length > 1
+            ? '你加入了多个乐队，可分别打卡和查看团队状态'
+            : viewBand?.name
+        }
+      />
 
       {stats && <PersonalStatsPanel stats={stats.personal} />}
 
@@ -238,20 +242,21 @@ export function PracticePage() {
       </div>
 
       {selectedDate && (
-        <div className="rounded-xl border border-slate-700 bg-slate-900 p-4">
-          <h3 className="mb-2 font-semibold">
-            {viewBand?.name} · {selectedDate} 练习记录
+        <div className="poster-card rounded-xl p-4">
+          <p className="rock-kicker">SESSION LOG</p>
+          <h3 className="section-title mt-1">
+            {viewBand?.name} · {selectedDate}
           </h3>
           {selectedDayLogs.length === 0 ? (
-            <p className="text-sm text-slate-500">当天暂无打卡</p>
+            <p className="mt-2 text-sm text-slate-500">当天暂无打卡</p>
           ) : (
-            <ul className="space-y-3 text-sm">
+            <ul className="mt-3 space-y-3 text-sm">
               {selectedDayLogs.map((log) => {
                 const audioSrc = resolveMediaUrl(log.audioUrl);
                 return (
                   <li
                     key={log.id}
-                    className="rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2"
+                    className="rounded-lg border border-slate-700/80 bg-slate-950/40 px-3 py-2"
                   >
                     <p>
                       {log.user.displayName} — {log.durationMinutes} 分钟
@@ -270,7 +275,8 @@ export function PracticePage() {
         </div>
       )}
 
-      <div className="rounded-xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-500">
+      <div className="poster-card rounded-xl border-dashed p-4 text-sm text-slate-500">
+        <span className="rock-tag mr-2">SOON</span>
         即将推出：练习邮件提醒 · 内置节拍器 · 调音器
       </div>
     </div>

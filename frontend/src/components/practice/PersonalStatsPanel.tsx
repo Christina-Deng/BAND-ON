@@ -2,23 +2,30 @@ import type { PersonalPracticeStats } from '../../types/practice';
 
 export function PersonalStatsPanel({ stats }: { stats: PersonalPracticeStats }) {
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-900 p-4">
-      <h3 className="font-semibold text-emphasis">我的练习</h3>
-      <div className="mt-3 grid gap-3 sm:grid-cols-3">
+    <div className="poster-card poster-card-accent rounded-xl p-5">
+      <p className="rock-kicker">MY STATS</p>
+      <h3 className="section-title mt-1">我的练习</h3>
+      <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <StatBlock
           label="连续打卡"
-          value={stats.streakDays > 0 ? `${stats.streakDays} 天` : '尚未开始'}
+          kicker="STREAK"
+          number={stats.streakDays > 0 ? String(stats.streakDays) : '—'}
+          unit={stats.streakDays > 0 ? '天' : '尚未开始'}
           highlight={stats.streakDays >= 3}
-          emoji={stats.streakDays > 0 ? '🔥' : '✨'}
+          showFire={stats.streakDays > 0}
         />
         <StatBlock
           label="本周"
-          value={`${stats.weekMinutes} 分钟`}
+          kicker="WEEK"
+          number={String(stats.weekMinutes)}
+          unit="分钟"
           sub={`打卡 ${stats.weekCheckInDays} 天`}
         />
         <StatBlock
           label="本月"
-          value={`${stats.monthMinutes} 分钟`}
+          kicker="MONTH"
+          number={String(stats.monthMinutes)}
+          unit="分钟"
           sub={`打卡 ${stats.monthCheckInDays} 天`}
         />
       </div>
@@ -31,29 +38,31 @@ export function PersonalStatsPanel({ stats }: { stats: PersonalPracticeStats }) 
 
 function StatBlock({
   label,
-  value,
+  kicker,
+  number,
+  unit,
   sub,
   highlight,
-  emoji,
+  showFire,
 }: {
   label: string;
-  value: string;
+  kicker: string;
+  number: string;
+  unit: string;
   sub?: string;
   highlight?: boolean;
-  emoji?: string;
+  showFire?: boolean;
 }) {
   return (
-    <div
-      className={`rounded-lg border px-3 py-2 ${
-        highlight ? 'border-accent-500/50 bg-accent-500/10' : 'border-slate-800 bg-slate-950/50'
-      }`}
-    >
-      <p className="text-xs text-slate-400">{label}</p>
-      <p className="mt-1 font-display-heavy text-lg text-emphasis">
-        {emoji && <span className="mr-1">{emoji}</span>}
-        {value}
+    <div className={`stat-cell rounded-lg px-3 py-3 ${highlight ? 'stat-cell-hot' : ''}`}>
+      <p className="rock-label">{kicker}</p>
+      <p className="mt-0.5 text-[0.6875rem] text-slate-500">{label}</p>
+      <p className="mt-1">
+        {showFire && <span className="mr-1 text-base">🔥</span>}
+        <span className="stat-number">{number}</span>
+        <span className="stat-unit">{unit}</span>
       </p>
-      {sub && <p className="text-xs text-slate-500">{sub}</p>}
+      {sub && <p className="mt-1 text-xs text-slate-500">{sub}</p>}
     </div>
   );
 }

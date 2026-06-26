@@ -1,4 +1,4 @@
-export type ThemeId = 'indigo' | 'rock' | 'amber' | 'light';
+export type ThemeId = 'indigo' | 'rock' | 'paper' | 'light';
 
 export const THEME_STORAGE_KEY = 'bandmate-theme';
 
@@ -27,21 +27,34 @@ export const THEMES: {
     swatches: ['#f1f5f9', '#6366f1'],
   },
   {
-    id: 'amber',
-    label: 'Amber',
-    description: '日间 · 琥珀点缀',
-    swatches: ['#fef3c7', '#f59e0b'],
+    id: 'paper',
+    label: 'Paper',
+    description: '纸色日间 · 红色点缀',
+    swatches: ['#f7f5f2', '#dc2626'],
   },
 ];
 
+/** Map legacy theme ids (e.g. amber) to current ids. */
+export function normalizeThemeId(value: string | null | undefined): ThemeId | null {
+  if (!value) return null;
+  if (value === 'amber') return 'paper';
+  return isThemeId(value) ? value : null;
+}
+
 export function isThemeId(value: string | null): value is ThemeId {
-  return value === 'indigo' || value === 'rock' || value === 'amber' || value === 'light';
+  return value === 'indigo' || value === 'rock' || value === 'paper' || value === 'light';
 }
 
 export function getStoredTheme(): ThemeId {
   try {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    if (isThemeId(stored)) return stored;
+    const normalized = normalizeThemeId(stored);
+    if (normalized) {
+      if (stored !== normalized) {
+        localStorage.setItem(THEME_STORAGE_KEY, normalized);
+      }
+      return normalized;
+    }
   } catch {
     /* ignore */
   }

@@ -78,7 +78,7 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
     <section className="space-y-4 rounded-xl border border-slate-700 bg-slate-900 p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h2 className="font-display-heavy text-2xl">{band.name}</h2>
+          <h2 className="text-2xl font-semibold text-emphasis">{band.name}</h2>
           {band.stylePreferences && band.stylePreferences.length > 0 && (
             <p className="text-sm text-slate-400">
               风格：{formatStylePreferences(band.stylePreferences)}
@@ -146,7 +146,7 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
       </div>
 
       {profileIncomplete && (
-        <p className="rounded-lg border border-slate-600 bg-slate-800 px-4 py-3 text-sm text-slate-300">
+        <p className="profile-incomplete-banner rounded-lg px-4 py-3 text-sm">
           请先完善资料，以便团队了解你的水平和练习情况。
         </p>
       )}

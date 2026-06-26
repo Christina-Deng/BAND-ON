@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getApiErrorMessage } from '../api/client';
 import { ThemePicker } from '../components/layout/ThemePicker';
+import { PageHeader } from '../components/layout/PageHeader';
 import { useAuth } from '../hooks/useAuth';
 import { useTheme } from '../hooks/useTheme';
 
@@ -68,13 +69,10 @@ export function SettingsPage() {
 
   return (
     <div className="mx-auto max-w-lg space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">账户设置</h1>
-        <p className="mt-1 text-sm text-slate-400">管理昵称、密码与外观偏好</p>
-      </div>
+      <PageHeader title="账户设置" lead="管理昵称、密码与外观偏好" />
 
-      <section className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-5">
-        <h2 className="font-semibold">个人资料</h2>
+      <section className="poster-card space-y-3 rounded-xl p-5">
+        <h2 className="section-title">个人资料</h2>
         <p className="text-sm text-slate-400">
           邮箱：<span className="text-slate-300">{user.email}</span>
         </p>
@@ -101,8 +99,8 @@ export function SettingsPage() {
         </form>
       </section>
 
-      <section className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-5">
-        <h2 className="font-semibold">修改密码</h2>
+      <section className="poster-card space-y-3 rounded-xl p-5">
+        <h2 className="section-title">修改密码</h2>
         <form onSubmit={handlePasswordSubmit} className="space-y-3">
           <label className="block text-sm">
             当前密码
@@ -146,8 +144,8 @@ export function SettingsPage() {
         </form>
       </section>
 
-      <section className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-5">
-        <h2 className="font-semibold">外观</h2>
+      <section className="poster-card space-y-3 rounded-xl p-5">
+        <h2 className="section-title">外观</h2>
         <ThemePicker
           theme={theme}
           onSelect={setTheme}

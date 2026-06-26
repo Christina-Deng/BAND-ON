@@ -56,7 +56,7 @@ export function AppearanceMenu() {
               aria-label="选择外观"
               className="w-full max-w-xs rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-2xl"
             >
-              <h2 className="font-display-heavy text-lg tracking-wide text-emphasis">外观</h2>
+              <h2 className="section-title">外观</h2>
               <div className="mt-4">
                 <ThemePicker
                 theme={theme}

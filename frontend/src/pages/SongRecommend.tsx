@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getRecommendations } from '../api/songs';
 import { BandPicker } from '../components/band/BandPicker';
+import { PageHeader } from '../components/layout/PageHeader';
 import { useBand } from '../hooks/useBand';
 
 export function SongRecommendPage() {
@@ -37,9 +38,9 @@ export function SongRecommendPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
-        <h1 className="text-2xl font-bold">🎵 歌单推荐</h1>
-        <span className="rounded bg-slate-700 px-2 py-0.5 text-xs text-slate-300">即将上线</span>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <PageHeader title="歌单推荐" lead="根据乐队成员水平与风格智能推荐曲目" />
+        <span className="badge-stamp">即将上线</span>
       </div>
 
       {bands.length > 1 && (

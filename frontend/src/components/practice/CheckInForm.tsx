@@ -78,11 +78,14 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
-      <h3 className="font-semibold">今日打卡</h3>
+    <form onSubmit={handleSubmit} className="poster-card space-y-4 rounded-xl p-5">
+      <div>
+        <p className="rock-kicker">CHECK IN</p>
+        <h3 className="section-title mt-1">今日打卡</h3>
+      </div>
 
       {checkedInBandNames.length > 0 && (
-        <p className="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm text-slate-300">
+        <p className="profile-incomplete-banner rounded-lg px-3 py-2 text-sm">
           今日已在 {checkedInBandNames.join('、')} 打卡
         </p>
       )}
@@ -102,11 +105,12 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
       />
 
       <label className="block text-sm">
-        练习时长（分钟）
+        <span className="rock-label">MINUTES</span>
+        <span className="mt-1 block text-slate-400">练习时长（分钟）</span>
         <input
           type="number"
           min={1}
-          className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
+          className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2.5"
           value={durationMinutes}
           onChange={(e) => setDurationMinutes(Number(e.target.value))}
           required
@@ -114,9 +118,9 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
         />
       </label>
       <label className="block text-sm">
-        备注（可选）
+        <span className="text-slate-400">备注（可选）</span>
         <textarea
-          className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
+          className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2.5"
           value={note}
           onChange={(e) => setNote(e.target.value)}
           rows={2}
@@ -124,7 +128,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
         />
       </label>
       <label className="block text-sm">
-        练习录音（可选，mp3/wav）
+        <span className="text-slate-400">练习录音（可选，mp3/wav）</span>
         <input
           type="file"
           accept=".mp3,.wav,audio/mpeg,audio/wav"
@@ -137,7 +141,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
       <button
         type="submit"
         disabled={loading || allCheckedIn}
-        className="rounded-lg bg-accent-600 px-4 py-2 font-medium hover:bg-accent-500 disabled:opacity-50"
+        className="w-full rounded-lg bg-accent-600 px-4 py-2.5 font-medium hover:bg-accent-500 disabled:opacity-50"
       >
         {loading ? '提交中…' : allCheckedIn ? '今日已全部打卡' : '提交打卡'}
       </button>
