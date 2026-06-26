@@ -175,9 +175,9 @@ body {
   z-index: 50;
 }
 
-/* —— Logged-in graffiti wall: thrown paint + drips —— */
+/* —— Logged-in poster print background (halftone + ink bleed) —— */
 
-.graffiti-bg {
+.poster-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -185,126 +185,341 @@ body {
   overflow: hidden;
 }
 
-.graffiti-splat {
+.poster-bg-halftone {
+  position: absolute;
+  inset: 0;
+  opacity: 0.075;
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--theme-emphasis) 55%, transparent) 0.6px,
+    transparent 0.6px
+  );
+  background-size: 5px 5px;
+  mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 96%);
+}
+
+.poster-bg-halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.42;
+  background: repeating-linear-gradient(
+    -24deg,
+    transparent 0,
+    transparent 4px,
+    color-mix(in srgb, var(--theme-emphasis) 12%, transparent) 4px,
+    color-mix(in srgb, var(--theme-emphasis) 12%, transparent) 5px
+  );
+}
+
+.poster-bg-bleed {
   position: absolute;
   pointer-events: none;
 }
 
-.graffiti-splat-primary {
-  top: -5vh;
-  right: -7vw;
-  width: clamp(18rem, 44vw, 34rem);
-  height: clamp(16rem, 38vh, 28rem);
-  background:
-    radial-gradient(ellipse 44% 40% at 36% 32%, color-mix(in srgb, var(--theme-accent-500) 68%, transparent), transparent 66%),
-    radial-gradient(ellipse 34% 30% at 64% 40%, color-mix(in srgb, var(--theme-accent-600) 55%, transparent), transparent 64%),
-    radial-gradient(ellipse 26% 34% at 46% 60%, color-mix(in srgb, var(--theme-accent-700) 42%, transparent), transparent 60%),
-    radial-gradient(ellipse 58% 50% at 50% 44%, color-mix(in srgb, var(--theme-accent-500) 36%, transparent), transparent 76%);
-  opacity: 0.4;
-  transform: rotate(-16deg);
-  clip-path: polygon(
-    30% 4%,
-    56% 0%,
-    84% 12%,
-    100% 36%,
-    94% 62%,
-    74% 86%,
-    46% 100%,
-    20% 92%,
-    2% 64%,
-    8% 30%
+.poster-bg-bleed-tr {
+  top: -2vh;
+  right: -4vw;
+  width: min(54vw, 36rem);
+  height: min(44vh, 28rem);
+  opacity: 0.62;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--theme-accent-600) 48%, transparent) 0%,
+    color-mix(in srgb, var(--theme-accent-500) 26%, transparent) 36%,
+    color-mix(in srgb, var(--theme-accent-700) 12%, transparent) 58%,
+    transparent 72%
   );
+  clip-path: polygon(14% 0, 100% 0, 100% 68%, 38% 100%, 0 22%);
+}
+
+.poster-bg-bleed-bl {
+  bottom: -2vh;
+  left: -7vw;
+  width: min(40vw, 24rem);
+  height: min(30vh, 18rem);
+  opacity: 0.42;
+  background: linear-gradient(
+    28deg,
+    color-mix(in srgb, var(--theme-accent-700) 38%, transparent) 0%,
+    color-mix(in srgb, var(--theme-accent-600) 18%, transparent) 45%,
+    transparent 78%
+  );
+  clip-path: polygon(0 100%, 0 38%, 62% 0, 100% 18%, 100% 100%);
+}
+
+.poster-bg-bleed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--theme-accent-700) 45%, transparent) 0.8px,
+    transparent 0.8px
+  );
+  background-size: 3.5px 3.5px;
+  mix-blend-mode: multiply;
+}
+
+.poster-bg-regmark {
+  position: absolute;
+  top: 5.25rem;
+  left: clamp(0.75rem, 3vw, 2rem);
+  width: 1.65rem;
+  height: 1.65rem;
+  opacity: 0.32;
+  border: 1px solid color-mix(in srgb, var(--theme-accent-500) 55%, transparent);
+  border-radius: 50%;
+}
+
+.poster-bg-regmark::before,
+.poster-bg-regmark::after {
+  content: "";
+  position: absolute;
+  background: color-mix(in srgb, var(--theme-accent-500) 50%, transparent);
+}
+
+.poster-bg-regmark::before {
+  top: 50%;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.poster-bg-regmark::after {
+  left: 50%;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  transform: translateX(-50%);
+}
+
+.poster-bg-watermark {
+  position: absolute;
+  right: clamp(-0.25rem, 2vw, 2rem);
+  bottom: clamp(2.5rem, 10vh, 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  user-select: none;
+  transform: rotate(-6deg);
+}
+
+.poster-bg-watermark-main {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 12rem);
+  line-height: 0.82;
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--theme-accent-600) 10%, transparent);
+  -webkit-text-stroke: 1.25px color-mix(in srgb, var(--theme-accent-500) 14%, transparent);
+  paint-order: stroke fill;
+}
+
+.poster-bg-watermark-sub {
+  font-family: var(--font-display);
+  font-size: clamp(0.875rem, 2.2vw, 1.25rem);
+  letter-spacing: 0.42em;
+  padding-right: 0.42em;
+  color: color-mix(in srgb, var(--theme-accent-500) 22%, transparent);
+}
+
+[data-theme="light"] .poster-bg-halftone,
+[data-theme="paper"] .poster-bg-halftone {
+  opacity: 0.048;
+}
+
+[data-theme="light"] .poster-bg-bleed-tr,
+[data-theme="paper"] .poster-bg-bleed-tr {
+  opacity: 0.38;
+}
+
+[data-theme="light"] .poster-bg-bleed-bl,
+[data-theme="paper"] .poster-bg-bleed-bl {
+  opacity: 0.26;
+}
+
+[data-theme="light"] .poster-bg-regmark,
+[data-theme="paper"] .poster-bg-regmark {
+  opacity: 0.2;
+}
+
+[data-theme="light"] .poster-bg-watermark-main,
+[data-theme="paper"] .poster-bg-watermark-main {
+  color: color-mix(in srgb, var(--theme-accent-600) 8%, transparent);
+  -webkit-text-stroke: 0;
+}
+
+[data-theme="light"] .poster-bg-watermark-sub,
+[data-theme="paper"] .poster-bg-watermark-sub {
+  color: color-mix(in srgb, var(--theme-accent-500) 16%, transparent);
+}
+
+/* —— Ink / brush splatter variant (poster-bg--ink) —— */
+
+.poster-bg-ink-wash {
+  position: absolute;
+  bottom: -6vh;
+  left: -14vw;
+  width: clamp(30rem, 72vw, 54rem);
+  height: clamp(20rem, 48vh, 34rem);
+  opacity: 0.5;
+  transform: rotate(-10deg);
+  background: radial-gradient(
+    ellipse 68% 62% at 38% 52%,
+    color-mix(in srgb, var(--theme-slate-950) 82%, var(--theme-accent-700)) 0%,
+    color-mix(in srgb, var(--theme-slate-900) 48%, transparent) 52%,
+    transparent 76%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 320'%3E%3Cpath fill='%23000' d='M0 210 C95 145 210 168 330 128 C415 98 490 138 520 118 L520 320 L0 320 Z'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  filter: blur(1px);
+}
+
+.poster-bg-ink-splash {
+  position: absolute;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  filter: blur(0.5px);
+}
+
+.poster-bg-ink-splash-a {
+  top: -10vh;
+  right: -12vw;
+  width: clamp(22rem, 50vw, 40rem);
+  height: clamp(20rem, 44vh, 32rem);
+  opacity: 0.58;
+  transform: rotate(-24deg);
+  background: radial-gradient(
+    ellipse 52% 48% at 42% 38%,
+    color-mix(in srgb, var(--theme-accent-500) 78%, transparent) 0%,
+    color-mix(in srgb, var(--theme-accent-600) 52%, transparent) 42%,
+    color-mix(in srgb, var(--theme-accent-700) 22%, transparent) 62%,
+    transparent 78%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Cpath fill='%23000' d='M258 16 C348 0 438 52 472 138 C492 198 458 268 372 296 C278 322 178 282 118 218 C68 162 62 82 122 38 C178 6 218 10 258 16 Z'/%3E%3C/svg%3E");
+}
+
+.poster-bg-ink-splash-b {
+  bottom: 8vh;
+  left: -8vw;
+  width: clamp(14rem, 32vw, 24rem);
+  height: clamp(12rem, 26vh, 20rem);
+  opacity: 0.42;
+  transform: rotate(18deg);
+  background: radial-gradient(
+    ellipse 58% 52% at 50% 45%,
+    color-mix(in srgb, var(--theme-accent-600) 62%, transparent) 0%,
+    color-mix(in srgb, var(--theme-accent-700) 28%, transparent) 58%,
+    transparent 80%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 280'%3E%3Cpath fill='%23000' d='M155 22 C228 8 298 58 312 128 C322 178 288 238 218 258 C148 272 88 242 52 188 C22 142 28 78 82 42 C112 22 138 18 155 22 Z'/%3E%3C/svg%3E");
+}
+
+.poster-bg-ink-fleck {
+  position: absolute;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  filter: blur(0.25px);
+}
+
+.poster-bg-ink-fleck-a {
+  top: clamp(8rem, 16vh, 13rem);
+  right: clamp(5rem, 18vw, 14rem);
+  width: clamp(3.5rem, 8vw, 6rem);
+  height: clamp(2.5rem, 6vh, 4.5rem);
+  opacity: 0.48;
+  transform: rotate(32deg);
+  background: color-mix(in srgb, var(--theme-accent-500) 65%, transparent);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 90'%3E%3Cpath fill='%23000' d='M58 12 C82 8 98 28 94 52 C88 72 62 78 42 64 C26 52 34 28 58 12 Z'/%3E%3C/svg%3E");
+}
+
+.poster-bg-ink-fleck-b {
+  top: clamp(18rem, 32vh, 26rem);
+  left: clamp(2rem, 8vw, 6rem);
+  width: clamp(2rem, 5vw, 3.5rem);
+  height: clamp(1.5rem, 4vh, 2.75rem);
+  opacity: 0.35;
+  transform: rotate(-18deg);
+  background: color-mix(in srgb, var(--theme-accent-600) 55%, transparent);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 80'%3E%3Cpath fill='%23000' d='M48 10 C68 6 82 24 78 44 C72 62 48 68 32 54 C18 42 26 22 48 10 Z'/%3E%3C/svg%3E");
+}
+
+.poster-bg-ink-brush {
+  position: absolute;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-position: center;
+}
+
+.poster-bg-ink-brush-main {
+  top: clamp(11rem, 24vh, 19rem);
+  left: -18vw;
+  width: 138vw;
+  height: clamp(5rem, 11vh, 8rem);
+  opacity: 0.68;
+  transform: rotate(-9deg);
+  background: linear-gradient(
+    92deg,
+    transparent 0%,
+    color-mix(in srgb, var(--theme-accent-700) 62%, transparent) 18%,
+    color-mix(in srgb, var(--theme-accent-500) 82%, transparent) 46%,
+    color-mix(in srgb, var(--theme-accent-600) 58%, transparent) 72%,
+    transparent 100%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 120'%3E%3Cpath fill='%23000' d='M-42 72 C108 14 228 92 352 48 C458 18 548 62 648 38 L672 102 C548 132 378 112 212 122 C88 130 -8 114 -42 100 Z'/%3E%3C/svg%3E");
+  filter: blur(0.4px);
+}
+
+.poster-bg-ink-brush-secondary {
+  top: clamp(4rem, 10vh, 7rem);
+  right: -12vw;
+  width: 95vw;
+  height: clamp(3rem, 7vh, 5rem);
+  opacity: 0.38;
+  transform: rotate(11deg);
+  background: linear-gradient(
+    88deg,
+    transparent 8%,
+    color-mix(in srgb, var(--theme-slate-950) 55%, var(--theme-accent-700)) 35%,
+    color-mix(in srgb, var(--theme-accent-600) 48%, transparent) 62%,
+    transparent 92%
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 90'%3E%3Cpath fill='%23000' d='M-20 55 C95 22 210 68 340 38 C430 18 500 48 540 42 L555 78 C460 92 320 82 180 88 C70 92 0 82 -20 72 Z'/%3E%3C/svg%3E");
   filter: blur(0.6px);
 }
 
-.graffiti-splat-secondary {
-  bottom: 6vh;
-  left: -9vw;
-  width: clamp(11rem, 26vw, 19rem);
-  height: clamp(9rem, 20vh, 15rem);
-  background:
-    radial-gradient(ellipse 50% 45% at 42% 38%, color-mix(in srgb, var(--theme-accent-600) 52%, transparent), transparent 68%),
-    radial-gradient(ellipse 38% 32% at 62% 55%, color-mix(in srgb, var(--theme-accent-500) 38%, transparent), transparent 62%);
-  opacity: 0.26;
-  transform: rotate(20deg);
-  clip-path: polygon(22% 8%, 58% 0%, 92% 28%, 88% 68%, 52% 96%, 12% 78%, 0% 42%);
-  filter: blur(0.8px);
-}
-
-.graffiti-drip {
-  position: absolute;
-  border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--theme-accent-600) 58%, transparent) 0%,
-    color-mix(in srgb, var(--theme-accent-600) 30%, transparent) 72%,
-    transparent 100%
-  );
-  opacity: 0.52;
-}
-
-.graffiti-drip-a {
-  top: clamp(11rem, 21vh, 17rem);
-  right: clamp(3.5rem, 13vw, 9rem);
-  width: clamp(0.4rem, 1vw, 0.6rem);
-  height: clamp(3.5rem, 9vh, 6rem);
-  transform: rotate(7deg);
-}
-
-.graffiti-drip-b {
-  top: clamp(13rem, 24vh, 19rem);
-  right: clamp(6.5rem, 17vw, 12rem);
-  width: clamp(0.28rem, 0.7vw, 0.42rem);
-  height: clamp(2.25rem, 6vh, 4rem);
-  opacity: 0.38;
-  transform: rotate(-5deg);
-}
-
-.graffiti-drip-c {
-  top: clamp(10rem, 18vh, 15rem);
-  right: clamp(1.5rem, 7vw, 5rem);
-  width: clamp(0.22rem, 0.55vw, 0.34rem);
-  height: clamp(1.75rem, 4.5vh, 3rem);
-  opacity: 0.32;
-  transform: rotate(12deg);
-}
-
-.graffiti-specks {
-  position: absolute;
-  top: clamp(7rem, 15vh, 12rem);
-  right: clamp(0.5rem, 5vw, 4rem);
-  width: 5rem;
-  height: 5rem;
-  opacity: 0.42;
-  background:
-    radial-gradient(circle at 18% 28%, color-mix(in srgb, var(--theme-accent-500) 50%, transparent) 0%, transparent 55%),
-    radial-gradient(circle at 72% 58%, color-mix(in srgb, var(--theme-accent-600) 40%, transparent) 0%, transparent 50%),
-    radial-gradient(circle at 48% 78%, color-mix(in srgb, var(--theme-accent-500) 35%, transparent) 0%, transparent 45%);
-  box-shadow:
-    14px 6px 0 2px color-mix(in srgb, var(--theme-accent-600) 38%, transparent),
-    32px 18px 0 1px color-mix(in srgb, var(--theme-accent-500) 28%, transparent),
-    48px 8px 0 1.5px color-mix(in srgb, var(--theme-accent-600) 22%, transparent),
-    22px 34px 0 1px color-mix(in srgb, var(--theme-accent-500) 20%, transparent);
-}
-
-[data-theme="light"] .graffiti-splat-primary,
-[data-theme="paper"] .graffiti-splat-primary {
-  opacity: 0.22;
-}
-
-[data-theme="light"] .graffiti-splat-secondary,
-[data-theme="paper"] .graffiti-splat-secondary {
-  opacity: 0.14;
-}
-
-[data-theme="light"] .graffiti-drip,
-[data-theme="paper"] .graffiti-drip {
+[data-theme="light"] .poster-bg--ink .poster-bg-ink-wash,
+[data-theme="paper"] .poster-bg--ink .poster-bg-ink-wash {
   opacity: 0.28;
 }
 
-[data-theme="light"] .graffiti-specks,
-[data-theme="paper"] .graffiti-specks {
-  opacity: 0.2;
+[data-theme="light"] .poster-bg--ink .poster-bg-ink-splash-a,
+[data-theme="paper"] .poster-bg--ink .poster-bg-ink-splash-a {
+  opacity: 0.32;
+}
+
+[data-theme="light"] .poster-bg--ink .poster-bg-ink-splash-b,
+[data-theme="paper"] .poster-bg--ink .poster-bg-ink-splash-b {
+  opacity: 0.24;
+}
+
+[data-theme="light"] .poster-bg--ink .poster-bg-ink-fleck,
+[data-theme="paper"] .poster-bg--ink .poster-bg-ink-fleck {
+  opacity: 0.22;
+}
+
+[data-theme="light"] .poster-bg--ink .poster-bg-ink-brush-main,
+[data-theme="paper"] .poster-bg--ink .poster-bg-ink-brush-main {
+  opacity: 0.4;
+}
+
+[data-theme="light"] .poster-bg--ink .poster-bg-ink-brush-secondary,
+[data-theme="paper"] .poster-bg--ink .poster-bg-ink-brush-secondary {
+  opacity: 0.26;
 }
 
 h1,
