@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
+import { ThemeSync } from './components/layout/ThemeSync';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 import { BandProvider } from './hooks/useBand';
 import { ThemeProvider } from './hooks/useTheme';
@@ -7,6 +8,7 @@ import { BandHomePage } from './pages/BandHome';
 import { LoginPage } from './pages/Login';
 import { PracticePage } from './pages/Practice';
 import { RegisterPage } from './pages/Register';
+import { SettingsPage } from './pages/Settings';
 import { SongRecommendPage } from './pages/SongRecommend';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -33,6 +35,7 @@ function AppRoutes() {
         <Route index element={<BandHomePage />} />
         <Route path="songs" element={<SongRecommendPage />} />
         <Route path="practice" element={<PracticePage />} />
+        <Route path="settings" element={<SettingsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
@@ -41,12 +44,13 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <ThemeProvider>
+          <ThemeSync />
           <AppRoutes />
-        </AuthProvider>
-      </BrowserRouter>
-    </ThemeProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }

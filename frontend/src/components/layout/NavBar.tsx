@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { AppearanceMenu } from './AppearanceMenu';
 
@@ -38,9 +38,13 @@ export function NavBar() {
           <AppearanceMenu />
           {user && (
             <>
-              <span className="font-display-heavy text-lg tracking-wide text-emphasis">
+              <Link
+                to="/settings"
+                className="font-display-heavy text-lg tracking-wide text-emphasis hover:text-accent-500"
+                title="账户设置"
+              >
                 {user.displayName}
-              </span>
+              </Link>
               <button
                 type="button"
                 onClick={() => void logout()}

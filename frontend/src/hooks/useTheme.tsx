@@ -1,9 +1,14 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { applyTheme, getStoredTheme, type ThemeId } from '../lib/theme';
+import { syncThemeToAccountIfRegistered } from '../lib/themeAccountSync';
+
+type SetThemeOptions = {
+  skipAccountSync?: boolean;
+};
 
 type ThemeContextValue = {
   theme: ThemeId;
-  setTheme: (theme: ThemeId) => void;
+  setTheme: (theme: ThemeId, options?: SetThemeOptions) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -11,9 +16,12 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ThemeId>(getStoredTheme);
 
-  const setTheme = useCallback((next: ThemeId) => {
+  const setTheme = useCallback((next: ThemeId, options?: SetThemeOptions) => {
     applyTheme(next);
     setThemeState(next);
+    if (!options?.skipAccountSync) {
+      syncThemeToAccountIfRegistered(next);
+    }
   }, []);
 
   const value = useMemo(() => ({ theme, setTheme }), [theme, setTheme]);

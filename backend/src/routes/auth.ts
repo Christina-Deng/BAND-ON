@@ -74,4 +74,61 @@ export async function registerAuthRoutes(app: FastifyInstance) {
     }
     return { user };
   });
+
+  app.patch('/auth/me', { preHandler: authenticate }, async (request, reply) => {
+    const body = request.body as {
+      displayName?: string;
+      themePreference?: string | null;
+    };
+
+    try {
+      const user = await authService.updateMe(request.userId!, body);
+      return { user };
+    } catch (error) {
+      const err = toHttpError(error);
+      const message =
+        err.message === 'Display name is required'
+          ? '昵称不能为空'
+          : err.message === 'Display name is too long'
+            ? '昵称不能超过 50 个字符'
+            : err.message === 'Invalid theme preference'
+              ? '无效的外观主题'
+              : err.message === 'No fields to update'
+                ? '没有可更新的内容'
+                : err.message;
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'UPDATE_FAILED', message },
+      });
+    }
+  });
+
+  app.post('/auth/change-password', { preHandler: authenticate }, async (request, reply) => {
+    const body = request.body as {
+      currentPassword?: string;
+      newPassword?: string;
+    };
+
+    if (!body.currentPassword || !body.newPassword) {
+      return reply.status(400).send({
+        error: { code: 'VALIDATION_ERROR', message: '请填写当前密码和新密码' },
+      });
+    }
+
+    try {
+      await authService.changePassword(request.userId!, {
+        currentPassword: body.currentPassword,
+        newPassword: body.newPassword,
+      });
+      return { ok: true };
+    } catch (error) {
+      const err = toHttpError(error);
+      const message =
+        err.message === 'Current password is incorrect'
+          ? '当前密码不正确'
+          : err.message;
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'PASSWORD_CHANGE_FAILED', message },
+      });
+    }
+  });
 }

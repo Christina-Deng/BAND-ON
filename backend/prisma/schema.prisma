@@ -21,6 +21,7 @@ model User {
   email        String   @unique
   passwordHash String   @map("password_hash")
   displayName  String   @map("display_name")
+  themePreference String? @map("theme_preference")
   createdAt    DateTime @default(now()) @map("created_at")
 
   bandMembers  BandMember[]

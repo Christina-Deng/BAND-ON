@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTheme } from '../../hooks/useTheme';
-import { THEMES, type ThemeId } from '../../lib/theme';
+import { ThemePicker } from './ThemePicker';
 
 export function AppearanceMenu() {
   const { theme, setTheme } = useTheme();
@@ -19,11 +19,6 @@ export function AppearanceMenu() {
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
-
-  function selectTheme(next: ThemeId) {
-    setTheme(next);
-    setOpen(false);
-  }
 
   function isInsideMenu(target: EventTarget | null) {
     if (!(target instanceof Node)) return false;
@@ -62,48 +57,16 @@ export function AppearanceMenu() {
               className="w-full max-w-xs rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-2xl"
             >
               <h2 className="font-display-heavy text-lg tracking-wide text-emphasis">外观</h2>
-              <p className="mt-1 text-xs text-slate-400">选择配色方案，偏好会保存在本机</p>
-              <ul className="mt-4 space-y-2">
-                {THEMES.map((option) => {
-                  const selected = theme === option.id;
-                  return (
-                    <li key={option.id}>
-                      <button
-                        type="button"
-                        onMouseDown={(e) => {
-                          e.stopPropagation();
-                          selectTheme(option.id);
-                        }}
-                        className={`flex w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left transition-colors ${
-                          selected
-                            ? 'border-accent-600 bg-accent-600/10'
-                            : 'border-slate-700 hover:border-slate-600 hover:bg-slate-800'
-                        }`}
-                      >
-                        <span className="flex overflow-hidden rounded-md border border-slate-600">
-                          <span
-                            className="h-8 w-8"
-                            style={{ backgroundColor: option.swatches[0] }}
-                          />
-                          <span
-                            className="h-8 w-8"
-                            style={{ backgroundColor: option.swatches[1] }}
-                          />
-                        </span>
-                        <span className="min-w-0 flex-1">
-                          <span className="block text-sm font-medium text-emphasis">
-                            {option.label}
-                            {selected && (
-                              <span className="ml-2 text-xs font-normal text-accent-500">当前</span>
-                            )}
-                          </span>
-                          <span className="block text-xs text-slate-400">{option.description}</span>
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="mt-4">
+                <ThemePicker
+                theme={theme}
+                onSelect={(next) => {
+                  setTheme(next);
+                  setOpen(false);
+                }}
+                hint="选择配色方案，会同步到账户并在本机保存"
+                />
+              </div>
             </div>
           </div>,
           document.body,
