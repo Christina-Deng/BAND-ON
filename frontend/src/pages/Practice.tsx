@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { resolveMediaUrl } from '../api/client';
 import {
   getMonthPractices,
   getTodayStatus,
@@ -145,13 +146,26 @@ export function PracticePage() {
           {selectedDayLogs.length === 0 ? (
             <p className="text-sm text-slate-500">当天暂无打卡</p>
           ) : (
-            <ul className="space-y-2 text-sm">
-              {selectedDayLogs.map((log) => (
-                <li key={log.id}>
-                  {log.user.displayName} — {log.durationMinutes} 分钟
-                  {log.note ? ` · ${log.note}` : ''}
-                </li>
-              ))}
+            <ul className="space-y-3 text-sm">
+              {selectedDayLogs.map((log) => {
+                const audioSrc = resolveMediaUrl(log.audioUrl);
+                return (
+                  <li
+                    key={log.id}
+                    className="rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2"
+                  >
+                    <p>
+                      {log.user.displayName} — {log.durationMinutes} 分钟
+                      {log.note ? ` · ${log.note}` : ''}
+                    </p>
+                    {audioSrc && (
+                      <audio controls preload="metadata" className="mt-2 w-full max-w-md" src={audioSrc}>
+                        你的浏览器不支持音频播放
+                      </audio>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>

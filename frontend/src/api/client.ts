@@ -5,6 +5,14 @@ export const api = axios.create({
   withCredentials: true,
 });
 
+/** Turn backend-relative upload paths into absolute URLs for media playback. */
+export function resolveMediaUrl(path: string | null | undefined): string | null {
+  if (!path) return null;
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  const base = (import.meta.env.VITE_API_URL ?? 'http://localhost:3000').replace(/\/$/, '');
+  return path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
+}
+
 /** Extract a human-readable message from axios / API errors. */
 export function getApiErrorMessage(error: unknown, fallback = '请求失败，请稍后重试'): string {
   if (axios.isAxiosError(error)) {
