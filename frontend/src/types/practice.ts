@@ -20,3 +20,28 @@ export interface TodayMemberStatus {
   note: string | null;
   audioUrl: string | null;
 }
+
+export interface PersonalPracticeStats {
+  streakDays: number;
+  weekMinutes: number;
+  weekCheckInDays: number;
+  monthMinutes: number;
+  monthCheckInDays: number;
+}
+
+export interface BandPracticeStats {
+  teamToday: {
+    checkedIn: number;
+    total: number;
+    totalMinutes: number;
+    allCheckedIn: boolean;
+  };
+  weekMinutes: number;
+  weekCheckInCount: number;
+  weekMostActive: { displayName: string; checkInDays: number } | null;
+}
+
+export interface PracticeStats {
+  personal: PersonalPracticeStats;
+  band: BandPracticeStats;
+}

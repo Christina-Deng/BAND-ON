@@ -18,14 +18,23 @@ function themeAccentColors(): string[] {
 
 /** Brief confetti burst after a successful practice check-in. */
 export function celebrateCheckIn() {
+  fireConfetti(false);
+}
+
+/** Stronger burst when the whole band checked in today. */
+export function celebrateTeamComplete() {
+  fireConfetti(true);
+}
+
+function fireConfetti(strong: boolean) {
   if (prefersReducedMotion()) return;
 
   const colors = themeAccentColors();
-  const end = Date.now() + 700;
+  const end = Date.now() + (strong ? 1200 : 700);
 
   const frame = () => {
     confetti({
-      particleCount: 3,
+      particleCount: strong ? 5 : 3,
       angle: 60,
       spread: 55,
       origin: { x: 0, y: 0.65 },
@@ -53,8 +62,8 @@ export function celebrateCheckIn() {
   };
 
   confetti({
-    particleCount: 80,
-    spread: 100,
+    particleCount: strong ? 120 : 80,
+    spread: strong ? 120 : 100,
     origin: { y: 0.55 },
     colors,
     ticks: 220,

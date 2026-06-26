@@ -1,5 +1,11 @@
 import { api } from './client';
-import type { PracticeLog, TodayMemberStatus } from '../types/practice';
+import type {
+  BandPracticeStats,
+  PersonalPracticeStats,
+  PracticeLog,
+  PracticeStats,
+  TodayMemberStatus,
+} from '../types/practice';
 
 export async function submitPractice(formData: FormData) {
   const { data } = await api.post<{ practice: PracticeLog }>('/practices', formData, {
@@ -21,3 +27,12 @@ export async function getTodayStatus(bandId: string) {
   });
   return data.members;
 }
+
+export async function getPracticeStats(bandId: string) {
+  const { data } = await api.get<{ stats: PracticeStats }>('/practices/stats', {
+    params: { bandId },
+  });
+  return data.stats;
+}
+
+export type { BandPracticeStats, PersonalPracticeStats, PracticeStats };

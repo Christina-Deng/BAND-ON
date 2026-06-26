@@ -4,6 +4,7 @@ import { randomUUID } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
 import { authenticate } from '../middleware/authenticate.js';
 import * as practiceService from '../services/practiceService.js';
+import * as practiceStatsService from '../services/practiceStats.js';
 
 const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
 
@@ -87,6 +88,28 @@ export async function registerPracticeRoutes(app: FastifyInstance) {
       const err = error as Error & { statusCode?: number };
       return reply.status(err.statusCode ?? 500).send({
         error: { code: 'GET_PRACTICES_FAILED', message: err.message },
+      });
+    }
+  });
+
+  app.get('/practices/stats', { preHandler: authenticate }, async (request, reply) => {
+    const query = request.query as { bandId?: string };
+    if (!query.bandId) {
+      return reply.status(400).send({
+        error: { code: 'VALIDATION_ERROR', message: '请提供 bandId' },
+      });
+    }
+
+    try {
+      const stats = await practiceStatsService.getPracticeStats({
+        bandId: query.bandId,
+        userId: request.userId!,
+      });
+      return { stats };
+    } catch (error) {
+      const err = error as Error & { statusCode?: number };
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'GET_STATS_FAILED', message: err.message },
       });
     }
   });

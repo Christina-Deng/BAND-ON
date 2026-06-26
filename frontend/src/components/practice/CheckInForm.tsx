@@ -5,6 +5,8 @@ import { BandPicker } from '../band/BandPicker';
 export type CheckInResult = {
   succeeded: string[];
   failed: string[];
+  succeededBandIds: string[];
+  failedBandIds: string[];
 };
 
 interface Props {

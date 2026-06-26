@@ -2,18 +2,21 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { resolveMediaUrl } from '../api/client';
 import {
   getMonthPractices,
+  getPracticeStats,
   getTodayStatus,
   submitPractice,
 } from '../api/practices';
 import { BandPicker } from '../components/band/BandPicker';
 import { CheckInForm, type CheckInResult } from '../components/practice/CheckInForm';
+import { PersonalStatsPanel } from '../components/practice/PersonalStatsPanel';
 import { PracticeCalendar } from '../components/practice/PracticeCalendar';
+import { TeamStatsPanel } from '../components/practice/TeamStatsPanel';
 import { TeamStatusPanel } from '../components/practice/TeamStatusPanel';
 import { createToast, ToastStack, type ToastMessage } from '../components/shared/ToastStack';
 import { useAuth } from '../hooks/useAuth';
 import { useBand } from '../hooks/useBand';
-import { celebrateCheckIn } from '../lib/celebration';
-import type { PracticeLog, TodayMemberStatus } from '../types/practice';
+import { celebrateCheckIn, celebrateTeamComplete } from '../lib/celebration';
+import type { PracticeLog, PracticeStats, TodayMemberStatus } from '../types/practice';
 
 function currentMonth() {
   const now = new Date();
@@ -30,6 +33,7 @@ export function PracticePage() {
   const [checkedInBandIds, setCheckedInBandIds] = useState<string[]>([]);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+  const [stats, setStats] = useState<PracticeStats | null>(null);
 
   useEffect(() => {
     if (bands.length === 0) {
@@ -64,6 +68,7 @@ export function PracticePage() {
     const [monthData, todayData] = await Promise.all([
       getMonthPractices(viewBandId, month),
       getTodayStatus(viewBandId),
+      getPracticeStats(viewBandId).then(setStats),
     ]);
     setPractices(monthData);
     setTodayMembers(todayData);
@@ -100,6 +105,8 @@ export function PracticePage() {
   }): Promise<CheckInResult> {
     const succeeded: string[] = [];
     const failed: string[] = [];
+    const succeededBandIds: string[] = [];
+    const failedBandIds: string[] = [];
     for (const bandId of input.bandIds) {
       const formData = new FormData();
       formData.append('bandId', bandId);
@@ -110,27 +117,64 @@ export function PracticePage() {
         await submitPractice(formData);
         const bandName = bands.find((b) => b.id === bandId)?.name ?? '未知乐队';
         succeeded.push(bandName);
+        succeededBandIds.push(bandId);
       } catch {
         const bandName = bands.find((b) => b.id === bandId)?.name ?? '未知乐队';
         failed.push(bandName);
+        failedBandIds.push(bandId);
       }
     }
     if (succeeded.length > 0) {
       await refreshAll();
     }
-    return { succeeded, failed };
+    return { succeeded, failed, succeededBandIds, failedBandIds };
   }
 
-  function handleCheckInSuccess(result: CheckInResult, durationMinutes: number) {
+  async function handleCheckInSuccess(result: CheckInResult, durationMinutes: number) {
     celebrateCheckIn();
+
     const bandText =
       result.succeeded.length === 1
         ? result.succeeded[0]
         : result.succeeded.join('、');
-    setToasts((prev) => [
-      ...prev,
-      createToast(`打卡成功！${bandText} · ${durationMinutes} 分钟`),
-    ]);
+
+    let personalStats = stats?.personal;
+    if (viewBandId) {
+      try {
+        const latest = await getPracticeStats(viewBandId);
+        setStats(latest);
+        personalStats = latest.personal;
+      } catch {
+        /* keep existing stats */
+      }
+    }
+
+    let toastText = `打卡成功！${bandText} · ${durationMinutes} 分钟`;
+    if (personalStats) {
+      if (personalStats.streakDays > 0) {
+        toastText += ` · 连续 ${personalStats.streakDays} 天`;
+      }
+      toastText += ` · 本周 ${personalStats.weekMinutes} 分钟`;
+    }
+
+    setToasts((prev) => [...prev, createToast(toastText)]);
+
+    for (const bandId of result.succeededBandIds) {
+      try {
+        const bandStats = await getPracticeStats(bandId);
+        if (bandStats.band.teamToday.allCheckedIn) {
+          const bandName = bands.find((b) => b.id === bandId)?.name ?? '乐队';
+          celebrateTeamComplete();
+          setToasts((prev) => [
+            ...prev,
+            createToast(`🎉 ${bandName} 今日全员到齐！`),
+          ]);
+        }
+      } catch {
+        /* ignore stats errors */
+      }
+    }
+
     if (result.failed.length > 0) {
       setToasts((prev) => [
         ...prev,
@@ -153,12 +197,14 @@ export function PracticePage() {
         </p>
       </div>
 
+      {stats && <PersonalStatsPanel stats={stats.personal} />}
+
       <div className="grid gap-6 lg:grid-cols-2">
         <CheckInForm
           bands={bands}
           checkedInBandIds={checkedInBandIds}
           onSubmit={handleCheckIn}
-          onSuccess={handleCheckInSuccess}
+          onSuccess={(result, minutes) => void handleCheckInSuccess(result, minutes)}
         />
 
         <div className="space-y-3">
@@ -169,6 +215,7 @@ export function PracticePage() {
             label="查看团队练习"
             hint="选择要查看今日打卡情况的乐队"
           />
+          {stats && viewBand && <TeamStatsPanel stats={stats.band} bandName={viewBand.name} />}
           <TeamStatusPanel members={todayMembers} currentUserId={user?.id} />
         </div>
       </div>
