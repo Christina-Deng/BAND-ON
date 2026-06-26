@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { CreateBandForm } from '../components/band/CreateBandForm';
 import { JoinBandForm } from '../components/band/JoinBandForm';
 import { BandSection } from '../components/band/BandSection';
@@ -8,9 +9,19 @@ import { useBand } from '../hooks/useBand';
 export function BandHomePage() {
   const { user } = useAuth();
   const { bands, loading, error, refresh, leaveBand } = useBand();
+  const location = useLocation();
+  const navigate = useNavigate();
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
   const [leaveMessage, setLeaveMessage] = useState('');
+  const [joinMessage, setJoinMessage] = useState('');
+
+  useEffect(() => {
+    const message = (location.state as { joinMessage?: string } | null)?.joinMessage;
+    if (!message) return;
+    setJoinMessage(message);
+    navigate('.', { replace: true, state: null });
+  }, [location.state, navigate]);
 
   if (loading) return <p className="text-slate-400">加载中…</p>;
 
@@ -34,6 +45,12 @@ export function BandHomePage() {
       {error && (
         <p className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-4 py-3 text-sm text-red-400">
           {error}
+        </p>
+      )}
+
+      {joinMessage && (
+        <p className="rounded-lg border border-accent-500/40 bg-accent-500/10 px-4 py-3 text-sm text-slate-200">
+          {joinMessage}
         </p>
       )}
 

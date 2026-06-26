@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { getApiErrorMessage } from '../api/client';
 import { AppearanceMenu } from '../components/layout/AppearanceMenu';
 import { useAuth } from '../hooks/useAuth';
+import { getPendingInviteCode } from '../lib/invite';
 
 export function RegisterPage() {
   const { user, register } = useAuth();
@@ -11,7 +12,9 @@ export function RegisterPage() {
   const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState('');
 
-  if (user) return <Navigate to="/" replace />;
+  if (user) {
+    return <Navigate to={getPendingInviteCode() ? '/join' : '/'} replace />;
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

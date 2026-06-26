@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from './hooks/useAuth';
 import { BandProvider } from './hooks/useBand';
 import { ThemeProvider } from './hooks/useTheme';
 import { BandHomePage } from './pages/BandHome';
+import { JoinPage } from './pages/Join';
 import { LoginPage } from './pages/Login';
 import { PracticePage } from './pages/Practice';
 import { RegisterPage } from './pages/Register';
@@ -23,6 +24,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/join" element={<JoinPage />} />
       <Route
         element={
           <ProtectedRoute>

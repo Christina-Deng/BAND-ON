@@ -6,6 +6,7 @@ import { LeaveBandConfirmDialog } from './LeaveBandConfirmDialog';
 import { MemberCard } from './MemberCard';
 import { SkillQuestionnaire } from '../shared/SkillQuestionnaire';
 import { formatStylePreferences } from '../../constants/music';
+import { buildInviteShareText, copyText } from '../../lib/invite';
 import type { Band, Instrument, QuestionnaireAnswers } from '../../types/band';
 
 interface Props {
@@ -20,7 +21,8 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
   const [showEditBand, setShowEditBand] = useState(false);
   const [editBandLoading, setEditBandLoading] = useState(false);
   const [editBandError, setEditBandError] = useState('');
-  const [copied, setCopied] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedShare, setCopiedShare] = useState(false);
   const [showLeaveConfirm, setShowLeaveConfirm] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [leaveError, setLeaveError] = useState('');
@@ -48,9 +50,15 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
   }
 
   async function copyInviteCode() {
-    await navigator.clipboard.writeText(band.inviteCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    await copyText(band.inviteCode);
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2000);
+  }
+
+  async function copyInviteShare() {
+    await copyText(buildInviteShareText(band.name, band.inviteCode));
+    setCopiedShare(true);
+    setTimeout(() => setCopiedShare(false), 2000);
   }
 
   async function handleLeaveConfirm() {
@@ -76,16 +84,26 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
               风格：{formatStylePreferences(band.stylePreferences)}
             </p>
           )}
-          <div className="mt-2 flex items-center gap-2 text-sm">
-            <span className="text-slate-400">邀请码：</span>
-            <code className="rounded bg-slate-800 px-2 py-1">{band.inviteCode}</code>
-            <button
-              type="button"
-              onClick={() => void copyInviteCode()}
-              className="text-accent-500 hover:text-accent-400 hover:underline"
-            >
-              {copied ? '已复制' : '复制'}
-            </button>
+          <div className="mt-2 space-y-1 text-sm">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-slate-400">邀请码：</span>
+              <code className="rounded bg-slate-800 px-2 py-1">{band.inviteCode}</code>
+              <button
+                type="button"
+                onClick={() => void copyInviteCode()}
+                className="text-accent-500 hover:text-accent-400 hover:underline"
+              >
+                {copiedCode ? '已复制' : '复制码'}
+              </button>
+              <button
+                type="button"
+                onClick={() => void copyInviteShare()}
+                className="text-accent-500 hover:text-accent-400 hover:underline"
+              >
+                {copiedShare ? '已复制' : '复制邀请'}
+              </button>
+            </div>
+            <p className="text-xs text-slate-500">「复制邀请」含链接，适合发到微信 / QQ</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
