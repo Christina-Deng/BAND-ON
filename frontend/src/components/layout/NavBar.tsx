@@ -1,6 +1,7 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { AppearanceMenu } from './AppearanceMenu';
+import { UserMenu } from './UserMenu';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   `px-3 py-2 rounded-lg text-sm font-semibold ${
@@ -10,7 +11,7 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
   }`;
 
 export function NavBar() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <header className="border-b border-slate-700 bg-slate-900">
@@ -36,24 +37,7 @@ export function NavBar() {
         </div>
         <div className="flex items-center gap-3 text-sm">
           <AppearanceMenu />
-          {user && (
-            <>
-              <Link
-                to="/settings"
-                className="font-display-heavy text-lg tracking-wide text-emphasis hover:text-accent-500"
-                title="账户设置"
-              >
-                {user.displayName}
-              </Link>
-              <button
-                type="button"
-                onClick={() => void logout()}
-                className="rounded-lg border border-slate-600 px-3 py-1.5 text-slate-300 hover:border-slate-500 hover:bg-slate-800 hover:text-emphasis"
-              >
-                退出
-              </button>
-            </>
-          )}
+          {user && <UserMenu />}
         </div>
       </div>
     </header>
