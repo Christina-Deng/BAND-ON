@@ -1,4 +1,4 @@
-export type ThemeId = 'indigo' | 'rock' | 'light';
+export type ThemeId = 'indigo' | 'rock' | 'amber' | 'light';
 
 export const THEME_STORAGE_KEY = 'bandmate-theme';
 
@@ -11,8 +11,8 @@ export const THEMES: {
   {
     id: 'indigo',
     label: 'Indigo',
-    description: '经典靛蓝深色',
-    swatches: ['#0f172a', '#6366f1'],
+    description: '中性深色 · 靛蓝点缀',
+    swatches: ['#131316', '#6366f1'],
   },
   {
     id: 'rock',
@@ -22,14 +22,20 @@ export const THEMES: {
   },
   {
     id: 'light',
-    label: 'Light',
-    description: '日间亮色',
+    label: 'Day',
+    description: '日间 · 靛蓝点缀',
     swatches: ['#f1f5f9', '#6366f1'],
+  },
+  {
+    id: 'amber',
+    label: 'Amber',
+    description: '日间 · 琥珀点缀',
+    swatches: ['#fef3c7', '#f59e0b'],
   },
 ];
 
 export function isThemeId(value: string | null): value is ThemeId {
-  return value === 'indigo' || value === 'rock' || value === 'light';
+  return value === 'indigo' || value === 'rock' || value === 'amber' || value === 'light';
 }
 
 export function getStoredTheme(): ThemeId {

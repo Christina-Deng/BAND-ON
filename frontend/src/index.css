@@ -64,8 +64,8 @@
 }
 
 [data-theme="indigo"] {
-  --theme-bg: #0f172a;
-  --theme-fg: #f1f5f9;
+  --theme-bg: #131316;
+  --theme-fg: #f4f4f5;
   --theme-emphasis: #ffffff;
   --theme-heading: #ffffff;
   --theme-accent-400: #818cf8;
@@ -73,15 +73,36 @@
   --theme-accent-600: #4f46e5;
   --theme-accent-700: #4338ca;
   --theme-focus: #6366f1;
-  --theme-highlight-border: #818cf8;
-  --theme-slate-950: #020617;
-  --theme-slate-900: #0f172a;
-  --theme-slate-800: #1e293b;
-  --theme-slate-700: #334155;
-  --theme-slate-600: #475569;
-  --theme-slate-500: #64748b;
-  --theme-slate-400: #94a3b8;
-  --theme-slate-300: #cbd5e1;
+  --theme-highlight-border: #6366f1;
+  --theme-slate-950: #131316;
+  --theme-slate-900: #1c1c21;
+  --theme-slate-800: #27272a;
+  --theme-slate-700: #3f3f46;
+  --theme-slate-600: #52525b;
+  --theme-slate-500: #71717a;
+  --theme-slate-400: #a1a1aa;
+  --theme-slate-300: #d4d4d8;
+}
+
+[data-theme="amber"] {
+  --theme-bg: #fef3c7;
+  --theme-fg: #1c1917;
+  --theme-emphasis: #1c1917;
+  --theme-heading: #1c1917;
+  --theme-accent-400: #fbbf24;
+  --theme-accent-500: #f59e0b;
+  --theme-accent-600: #d97706;
+  --theme-accent-700: #b45309;
+  --theme-focus: #d97706;
+  --theme-highlight-border: #d97706;
+  --theme-slate-950: #fef3c7;
+  --theme-slate-900: #ffffff;
+  --theme-slate-800: #fffbeb;
+  --theme-slate-700: #a8a29e;
+  --theme-slate-600: #78716c;
+  --theme-slate-500: #57534e;
+  --theme-slate-400: #44403c;
+  --theme-slate-300: #292524;
 }
 
 [data-theme="light"] {
@@ -126,7 +147,9 @@ h2 {
 }
 
 [data-theme="light"] h1,
-[data-theme="light"] h2 {
+[data-theme="light"] h2,
+[data-theme="amber"] h1,
+[data-theme="amber"] h2 {
   -webkit-text-stroke: 0;
 }
 
@@ -145,7 +168,8 @@ h2 {
   paint-order: stroke fill;
 }
 
-[data-theme="light"] .font-display-heavy {
+[data-theme="light"] .font-display-heavy,
+[data-theme="amber"] .font-display-heavy {
   -webkit-text-stroke: 0;
 }
 
