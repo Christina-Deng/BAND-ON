@@ -104,6 +104,43 @@ export async function getMyBands(userId: string) {
   return Promise.all(memberships.map((m) => getBand(m.bandId, userId)));
 }
 
+export async function updateBand(input: {
+  bandId: string;
+  userId: string;
+  name: string;
+  stylePreferences?: string[];
+}) {
+  const membership = await prisma.bandMember.findUnique({
+    where: { bandId_userId: { bandId: input.bandId, userId: input.userId } },
+  });
+  if (!membership) {
+    throw Object.assign(new Error('你不是该乐队成员'), { statusCode: 403 });
+  }
+
+  const name = input.name.trim();
+  if (!name) {
+    throw Object.assign(new Error('请填写乐队名称'), { statusCode: 400 });
+  }
+
+  return prisma.band.update({
+    where: { id: input.bandId },
+    data: {
+      name,
+      stylePreferences:
+        input.stylePreferences && input.stylePreferences.length > 0
+          ? input.stylePreferences
+          : Prisma.DbNull,
+    },
+    include: {
+      members: {
+        include: {
+          user: { select: { id: true, displayName: true } },
+        },
+      },
+    },
+  });
+}
+
 export async function updateMyMemberProfile(input: {
   bandId: string;
   userId: string;

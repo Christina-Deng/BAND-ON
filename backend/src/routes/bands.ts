@@ -68,6 +68,32 @@ export async function registerBandRoutes(app: FastifyInstance) {
     }
   });
 
+  app.patch('/bands/:id', { preHandler: authenticate }, async (request, reply) => {
+    const { id } = request.params as { id: string };
+    const body = request.body as { name?: string; stylePreferences?: string[] };
+
+    if (!body.name?.trim()) {
+      return reply.status(400).send({
+        error: { code: 'VALIDATION_ERROR', message: '请填写乐队名称' },
+      });
+    }
+
+    try {
+      const band = await bandService.updateBand({
+        bandId: id,
+        userId: request.userId!,
+        name: body.name,
+        stylePreferences: body.stylePreferences,
+      });
+      return { band };
+    } catch (error) {
+      const err = error as Error & { statusCode?: number };
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'UPDATE_BAND_FAILED', message: err.message },
+      });
+    }
+  });
+
   app.put('/bands/:id/members/me', { preHandler: authenticate }, async (request, reply) => {
     const { id } = request.params as { id: string };
     const body = request.body as {

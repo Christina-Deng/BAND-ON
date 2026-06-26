@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { updateMyProfile } from '../../api/bands';
+import { updateBand, updateMyProfile } from '../../api/bands';
+import { EditBandDialog } from './EditBandDialog';
 import { LeaveBandConfirmDialog } from './LeaveBandConfirmDialog';
 import { MemberCard } from './MemberCard';
 import { SkillQuestionnaire } from '../shared/SkillQuestionnaire';
@@ -16,6 +17,9 @@ interface Props {
 
 export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) {
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [showEditBand, setShowEditBand] = useState(false);
+  const [editBandLoading, setEditBandLoading] = useState(false);
+  const [editBandError, setEditBandError] = useState('');
   const [copied, setCopied] = useState(false);
   const [showLeaveConfirm, setShowLeaveConfirm] = useState(false);
   const [leaving, setLeaving] = useState(false);
@@ -27,6 +31,20 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
   async function handleProfileSubmit(answers: QuestionnaireAnswers, instrument: Instrument) {
     await updateMyProfile(band.id, { instrument, questionnaireAnswers: answers });
     await onRefresh();
+  }
+
+  async function handleEditBandSubmit(input: { name: string; stylePreferences: string[] }) {
+    setEditBandLoading(true);
+    setEditBandError('');
+    try {
+      await updateBand(band.id, input);
+      await onRefresh();
+      setShowEditBand(false);
+    } catch {
+      setEditBandError('保存失败，请稍后重试');
+    } finally {
+      setEditBandLoading(false);
+    }
   }
 
   async function copyInviteCode() {
@@ -71,6 +89,16 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setEditBandError('');
+              setShowEditBand(true);
+            }}
+            className="rounded-lg border border-slate-600 px-4 py-2 text-sm text-slate-300 hover:border-slate-500 hover:bg-slate-800 hover:text-emphasis"
+          >
+            编辑乐队
+          </button>
           <button
             type="button"
             onClick={() => setShowQuestionnaire(true)}
@@ -125,6 +153,20 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
         open={showQuestionnaire}
         onClose={() => setShowQuestionnaire(false)}
         onSubmit={handleProfileSubmit}
+      />
+
+      <EditBandDialog
+        open={showEditBand}
+        initialName={band.name}
+        initialStylePreferences={band.stylePreferences ?? []}
+        loading={editBandLoading}
+        error={showEditBand ? editBandError : undefined}
+        onClose={() => {
+          if (editBandLoading) return;
+          setShowEditBand(false);
+          setEditBandError('');
+        }}
+        onSubmit={(input) => void handleEditBandSubmit(input)}
       />
 
       <LeaveBandConfirmDialog

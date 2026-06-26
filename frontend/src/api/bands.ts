@@ -19,6 +19,14 @@ export async function getMyBands(): Promise<Band[]> {
   return [];
 }
 
+export async function updateBand(
+  bandId: string,
+  input: { name: string; stylePreferences?: string[] },
+) {
+  const { data } = await api.patch<{ band: Band }>(`/bands/${bandId}`, input);
+  return data.band;
+}
+
 export async function updateMyProfile(
   bandId: string,
   input: { instrument: Instrument; questionnaireAnswers: QuestionnaireAnswers },
