@@ -1,0 +1,43 @@
+{
+  "description": "三个虚构乐队画像，用于预览规则引擎筛选结果。对应 Phase 2 三种典型场景。",
+  "profiles": [
+    {
+      "id": "band-newbie-rock",
+      "bandName": "车库新手队",
+      "stylePreferences": ["rock", "pop", "folk"],
+      "members": [
+        { "displayName": "阿杰", "instrument": "GUITAR", "skillLevel": 2, "playingExperience": "1-3" },
+        { "displayName": "大伟", "instrument": "BASS", "skillLevel": 2, "playingExperience": "<1" },
+        { "displayName": "小雨", "instrument": "DRUMS", "skillLevel": 2, "playingExperience": "1-3" },
+        { "displayName": "小美", "instrument": "VOCALS", "skillLevel": 2, "playingExperience": "1-3" }
+      ],
+      "scenario": "典型校园/业余新手摇滚编制，适合感受「规则筛出 20+ 首入门曲」"
+    },
+    {
+      "id": "band-indie-mid",
+      "bandName": "后摇实验团",
+      "stylePreferences": ["indie", "postrock", "rock"],
+      "members": [
+        { "displayName": "老陈", "instrument": "GUITAR", "skillLevel": 4, "playingExperience": "3-5" },
+        { "displayName": "阿贝", "instrument": "BASS", "skillLevel": 3, "playingExperience": "1-3" },
+        { "displayName": "鼓王", "instrument": "DRUMS", "skillLevel": 4, "playingExperience": "3-5" },
+        { "displayName": "键盘", "instrument": "KEYBOARD", "skillLevel": 3, "playingExperience": "1-3" },
+        { "displayName": "主唱", "instrument": "VOCALS", "skillLevel": 3, "playingExperience": "3-5" }
+      ],
+      "scenario": "中等水平独立乐队，万青/后摇类会筛进来，简单流行也会匹配"
+    },
+    {
+      "id": "band-acg-pop",
+      "bandName": "二次元排练室",
+      "stylePreferences": ["acg", "pop", "rock"],
+      "members": [
+        { "displayName": "吉他手", "instrument": "GUITAR", "skillLevel": 3, "playingExperience": "1-3" },
+        { "displayName": "贝斯", "instrument": "BASS", "skillLevel": 2, "playingExperience": "1-3" },
+        { "displayName": "鼓", "instrument": "DRUMS", "skillLevel": 3, "playingExperience": "1-3" },
+        { "displayName": "键盘", "instrument": "KEYBOARD", "skillLevel": 3, "playingExperience": "1-3" },
+        { "displayName": "主唱", "instrument": "VOCALS", "skillLevel": 2, "playingExperience": "<1" }
+      ],
+      "scenario": "主唱是短板 (level 2)，可观察哪些 ACG 曲被规则挡在外面"
+    }
+  ]
+}

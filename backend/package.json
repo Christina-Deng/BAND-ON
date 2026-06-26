@@ -6,7 +6,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "preview:recommendations": "tsx scripts/preview-recommendations.ts",
+    "validate:seed": "tsx scripts/validate-seed.ts"
   },
   "dependencies": {
     "@fastify/cookie": "^11.0.2",

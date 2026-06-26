@@ -1,0 +1,3022 @@
+{
+  "version": 2,
+  "generatedAt": "2026-06-26",
+  "description": "Phase 2 曲库 seed v2：编制 (arrangement)、分声部难度 (parts)、缺人方案 (fallbacks)。AI 写推荐语，规则引擎筛候选。",
+  "songs": [
+    {
+      "id": "song-001",
+      "title": "平凡之路",
+      "artist": "朴树",
+      "style": "folk",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 72,
+      "notes": "四和弦为主，适合新手乐队第一首完整曲目",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-002",
+      "title": "活着",
+      "artist": "郝云",
+      "style": "folk",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 118,
+      "notes": "扫弦节奏明快，鼓点规律",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-003",
+      "title": "成都",
+      "artist": "赵雷",
+      "style": "folk",
+      "bpm": 88,
+      "notes": "木吉他编制也成立，可弱化鼓贝斯",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "none",
+        "drums": "optional",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-004",
+      "title": "南方姑娘",
+      "artist": "赵雷",
+      "style": "folk",
+      "bpm": 76,
+      "notes": "分解和弦为主，主唱音域适中",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-005",
+      "title": "董小姐",
+      "artist": "宋冬野",
+      "style": "folk",
+      "bpm": 68,
+      "notes": "可只用吉他+主唱排练，鼓可后加",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "none",
+        "drums": "optional",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-006",
+      "title": "南山南",
+      "artist": "马頔",
+      "style": "folk",
+      "bpm": 62,
+      "notes": "慢歌，注意主唱气息与吉他分解均匀",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-007",
+      "title": "稻香",
+      "artist": "周杰伦",
+      "style": "pop",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 82,
+      "notes": "流行入门经典，键盘铺底加分",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-008",
+      "title": "小幸运",
+      "artist": "田馥甄",
+      "style": "pop",
+      "bpm": 72,
+      "notes": "女声明亮版或降调男声均可",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-009",
+      "title": "后来",
+      "artist": "刘若英",
+      "style": "pop",
+      "bpm": 76,
+      "notes": "校园乐队常练，结构简单",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-010",
+      "title": "晴天",
+      "artist": "周杰伦",
+      "style": "pop",
+      "bpm": 69,
+      "notes": "吉他扫弦+切分，比入门曲稍难",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-011",
+      "title": "夜空中最亮的星",
+      "artist": "逃跑计划",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 120,
+      "notes": "独立乐队排练高频曲目",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-012",
+      "title": "你要跳舞吗",
+      "artist": "新裤子",
+      "style": "punk",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 148,
+      "notes": "朋克入门，速度可略降练稳",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-013",
+      "title": "没有理想的人不伤心",
+      "artist": "新裤子",
+      "style": "punk",
+      "styles": [
+        "rock",
+        "indie"
+      ],
+      "bpm": 132,
+      "notes": "副歌能量足，鼓手需要稳定驱动力",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-014",
+      "title": "无地自容",
+      "artist": "黑豹",
+      "style": "rock",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 112,
+      "notes": "经典硬摇滚，主唱高音有挑战",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-015",
+      "title": "新长征路上的摇滚",
+      "artist": "崔健",
+      "style": "rock",
+      "bpm": 108,
+      "notes": "中国摇滚代表，节奏感要求高",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-016",
+      "title": "火车驶向云外，梦安魂于九霄",
+      "artist": "万能青年旅店",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "postrock"
+      ],
+      "bpm": 96,
+      "notes": "编制完整时效果好，小号可省略",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-017",
+      "title": "杀死那个石家庄人",
+      "artist": "万能青年旅店",
+      "style": "postrock",
+      "styles": [
+        "rock",
+        "indie"
+      ],
+      "bpm": 88,
+      "notes": "段落对比强，后段爆发对鼓/吉他要求高",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-018",
+      "title": "鲜花",
+      "artist": "回春丹",
+      "style": "indie",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 124,
+      "notes": "近年排练热曲，律动明确",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-019",
+      "title": "Wonderwall",
+      "artist": "Oasis",
+      "style": "rock",
+      "styles": [
+        "indie",
+        "pop"
+      ],
+      "bpm": 87,
+      "notes": "欧美乐队入门必练",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-020",
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "style": "rock",
+      "bpm": 74,
+      "notes": "尾奏双吉他编配难，可先练主歌",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "optional",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-021",
+      "title": "Sweet Child O' Mine",
+      "artist": "Guns N' Roses",
+      "style": "rock",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 125,
+      "notes": "前奏 riff 与主唱高音均为难点",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-022",
+      "title": "Smells Like Teen Spirit",
+      "artist": "Nirvana",
+      "style": "rock",
+      "styles": [
+        "punk",
+        "indie"
+      ],
+      "bpm": 117,
+      "notes": "动态从安静到爆发，排练很有成就感",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-023",
+      "title": "Blitzkrieg Bop",
+      "artist": "Ramones",
+      "style": "punk",
+      "bpm": 178,
+      "notes": "速度可降到 140 练手",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-024",
+      "title": "Counting Stars",
+      "artist": "OneRepublic",
+      "style": "pop",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 122,
+      "notes": "流行摇滚，副歌好唱",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-025",
+      "title": "Viva La Vida",
+      "artist": "Coldplay",
+      "style": "pop",
+      "styles": [
+        "rock",
+        "indie"
+      ],
+      "bpm": 138,
+      "notes": "键盘弦乐铺底是味道关键",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-026",
+      "title": "Yellow",
+      "artist": "Coldplay",
+      "style": "indie",
+      "styles": [
+        "pop",
+        "rock"
+      ],
+      "bpm": 86,
+      "notes": "慢歌，适合练动态控制",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-027",
+      "title": "Boulevard of Broken Dreams",
+      "artist": "Green Day",
+      "style": "punk",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 83,
+      "notes": "朋克慢板，四和弦",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-028",
+      "title": "Enter Sandman",
+      "artist": "Metallica",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 123,
+      "notes": "金属入门，下切分与双踩可选",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-029",
+      "title": "真的爱你",
+      "artist": "Beyond",
+      "style": "rock",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 72,
+      "notes": "粤语/国语均可，solo 可简化",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-030",
+      "title": "海阔天空",
+      "artist": "Beyond",
+      "style": "rock",
+      "bpm": 76,
+      "notes": "主唱高音是门槛，可降调排练",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-031",
+      "title": "光辉岁月",
+      "artist": "Beyond",
+      "style": "rock",
+      "bpm": 76,
+      "notes": "节奏吉他扫弦为主",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-032",
+      "title": "倔强",
+      "artist": "五月天",
+      "style": "rock",
+      "styles": [
+        "pop",
+        "punk"
+      ],
+      "bpm": 132,
+      "notes": "校园乐队高频，气氛好",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-033",
+      "title": "温柔",
+      "artist": "五月天",
+      "style": "pop",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 68,
+      "notes": "慢歌，适合练细腻动态",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-034",
+      "title": "离开地球表面",
+      "artist": "五月天",
+      "style": "rock",
+      "styles": [
+        "punk",
+        "pop"
+      ],
+      "bpm": 148,
+      "notes": "速度快，体能与稳定性要求高",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-035",
+      "title": "李白",
+      "artist": "李荣浩",
+      "style": "pop",
+      "styles": [
+        "rock",
+        "folk"
+      ],
+      "bpm": 120,
+      "notes": "律动简单，适合排练间隙暖场",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-036",
+      "title": "像风一样自由",
+      "artist": "许巍",
+      "style": "rock",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 108,
+      "notes": "吉他 riff 有辨识度",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-037",
+      "title": "蓝莲花",
+      "artist": "许巍",
+      "style": "rock",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 92,
+      "notes": "经典摇滚，solo 可后补",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-038",
+      "title": "起风了",
+      "artist": "买辣椒也用券",
+      "style": "pop",
+      "styles": [
+        "acg",
+        "folk"
+      ],
+      "bpm": 72,
+      "notes": "音域宽，主唱是短板时需降调",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-039",
+      "title": "红莲华",
+      "artist": "LiSA",
+      "style": "acg",
+      "styles": [
+        "rock",
+        "metal"
+      ],
+      "bpm": 185,
+      "notes": "鬼灭之刃 OP，速度快可降 BPM",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-040",
+      "title": "Only My Railgun",
+      "artist": "fripSide",
+      "style": "acg",
+      "styles": [
+        "electronic",
+        "rock"
+      ],
+      "bpm": 180,
+      "notes": "电子摇滚，键盘音色重要",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-041",
+      "title": "打上花火",
+      "artist": "DAOKO × 米津玄師",
+      "style": "acg",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 80,
+      "notes": "抒情 ACG，键盘/弦乐垫重要",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-042",
+      "title": "千本樱",
+      "artist": "初音ミク",
+      "style": "acg",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 150,
+      "notes": "可器乐版，主唱可选二次元女声",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-043",
+      "title": "Uptown Funk",
+      "artist": "Mark Ronson ft. Bruno Mars",
+      "style": "funk",
+      "styles": [
+        "pop",
+        "rnb"
+      ],
+      "bpm": 115,
+      "notes": "贝斯线、funk 节奏是核心",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-044",
+      "title": "Superstition",
+      "artist": "Stevie Wonder",
+      "style": "funk",
+      "styles": [
+        "rnb"
+      ],
+      "bpm": 100,
+      "notes": "Clavinet 味道可用键盘代替",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-045",
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "style": "pop",
+      "styles": [
+        "funk",
+        "rnb"
+      ],
+      "bpm": 117,
+      "notes": "贝斯线经典，鼓点要锁死",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-046",
+      "title": "Three Little Birds",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "styles": [
+        "folk",
+        "pop"
+      ],
+      "bpm": 74,
+      "notes": "雷鬼节奏入门，吉他 off-beat",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-047",
+      "title": "Take Me Home, Country Roads",
+      "artist": "John Denver",
+      "style": "country",
+      "styles": [
+        "folk",
+        "pop"
+      ],
+      "bpm": 82,
+      "notes": "合唱友好，适合路演",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-048",
+      "title": "Fly Me to the Moon",
+      "artist": "Frank Sinatra",
+      "style": "jazz",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 120,
+      "notes": "爵士标准曲，swing 感",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-049",
+      "title": "Autumn Leaves",
+      "artist": "Joseph Kosma",
+      "style": "jazz",
+      "bpm": 88,
+      "notes": "可器乐版，和声变化多",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-050",
+      "title": "The Thrill Is Gone",
+      "artist": "B.B. King",
+      "style": "blues",
+      "bpm": 68,
+      "notes": "蓝调入门，吉他推弦",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-051",
+      "title": "Hysteria",
+      "artist": "Muse",
+      "style": "rock",
+      "styles": [
+        "electronic",
+        "metal"
+      ],
+      "bpm": 96,
+      "notes": "贝斯线极难，慎选除非贝斯手很强",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 5
+        },
+        "bass": {
+          "minLevel": 5
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-052",
+      "title": "Come As You Are",
+      "artist": "Nirvana",
+      "style": "rock",
+      "styles": [
+        "indie",
+        "punk"
+      ],
+      "bpm": 120,
+      "notes": "riff 简单，氛围感强",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-053",
+      "title": "Seven Nation Army",
+      "artist": "The White Stripes",
+      "style": "rock",
+      "styles": [
+        "blues",
+        "indie"
+      ],
+      "bpm": 124,
+      "notes": "贝斯/吉他 riff 可互换练",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-054",
+      "title": "Zombie",
+      "artist": "The Cranberries",
+      "style": "rock",
+      "styles": [
+        "indie",
+        "pop"
+      ],
+      "bpm": 84,
+      "notes": "主唱音色与共鸣有要求",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-055",
+      "title": "Mr. Brightside",
+      "artist": "The Killers",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 148,
+      "notes": "键盘 arpeggio 是标志",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-056",
+      "title": "Take Five",
+      "artist": "Dave Brubeck",
+      "style": "jazz",
+      "bpm": 176,
+      "notes": "5/4 拍，器乐向",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "not_applicable",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-057",
+      "title": "Canon in D",
+      "artist": "Pachelbel",
+      "style": "classical",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 64,
+      "notes": "可键盘+吉他小编制",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "optional"
+        },
+        "bass": "optional",
+        "drums": "none",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-058",
+      "title": "小情歌",
+      "artist": "苏打绿",
+      "style": "indie",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 76,
+      "notes": "钢琴前奏可键盘代替",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-059",
+      "title": "无人的海边",
+      "artist": "夏日入侵企画",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 128,
+      "notes": "清爽流行摇滚，排练轻松",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-060",
+      "title": "想去海边",
+      "artist": "夏日入侵企画",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 140,
+      "notes": "能量高，适合演出压轴",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-061",
+      "title": "孤勇者",
+      "artist": "陈奕迅",
+      "style": "pop",
+      "styles": [
+        "rock",
+        "acg"
+      ],
+      "bpm": 68,
+      "notes": "副歌音域高，可降调",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-062",
+      "title": "童话",
+      "artist": "光良",
+      "style": "pop",
+      "bpm": 68,
+      "notes": "钢琴前奏经典，键盘手友好",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-063",
+      "title": "Lose Yourself",
+      "artist": "Eminem",
+      "style": "hiphop",
+      "bpm": 87,
+      "notes": "说唱为主，需要主唱能 rap",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "none",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "not_applicable",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-064",
+      "title": "Stairway to Heaven",
+      "artist": "Led Zeppelin",
+      "style": "rock",
+      "styles": [
+        "folk",
+        "metal"
+      ],
+      "bpm": 82,
+      "notes": "长篇史诗，仅适合高等级乐队",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 5
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-065",
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "style": "rock",
+      "styles": [
+        "classical",
+        "pop"
+      ],
+      "bpm": 72,
+      "notes": "编制与和声复杂，演出向",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 5
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    }
+  ]
+}

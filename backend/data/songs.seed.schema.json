@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "bandmate/songs.seed.schema.json",
+  "title": "BandMate Song Seed v2",
+  "description": "Curated rehearsal song library for Phase 2 recommendations.",
+  "type": "object",
+  "required": ["version", "songs"],
+  "properties": {
+    "version": { "const": 2 },
+    "generatedAt": { "type": "string", "format": "date" },
+    "description": { "type": "string" },
+    "songs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/seedSong" }
+    }
+  },
+  "$defs": {
+    "musicStyleId": {
+      "type": "string",
+      "enum": [
+        "rock", "pop", "folk", "metal", "punk", "indie", "jazz", "blues",
+        "funk", "rnb", "acg", "hiphop", "electronic", "postrock", "reggae",
+        "country", "classical", "world"
+      ]
+    },
+    "partSkill": {
+      "type": "object",
+      "required": ["minLevel"],
+      "properties": {
+        "minLevel": { "type": "integer", "minimum": 1, "maximum": 5 }
+      },
+      "additionalProperties": false
+    },
+    "arrangement": {
+      "type": "object",
+      "required": ["vocals", "guitars", "bass", "drums", "keyboard"],
+      "properties": {
+        "vocals": { "enum": ["required", "optional", "instrumental_ok"] },
+        "guitars": {
+          "type": "object",
+          "required": ["count", "lead", "rhythm"],
+          "properties": {
+            "count": { "enum": [0, 1, 2] },
+            "lead": { "enum": ["none", "optional", "required"] },
+            "rhythm": { "enum": ["none", "optional", "required"] }
+          },
+          "additionalProperties": false
+        },
+        "bass": { "enum": ["required", "optional", "none"] },
+        "drums": { "enum": ["required", "optional", "program_ok"] },
+        "keyboard": { "enum": ["none", "optional_pad", "important", "required"] }
+      },
+      "additionalProperties": false
+    },
+    "parts": {
+      "type": "object",
+      "properties": {
+        "vocals": { "$ref": "#/$defs/partSkill" },
+        "rhythmGuitar": { "$ref": "#/$defs/partSkill" },
+        "leadGuitar": { "$ref": "#/$defs/partSkill" },
+        "bass": { "$ref": "#/$defs/partSkill" },
+        "drums": { "$ref": "#/$defs/partSkill" },
+        "keyboard": { "$ref": "#/$defs/partSkill" }
+      },
+      "additionalProperties": false
+    },
+    "fallbacks": {
+      "type": "object",
+      "properties": {
+        "missingLeadGuitar": {
+          "enum": ["omit", "program_lead", "combine_into_rhythm", "not_applicable"]
+        },
+        "missingRhythmGuitar": {
+          "enum": ["omit", "program_rhythm", "keyboard_fill", "not_applicable"]
+        },
+        "missingBass": {
+          "enum": ["omit", "program_bass", "keyboard_bass", "not_applicable"]
+        },
+        "missingDrums": {
+          "enum": ["omit", "program_drums", "cajon", "not_applicable"]
+        },
+        "missingKeyboard": {
+          "enum": ["omit", "program_pad", "guitar_cover", "not_applicable"]
+        },
+        "missingVocals": {
+          "enum": ["instrumental_ok", "program_guide", "not_applicable"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "seedSong": {
+      "type": "object",
+      "required": ["id", "title", "artist", "style", "arrangement", "parts", "fallbacks"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^song-[0-9]{3}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "artist": { "type": "string", "minLength": 1 },
+        "style": { "$ref": "#/$defs/musicStyleId" },
+        "styles": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/musicStyleId" }
+        },
+        "bpm": { "type": "integer", "minimum": 40, "maximum": 240 },
+        "notes": { "type": "string" },
+        "arrangement": { "$ref": "#/$defs/arrangement" },
+        "parts": { "$ref": "#/$defs/parts" },
+        "fallbacks": { "$ref": "#/$defs/fallbacks" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
