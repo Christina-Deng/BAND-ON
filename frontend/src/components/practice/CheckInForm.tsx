@@ -2,6 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Band } from '../../types/band';
 import { BandPicker } from '../band/BandPicker';
 
+export type CheckInResult = {
+  succeeded: string[];
+  failed: string[];
+};
+
 interface Props {
   bands: Band[];
   checkedInBandIds: string[];
@@ -10,10 +15,11 @@ interface Props {
     durationMinutes: number;
     note?: string;
     audio?: File;
-  }) => Promise<void>;
+  }) => Promise<CheckInResult>;
+  onSuccess?: (result: CheckInResult, durationMinutes: number) => void;
 }
 
-export function CheckInForm({ bands, checkedInBandIds, onSubmit }: Props) {
+export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Props) {
   const [selectedBandIds, setSelectedBandIds] = useState<string[]>([]);
   const [durationMinutes, setDurationMinutes] = useState(30);
   const [note, setNote] = useState('');
@@ -42,17 +48,28 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit }: Props) {
     setLoading(true);
     setError('');
     try {
-      await onSubmit({
+      const result = await onSubmit({
         bandIds: selectedBandIds,
         durationMinutes,
         note: note || undefined,
         audio,
       });
+
+      if (result.succeeded.length === 0) {
+        setError('打卡失败，所选乐队可能今天已经打卡过了');
+        return;
+      }
+
+      onSuccess?.(result, durationMinutes);
       setNote('');
       setAudio(undefined);
       setSelectedBandIds([]);
+
+      if (result.failed.length > 0) {
+        setError(`已在 ${result.succeeded.join('、')} 打卡，但 ${result.failed.join('、')} 未能打卡`);
+      }
     } catch {
-      setError('打卡失败，部分乐队可能今天已经打卡过了');
+      setError('打卡失败，请稍后重试');
     } finally {
       setLoading(false);
     }

@@ -6,11 +6,13 @@ import {
   submitPractice,
 } from '../api/practices';
 import { BandPicker } from '../components/band/BandPicker';
-import { CheckInForm } from '../components/practice/CheckInForm';
+import { CheckInForm, type CheckInResult } from '../components/practice/CheckInForm';
 import { PracticeCalendar } from '../components/practice/PracticeCalendar';
 import { TeamStatusPanel } from '../components/practice/TeamStatusPanel';
+import { createToast, ToastStack, type ToastMessage } from '../components/shared/ToastStack';
 import { useAuth } from '../hooks/useAuth';
 import { useBand } from '../hooks/useBand';
+import { celebrateCheckIn } from '../lib/celebration';
 import type { PracticeLog, TodayMemberStatus } from '../types/practice';
 
 function currentMonth() {
@@ -27,6 +29,7 @@ export function PracticePage() {
   const [todayMembers, setTodayMembers] = useState<TodayMemberStatus[]>([]);
   const [checkedInBandIds, setCheckedInBandIds] = useState<string[]>([]);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   useEffect(() => {
     if (bands.length === 0) {
@@ -94,8 +97,9 @@ export function PracticePage() {
     durationMinutes: number;
     note?: string;
     audio?: File;
-  }) {
-    const errors: string[] = [];
+  }): Promise<CheckInResult> {
+    const succeeded: string[] = [];
+    const failed: string[] = [];
     for (const bandId of input.bandIds) {
       const formData = new FormData();
       formData.append('bandId', bandId);
@@ -104,22 +108,44 @@ export function PracticePage() {
       if (input.audio) formData.append('audio', input.audio);
       try {
         await submitPractice(formData);
+        const bandName = bands.find((b) => b.id === bandId)?.name ?? '未知乐队';
+        succeeded.push(bandName);
       } catch {
         const bandName = bands.find((b) => b.id === bandId)?.name ?? '未知乐队';
-        errors.push(bandName);
+        failed.push(bandName);
       }
     }
-    if (errors.length === input.bandIds.length) {
-      throw new Error('all failed');
+    if (succeeded.length > 0) {
+      await refreshAll();
     }
-    await refreshAll();
-    if (errors.length > 0) {
-      throw new Error(`partial: ${errors.join('、')}`);
+    return { succeeded, failed };
+  }
+
+  function handleCheckInSuccess(result: CheckInResult, durationMinutes: number) {
+    celebrateCheckIn();
+    const bandText =
+      result.succeeded.length === 1
+        ? result.succeeded[0]
+        : result.succeeded.join('、');
+    setToasts((prev) => [
+      ...prev,
+      createToast(`打卡成功！${bandText} · ${durationMinutes} 分钟`),
+    ]);
+    if (result.failed.length > 0) {
+      setToasts((prev) => [
+        ...prev,
+        createToast(`${result.failed.join('、')} 未能打卡（可能今日已打卡）`, 'warning'),
+      ]);
     }
+  }
+
+  function dismissToast(id: number) {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }
 
   return (
     <div className="space-y-6">
+      <ToastStack toasts={toasts} onDismiss={dismissToast} />
       <div>
         <h1 className="text-2xl font-bold">练习打卡</h1>
         <p className="mt-1 text-sm text-slate-400">
@@ -128,7 +154,12 @@ export function PracticePage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <CheckInForm bands={bands} checkedInBandIds={checkedInBandIds} onSubmit={handleCheckIn} />
+        <CheckInForm
+          bands={bands}
+          checkedInBandIds={checkedInBandIds}
+          onSubmit={handleCheckIn}
+          onSuccess={handleCheckInSuccess}
+        />
 
         <div className="space-y-3">
           <BandPicker
