@@ -56,7 +56,7 @@ function StatBlock({
   return (
     <div className={`stat-cell rounded-lg px-3 py-3 ${highlight ? 'stat-cell-hot' : ''}`}>
       <p className="rock-label">{kicker}</p>
-      <p className="mt-0.5 text-[0.6875rem] text-slate-500">{label}</p>
+      <p className="mt-0.5 text-xs text-slate-500">{label}</p>
       <p className="mt-1">
         {showFire && <span className="mr-1 text-base">🔥</span>}
         <span className="stat-number">{number}</span>
