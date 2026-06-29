@@ -7,12 +7,25 @@ import { registerAuthRoutes } from './routes/auth.js';
 import { registerBandRoutes } from './routes/bands.js';
 import { registerPracticeRoutes } from './routes/practices.js';
 import { registerSongRoutes } from './routes/songs.js';
+import { getFrontendUrl, isDevOriginAllowed } from './config/cors.js';
 
 export async function buildApp() {
   const app = Fastify({ logger: true });
 
   await app.register(cors, {
-    origin: process.env.FRONTEND_URL ?? 'http://localhost:5173',
+    origin: (origin, cb) => {
+      // Same-origin or server-to-server (no Origin header)
+      if (!origin) {
+        cb(null, true);
+        return;
+      }
+      const configured = getFrontendUrl();
+      if (origin === configured || isDevOriginAllowed(origin)) {
+        cb(null, true);
+        return;
+      }
+      cb(null, false);
+    },
     credentials: true,
   });
   await app.register(cookie);
