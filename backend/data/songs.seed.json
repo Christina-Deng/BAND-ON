@@ -7438,6 +7438,6563 @@
         "missingKeyboard": "not_applicable",
         "missingVocals": "not_applicable"
       }
+    },
+    {
+      "id": "song-165",
+      "title": "Atlas",
+      "artist": "Battles",
+      "style": "mathrock",
+      "styles": [
+        "electronic"
+      ],
+      "bpm": 140,
+      "notes": "EN instrumental math",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-166",
+      "title": "Lateralus",
+      "artist": "Tool",
+      "style": "mathrock",
+      "styles": [
+        "prog",
+        "metal"
+      ],
+      "bpm": 90,
+      "notes": "EN odd-meter prog math",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 5
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-167",
+      "title": "Good Morning, Captain",
+      "artist": "Slint",
+      "style": "mathrock",
+      "styles": [
+        "postrock"
+      ],
+      "bpm": 88,
+      "notes": "EN post/math origin",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-168",
+      "title": "Frame by Frame",
+      "artist": "King Crimson",
+      "style": "mathrock",
+      "styles": [
+        "prog"
+      ],
+      "bpm": 112,
+      "notes": "EN prog math",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 5
+        },
+        "leadGuitar": {
+          "minLevel": 5
+        },
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-169",
+      "title": "Bloodmeat",
+      "artist": "Protest the Hero",
+      "style": "mathrock",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 150,
+      "notes": "EN technical mathcore",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "rhythmGuitar": {
+          "minLevel": 5
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 5
+        },
+        "leadGuitar": {
+          "minLevel": 5
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-170",
+      "title": "The Duck",
+      "artist": "TTNG",
+      "style": "mathrock",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 130,
+      "notes": "EN tap riff math",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-171",
+      "title": "Inertiatic ESP",
+      "artist": "The Mars Volta",
+      "style": "mathrock",
+      "styles": [
+        "prog"
+      ],
+      "bpm": 140,
+      "notes": "EN chaotic prog math",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-172",
+      "title": "Tonto",
+      "artist": "Battles",
+      "style": "mathrock",
+      "styles": [
+        "electronic"
+      ],
+      "bpm": 128,
+      "notes": "EN loop math",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-173",
+      "title": "大象",
+      "artist": "大象体操",
+      "style": "mathrock",
+      "styles": [
+        "postrock"
+      ],
+      "bpm": 120,
+      "notes": "CN/TW math rock instrumental",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-174",
+      "title": "浮世绘",
+      "artist": "花糖单位",
+      "style": "mathrock",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 108,
+      "notes": "CN math rock",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-175",
+      "title": "First Breath After Coma",
+      "artist": "Explosions in the Sky",
+      "style": "postrock",
+      "bpm": 92,
+      "notes": "EN post-rock classic",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-176",
+      "title": "Storm",
+      "artist": "Godspeed You! Black Emperor",
+      "style": "postrock",
+      "styles": [
+        "classical"
+      ],
+      "bpm": 72,
+      "notes": "EN epic post-rock",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-177",
+      "title": "Sleep",
+      "artist": "God Is an Astronaut",
+      "style": "postrock",
+      "styles": [
+        "electronic"
+      ],
+      "bpm": 80,
+      "notes": "EN electronic post-rock",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-178",
+      "title": "Your Hand in Mine",
+      "artist": "Explosions in the Sky",
+      "style": "postrock",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 88,
+      "notes": "EN cinematic post-rock",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-179",
+      "title": "Silent Flight, Sleeping Dawn",
+      "artist": "Mono",
+      "style": "postrock",
+      "styles": [
+        "shoegaze"
+      ],
+      "bpm": 70,
+      "notes": "JP post-rock Mono",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-180",
+      "title": "醉忘川",
+      "artist": "惘闻",
+      "style": "postrock",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 84,
+      "notes": "CN post-rock Wang Wen",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-181",
+      "title": "天波",
+      "artist": "651",
+      "style": "postrock",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 76,
+      "notes": "TW post-rock",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-182",
+      "title": "小步舞曲",
+      "artist": "花伦",
+      "style": "postrock",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 92,
+      "notes": "CN post-rock",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-183",
+      "title": "Not for Want of Effort",
+      "artist": "Maybeshewill",
+      "style": "postrock",
+      "styles": [
+        "mathrock"
+      ],
+      "bpm": 110,
+      "notes": "EN electronic post-rock",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-184",
+      "title": "Roundabout",
+      "artist": "Yes",
+      "style": "prog",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 130,
+      "notes": "EN prog rock staple",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-185",
+      "title": "Tom Sawyer",
+      "artist": "Rush",
+      "style": "prog",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 88,
+      "notes": "EN prog trio",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-186",
+      "title": "Schism",
+      "artist": "Tool",
+      "style": "prog",
+      "styles": [
+        "mathrock",
+        "metal"
+      ],
+      "bpm": 90,
+      "notes": "EN prog metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-187",
+      "title": "Firth of Fifth",
+      "artist": "Genesis",
+      "style": "prog",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 76,
+      "notes": "EN classic prog piano",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-188",
+      "title": "Echoes",
+      "artist": "Pink Floyd",
+      "style": "prog",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 66,
+      "notes": "EN long-form prog",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-189",
+      "title": "Carry On Wayward Son",
+      "artist": "Kansas",
+      "style": "prog",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 120,
+      "notes": "EN arena prog",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-190",
+      "title": "Paranoid Android",
+      "artist": "Radiohead",
+      "style": "prog",
+      "styles": [
+        "indie",
+        "rock"
+      ],
+      "bpm": 84,
+      "notes": "EN prog art rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-191",
+      "title": "Bohemian Like You",
+      "artist": "The Dandy Warhols",
+      "style": "prog",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 120,
+      "notes": "EN alt prog pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-192",
+      "title": "彩虹山",
+      "artist": "马赛克",
+      "style": "prog",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 100,
+      "notes": "CN prog rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-193",
+      "title": "八厘米世界",
+      "artist": "八厘米世界",
+      "style": "prog",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 95,
+      "notes": "CN indie prog",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-194",
+      "title": "When You Sleep",
+      "artist": "My Bloody Valentine",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 120,
+      "notes": "EN shoegaze bible",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-195",
+      "title": "Alison",
+      "artist": "Slowdive",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 100,
+      "notes": "EN dream pop shoegaze",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-196",
+      "title": "Souvlaki Space Station",
+      "artist": "Slowdive",
+      "style": "shoegaze",
+      "styles": [
+        "electronic"
+      ],
+      "bpm": 90,
+      "notes": "EN instrumental shoegaze",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-197",
+      "title": "Star Sail",
+      "artist": "The Verve",
+      "style": "shoegaze",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 88,
+      "notes": "EN shoegaze/rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-198",
+      "title": "Only Shallow",
+      "artist": "My Bloody Valentine",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 116,
+      "notes": "EN MBV opener",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-199",
+      "title": "Cherry-coloured Funk",
+      "artist": "Cocteau Twins",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 112,
+      "notes": "EN ethereal shoegaze",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-200",
+      "title": "Sometimes",
+      "artist": "My Bloody Valentine",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 108,
+      "notes": "EN MBV ballad",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-201",
+      "title": "Plainsong",
+      "artist": "The Cure",
+      "style": "shoegaze",
+      "styles": [
+        "indie",
+        "rock"
+      ],
+      "bpm": 68,
+      "notes": "EN gothic shoegaze",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-202",
+      "title": "晕车的车",
+      "artist": "晕车的车",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 95,
+      "notes": "CN shoegaze indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-203",
+      "title": "白日梦",
+      "artist": "白噪音乐队",
+      "style": "shoegaze",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 88,
+      "notes": "CN shoegaze dream pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-204",
+      "title": "Master of Puppets",
+      "artist": "Metallica",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 212,
+      "notes": "EN thrash metal epic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "rhythmGuitar": {
+          "minLevel": 5
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 5
+        },
+        "leadGuitar": {
+          "minLevel": 5
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-205",
+      "title": "The Trooper",
+      "artist": "Iron Maiden",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 160,
+      "notes": "EN NWOBHM",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-206",
+      "title": "Paranoid",
+      "artist": "Black Sabbath",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 168,
+      "notes": "EN heavy metal origin",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-207",
+      "title": "Raining Blood",
+      "artist": "Slayer",
+      "style": "metal",
+      "styles": [
+        "hardcore"
+      ],
+      "bpm": 104,
+      "notes": "EN thrash classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-208",
+      "title": "Cowboys from Hell",
+      "artist": "Pantera",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 120,
+      "notes": "EN groove metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-209",
+      "title": "Breaking the Law",
+      "artist": "Judas Priest",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 154,
+      "notes": "EN classic metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-210",
+      "title": "Holy Diver",
+      "artist": "Dio",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 126,
+      "notes": "EN power metal adjacent",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-211",
+      "title": "Painkiller",
+      "artist": "Judas Priest",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 120,
+      "notes": "EN speed metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-212",
+      "title": "梦回唐朝",
+      "artist": "唐朝",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 100,
+      "notes": "CN heavy metal pioneer",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-213",
+      "title": "不要告别",
+      "artist": "高旗&超载",
+      "style": "metal",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 108,
+      "notes": "CN 90s metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-214",
+      "title": "十丈铜嘴",
+      "artist": "九宝乐队",
+      "style": "metal",
+      "styles": [
+        "world"
+      ],
+      "bpm": 130,
+      "notes": "CN Mongolian folk metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-215",
+      "title": "Bleed",
+      "artist": "Meshuggah",
+      "style": "deathcore",
+      "styles": [
+        "metal",
+        "mathrock"
+      ],
+      "bpm": 105,
+      "notes": "EN djent/deathcore",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 4
+        },
+        "rhythmGuitar": {
+          "minLevel": 5
+        },
+        "bass": {
+          "minLevel": 5
+        },
+        "drums": {
+          "minLevel": 5
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-216",
+      "title": "Pray for Plagues",
+      "artist": "Bring Me The Horizon",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 140,
+      "notes": "EN deathcore classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-217",
+      "title": "Reign of Darkness",
+      "artist": "Thy Art Is Murder",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 150,
+      "notes": "EN brutal deathcore",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-218",
+      "title": "Die Without Hope",
+      "artist": "Carnifex",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 130,
+      "notes": "EN deathcore",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-219",
+      "title": "Confined",
+      "artist": "Whitechapel",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 120,
+      "notes": "EN deathcore groove",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-220",
+      "title": "Tears Don't Fall",
+      "artist": "Bullet for My Valentine",
+      "style": "deathcore",
+      "styles": [
+        "metal",
+        "emo"
+      ],
+      "bpm": 130,
+      "notes": "EN metalcore/deathcore",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-221",
+      "title": "Duality",
+      "artist": "Slipknot",
+      "style": "deathcore",
+      "styles": [
+        "metal",
+        "hardcore"
+      ],
+      "bpm": 148,
+      "notes": "EN nu-death/metal",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-222",
+      "title": "Before I Forget",
+      "artist": "Slipknot",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 130,
+      "notes": "EN nu metal/deathcore adjacent",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-223",
+      "title": "黑梦",
+      "artist": "霜冻前夜",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 140,
+      "notes": "CN melodic deathcore",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-224",
+      "title": "孤城",
+      "artist": "葬尸湖",
+      "style": "deathcore",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 120,
+      "notes": "CN black/death hybrid",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-225",
+      "title": "Crossroads",
+      "artist": "Cream",
+      "style": "blues",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 112,
+      "notes": "EN blues rock classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-226",
+      "title": "Sweet Home Chicago",
+      "artist": "Robert Johnson",
+      "style": "blues",
+      "bpm": 120,
+      "notes": "EN delta blues standard",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-227",
+      "title": "Pride and Joy",
+      "artist": "Stevie Ray Vaughan",
+      "style": "blues",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 120,
+      "notes": "EN Texas blues shuffle",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-228",
+      "title": "Born Under a Bad Sign",
+      "artist": "Albert King",
+      "style": "blues",
+      "bpm": 88,
+      "notes": "EN electric blues",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-229",
+      "title": "Red House",
+      "artist": "Jimi Hendrix",
+      "style": "blues",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 72,
+      "notes": "EN slow blues",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-230",
+      "title": "Hoochie Coochie Man",
+      "artist": "Muddy Waters",
+      "style": "blues",
+      "bpm": 96,
+      "notes": "EN Chicago blues",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-231",
+      "title": "Stormy Monday",
+      "artist": "T-Bone Walker",
+      "style": "blues",
+      "bpm": 68,
+      "notes": "EN slow blues ballad",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-232",
+      "title": "兰州兰州",
+      "artist": "低苦艾",
+      "style": "blues",
+      "styles": [
+        "folk",
+        "rock"
+      ],
+      "bpm": 82,
+      "notes": "CN blues folk rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-233",
+      "title": "花房姑娘",
+      "artist": "崔健",
+      "style": "blues",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 100,
+      "notes": "CN blues rock classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-234",
+      "title": "Give Up the Funk",
+      "artist": "Parliament",
+      "style": "funk",
+      "styles": [
+        "rnb"
+      ],
+      "bpm": 108,
+      "notes": "EN P-funk anthem",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-235",
+      "title": "Flash Light",
+      "artist": "Parliament",
+      "style": "funk",
+      "styles": [
+        "electronic"
+      ],
+      "bpm": 104,
+      "notes": "EN synth funk",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-236",
+      "title": "Jungle Boogie",
+      "artist": "Kool & The Gang",
+      "style": "funk",
+      "bpm": 112,
+      "notes": "EN funk groove",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-237",
+      "title": "Pick Up the Pieces",
+      "artist": "Average White Band",
+      "style": "funk",
+      "styles": [
+        "rnb"
+      ],
+      "bpm": 108,
+      "notes": "EN instrumental funk",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-238",
+      "title": "Good Times",
+      "artist": "Chic",
+      "style": "funk",
+      "styles": [
+        "disco",
+        "rnb"
+      ],
+      "bpm": 110,
+      "notes": "EN disco funk",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-239",
+      "title": "Higher Ground",
+      "artist": "Stevie Wonder",
+      "style": "funk",
+      "styles": [
+        "rnb"
+      ],
+      "bpm": 100,
+      "notes": "EN clavinet funk",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-240",
+      "title": "公园",
+      "artist": "马赛克",
+      "style": "funk",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 105,
+      "notes": "CN indie funk",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-241",
+      "title": "再见 Jack",
+      "artist": "痛仰",
+      "style": "funk",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 98,
+      "notes": "CN reggae-funk rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-242",
+      "title": "So What",
+      "artist": "Miles Davis",
+      "style": "jazz",
+      "bpm": 136,
+      "notes": "EN modal jazz",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 4
+        },
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-243",
+      "title": "Blue in Green",
+      "artist": "Miles Davis",
+      "style": "jazz",
+      "bpm": 58,
+      "notes": "EN ballad jazz",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-244",
+      "title": "All Blues",
+      "artist": "Miles Davis",
+      "style": "jazz",
+      "bpm": 136,
+      "notes": "EN 6/8 jazz",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-245",
+      "title": "Misty",
+      "artist": "Erroll Garner",
+      "style": "jazz",
+      "bpm": 72,
+      "notes": "EN jazz standard",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-246",
+      "title": "The Girl from Ipanema",
+      "artist": "Stan Getz",
+      "style": "jazz",
+      "styles": [
+        "bossa"
+      ],
+      "bpm": 120,
+      "notes": "EN bossa jazz",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-247",
+      "title": "夜来香",
+      "artist": "李香兰",
+      "style": "jazz",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 88,
+      "notes": "CN jazz standard",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-248",
+      "title": "渔光曲",
+      "artist": "周璇",
+      "style": "jazz",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 76,
+      "notes": "CN vintage jazz ballad",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-249",
+      "title": "No Scrubs",
+      "artist": "TLC",
+      "style": "rnb",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 92,
+      "notes": "EN 90s R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-250",
+      "title": "Crazy in Love",
+      "artist": "Beyoncé",
+      "style": "rnb",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 99,
+      "notes": "EN pop R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-251",
+      "title": "Redbone",
+      "artist": "Childish Gambino",
+      "style": "rnb",
+      "styles": [
+        "funk"
+      ],
+      "bpm": 81,
+      "notes": "EN neo-soul R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-252",
+      "title": "Let's Stay Together",
+      "artist": "Al Green",
+      "style": "rnb",
+      "styles": [
+        "soul"
+      ],
+      "bpm": 98,
+      "notes": "EN soul R&B classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-253",
+      "title": "Adorn",
+      "artist": "Miguel",
+      "style": "rnb",
+      "bpm": 112,
+      "notes": "EN modern R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-254",
+      "title": "Earned It",
+      "artist": "The Weeknd",
+      "style": "rnb",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 81,
+      "notes": "EN slow R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-255",
+      "title": "Say So",
+      "artist": "Doja Cat",
+      "style": "rnb",
+      "styles": [
+        "pop",
+        "funk"
+      ],
+      "bpm": 131,
+      "notes": "EN disco R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-256",
+      "title": "Blinding Lights",
+      "artist": "The Weeknd",
+      "style": "rnb",
+      "styles": [
+        "pop",
+        "electronic"
+      ],
+      "bpm": 171,
+      "notes": "EN synth R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-257",
+      "title": "爱很简单",
+      "artist": "陶喆",
+      "style": "rnb",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 68,
+      "notes": "CN Mandopop R&B",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-258",
+      "title": "普通朋友",
+      "artist": "陶喆",
+      "style": "rnb",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 72,
+      "notes": "CN R&B ballad",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-259",
+      "title": "No Woman, No Cry",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 80,
+      "notes": "EN reggae classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-260",
+      "title": "Buffalo Soldier",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "bpm": 124,
+      "notes": "EN reggae anthem",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-261",
+      "title": "Redemption Song",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 72,
+      "notes": "EN acoustic reggae",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-262",
+      "title": "Could You Be Loved",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "bpm": 104,
+      "notes": "EN reggae dance",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-263",
+      "title": "Is This Love",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 96,
+      "notes": "EN reggae love song",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-264",
+      "title": "Jamming",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "bpm": 100,
+      "notes": "EN reggae groove",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-265",
+      "title": "One Love",
+      "artist": "Bob Marley",
+      "style": "reggae",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 80,
+      "notes": "EN reggae unity anthem",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-266",
+      "title": "雷鬼",
+      "artist": "龙神道",
+      "style": "reggae",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 90,
+      "notes": "CN reggae rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-267",
+      "title": "团结力量",
+      "artist": "龙神道",
+      "style": "reggae",
+      "bpm": 88,
+      "notes": "CN reggae band",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-268",
+      "title": "前前前世",
+      "artist": "RADWIMPS",
+      "style": "acg",
+      "styles": [
+        "rock",
+        "indie"
+      ],
+      "bpm": 144,
+      "notes": "JP anime rock Your Name",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-269",
+      "title": "残酷な天使のテーゼ",
+      "artist": "高橋洋子",
+      "style": "acg",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 130,
+      "notes": "JP Evangelion OP",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-270",
+      "title": "炎",
+      "artist": "LiSA",
+      "style": "acg",
+      "styles": [
+        "rock",
+        "metal"
+      ],
+      "bpm": 138,
+      "notes": "JP Demon Slayer movie theme",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-271",
+      "title": "アイドル",
+      "artist": "YOASOBI",
+      "style": "acg",
+      "styles": [
+        "pop",
+        "electronic"
+      ],
+      "bpm": 166,
+      "notes": "JP Oshi no Ko OP",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-272",
+      "title": "残響散歌",
+      "artist": "Aimer",
+      "style": "acg",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 132,
+      "notes": "JP Demon Slayer S2 OP",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-273",
+      "title": "君の知らない物語",
+      "artist": "supercell",
+      "style": "acg",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 120,
+      "notes": "JP Bakemonogatari ED",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-274",
+      "title": "九九八十一",
+      "artist": "乐正绫",
+      "style": "acg",
+      "styles": [
+        "electronic",
+        "rock"
+      ],
+      "bpm": 160,
+      "notes": "CN Vocaloid Journey to the West",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-275",
+      "title": "天ノ弱",
+      "artist": "洛天依",
+      "style": "acg",
+      "styles": [
+        "electronic",
+        "pop"
+      ],
+      "bpm": 200,
+      "notes": "CN Vocaloid ACG",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-276",
+      "title": "Strobe",
+      "artist": "deadmau5",
+      "style": "electronic",
+      "styles": [
+        "house"
+      ],
+      "bpm": 128,
+      "notes": "EN progressive house",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "required"
+      },
+      "parts": {
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-277",
+      "title": "Opus",
+      "artist": "Eric Prydz",
+      "style": "electronic",
+      "bpm": 128,
+      "notes": "EN progressive house epic",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "required"
+      },
+      "parts": {
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-278",
+      "title": "Midnight City",
+      "artist": "M83",
+      "style": "electronic",
+      "styles": [
+        "indie",
+        "pop"
+      ],
+      "bpm": 105,
+      "notes": "EN synthwave pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-279",
+      "title": "Teardrop",
+      "artist": "Massive Attack",
+      "style": "electronic",
+      "styles": [
+        "trip-hop"
+      ],
+      "bpm": 98,
+      "notes": "EN trip-hop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-280",
+      "title": "Born Slippy",
+      "artist": "Underworld",
+      "style": "electronic",
+      "styles": [
+        "techno"
+      ],
+      "bpm": 140,
+      "notes": "EN techno anthem",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "required"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-281",
+      "title": "Around the World",
+      "artist": "Daft Punk",
+      "style": "electronic",
+      "styles": [
+        "house"
+      ],
+      "bpm": 121,
+      "notes": "EN French house",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-282",
+      "title": "One More Time",
+      "artist": "Daft Punk",
+      "style": "electronic",
+      "styles": [
+        "house",
+        "pop"
+      ],
+      "bpm": 123,
+      "notes": "EN French house pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-283",
+      "title": "Clarity",
+      "artist": "Zedd",
+      "style": "electronic",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 128,
+      "notes": "EN EDM pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-284",
+      "title": "溜冰场",
+      "artist": "超级市场",
+      "style": "electronic",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 110,
+      "notes": "CN electronic indie",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "required"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-285",
+      "title": "再见 princess",
+      "artist": "超级市场",
+      "style": "electronic",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 118,
+      "notes": "CN electronic rock",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-286",
+      "title": "Ring of Fire",
+      "artist": "Johnny Cash",
+      "style": "country",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 104,
+      "notes": "EN country classic",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-287",
+      "title": "Jolene",
+      "artist": "Dolly Parton",
+      "style": "country",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 112,
+      "notes": "EN country ballad",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-288",
+      "title": "Friends in Low Places",
+      "artist": "Garth Brooks",
+      "style": "country",
+      "bpm": 88,
+      "notes": "EN country singalong",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-289",
+      "title": "Wagon Wheel",
+      "artist": "Old Crow Medicine Show",
+      "style": "country",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 120,
+      "notes": "EN folk country",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-290",
+      "title": "Before He Cheats",
+      "artist": "Carrie Underwood",
+      "style": "country",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 88,
+      "notes": "EN modern country",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-291",
+      "title": "Man! I Feel Like a Woman!",
+      "artist": "Shania Twain",
+      "style": "country",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 120,
+      "notes": "EN country pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-292",
+      "title": "Chicken Fried",
+      "artist": "Zac Brown Band",
+      "style": "country",
+      "bpm": 88,
+      "notes": "EN country band",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-293",
+      "title": "画",
+      "artist": "赵雷",
+      "style": "country",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 68,
+      "notes": "CN folk country ballad",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-294",
+      "title": "同桌的你",
+      "artist": "老狼",
+      "style": "country",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 72,
+      "notes": "CN campus folk country",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-295",
+      "title": "Für Elise",
+      "artist": "Beethoven",
+      "style": "classical",
+      "bpm": 72,
+      "notes": "EN piano classical",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "none",
+        "drums": "none",
+        "keyboard": "required"
+      },
+      "parts": {
+        "keyboard": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-296",
+      "title": "Moonlight Sonata",
+      "artist": "Beethoven",
+      "style": "classical",
+      "bpm": 60,
+      "notes": "EN piano sonata",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "none",
+        "drums": "none",
+        "keyboard": "required"
+      },
+      "parts": {
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-297",
+      "title": "Air on the G String",
+      "artist": "Bach",
+      "style": "classical",
+      "bpm": 56,
+      "notes": "EN baroque",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "optional"
+        },
+        "bass": "optional",
+        "drums": "none",
+        "keyboard": "required"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-298",
+      "title": "The Four Seasons (Spring)",
+      "artist": "Vivaldi",
+      "style": "classical",
+      "bpm": 140,
+      "notes": "EN baroque concerto",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "optional"
+        },
+        "bass": "optional",
+        "drums": "none",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-299",
+      "title": "Clair de Lune",
+      "artist": "Debussy",
+      "style": "classical",
+      "bpm": 66,
+      "notes": "EN impressionist piano",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "none",
+        "drums": "none",
+        "keyboard": "required"
+      },
+      "parts": {
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-300",
+      "title": "Gymnopédie No.1",
+      "artist": "Satie",
+      "style": "classical",
+      "bpm": 52,
+      "notes": "EN minimalist piano",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "none",
+        "drums": "none",
+        "keyboard": "required"
+      },
+      "parts": {
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-301",
+      "title": "Eine kleine Nachtmusik",
+      "artist": "Mozart",
+      "style": "classical",
+      "bpm": 120,
+      "notes": "EN classical ensemble",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "optional"
+        },
+        "bass": "optional",
+        "drums": "none",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-302",
+      "title": "梁祝",
+      "artist": "何占豪",
+      "style": "classical",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 72,
+      "notes": "CN violin concerto",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "optional",
+          "rhythm": "optional"
+        },
+        "bass": "optional",
+        "drums": "none",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-303",
+      "title": "春节序曲",
+      "artist": "李焕之",
+      "style": "classical",
+      "styles": [
+        "folk",
+        "world"
+      ],
+      "bpm": 132,
+      "notes": "CN orchestral folk",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "optional",
+        "keyboard": "important"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-304",
+      "title": "Despacito",
+      "artist": "Luis Fonsi",
+      "style": "world",
+      "styles": [
+        "pop",
+        "latin"
+      ],
+      "bpm": 89,
+      "notes": "ES Latin pop world",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-305",
+      "title": "Bamboleo",
+      "artist": "Gipsy Kings",
+      "style": "world",
+      "styles": [
+        "flamenco"
+      ],
+      "bpm": 116,
+      "notes": "ES flamenco rumba",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-306",
+      "title": "Waka Waka",
+      "artist": "Shakira",
+      "style": "world",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 128,
+      "notes": "CO Afro-Latin pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-307",
+      "title": "Gasolina",
+      "artist": "Daddy Yankee",
+      "style": "world",
+      "styles": [
+        "reggaeton"
+      ],
+      "bpm": 92,
+      "notes": "PR reggaeton world",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-308",
+      "title": "Volare",
+      "artist": "Domenico Modugno",
+      "style": "world",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 104,
+      "notes": "IT classic world pop",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-309",
+      "title": "Калинка",
+      "artist": "Red Army Choir",
+      "style": "world",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 120,
+      "notes": "RU folk classic Kalinka",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-310",
+      "title": "Подмосковные вечера",
+      "artist": "Vladimir Troshin",
+      "style": "world",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 76,
+      "notes": "RU folk ballad Moscow Nights",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-311",
+      "title": "Zombie",
+      "artist": "Fela Kuti",
+      "style": "world",
+      "styles": [
+        "funk"
+      ],
+      "bpm": 108,
+      "notes": "NG Afrobeat world",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-312",
+      "title": "茉莉花",
+      "artist": "中国传统",
+      "style": "world",
+      "styles": [
+        "folk",
+        "classical"
+      ],
+      "bpm": 72,
+      "notes": "CN folk world standard",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "omit",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-313",
+      "title": "高山流水",
+      "artist": "古琴",
+      "style": "world",
+      "styles": [
+        "classical",
+        "folk"
+      ],
+      "bpm": 60,
+      "notes": "CN guqin classic",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 0,
+          "lead": "none",
+          "rhythm": "none"
+        },
+        "bass": "none",
+        "drums": "none",
+        "keyboard": "important"
+      },
+      "parts": {
+        "keyboard": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
     }
   ]
 }
