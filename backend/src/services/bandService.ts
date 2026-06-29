@@ -10,6 +10,42 @@ function generateInviteCode(): string {
   return crypto.randomBytes(4).toString('hex');
 }
 
+async function findUserProfileSource(userId: string) {
+  const memberships = await prisma.bandMember.findMany({
+    where: { userId },
+    orderBy: { joinedAt: 'asc' },
+  });
+  return memberships.find((m) => m.questionnaireAnswers != null) ?? null;
+}
+
+async function ensureUserProfileSynced(userId: string) {
+  const source = await findUserProfileSource(userId);
+  if (!source?.questionnaireAnswers) return;
+
+  await prisma.bandMember.updateMany({
+    where: { userId, questionnaireAnswers: { equals: Prisma.DbNull } },
+    data: {
+      instrument: source.instrument,
+      questionnaireAnswers: source.questionnaireAnswers as Prisma.InputJsonValue,
+      skillLevel: source.skillLevel,
+    },
+  });
+}
+
+async function copyProfileFromSource(userId: string, bandId: string) {
+  const source = await findUserProfileSource(userId);
+  if (!source?.questionnaireAnswers || source.bandId === bandId) return;
+
+  await prisma.bandMember.update({
+    where: { bandId_userId: { bandId, userId } },
+    data: {
+      instrument: source.instrument,
+      questionnaireAnswers: source.questionnaireAnswers as Prisma.InputJsonValue,
+      skillLevel: source.skillLevel,
+    },
+  });
+}
+
 export async function createBand(input: {
   userId: string;
   name: string;
@@ -44,6 +80,8 @@ export async function createBand(input: {
     },
   });
 
+  await copyProfileFromSource(input.userId, band.id);
+
   return band;
 }
 
@@ -69,6 +107,8 @@ export async function joinBand(input: { userId: string; inviteCode: string }) {
     },
   });
 
+  await copyProfileFromSource(input.userId, band.id);
+
   return getBand(band.id, input.userId);
 }
 
@@ -79,6 +119,8 @@ export async function getBand(bandId: string, userId: string) {
   if (!membership) {
     throw Object.assign(new Error('Not a band member'), { statusCode: 403 });
   }
+
+  await ensureUserProfileSynced(userId);
 
   return prisma.band.findUniqueOrThrow({
     where: { id: bandId },
@@ -100,6 +142,8 @@ export async function getMyBands(userId: string) {
   });
 
   if (memberships.length === 0) return [];
+
+  await ensureUserProfileSynced(userId);
 
   return Promise.all(memberships.map((m) => getBand(m.bandId, userId)));
 }
@@ -156,13 +200,17 @@ export async function updateMyMemberProfile(input: {
 
   const skillLevel = calculateSkillLevel(input.questionnaireAnswers);
 
-  return prisma.bandMember.update({
-    where: { id: membership.id },
+  await prisma.bandMember.updateMany({
+    where: { userId: input.userId },
     data: {
       instrument: input.instrument,
       questionnaireAnswers: input.questionnaireAnswers as unknown as Prisma.InputJsonValue,
       skillLevel,
     },
+  });
+
+  return prisma.bandMember.findUniqueOrThrow({
+    where: { bandId_userId: { bandId: input.bandId, userId: input.userId } },
     include: {
       user: { select: { id: true, displayName: true } },
     },
