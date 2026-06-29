@@ -1,31 +1,55 @@
 import {
-  DEEPSEEK_BASE_URL,
-  DEEPSEEK_MODEL,
+  getLlmApiKey,
   isAiRecommendationAvailable,
+  LLM_BASE_URL,
+  LLM_MODEL,
 } from '../config/ai.js';
+import type { SeedSong } from '../types/seedSong.js';
 import {
   formatArrangementSummary,
   formatPartsSummary,
 } from './recommendationFormatter.js';
 import type { RuleEngineInput, ScoredCandidate } from './recommendationRuleEngine.js';
 
-export interface AiPickInput {
+export interface AiReasonInput {
   bandName: string;
   stylePreferences: string[];
   members: RuleEngineInput['members'];
-  candidates: ScoredCandidate[];
-  pickCount: number;
-}
-
-export interface AiPickResult {
-  picks: { songId: string; reason: string }[];
+  /** Already-selected songs — AI only writes reasons, does not change picks */
+  songs: ScoredCandidate[];
 }
 
 interface ChatCompletionResponse {
   choices?: { message?: { content?: string } }[];
 }
 
-function buildUserPayload(input: AiPickInput): string {
+type SongRef = Pick<SeedSong, 'title' | 'artist'>;
+
+/** Reason must reference the right song and not name other candidates */
+export function isReasonGroundedToSong(
+  reason: string,
+  song: SongRef,
+  otherSongs: SongRef[],
+): boolean {
+  const text = reason.trim();
+  if (!text) return false;
+
+  const mentionsOwn = text.includes(song.title) || text.includes(song.artist);
+  if (!mentionsOwn) return false;
+
+  for (const other of otherSongs) {
+    if (other.title !== song.title && other.title.length >= 2 && text.includes(other.title)) {
+      return false;
+    }
+    if (other.artist !== song.artist && other.artist.length >= 2 && text.includes(other.artist)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function buildUserPayload(input: AiReasonInput): string {
   return JSON.stringify({
     bandName: input.bandName,
     stylePreferences: input.stylePreferences,
@@ -34,7 +58,7 @@ function buildUserPayload(input: AiPickInput): string {
       instrument: m.instrument,
       skillLevel: m.skillLevel,
     })),
-    candidates: input.candidates.map(({ song, arrangementHints, programHints }) => ({
+    songs: input.songs.map(({ song, arrangementHints, programHints }) => ({
       id: song.id,
       title: song.title,
       artist: song.artist,
@@ -44,11 +68,10 @@ function buildUserPayload(input: AiPickInput): string {
       arrangementHints,
       programHints,
     })),
-    pickCount: input.pickCount,
   });
 }
 
-function parseAiJson(content: string): AiPickResult | null {
+function parseReasonsJson(content: string): { songId: string; reason: string }[] | null {
   const trimmed = content.trim();
   const jsonText =
     trimmed.startsWith('```') ?
@@ -56,40 +79,52 @@ function parseAiJson(content: string): AiPickResult | null {
     : trimmed;
 
   try {
-    const parsed = JSON.parse(jsonText) as AiPickResult;
-    if (!Array.isArray(parsed.picks)) return null;
-    return parsed;
+    const parsed = JSON.parse(jsonText) as {
+      reasons?: { songId: string; reason: string }[];
+      picks?: { songId: string; reason: string }[];
+    };
+    const rows = parsed.reasons ?? parsed.picks;
+    if (!Array.isArray(rows)) return null;
+    return rows;
   } catch {
     return null;
   }
 }
 
-export async function pickRecommendationsWithAi(
-  input: AiPickInput,
-): Promise<AiPickResult | null> {
-  if (!isAiRecommendationAvailable()) return null;
+const SYSTEM_PROMPT = `你是 BandMate 乐队排练顾问。曲目已由系统选定，你只需为每首歌写推荐理由。
 
-  const apiKey = process.env.DEEPSEEK_API_KEY!.trim();
-  const candidateIds = new Set(input.candidates.map((c) => c.song.id));
+硬性规则：
+1. 每条 reason 必须写出该曲目自己的 title（建议用书名号《》）
+2. 禁止提及其他曲目的 title 或 artist
+3. 仅根据提供的编制、难度、hints 说明，不要编造歌曲背景或剧情
+4. 输出纯 JSON：{"reasons":[{"songId":"song-001","reason":"..."}]}`;
 
-  const systemPrompt = `你是 BandMate 乐队排练顾问。只能从 candidates 列表中选歌，禁止推荐列表外的歌名。
-根据乐队编制、各成员 skill level（1-5）、风格偏好，选出 pickCount 首并各写 1-2 句中文推荐理由。
-可提及 program 建议或哪位成员是短板。输出纯 JSON，格式：
-{"picks":[{"songId":"song-001","reason":"..."}]}`;
+/**
+ * Generate grounded reasons for pre-selected songs.
+ * Returns songId → reason map; invalid rows are omitted (caller should fallback).
+ */
+export async function generateReasonsForSongs(
+  input: AiReasonInput,
+): Promise<Map<string, string> | null> {
+  if (!isAiRecommendationAvailable() || input.songs.length === 0) return null;
+
+  const apiKey = getLlmApiKey()!;
+  const byId = new Map(input.songs.map((c) => [c.song.id, c.song]));
+  const allRefs = input.songs.map((c) => c.song);
 
   let response: Response;
   try {
-    response = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
+    response = await fetch(`${LLM_BASE_URL}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: DEEPSEEK_MODEL,
-        temperature: 0.7,
+        model: LLM_MODEL,
+        temperature: 0.3,
         messages: [
-          { role: 'system', content: systemPrompt },
+          { role: 'system', content: SYSTEM_PROMPT },
           { role: 'user', content: buildUserPayload(input) },
         ],
       }),
@@ -110,18 +145,34 @@ export async function pickRecommendationsWithAi(
   const content = data.choices?.[0]?.message?.content;
   if (!content) return null;
 
-  const parsed = parseAiJson(content);
-  if (!parsed) return null;
+  const rows = parseReasonsJson(content);
+  if (!rows) return null;
 
-  const validPicks = parsed.picks.filter(
-    (p) =>
-      typeof p.songId === 'string' &&
-      candidateIds.has(p.songId) &&
-      typeof p.reason === 'string' &&
-      p.reason.trim().length > 0,
-  );
+  const result = new Map<string, string>();
+  for (const row of rows) {
+    if (typeof row.songId !== 'string' || typeof row.reason !== 'string') continue;
+    const song = byId.get(row.songId);
+    if (!song) continue;
+    const reason = row.reason.trim();
+    const others = allRefs.filter((s) => s.id !== song.id);
+    if (isReasonGroundedToSong(reason, song, others)) {
+      result.set(row.songId, reason);
+    }
+  }
 
-  if (validPicks.length === 0) return null;
+  return result.size > 0 ? result : null;
+}
 
-  return { picks: validPicks.slice(0, input.pickCount) };
+/** @deprecated Use generateReasonsForSongs — kept for tests */
+export async function pickRecommendationsWithAi(
+  input: AiReasonInput & { candidates: ScoredCandidate[]; pickCount: number },
+): Promise<{ picks: { songId: string; reason: string }[] } | null> {
+  const songs = input.candidates.slice(0, input.pickCount);
+  const reasons = await generateReasonsForSongs({ ...input, songs });
+  if (!reasons) return null;
+  return {
+    picks: songs
+      .filter((c) => reasons.has(c.song.id))
+      .map((c) => ({ songId: c.song.id, reason: reasons.get(c.song.id)! })),
+  };
 }

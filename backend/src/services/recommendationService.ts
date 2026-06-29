@@ -2,7 +2,7 @@ import { FEATURES } from '../config/features.js';
 import { isAiRecommendationAvailable } from '../config/ai.js';
 import { loadSongSeed } from '../lib/songSeedLoader.js';
 import type { RecommendedSong, RecommendationResponse } from '../types/song.js';
-import { pickRecommendationsWithAi } from './recommendationAiService.js';
+import { generateReasonsForSongs } from './recommendationAiService.js';
 import { getBand } from './bandService.js';
 import { bandToRuleEngineInput } from './bandProfileForRecommend.js';
 import {
@@ -55,26 +55,29 @@ async function pickWithOptionalAi(
   ruleInput: Omit<ReturnType<typeof bandToRuleEngineInput>, 'bandName'>,
   useAi: boolean,
 ): Promise<{ songs: RecommendedSong[]; aiUsed: boolean }> {
+  const top = pool.slice(0, RECOMMEND_PICK_COUNT);
+
   if (useAi && isAiRecommendationAvailable()) {
-    const ai = await pickRecommendationsWithAi({
+    const reasons = await generateReasonsForSongs({
       bandName,
       stylePreferences: ruleInput.stylePreferences,
       members: ruleInput.members,
-      candidates: pool,
-      pickCount: RECOMMEND_PICK_COUNT,
+      songs: top,
     });
 
-    if (ai) {
-      const byId = new Map(pool.map((c) => [c.song.id, c]));
-      const songs = ai.picks
-        .map((p) => {
-          const candidate = byId.get(p.songId);
-          if (!candidate) return null;
-          return mapCandidateToRecommendedSong(candidate, bandName, p.reason.trim());
-        })
-        .filter((s): s is RecommendedSong => s !== null);
+    if (reasons) {
+      let aiReasonCount = 0;
+      const songs = top.map((candidate) => {
+        const aiReason = reasons.get(candidate.song.id);
+        if (aiReason) aiReasonCount += 1;
+        return mapCandidateToRecommendedSong(
+          candidate,
+          bandName,
+          aiReason ?? buildFallbackReason(candidate, bandName),
+        );
+      });
 
-      if (songs.length > 0) {
+      if (aiReasonCount > 0) {
         return { songs, aiUsed: true };
       }
     }
