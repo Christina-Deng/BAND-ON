@@ -23,7 +23,6 @@ export function NavBar() {
               </NavLink>
               <NavLink to="/songs" className={linkClass}>
                 歌单
-                <span className="badge-stamp">即将上线</span>
               </NavLink>
               <NavLink to="/practice" className={linkClass}>
                 打卡
