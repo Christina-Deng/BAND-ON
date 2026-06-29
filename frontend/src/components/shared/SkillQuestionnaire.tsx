@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   INSTRUMENT_LABELS,
   INSTRUMENT_SKILL_QUESTIONS,
   PLAYING_EXPERIENCE_OPTIONS,
+  resolveStylePreferenceIds,
 } from '../../constants/music';
 import type { Instrument, PlayingExperience, QuestionnaireAnswers } from '../../types/band';
 import { StyleMultiSelect } from './StyleMultiSelect';
@@ -11,9 +12,13 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSubmit: (answers: QuestionnaireAnswers, instrument: Instrument) => Promise<void>;
+  initial?: {
+    instrument: Instrument;
+    questionnaireAnswers: QuestionnaireAnswers;
+  } | null;
 }
 
-export function SkillQuestionnaire({ open, onClose, onSubmit }: Props) {
+export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: Props) {
   const [instrument, setInstrument] = useState<Instrument>('GUITAR');
   const [playingExperience, setPlayingExperience] = useState<PlayingExperience>('1-3');
   const [stylePreferences, setStylePreferences] = useState<string[]>([]);
@@ -21,6 +26,26 @@ export function SkillQuestionnaire({ open, onClose, onSubmit }: Props) {
   const [loading, setLoading] = useState(false);
 
   const questions = useMemo(() => INSTRUMENT_SKILL_QUESTIONS[instrument], [instrument]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    if (!initial) {
+      setInstrument('GUITAR');
+      setPlayingExperience('1-3');
+      setStylePreferences([]);
+      setSkills([false, false, false, false, false]);
+      return;
+    }
+
+    const { instrument: initialInstrument, questionnaireAnswers: answers } = initial;
+    setInstrument(initialInstrument);
+    setPlayingExperience(answers.playingExperience ?? answers.weeklyPracticeHours ?? '1-3');
+    setStylePreferences(resolveStylePreferenceIds(answers));
+    const questionCount = INSTRUMENT_SKILL_QUESTIONS[initialInstrument].length;
+    const saved = answers.instrumentSkills ?? [];
+    setSkills(Array.from({ length: questionCount }, (_, index) => saved[index] ?? false));
+  }, [open, initial]);
 
   if (!open) return null;
 
@@ -44,7 +69,7 @@ export function SkillQuestionnaire({ open, onClose, onSubmit }: Props) {
         onSubmit={handleSubmit}
         className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-slate-700 bg-slate-900 p-6"
       >
-        <h2 className="text-lg font-semibold">完善我的资料</h2>
+        <h2 className="text-lg font-semibold">{initial ? '编辑我的资料' : '完善我的资料'}</h2>
 
         <section className="mt-4 space-y-2">
           <h3 className="text-sm font-semibold text-emphasis">乐器</h3>

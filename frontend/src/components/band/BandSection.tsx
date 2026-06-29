@@ -28,7 +28,11 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
   const [leaveError, setLeaveError] = useState('');
 
   const myMember = band.members.find((m) => m.user.id === currentUserId);
-  const profileIncomplete = myMember && !myMember.questionnaireAnswers;
+  const profileComplete = Boolean(myMember?.questionnaireAnswers);
+  const profileInitial =
+    myMember?.questionnaireAnswers != null
+      ? { instrument: myMember.instrument, questionnaireAnswers: myMember.questionnaireAnswers }
+      : null;
 
   async function handleProfileSubmit(answers: QuestionnaireAnswers, instrument: Instrument) {
     await updateMyProfile(band.id, { instrument, questionnaireAnswers: answers });
@@ -122,7 +126,7 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
             onClick={() => setShowQuestionnaire(true)}
             className="rounded-lg border border-accent-500 px-4 py-2 text-sm hover:bg-accent-500/10"
           >
-            完善我的资料
+            {profileComplete ? '编辑我的资料' : '完善我的资料'}
           </button>
           <Link
             to="/practice"
@@ -145,7 +149,7 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
         </div>
       </div>
 
-      {profileIncomplete && (
+      {!profileComplete && myMember && (
         <p className="profile-incomplete-banner rounded-lg px-4 py-3 text-sm">
           请先完善资料，以便团队了解你的水平和练习情况。
         </p>
@@ -171,6 +175,7 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
         open={showQuestionnaire}
         onClose={() => setShowQuestionnaire(false)}
         onSubmit={handleProfileSubmit}
+        initial={profileInitial}
       />
 
       <EditBandDialog
