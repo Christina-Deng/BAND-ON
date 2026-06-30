@@ -28,7 +28,7 @@ export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
       <h3 className="font-semibold">加入乐队</h3>
       <input
         className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
-        placeholder="输入邀请码"
+        placeholder="输入邀请码（可含空格或横线）"
         value={inviteCode}
         onChange={(e) => setInviteCode(e.target.value)}
         required

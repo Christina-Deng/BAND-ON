@@ -70,6 +70,9 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
         className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-slate-700 bg-slate-900 p-6"
       >
         <h2 className="text-lg font-semibold">{initial ? '编辑我的资料' : '完善我的资料'}</h2>
+        <p className="mt-1 text-xs text-slate-400">
+          资料按乐队保存。加入新乐队时会自动带入你已有资料；在此修改仅影响当前乐队。
+        </p>
 
         <section className="mt-4 space-y-2">
           <h3 className="text-sm font-semibold text-emphasis">乐器</h3>

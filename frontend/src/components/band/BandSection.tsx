@@ -6,7 +6,7 @@ import { LeaveBandConfirmDialog } from './LeaveBandConfirmDialog';
 import { MemberCard } from './MemberCard';
 import { SkillQuestionnaire } from '../shared/SkillQuestionnaire';
 import { formatStylePreferences } from '../../constants/music';
-import { buildInviteShareText, copyText } from '../../lib/invite';
+import { buildInviteShareText, copyText, isInviteLinkOriginConfigured } from '../../lib/invite';
 import type { Band, Instrument, QuestionnaireAnswers } from '../../types/band';
 
 interface Props {
@@ -108,6 +108,11 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
               </button>
             </div>
             <p className="text-xs text-slate-500">「复制邀请」含链接，适合发到微信 / QQ</p>
+            {import.meta.env.PROD && !isInviteLinkOriginConfigured() && (
+              <p className="text-xs text-amber-400/90">
+                邀请链接使用当前页面地址。部署时请设置环境变量 VITE_APP_URL 为前端公网地址。
+              </p>
+            )}
           </div>
         </div>
         <div className="flex flex-wrap gap-2">

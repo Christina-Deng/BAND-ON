@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { Instrument, Prisma } from '@prisma/client';
 import { prisma } from '../lib/prisma.js';
+import { normalizeInviteCode } from '../lib/inviteCode.js';
 import {
   calculateSkillLevel,
   type QuestionnaireAnswers,
@@ -10,16 +11,17 @@ function generateInviteCode(): string {
   return crypto.randomBytes(4).toString('hex');
 }
 
-export function normalizeInviteCode(code: string): string {
-  return code.trim().toLowerCase();
-}
-
-async function findUserProfileSource(userId: string) {
+/** Copy profile from the user's most recently joined band that already has a questionnaire. */
+async function findUserProfileSource(userId: string, excludeBandId?: string) {
   const memberships = await prisma.bandMember.findMany({
-    where: { userId },
-    orderBy: { joinedAt: 'asc' },
+    where: {
+      userId,
+      questionnaireAnswers: { not: Prisma.DbNull },
+      ...(excludeBandId ? { bandId: { not: excludeBandId } } : {}),
+    },
+    orderBy: { joinedAt: 'desc' },
   });
-  return memberships.find((m) => m.questionnaireAnswers != null) ?? null;
+  return memberships[0] ?? null;
 }
 
 async function ensureUserProfileSynced(userId: string) {
@@ -37,8 +39,13 @@ async function ensureUserProfileSynced(userId: string) {
 }
 
 async function copyProfileFromSource(userId: string, bandId: string) {
-  const source = await findUserProfileSource(userId);
-  if (!source?.questionnaireAnswers || source.bandId === bandId) return;
+  const target = await prisma.bandMember.findUnique({
+    where: { bandId_userId: { bandId, userId } },
+  });
+  if (!target || target.questionnaireAnswers != null) return;
+
+  const source = await findUserProfileSource(userId, bandId);
+  if (!source?.questionnaireAnswers) return;
 
   await prisma.bandMember.update({
     where: { bandId_userId: { bandId, userId } },
@@ -209,8 +216,8 @@ export async function updateMyMemberProfile(input: {
 
   const skillLevel = calculateSkillLevel(input.questionnaireAnswers);
 
-  await prisma.bandMember.updateMany({
-    where: { userId: input.userId },
+  await prisma.bandMember.update({
+    where: { bandId_userId: { bandId: input.bandId, userId: input.userId } },
     data: {
       instrument: input.instrument,
       questionnaireAnswers: input.questionnaireAnswers as unknown as Prisma.InputJsonValue,

@@ -1,12 +1,13 @@
 export const PENDING_INVITE_CODE_KEY = 'bandmate_pending_invite_code';
 
+/** Invite codes are 8-char hex; tolerate spaces, dashes, and mixed case from paste. */
 export function normalizeInviteCode(code: string | null | undefined): string | null {
   if (!code) return null;
-  const trimmed = code.trim().toLowerCase();
-  return trimmed.length > 0 ? trimmed : null;
+  const normalized = code.toLowerCase().replace(/[^a-f0-9]/g, '');
+  return normalized.length > 0 ? normalized : null;
 }
 
-/** Public frontend origin for invite links. Falls back to current page origin. */
+/** Public frontend origin for invite links. Set VITE_APP_URL in production builds. */
 export function getInviteLinkOrigin(): string {
   const configured = import.meta.env.VITE_APP_URL?.trim();
   if (configured) return configured.replace(/\/$/, '');
@@ -26,8 +27,14 @@ export function buildInviteShareText(bandName: string, inviteCode: string): stri
   ].join('\n');
 }
 
+/** True when production build has no explicit public app URL (invite links may be wrong). */
+export function isInviteLinkOriginConfigured(): boolean {
+  return Boolean(import.meta.env.VITE_APP_URL?.trim());
+}
+
 export function setPendingInviteCode(code: string): void {
-  sessionStorage.setItem(PENDING_INVITE_CODE_KEY, code);
+  const normalized = normalizeInviteCode(code);
+  if (normalized) sessionStorage.setItem(PENDING_INVITE_CODE_KEY, normalized);
 }
 
 export function getPendingInviteCode(): string | null {
