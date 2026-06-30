@@ -1,24 +1,36 @@
 # BandMate Phase 2 Song Recommendation Implementation Plan
 
+> **✅ DELIVERED（2026-06-26）— 与本文差异见下表**  
+> 实现已合并进 `main`。新任务以 [README.md](../../README.md) 与 [设计规格 §实现状态](../specs/2026-06-24-band-rehearsal-design.md) 为准。
+
+| 本文计划 | 实际交付 |
+|----------|----------|
+| 65 首 seed | **500 首** `songs.seed.json` |
+| `OPENAI_API_KEY` | **`LLM_API_KEY` / `LLM_BASE_URL` / `LLM_MODEL`**（智谱等） |
+| AI 从候选中挑 5–8 首 | **规则引擎选 top 6**；AI **仅写推荐语** |
+| `RecommendedSong` 8 字段 | + `stretchHints`, `isStretch`, `isStyleStretch`, `hints`, `aiAvailable`, `aiUsed` |
+| 前端占位页替换 | ✅ + `FEATURES.SONG_RECOMMENDATION` 前后端 wired |
+| 节拍器 | 已在练习页交付（非本计划 scope，但 spec 曾标 P2） |
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Ship working song recommendations on `/songs` — rule engine filters the v2 seed library by band profile; AI (optional) picks 5–8 songs and writes Chinese recommendation copy; frontend shows cards with arrangement/program hints and NetEase search links.
+**Goal:** Ship working song recommendations on `/songs` — rule engine filters the v2 seed library by band profile; AI (optional) writes Chinese recommendation copy for rule-picked songs; frontend shows cards with arrangement/program hints and NetEase search links.
 
-**Architecture:** Keep the curated library in `backend/data/songs.seed.json` (no Prisma `Song` table for MVP). Extract rule-engine logic from `scripts/preview-recommendations.ts` into testable services. `GET /songs/recommend?bandId=` loads band from DB, scores seed songs, optionally calls OpenAI with **candidate ids only** (no invented titles). Frontend replaces the placeholder page with recommendation cards. Degrades gracefully when `OPENAI_API_KEY` is unset.
+**Architecture:** Curated library in `backend/data/songs.seed.json` (no Prisma `Song` table). Rule engine in testable services. `GET /songs/recommend?bandId=&useAi=` scores seed, ranks, optionally calls LLM with **candidate ids only**. Frontend reads `FEATURES.SONG_RECOMMENDATION`. Degrades when `LLM_API_KEY` unset (rule-only reasons).
 
-**Tech Stack:** Existing Fastify + Prisma backend · React + Vite + Tailwind frontend · OpenAI Chat Completions API (optional) · Vitest for rule-engine unit tests
+**Tech Stack:** Existing Fastify + Prisma backend · React + Vite + Tailwind frontend · LLM Chat API (optional) · Vitest for rule-engine unit tests
 
-## Global Constraints
+## Global Constraints（更新后仍有效）
 
 - UI copy: 中文
 - Auth: JWT + httpOnly cookie; recommend route requires login + band membership
-- CORS origin: `http://localhost:5173`
+- CORS origin: `http://localhost:5173` (+ LAN origins in dev)
 - Backend port: `3000`; frontend dev: `5173`
 - Seed format: v2 (`arrangement` / `parts` / `fallbacks`) — see `backend/data/README.md`
-- Recommendation pipeline: **code filters candidates → AI selects + writes copy** (AI never invents songs outside seed)
+- Recommendation pipeline: **code filters & ranks → optional AI writes copy** (AI never invents songs outside seed)
 - External listen link: NetEase search URL only (no in-app player)
-- `FEATURES.SONG_RECOMMENDATION`: set `true` when API + UI are wired
-- Do not build: in-app keyword search, separate “AI search” tab, email reminders, Prisma song migrations (Phase 2b)
+- `FEATURES.SONG_RECOMMENDATION`: **`true`** in `backend/src/config/features.ts` and `frontend/src/config/features.ts`
+- Do not build: in-app keyword search, separate “AI search” tab, email reminders, Prisma song migrations
 
 ---
 
@@ -54,7 +66,53 @@ bandmate/
 
 ---
 
-## API Contract (locked for all tasks)
+## API Contract（已实现 — 2026-06-26）
+
+### Request
+
+`GET /songs/recommend?bandId=<cuid>&useAi=true|false`
+
+- Auth required
+- Caller must be member of `bandId`
+
+### Response `200`
+
+```typescript
+interface RecommendationResponse {
+  status: 'ok' | 'coming_soon' | 'empty';
+  songs: RecommendedSong[];
+  message?: string;
+  hints?: string[];           // empty 时诊断建议
+  aiAvailable?: boolean;
+  aiUsed?: boolean;
+}
+
+interface RecommendedSong {
+  id: string;
+  title: string;
+  artist: string;
+  style: string;
+  bpm?: number;
+  arrangementSummary: string;
+  partsSummary: string;
+  reason: string;
+  arrangementHints: string[];
+  programHints: string[];
+  stretchHints: string[];
+  isStretch: boolean;
+  isStyleStretch?: boolean;
+  listenUrl: string;
+}
+```
+
+### Feature flag
+
+- Backend + frontend: `FEATURES.SONG_RECOMMENDATION`
+- `false` → `{ status: 'coming_soon', songs: [] }`；前端 `SongRecommend.tsx` 同步显示「功能开发中」
+
+---
+
+## API Contract (locked for all tasks) — 历史原文
 
 ### Request
 

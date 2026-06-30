@@ -1,8 +1,50 @@
 # BandMate — 新手乐队排练辅助网站 设计规格
 
 **日期：** 2026-06-24  
-**状态：** 待用户 review  
+**状态：** Phase 1 + Phase 2（歌单推荐）已落地；本文档保留原始设计，**以 §「实现状态」为准**  
 **项目目标：** 个人全栈学习项目，功能分阶段交付
+
+---
+
+## 实现状态（2026-06-26，对齐代码）
+
+> 代码仓库已超出下文部分章节的「占位 / 单乐队」描述。改功能前先看 [README.md](../../README.md) 与本节。
+
+### 已交付（Phase 1）
+
+| 能力 | 说明 |
+|------|------|
+| 认证 | 注册 / 登录 / httpOnly JWT；设置页改昵称、密码、主题 |
+| 乐队 | **多乐队**；邀请码 / `/join?code=`；编辑队名与 `stylePreferences[]`；退出乐队 |
+| 成员资料 | 问卷 → skill 1–5；**按乐队保存**（加入时复制已有资料，编辑仅影响当前乐队） |
+| 打卡 | 每日每乐队一次；备注 + 音频；个人 streak / 周统计；团队今日面板 + 月历 |
+| 练习工具 | **节拍器、调音器**（练习页侧栏 / 手机底栏）— 已上线，非占位 |
+
+### 已交付（Phase 2）
+
+| 能力 | 说明 |
+|------|------|
+| 曲库 | `backend/data/songs.seed.json` **500 首** v2（编制 / 分声部 / fallbacks），非 Prisma 表 |
+| 推荐 | 规则引擎筛选 + 排序；`stretch` / `styleStretch`；空结果 `hints` 诊断 |
+| AI | 可选 `LLM_*`（智谱等）；**仅生成推荐语**，不选曲；`useAi` 查询参数 |
+| 前端 | `/songs` 推荐卡片；`FEATURES.SONG_RECOMMENDATION` 前后端均为 `true` |
+
+### 计划中（尚未实现）
+
+- 练习邮件提醒  
+- 乐队排练歌单 / 投票  
+- 反作弊、音频自评、云存储（S3/R2）
+
+### 与下文原稿的主要差异
+
+| 原稿 | 当前实现 |
+|------|----------|
+| 每用户单乐队 | 多乐队 + `GET /bands/me` → `{ bands, band }` |
+| `stylePreference` 单选 | `stylePreferences` 多选 JSON 数组 |
+| 无 `KEYBOARD` | `Instrument.KEYBOARD` 已加入 |
+| 歌单占位 / `coming_soon` | 完整推荐 API + UI（flag 关闭时仍可回退 `coming_soon`） |
+| 曲库 65 首 / Prisma Song | 500 首 JSON seed |
+| OpenAI 选曲 | 规则引擎选曲 + LLM 写理由 |
 
 ---
 
@@ -56,7 +98,7 @@ flowchart TB
     subgraph Client["浏览器 (React SPA)"]
         Layout["共享 Layout + 导航"]
         Home["乐队首页 /bands"]
-        Songs["歌单推荐 /songs (占位)"]
+        Songs["歌单推荐 /songs"]
         Practice["打卡页 /practice"]
     end
 
@@ -64,7 +106,7 @@ flowchart TB
         AuthAPI["/auth"]
         BandAPI["/bands"]
         PracticeAPI["/practices"]
-        SongsAPI["/songs (占位)"]
+        SongsAPI["/songs/recommend"]
     end
 
     subgraph DB["PostgreSQL"]
@@ -92,44 +134,33 @@ flowchart TB
 
 ## 3. 分阶段交付计划
 
-### 3.1 Phase 1 — MVP（完整功能 + 占位骨架）
+### 3.1 Phase 1 — MVP（**已实现**，2026-06）
 
 **完整实现：**
 
-- 用户注册 / 登录 / 登出
-- 创建乐队、邀请码加入乐队
-- 成员资料：乐器 + 问卷自评 → 自动计算 skill_level (1–5)
-- 打卡：练习时长、可选备注、可选音频上传
-- 团队监督面板：今日各成员打卡状态、月历视图
+- 用户注册 / 登录 / 登出；设置页（昵称、密码、主题）
+- 创建乐队、邀请码 / 链接加入；**支持多乐队**
+- 成员资料：乐器 + 问卷 → skill_level (1–5)，按乐队独立保存
+- 打卡：练习时长、备注、音频；个人统计 + 团队监督 + 月历
+- 节拍器 / 调音器（练习页工具栏）
 
-**骨架占位（无业务逻辑，便于 Phase 2 填充）：**
+**原 Phase 1 占位项（已由 Phase 2 替换）：**
 
+| 模块 | 原占位 | 当前状态 |
+|------|--------|----------|
+| `/songs` | 壳 +「即将上线」 | **已上线** 规则推荐 + 可选 AI 文案 |
+| `GET /songs/recommend` | `coming_soon` | `ok` / `empty` / `coming_soon`（feature flag） |
+| `FEATURES.SONG_RECOMMENDATION` | `false` | **`true`**（前后端 `config/features.ts`） |
 
-| 模块                         | Phase 1 占位内容                                              | Phase 2 填充   |
-| -------------------------- | --------------------------------------------------------- | ------------ |
-| 歌单推荐页 `/songs`             | 页面壳、禁用态筛选 UI、「即将上线」文案                                     | 规则引擎 / AI 推荐 |
-| API `GET /songs/recommend` | 返回 `{ status: "coming_soon", songs: [] }`                 | 真实推荐逻辑       |
-| TypeScript 类型              | `Song`, `RecommendationRequest`, `RecommendationResponse` | 直接复用         |
-| 打卡页底部                      | 灰色「即将推出：邮件提醒 · 节拍器 · 调音器」卡片                               | 逐个启用         |
-| Feature 常量                 | `FEATURES.SONG_RECOMMENDATION = false`                    | 改为 `true`    |
+### 3.2 Phase 2 — 功能填充（**部分已实现**）
 
-
-**占位原则（避免过度设计）：**
-
-- ✅ 路由、导航、页面壳、类型定义、空 API 路由
-- ❌ 不写 mock 推荐算法、不建曲库表、不上 feature flag 框架
-
-### 3.2 Phase 2 — 功能填充
-
-
-| 功能      | 实现思路                                    |
-| ------- | --------------------------------------- |
-| 歌单推荐    | 本地 `songs` 表 + 规则引擎（风格 + 各乐器最低 level）   |
-| AI 推荐   | 可选接 OpenAI/Claude，输入乐队 JSON → 返回推荐 + 理由 |
-| 邮件提醒    | node-cron + Resend/SendGrid，每晚检查未打卡成员   |
-| 反作弊     | 简化版：最低练习时长校验；完整版：WebRTC 定时截图            |
-| 节拍器/调音器 | 纯前端 Web Audio API 组件                    |
-| 音频自评    | 放示范音频，用户对比自评等级                          |
+| 功能 | 状态 | 实现说明 |
+|------|------|----------|
+| 歌单推荐 | ✅ | JSON seed 500 首 + `recommendationRuleEngine` + `recommendationService` |
+| AI 推荐语 | ✅ | `LLM_*` 环境变量；规则先选曲，AI 只写理由 |
+| 节拍器/调音器 | ✅ | 归入练习页（实现早于文档更新） |
+| 邮件提醒 | ⏳ | 未实现 |
+| 反作弊 / 音频自评 | ⏳ | 未实现 |
 
 
 ---
@@ -268,12 +299,17 @@ model PracticeLog {
 
 **音频上传：** `POST /practices` 使用 `multipart/form-data`，MVP 限制 mp3/wav、最大 10MB。
 
-### 5.4 歌单（占位）
+### 5.4 歌单推荐（Phase 2 — 已实现）
 
+`GET /songs/recommend?bandId=&useAi=true|false`
 
-| 方法  | 路径                         | Phase 1 响应                                               | Phase 2 |
-| --- | -------------------------- | -------------------------------------------------------- | ------- |
-| GET | `/songs/recommend?bandId=` | `{ status: "coming_soon", songs: [], message: "功能开发中" }` | 真实推荐列表  |
+| status | 含义 |
+|--------|------|
+| `ok` | 有推荐列表（最多 6 首展示） |
+| `empty` | 无匹配，`hints[]` 诊断建议 |
+| `coming_soon` | `FEATURES.SONG_RECOMMENDATION === false` |
+
+响应含 `RecommendedSong`（含 `stretchHints`、`isStretch`、`isStyleStretch`、`listenUrl` 等）及可选 `aiAvailable` / `aiUsed`。
 
 
 ### 5.5 错误格式
@@ -296,13 +332,15 @@ model PracticeLog {
 ### 6.1 路由
 
 
-| 路径             | 页面        | Phase 1 状态 |
-| -------------- | --------- | ---------- |
-| `/login`       | 登录        | 完整         |
-| `/register`    | 注册        | 完整         |
-| `/` 或 `/bands` | 乐队首页      | 完整         |
-| `/songs`       | 歌单推荐      | **占位壳**    |
-| `/practice`    | 打卡 / 监督面板 | 完整         |
+| 路径             | 页面        | 状态 |
+| -------------- | --------- | ---- |
+| `/login`       | 登录        | ✅ |
+| `/register`    | 注册        | ✅ |
+| `/join`        | 邀请深链加入    | ✅ |
+| `/`            | 乐队首页（多乐队） | ✅ |
+| `/songs`       | 歌单推荐      | ✅ |
+| `/practice`    | 打卡 / 监督面板 | ✅ |
+| `/settings`    | 账户设置      | ✅ |
 
 
 未登录访问受保护路由 → 重定向 `/login`。
@@ -319,8 +357,8 @@ model PracticeLog {
 └──────────────────────────────────────────────┘
 ```
 
-- 三个 Tab 始终可见；`/songs` Tab 可带 small badge「即将上线」
-- 当前 Tab 高亮；无乐队时 `/songs` 和 `/practice` 显示「请先加入乐队」
+- 三个 Tab 始终可见（歌单无「即将上线」角标）
+- 无乐队时 `/songs` 和 `/practice` 显示统一空状态 + 跳转首页 CTA
 
 ### 6.3 乐队首页
 
@@ -338,24 +376,12 @@ model PracticeLog {
 - 「完善我的资料」→ 问卷 Modal
 - 快捷入口：「去打卡」
 
-### 6.4 歌单推荐页（占位）
+### 6.4 歌单推荐页（已实现）
 
-```
-┌─────────────────────────────────────┐
-│  🎵 歌单推荐          [即将上线]    │
-├─────────────────────────────────────┤
-│  根据乐队成员水平和风格偏好，        │
-│  智能推荐适合排练的歌曲。            │
-│                                     │
-│  风格 [摇滚 ▼]  难度 [全部 ▼]       │  ← disabled
-│                                     │
-│  ┌─────────────────────────────┐   │
-│  │   暂无推荐 — 功能开发中      │   │
-│  └─────────────────────────────┘   │
-└─────────────────────────────────────┘
-```
-
-组件挂载时可调用 `GET /songs/recommend` 验证 API 连通；展示 `message` 字段。
+- 乐队选择器（多乐队时）
+- 推荐卡片：编制 / 难度 / 偏难·风格略偏角标 / 网易云搜索链接
+- 可选「使用 AI 推荐语」（需服务端 `LLM_API_KEY`）
+- 空结果展示 `hints` 与完善资料引导
 
 ### 6.5 打卡页
 
@@ -373,9 +399,10 @@ model PracticeLog {
 - 成员列表：头像/昵称、今日状态（✅ 已练 X 分钟 / ⏳ 未练）
 - 减少信息不透明导致的互相埋怨
 
-**底部占位卡片：**
+**底部卡片：**
 
-> 即将推出：练习邮件提醒 · 内置节拍器 · 调音器
+> 练习工具：节拍器与调音器见页面侧栏 / 底部按钮。  
+> **即将推出：** 练习邮件提醒。
 
 **历史：** 点击日历某天 → 侧边/弹层展示该日各成员记录
 
@@ -387,8 +414,9 @@ frontend/src/
 │   ├── Login.tsx
 │   ├── Register.tsx
 │   ├── BandHome.tsx
-│   ├── SongRecommend.tsx      # 占位页
-│   └── Practice.tsx
+│   ├── SongRecommend.tsx      # 歌单推荐
+│   ├── Practice.tsx
+│   └── Settings.tsx
 ├── components/
 │   ├── layout/
 │   │   ├── AppLayout.tsx
@@ -411,7 +439,7 @@ frontend/src/
 │   ├── auth.ts
 │   ├── bands.ts
 │   ├── practices.ts
-│   └── songs.ts               # 占位 API 客户端
+│   └── songs.ts
 ├── types/
 │   ├── band.ts
 │   ├── practice.ts
@@ -434,12 +462,14 @@ backend/src/
 │   ├── auth.ts
 │   ├── bands.ts
 │   ├── practices.ts
-│   └── songs.ts               # 占位路由
+│   └── songs.ts               # GET /songs/recommend
 ├── services/
 │   ├── authService.ts
 │   ├── bandService.ts
 │   ├── practiceService.ts
-│   └── skillAssessment.ts
+│   ├── skillAssessment.ts
+│   ├── recommendationService.ts
+│   └── recommendationRuleEngine.ts
 ├── middleware/
 │   └── authenticate.ts
 ├── config/
@@ -450,11 +480,12 @@ backend/src/
 
 ### 7.2 业务规则
 
-- 每个用户同一时间只属于一个乐队（MVP 简化；Phase 2 可改多乐队）
+- 用户可加入**多个乐队**；打卡、资料、推荐按 `bandId` 区分
 - 同一用户同一乐队同一天只能打卡一次（`409` 若重复）
 - 只有乐队成员可查看该乐队打卡数据
-- 创建乐队时自动生成 8 位 inviteCode
-- 加入乐队后必须完成问卷才能出现在成员列表（或显示「资料未完善」）
+- 创建乐队时自动生成 8 位 hex `inviteCode`（粘贴时容忍空格/横线）
+- 加入新乐队时复制已有问卷资料；**按乐队编辑资料互不影响**
+- 资料未完善时成员可显示「资料未完善」
 
 ---
 
@@ -495,41 +526,47 @@ export interface RecommendationResponse {
 
 ---
 
-## 10. 验收标准（Phase 1 Done）
+## 10. 验收标准
 
-- [ ] 用户可注册、登录、登出
-- [ ] 用户可创建乐队并通过邀请码邀请成员加入
-- [ ] 成员可填写问卷并获得 1–5 等级
-- [ ] 成员可提交今日打卡（时长 + 可选音频）
-- [ ] 团队面板显示今日各成员打卡状态
-- [ ] 月历可查看历史打卡
-- [ ] 三个 Tab 导航可用；歌单页显示占位 UI
-- [ ] `GET /songs/recommend` 返回 coming_soon 结构
-- [ ] 本地 Docker Compose 一键启动数据库
+### Phase 1 — Done ✅
+
+- [x] 用户可注册、登录、登出
+- [x] 用户可创建乐队并通过邀请码邀请成员加入
+- [x] 成员可填写问卷并获得 1–5 等级
+- [x] 成员可提交今日打卡（时长 + 可选音频）
+- [x] 团队面板显示今日各成员打卡状态
+- [x] 月历可查看历史打卡
+- [x] 三个 Tab 导航可用
+- [x] 本地 Docker Compose 一键启动数据库
+
+### Phase 2 歌单 — Done ✅
+
+- [x] `GET /songs/recommend` 返回真实推荐（非占位）
+- [x] 500 首 v2 seed + 规则引擎 + 可选 AI 文案
+- [x] 前端推荐卡片与空状态诊断
 
 ---
 
-## 11. 不在 Phase 1 范围内
+## 11. 尚未实现 / 后续阶段
 
-- 歌单推荐算法 / AI / 曲库
 - 邮件提醒
 - 反作弊截图
-- 节拍器 / 调音器
 - 音频示范自评
-- 多乐队支持
 - 云存储（S3/R2）
+- 乐队排练歌单 / 投票
 - 生产级监控
+
+**说明：** 歌单推荐、节拍器/调音器、多乐队支持已从「不在 Phase 1」移至已交付（见文首「实现状态」）。
 
 ---
 
-## Spec 自检（2026-06-24）
+## Spec 自检（2026-06-26）
 
 
 | 检查项       | 结果                                     |
 | --------- | -------------------------------------- |
-| 占位符 / TBD | 无；等级阈值在实现文件定义，已说明                      |
-| 内部一致性     | 架构、API、页面、Phase 划分一致                   |
-| 范围        | 单 spec 覆盖 Phase 1 + Phase 2 预览，可一次实现计划 |
-| 歧义        | 每用户单乐队 MVP 已明确；重复打卡返回 409 已明确          |
+| 与代码一致     | 文首「实现状态」覆盖占位/单乐队等过时描述；细节以 README 为准 |
+| 内部一致性     | §3 分阶段表已与实现对齐 |
+| 范围        | 历史章节保留作设计脉络；新功能先更新「实现状态」 |
 
 

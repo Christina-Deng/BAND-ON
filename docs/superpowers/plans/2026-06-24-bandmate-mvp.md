@@ -1,5 +1,9 @@
 # BandMate Phase 1 MVP Implementation Plan
 
+> **⚠️ SUPERSEDED（2026-06-26）**  
+> Phase 1 已交付，且已扩展多乐队、练习统计、节拍器/调音器、设置页等。  
+> **勿按本文「单乐队 / 歌单占位」约束实现。** 当前真相来源：[README.md](../../README.md)、[设计规格 §实现状态](../specs/2026-06-24-band-rehearsal-design.md)。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a working BandMate MVP with band management, questionnaire-based skill levels (including practice duration scoring), practice check-ins, team dashboard, and skeleton song recommendation page.
@@ -8,19 +12,19 @@
 
 **Tech Stack:** React 18, Vite, TypeScript, Tailwind CSS, React Router · Node.js, Fastify, Prisma, bcrypt, jsonwebtoken · PostgreSQL 16 (Docker)
 
-## Global Constraints
+## Global Constraints（历史 — 实现已超出）
 
 - UI copy: 中文
 - Project name: BandMate（暂定，展示层可随时更换）
 - Auth: JWT + httpOnly cookie, `SameSite=Lax`
 - CORS origin: `http://localhost:5173`
 - Backend port: `3000`; frontend dev: `5173`
-- One band per user (MVP)
+- ~~One band per user (MVP)~~ → **多乐队已支持**
 - One check-in per user per band per day (`409` on duplicate)
 - Audio upload: mp3/wav, max 10MB, local `backend/uploads/`
 - Skill level: 1–5 from practice duration (0–3) + instrument skills (0–4)
-- Song recommendation: `FEATURES.SONG_RECOMMENDATION = false`, API returns `coming_soon`
-- Do not build Phase 2 logic (real recommendations, email, metronome, anti-cheat)
+- ~~Song recommendation: `FEATURES.SONG_RECOMMENDATION = false`~~ → **Phase 2 已上线，`true`**
+- ~~Do not build Phase 2 logic (real recommendations, email, metronome, anti-cheat)~~ → 推荐/节拍器/调音器已建
 
 ---
 

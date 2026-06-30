@@ -105,7 +105,25 @@ If `VITE_APP_URL` is unset in production, invite share links fall back to the br
 
 ## Phase roadmap
 
-- **Done:** practice check-in, team stats, recommendations, metronome/tuner
-- **Planned:** practice email reminders, band setlist / voting
+### Done — Phase 1
 
-See `docs/superpowers/specs/2026-06-24-band-rehearsal-design.md` for the full product spec.
+- Auth, multi-band, invite links, per-band member profiles  
+- Practice check-in, calendar, personal/team stats, streaks  
+- Metronome & tuner on practice page  
+- Settings (display name, password, theme)
+
+### Done — Phase 2
+
+- 500-song v2 seed library + validation script  
+- Rule-based recommendations with stretch / style-stretch tiers  
+- Optional LLM recommendation copy (`LLM_*` env vars)  
+- `/songs` UI with diagnosis hints when empty  
+
+### Planned
+
+- Practice email reminders  
+- Band rehearsal setlist / song voting  
+- Practice timezone (`Asia/Shanghai`) for China users  
+- Secure audio uploads for production  
+
+**Docs:** [Design spec](docs/superpowers/specs/2026-06-24-band-rehearsal-design.md)（文首「实现状态」）· [Phase 1 plan](docs/superpowers/plans/2026-06-24-bandmate-mvp.md)（superseded）· [Phase 2 plan](docs/superpowers/plans/2026-06-30-phase2-song-recommendation.md)（delivered）

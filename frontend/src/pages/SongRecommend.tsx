@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { getRecommendations } from '../api/songs';
 import { BandPicker } from '../components/band/BandPicker';
 import { PageHeader } from '../components/layout/PageHeader';
+import { NoBandsEmptyState } from '../components/shared/NoBandsEmptyState';
 import { RecommendationCard } from '../components/songs/RecommendationCard';
 import { useBand } from '../hooks/useBand';
+import { FEATURES } from '../config/features';
 import type { RecommendedSong } from '../types/song';
 
 const USE_AI_STORAGE_KEY = 'bandmate-use-ai-recommendations';
@@ -82,18 +84,21 @@ export function SongRecommendPage() {
 
   if (loading) return <p className="text-slate-400">加载中…</p>;
 
+  if (!FEATURES.SONG_RECOMMENDATION) {
+    return (
+      <div className="space-y-6">
+        <PageHeader title="歌单推荐" lead="根据乐队成员水平与风格智能推荐曲目" />
+        <div className="empty-state-panel rounded-xl p-12 text-center">
+          <p className="text-lg text-slate-300">功能开发中</p>
+          <p className="mt-2 text-sm text-slate-500">歌单推荐即将上线，敬请期待。</p>
+        </div>
+      </div>
+    );
+  }
+
   if (bands.length === 0) {
     return (
-      <div className="empty-state-panel rounded-xl p-8 text-center">
-        <p className="text-lg text-slate-300">还没有加入乐队</p>
-        <p className="mt-2 text-sm text-slate-500">创建或加入乐队后，才能根据成员水平推荐曲目。</p>
-        <Link
-          to="/"
-          className="mt-6 inline-flex rounded-lg border border-accent-600 bg-accent-600 px-4 py-2 text-sm font-medium text-white hover:bg-accent-500"
-        >
-          去首页创建 / 加入乐队
-        </Link>
-      </div>
+      <NoBandsEmptyState description="创建或加入乐队后，才能根据成员水平推荐曲目。" />
     );
   }
 

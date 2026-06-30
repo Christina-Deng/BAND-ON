@@ -14,6 +14,7 @@ import { PracticeCalendar } from '../components/practice/PracticeCalendar';
 import { TeamStatsPanel } from '../components/practice/TeamStatsPanel';
 import { TeamStatusPanel } from '../components/practice/TeamStatusPanel';
 import { PracticeToolsLayout } from '../components/practice/tools/PracticeToolsLayout';
+import { NoBandsEmptyState } from '../components/shared/NoBandsEmptyState';
 import { createToast, ToastStack, type ToastMessage } from '../components/shared/ToastStack';
 import { useAuth } from '../hooks/useAuth';
 import { useBand } from '../hooks/useBand';
@@ -93,9 +94,7 @@ export function PracticePage() {
 
   if (bands.length === 0) {
     return (
-      <div className="rounded-xl border border-slate-700 bg-slate-900 p-8 text-center text-slate-400">
-        请先加入或创建乐队
-      </div>
+      <NoBandsEmptyState description="创建或加入乐队后，才能打卡并查看团队练习情况。" />
     );
   }
 

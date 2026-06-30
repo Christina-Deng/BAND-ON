@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { AppearanceMenu } from './AppearanceMenu';
+import { BrandWordmark } from './BrandWordmark';
 import { UserMenu } from './UserMenu';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -15,7 +16,7 @@ export function NavBar() {
     <header className="poster-nav sticky top-0 z-40 border-b border-slate-700/80 bg-slate-900/88 backdrop-blur-md">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-6">
-          <span className="font-display-heavy text-3xl tracking-widest text-accent-600">BandMate</span>
+          <BrandWordmark className="text-3xl" />
           {user && (
             <nav className="flex gap-1">
               <NavLink to="/" end className={linkClass}>
