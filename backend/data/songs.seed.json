@@ -13995,6 +13995,452 @@
         "missingKeyboard": "program_pad",
         "missingVocals": "instrumental_ok"
       }
+    },
+    {
+      "id": "song-314",
+      "title": "小幸运",
+      "artist": "田馥甄",
+      "style": "pop",
+      "styles": ["folk", "acg"],
+      "bpm": 120,
+      "notes": "新手友好 · 小编制 · 四和弦流行",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "optional" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-315",
+      "title": "Yellow",
+      "artist": "Coldplay",
+      "style": "pop",
+      "styles": ["rock", "indie"],
+      "bpm": 86,
+      "notes": "新手友好 · 小编制 · 慢速扫弦",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-316",
+      "title": "南山南",
+      "artist": "马頔",
+      "style": "folk",
+      "styles": ["pop"],
+      "bpm": 68,
+      "notes": "新手友好 · 小编制 · 指弹/扫弦皆可",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-317",
+      "title": "Stand By Me",
+      "artist": "Ben E. King",
+      "style": "pop",
+      "styles": ["rnb", "rock"],
+      "bpm": 118,
+      "notes": "新手友好 · 小编制 · 经典四和弦",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-318",
+      "title": "成都",
+      "artist": "赵雷",
+      "style": "folk",
+      "styles": ["pop"],
+      "bpm": 72,
+      "notes": "新手友好 · 小编制 · 酒吧常备",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-319",
+      "title": "Wonderwall",
+      "artist": "Oasis",
+      "style": "rock",
+      "styles": ["pop", "indie"],
+      "bpm": 87,
+      "notes": "新手友好 · 小编制 ·  capo 2 扫弦",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 2 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-320",
+      "title": "Knockin' on Heaven's Door",
+      "artist": "Bob Dylan",
+      "style": "rock",
+      "styles": ["folk", "pop"],
+      "bpm": 140,
+      "notes": "新手友好 · 小编制 · 四和弦循环",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-321",
+      "title": "Let It Be",
+      "artist": "The Beatles",
+      "style": "pop",
+      "styles": ["rock", "classical"],
+      "bpm": 73,
+      "notes": "新手友好 · 小编制 · 钢琴/吉他皆可",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "optional" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "keyboard": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-322",
+      "title": "旅行的意义",
+      "artist": "陈绮贞",
+      "style": "indie",
+      "styles": ["pop", "folk"],
+      "bpm": 92,
+      "notes": "新手友好 · 小编制 · 指弹入门",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-323",
+      "title": "Riptide",
+      "artist": "Vance Joy",
+      "style": "indie",
+      "styles": ["pop", "folk"],
+      "bpm": 102,
+      "notes": "新手友好 · 小编制 · 尤克里里/吉他",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-324",
+      "title": "蓝莲花",
+      "artist": "许巍",
+      "style": "rock",
+      "styles": ["folk", "pop"],
+      "bpm": 88,
+      "notes": "新手友好 · 小编制 · 公路摇滚",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 2 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-325",
+      "title": "Horse with No Name",
+      "artist": "America",
+      "style": "folk",
+      "styles": ["rock", "pop"],
+      "bpm": 112,
+      "notes": "新手友好 · 小编制 · 两和弦",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "required" },
+        "bass": "optional",
+        "drums": "optional",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-326",
+      "title": "彩虹",
+      "artist": "周杰伦",
+      "style": "pop",
+      "styles": ["rnb"],
+      "bpm": 76,
+      "notes": "新手友好 · 小编制 · 慢板弹唱",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "optional" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "keyboard": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-327",
+      "title": "Sunday Morning",
+      "artist": "Maroon 5",
+      "style": "pop",
+      "styles": ["funk", "rnb"],
+      "bpm": 88,
+      "notes": "新手友好 · 小编制 · 轻 funk 节奏",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "optional" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "bass": { "minLevel": 1 },
+        "drums": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "program_bass",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-328",
+      "title": "雪绒花",
+      "artist": "Edelweiss",
+      "style": "pop",
+      "styles": ["classical", "folk"],
+      "bpm": 72,
+      "notes": "新手友好 · 小编制 · 可键盘主导",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": { "count": 1, "lead": "none", "rhythm": "optional" },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": { "minLevel": 1 },
+        "rhythmGuitar": { "minLevel": 1 },
+        "keyboard": { "minLevel": 1 }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
     }
   ]
 }
