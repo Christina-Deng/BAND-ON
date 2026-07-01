@@ -96,12 +96,16 @@ cd backend && npm run validate:seed   # 500-song library schema check
 
 If `VITE_APP_URL` is unset in production, invite share links fall back to the browser’s current origin, which may be wrong when API and frontend are on different domains.
 
-## Production deployment notes
+## Production deployment
+
+Step-by-step guide (Vercel + Railway, no custom domain): **[docs/DEPLOY.md](docs/DEPLOY.md)**
+
+Quick checklist:
 
 1. Set strong `JWT_SECRET` and production `DATABASE_URL`.
 2. Set `FRONTEND_URL` on the backend to your deployed SPA origin.
-3. Build the frontend with `VITE_API_URL` and `VITE_APP_URL` pointing to production URLs.
-4. Run `npx prisma migrate deploy` on the backend.
+3. Build the frontend with `VITE_API_URL=/api` and `VITE_APP_URL` pointing to your Vercel URL.
+4. Backend start runs `prisma migrate deploy` via `npm run start:prod` on Railway.
 
 ## Phase roadmap
 
