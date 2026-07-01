@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useAudioContext } from '../../../hooks/useAudioContext';
+import { useLocale } from '../../../hooks/useLocale';
 
 const LOOKAHEAD_MS = 25;
 const SCHEDULE_AHEAD_S = 0.12;
@@ -25,6 +26,7 @@ function playClick(ctx: AudioContext, time: number, accent: boolean) {
 }
 
 export function Metronome() {
+  const { t } = useLocale();
   const { getContext } = useAudioContext();
   const [bpm, setBpm] = useState(100);
   const [beatsPerBar, setBeatsPerBar] = useState(4);
@@ -103,8 +105,8 @@ export function Metronome() {
     <div className="space-y-5">
       <div>
         <p className="rock-kicker">METRONOME</p>
-        <h3 className="section-title mt-1">节拍器</h3>
-        <p className="page-lead mt-1">设定速度，跟着节拍练习</p>
+        <h3 className="section-title mt-1">{t('practice.metronome.title')}</h3>
+        <p className="page-lead mt-1">{t('practice.metronome.lead')}</p>
       </div>
 
       <div className="flex items-end justify-center gap-2 py-2">
@@ -112,19 +114,19 @@ export function Metronome() {
           type="button"
           onClick={() => adjustBpm(-5)}
           className="rounded-lg border border-slate-700 px-3 py-2 text-sm text-slate-300 hover:border-accent-600"
-          aria-label="减慢 5 BPM"
+          aria-label="-5 BPM"
         >
           −5
         </button>
         <div className="text-center">
           <p className="stat-number tabular-nums">{bpm}</p>
-          <p className="stat-unit">BPM</p>
+          <p className="stat-unit">{t('practice.metronome.bpm')}</p>
         </div>
         <button
           type="button"
           onClick={() => adjustBpm(5)}
           className="rounded-lg border border-slate-700 px-3 py-2 text-sm text-slate-300 hover:border-accent-600"
-          aria-label="加快 5 BPM"
+          aria-label="+5 BPM"
         >
           +5
         </button>
@@ -137,7 +139,7 @@ export function Metronome() {
         value={bpm}
         onChange={(e) => setBpm(Number(e.target.value))}
         className="w-full accent-accent-600"
-        aria-label="BPM 滑块"
+        aria-label={t('practice.metronome.bpm')}
       />
 
       <div className="flex flex-wrap gap-2">
@@ -181,7 +183,7 @@ export function Metronome() {
             : 'bg-accent-600 text-white hover:bg-accent-700'
         }`}
       >
-        {running ? '停止' : '开始'}
+        {running ? t('practice.metronome.stop') : t('practice.metronome.start')}
       </button>
     </div>
   );

@@ -1,4 +1,5 @@
 import { api } from './client';
+import type { Locale } from '../lib/i18n/locale';
 import type { ThemeId } from '../lib/theme';
 
 export interface AuthUser {
@@ -6,6 +7,7 @@ export interface AuthUser {
   email: string;
   displayName: string;
   themePreference: ThemeId | null;
+  localePreference: Locale | null;
 }
 
 export async function register(input: {
@@ -34,6 +36,7 @@ export async function getMe() {
 export async function updateMe(input: {
   displayName?: string;
   themePreference?: ThemeId | null;
+  localePreference?: Locale | null;
 }) {
   const { data } = await api.patch<{ user: AuthUser }>('/auth/me', input);
   return data.user;

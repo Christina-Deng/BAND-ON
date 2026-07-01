@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { useLocale } from '../../hooks/useLocale';
 import { AppearanceMenu } from './AppearanceMenu';
 import { BrandWordmark } from './BrandWordmark';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { UserMenu } from './UserMenu';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -11,6 +13,7 @@ const linkClass = ({ isActive }: { isActive: boolean }) =>
 
 export function NavBar() {
   const { user } = useAuth();
+  const { t } = useLocale();
 
   return (
     <header className="poster-nav sticky top-0 z-40 border-b border-slate-700/80 bg-slate-900/88 backdrop-blur-md">
@@ -20,18 +23,19 @@ export function NavBar() {
           {user && (
             <nav className="flex gap-1">
               <NavLink to="/" end className={linkClass}>
-                乐队
+                {t('nav.bands')}
               </NavLink>
               <NavLink to="/songs" className={linkClass}>
-                歌单
+                {t('nav.songs')}
               </NavLink>
               <NavLink to="/practice" className={linkClass}>
-                打卡
+                {t('nav.practice')}
               </NavLink>
             </nav>
           )}
         </div>
         <div className="flex items-center gap-3 text-sm">
+          <LanguageSwitcher />
           <AppearanceMenu />
           {user && <UserMenu />}
         </div>

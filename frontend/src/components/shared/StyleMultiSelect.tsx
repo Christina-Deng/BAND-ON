@@ -1,4 +1,5 @@
-import { MUSIC_STYLES } from '../../constants/music';
+import { getMusicStyleOptions } from '../../constants/music';
+import { useLocale } from '../../hooks/useLocale';
 
 interface Props {
   label: string;
@@ -8,6 +9,9 @@ interface Props {
 }
 
 export function StyleMultiSelect({ label, hint, selected, onChange }: Props) {
+  const { locale } = useLocale();
+  const styles = getMusicStyleOptions(locale);
+
   function toggle(id: string) {
     if (selected.includes(id)) {
       onChange(selected.filter((s) => s !== id));
@@ -21,7 +25,7 @@ export function StyleMultiSelect({ label, hint, selected, onChange }: Props) {
       <h3 className="text-sm font-medium text-slate-300">{label}</h3>
       {hint && <p className="text-xs text-slate-400">{hint}</p>}
       <div className="flex flex-wrap gap-2">
-        {MUSIC_STYLES.map(({ id, label: styleLabel }) => {
+        {styles.map(({ id, label: styleLabel }) => {
           const active = selected.includes(id);
           return (
             <button

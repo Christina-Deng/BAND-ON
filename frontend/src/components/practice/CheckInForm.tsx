@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Band } from '../../types/band';
+import { useLocale } from '../../hooks/useLocale';
 import { BandPicker } from '../band/BandPicker';
 
 export type CheckInResult = {
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Props) {
+  const { t } = useLocale();
   const [selectedBandIds, setSelectedBandIds] = useState<string[]>([]);
   const [durationMinutes, setDurationMinutes] = useState(30);
   const [note, setNote] = useState('');
@@ -36,6 +38,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
   );
 
   const allCheckedIn = bands.length > 0 && checkedInBandIds.length === bands.length;
+  const listSep = t('common.listSep');
 
   useEffect(() => {
     setSelectedBandIds((prev) => prev.filter((id) => !checkedInBandIds.includes(id)));
@@ -44,7 +47,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (selectedBandIds.length === 0) {
-      setError(allCheckedIn ? '今日所有乐队均已打卡' : '请至少选择一个乐队');
+      setError(allCheckedIn ? t('practice.checkIn.errorAllDone') : t('practice.checkIn.errorSelectBand'));
       return;
     }
     setLoading(true);
@@ -58,7 +61,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
       });
 
       if (result.succeeded.length === 0) {
-        setError('打卡失败，所选乐队可能今天已经打卡过了');
+        setError(t('practice.checkIn.errorDuplicate'));
         return;
       }
 
@@ -68,10 +71,15 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
       setSelectedBandIds([]);
 
       if (result.failed.length > 0) {
-        setError(`已在 ${result.succeeded.join('、')} 打卡，但 ${result.failed.join('、')} 未能打卡`);
+        setError(
+          t('practice.checkIn.errorPartial', {
+            succeeded: result.succeeded.join(listSep),
+            failed: result.failed.join(listSep),
+          }),
+        );
       }
     } catch {
-      setError('打卡失败，请稍后重试');
+      setError(t('practice.checkIn.errorGeneric'));
     } finally {
       setLoading(false);
     }
@@ -81,12 +89,12 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
     <form onSubmit={handleSubmit} className="poster-card space-y-4 rounded-xl p-5">
       <div>
         <p className="rock-kicker">CHECK IN</p>
-        <h3 className="section-title mt-1">今日打卡</h3>
+        <h3 className="section-title mt-1">{t('practice.checkIn.title')}</h3>
       </div>
 
       {checkedInBandNames.length > 0 && (
         <p className="profile-incomplete-banner rounded-lg px-3 py-2 text-sm">
-          今日已在 {checkedInBandNames.join('、')} 打卡
+          {t('practice.checkIn.checkedInToday', { names: checkedInBandNames.join(listSep) })}
         </p>
       )}
 
@@ -95,18 +103,16 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
         selectedIds={selectedBandIds}
         onChange={setSelectedBandIds}
         disabledIds={checkedInBandIds}
-        label="选择乐队"
+        label={t('practice.checkIn.selectBand')}
         hint={
-          allCheckedIn
-            ? '今日所有乐队均已打卡'
-            : '可多选，为每个选中的乐队分别打卡'
+          allCheckedIn ? t('practice.checkIn.allDoneHint') : t('practice.checkIn.multiHint')
         }
         multiple
       />
 
       <label className="block text-sm">
         <span className="rock-label">MINUTES</span>
-        <span className="mt-1 block text-slate-400">练习时长（分钟）</span>
+        <span className="mt-1 block text-slate-400">{t('practice.checkIn.duration')}</span>
         <input
           type="number"
           min={1}
@@ -118,7 +124,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
         />
       </label>
       <label className="block text-sm">
-        <span className="text-slate-400">备注（可选）</span>
+        <span className="text-slate-400">{t('practice.checkIn.note')}</span>
         <textarea
           className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2.5"
           value={note}
@@ -128,7 +134,7 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
         />
       </label>
       <label className="block text-sm">
-        <span className="text-slate-400">练习录音（可选，mp3/wav）</span>
+        <span className="text-slate-400">{t('practice.checkIn.recording')}</span>
         <input
           type="file"
           accept=".mp3,.wav,audio/mpeg,audio/wav"
@@ -143,7 +149,11 @@ export function CheckInForm({ bands, checkedInBandIds, onSubmit, onSuccess }: Pr
         disabled={loading || allCheckedIn}
         className="w-full rounded-lg bg-accent-600 px-4 py-2.5 font-medium hover:bg-accent-500 disabled:opacity-50"
       >
-        {loading ? '提交中…' : allCheckedIn ? '今日已全部打卡' : '提交打卡'}
+        {loading
+          ? t('common.submitting')
+          : allCheckedIn
+            ? t('practice.checkIn.allDoneButton')
+            : t('practice.checkIn.submit')}
       </button>
     </form>
   );

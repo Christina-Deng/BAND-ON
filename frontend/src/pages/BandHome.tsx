@@ -6,10 +6,12 @@ import { JoinBandForm } from '../components/band/JoinBandForm';
 import { BandSection } from '../components/band/BandSection';
 import { useAuth } from '../hooks/useAuth';
 import { useBand } from '../hooks/useBand';
+import { useLocale } from '../hooks/useLocale';
 
 export function BandHomePage() {
   const { user } = useAuth();
   const { bands, loading, error, refresh, leaveBand } = useBand();
+  const { t } = useLocale();
   const location = useLocation();
   const navigate = useNavigate();
   const [showCreate, setShowCreate] = useState(false);
@@ -24,7 +26,7 @@ export function BandHomePage() {
     navigate('.', { replace: true, state: null });
   }, [location.state, navigate]);
 
-  if (loading) return <p className="text-slate-400">加载中…</p>;
+  if (loading) return <p className="text-slate-400">{t('common.loading')}</p>;
 
   async function handleLeave(bandId: string) {
     const result = await leaveBand(bandId);
@@ -35,11 +37,11 @@ export function BandHomePage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title="我的乐队"
+        title={t('band.home.title')}
         lead={
           bands.length === 0
-            ? '你还没有加入任何乐队，可以在下方创建或加入'
-            : `共 ${bands.length} 个乐队`
+            ? t('band.home.leadEmpty')
+            : t('band.home.leadCount', { count: bands.length })
         }
       />
 
@@ -91,7 +93,7 @@ export function BandHomePage() {
               }}
               className="rounded-lg bg-accent-600 px-4 py-2 text-sm font-medium hover:bg-accent-500"
             >
-              {showCreate ? '收起' : '成立乐队'}
+              {showCreate ? t('common.collapse') : t('band.home.create')}
             </button>
             <button
               type="button"
@@ -101,7 +103,7 @@ export function BandHomePage() {
               }}
               className="rounded-lg border border-accent-500 px-4 py-2 text-sm hover:bg-accent-500/10"
             >
-              {showJoin ? '收起' : '加入乐队'}
+              {showJoin ? t('common.collapse') : t('band.home.join')}
             </button>
           </div>
           {showCreate && <CreateBandForm onSuccess={() => { void refresh(); setShowCreate(false); }} />}

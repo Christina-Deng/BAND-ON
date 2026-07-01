@@ -1,4 +1,5 @@
 import { THEMES, type ThemeId } from '../../lib/theme';
+import { useLocale } from '../../hooks/useLocale';
 
 interface Props {
   theme: ThemeId;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 export function ThemePicker({ theme, onSelect, hint }: Props) {
+  const { t } = useLocale();
+
   return (
     <div className="space-y-2">
       {hint && <p className="text-xs text-slate-400">{hint}</p>}
@@ -32,10 +35,14 @@ export function ThemePicker({ theme, onSelect, hint }: Props) {
                   <span className="block text-sm font-medium text-emphasis">
                     {option.label}
                     {selected && (
-                      <span className="ml-2 text-xs font-normal text-accent-500">当前</span>
+                      <span className="ml-2 text-xs font-normal text-accent-500">
+                        {t('settings.appearance.current')}
+                      </span>
                     )}
                   </span>
-                  <span className="block text-xs text-slate-400">{option.description}</span>
+                  <span className="block text-xs text-slate-400">
+                    {t(`settings.themes.${option.id}`)}
+                  </span>
                 </span>
               </button>
             </li>

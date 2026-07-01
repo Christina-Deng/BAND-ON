@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useBand } from '../../hooks/useBand';
+import { useLocale } from '../../hooks/useLocale';
 import { normalizeInviteCode } from '../../lib/invite';
 
 export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
   const { joinBand } = useBand();
+  const { t } = useLocale();
   const [inviteCode, setInviteCode] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,7 +19,7 @@ export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
       setInviteCode('');
       onSuccess?.();
     } catch {
-      setError('邀请码无效或你已加入该乐队');
+      setError(t('band.joinForm.invalidCode'));
     } finally {
       setLoading(false);
     }
@@ -25,10 +27,10 @@ export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
-      <h3 className="font-semibold">加入乐队</h3>
+      <h3 className="font-semibold">{t('band.joinForm.title')}</h3>
       <input
         className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
-        placeholder="输入邀请码（可含空格或横线）"
+        placeholder={t('band.joinForm.codePlaceholder')}
         value={inviteCode}
         onChange={(e) => setInviteCode(e.target.value)}
         required
@@ -39,7 +41,7 @@ export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
         disabled={loading}
         className="rounded-lg border border-accent-500 px-4 py-2 font-medium hover:bg-accent-500/10 disabled:opacity-50"
       >
-        {loading ? '加入中…' : '加入'}
+        {loading ? t('common.joining') : t('band.joinForm.submit')}
       </button>
     </form>
   );

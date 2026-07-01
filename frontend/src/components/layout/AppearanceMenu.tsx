@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { useLocale } from '../../hooks/useLocale';
 import { useTheme } from '../../hooks/useTheme';
 import { ThemePicker } from './ThemePicker';
 
 export function AppearanceMenu() {
   const { user } = useAuth();
+  const { t } = useLocale();
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -36,11 +38,11 @@ export function AppearanceMenu() {
         className="flex items-center gap-1.5 rounded-lg border border-slate-600 px-2.5 py-1.5 text-slate-300 hover:border-slate-500 hover:bg-slate-800 hover:text-emphasis"
         aria-expanded={open}
         aria-haspopup="dialog"
-        aria-label="外观设置"
-        title="外观"
+        aria-label={t('settings.appearance.menuTitle')}
+        title={t('settings.appearance.menuLabel')}
       >
         <PaletteIcon />
-        <span className="hidden text-xs font-medium sm:inline">外观</span>
+        <span className="hidden text-xs font-medium sm:inline">{t('settings.appearance.menuLabel')}</span>
       </button>
 
       {open &&
@@ -55,22 +57,20 @@ export function AppearanceMenu() {
             <div
               ref={panelRef}
               role="dialog"
-              aria-label="选择外观"
+              aria-label={t('settings.appearance.menuTitle')}
               className="w-full max-w-xs rounded-xl border border-slate-700 bg-slate-900 p-4 shadow-2xl"
             >
-              <h2 className="section-title">外观</h2>
+              <h2 className="section-title">{t('settings.appearance.title')}</h2>
               <div className="mt-4">
                 <ThemePicker
-                theme={theme}
-                onSelect={(next) => {
-                  setTheme(next, { skipAccountSync: !user });
-                  setOpen(false);
-                }}
-                hint={
-                  user
-                    ? '保存在账户中，登录后各设备同步'
-                    : '预览外观；登录后使用账户偏好，首次登录沿用当前选择'
-                }
+                  theme={theme}
+                  onSelect={(next) => {
+                    setTheme(next, { skipAccountSync: !user });
+                    setOpen(false);
+                  }}
+                  hint={
+                    user ? t('settings.appearance.syncHint') : t('settings.appearance.previewHint')
+                  }
                 />
               </div>
             </div>

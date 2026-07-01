@@ -5,6 +5,13 @@ import { prisma } from '../lib/prisma.js';
 const JWT_SECRET = process.env.JWT_SECRET ?? 'dev-secret-change-in-production';
 const VALID_THEMES = new Set(['indigo', 'rock', 'paper', 'light']);
 
+const VALID_LOCALES = new Set(['zh', 'en']);
+
+function normalizeLocalePreference(locale: string | null): string | null {
+  if (locale === 'zh' || locale === 'en') return locale;
+  return null;
+}
+
 function normalizeThemePreference(theme: string | null): string | null {
   if (theme === 'amber') return 'paper';
   return theme;
@@ -15,6 +22,7 @@ export interface AuthUser {
   email: string;
   displayName: string;
   themePreference: string | null;
+  localePreference: string | null;
 }
 
 function toAuthUser(user: {
@@ -22,12 +30,14 @@ function toAuthUser(user: {
   email: string;
   displayName: string;
   themePreference: string | null;
+  localePreference: string | null;
 }): AuthUser {
   return {
     id: user.id,
     email: user.email,
     displayName: user.displayName,
     themePreference: normalizeThemePreference(user.themePreference),
+    localePreference: normalizeLocalePreference(user.localePreference),
   };
 }
 
@@ -82,9 +92,17 @@ export async function getMe(userId: string): Promise<AuthUser | null> {
 
 export async function updateMe(
   userId: string,
-  input: { displayName?: string; themePreference?: string | null },
+  input: {
+    displayName?: string;
+    themePreference?: string | null;
+    localePreference?: string | null;
+  },
 ): Promise<AuthUser> {
-  const data: { displayName?: string; themePreference?: string | null } = {};
+  const data: {
+    displayName?: string;
+    themePreference?: string | null;
+    localePreference?: string | null;
+  } = {};
 
   if (input.displayName !== undefined) {
     const displayName = input.displayName.trim();
@@ -103,6 +121,13 @@ export async function updateMe(
       throw Object.assign(new Error('Invalid theme preference'), { statusCode: 400 });
     }
     data.themePreference = themePreference;
+  }
+
+  if (input.localePreference !== undefined) {
+    if (input.localePreference !== null && !VALID_LOCALES.has(input.localePreference)) {
+      throw Object.assign(new Error('Invalid locale preference'), { statusCode: 400 });
+    }
+    data.localePreference = input.localePreference;
   }
 
   if (Object.keys(data).length === 0) {

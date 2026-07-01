@@ -10,6 +10,8 @@ import {
 } from 'react';
 import * as authApi from '../api/auth';
 import type { AuthUser } from '../api/auth';
+import type { Locale } from '../lib/i18n/locale';
+import { registerLocaleAccountSync } from '../lib/localeAccountSync';
 import { normalizeThemeId } from '../lib/theme';
 import { registerThemeAccountSync } from '../lib/themeAccountSync';
 
@@ -57,7 +59,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         /* keep local theme even if sync fails */
       }
     });
-    return () => registerThemeAccountSync(null);
+    registerLocaleAccountSync(async (locale: Locale) => {
+      if (!userRef.current) return;
+      try {
+        const updated = await authApi.updateMe({ localePreference: locale });
+        setUser(updated);
+      } catch {
+        /* keep local locale even if sync fails */
+      }
+    });
+    return () => {
+      registerThemeAccountSync(null);
+      registerLocaleAccountSync(null);
+    };
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {

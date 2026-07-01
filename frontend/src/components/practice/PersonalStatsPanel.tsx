@@ -1,36 +1,39 @@
+import { useLocale } from '../../hooks/useLocale';
 import type { PersonalPracticeStats } from '../../types/practice';
 
 export function PersonalStatsPanel({ stats }: { stats: PersonalPracticeStats }) {
+  const { t } = useLocale();
+
   return (
     <div className="poster-card poster-card-accent rounded-xl p-5">
       <p className="rock-kicker">MY STATS</p>
-      <h3 className="section-title mt-1">我的练习</h3>
+      <h3 className="section-title mt-1">{t('practice.stats.myPractice')}</h3>
       <div className="mt-4 grid gap-3 sm:grid-cols-3">
         <StatBlock
-          label="连续打卡"
+          label={t('practice.stats.streak')}
           kicker="STREAK"
           number={stats.streakDays > 0 ? String(stats.streakDays) : '—'}
-          unit={stats.streakDays > 0 ? '天' : '尚未开始'}
+          unit={stats.streakDays > 0 ? t('common.days') : t('practice.stats.streakNotStarted')}
           highlight={stats.streakDays >= 3}
           showFire={stats.streakDays > 0}
         />
         <StatBlock
-          label="本周"
+          label={t('practice.stats.thisWeek')}
           kicker="WEEK"
           number={String(stats.weekMinutes)}
-          unit="分钟"
-          sub={`打卡 ${stats.weekCheckInDays} 天`}
+          unit={t('common.minutes')}
+          sub={`${t('practice.stats.checkInDays')} ${stats.weekCheckInDays}`}
         />
         <StatBlock
-          label="本月"
+          label={t('practice.stats.thisMonth')}
           kicker="MONTH"
           number={String(stats.monthMinutes)}
-          unit="分钟"
-          sub={`打卡 ${stats.monthCheckInDays} 天`}
+          unit={t('common.minutes')}
+          sub={`${t('practice.stats.checkInDays')} ${stats.monthCheckInDays}`}
         />
       </div>
       {stats.streakDays === 0 && stats.weekCheckInDays === 0 && (
-        <p className="mt-3 text-xs text-slate-500">今天练 15 分钟也很棒，先完成第一次打卡吧。</p>
+        <p className="mt-3 text-xs text-slate-500">{t('practice.stats.encouragement')}</p>
       )}
     </div>
   );

@@ -6,6 +6,7 @@ import { PageHeader } from '../components/layout/PageHeader';
 import { NoBandsEmptyState } from '../components/shared/NoBandsEmptyState';
 import { RecommendationCard } from '../components/songs/RecommendationCard';
 import { useBand } from '../hooks/useBand';
+import { useLocale } from '../hooks/useLocale';
 import { FEATURES } from '../config/features';
 import type { RecommendedSong } from '../types/song';
 
@@ -21,6 +22,7 @@ function readUseAiPreference(): boolean {
 
 export function SongRecommendPage() {
   const { bands, loading } = useBand();
+  const { t } = useLocale();
   const [viewBandId, setViewBandId] = useState('');
   const [useAi, setUseAi] = useState(readUseAiPreference);
   const [aiAvailable, setAiAvailable] = useState(false);
@@ -56,22 +58,22 @@ export function SongRecommendPage() {
         } else if (res.status === 'empty' || res.status === 'coming_soon') {
           setSongs([]);
           setStatus('empty');
-          setMessage(res.message ?? '暂无匹配曲目');
+          setMessage(res.message ?? t('songs.noMatch'));
           setEmptyHints(res.hints ?? []);
         } else {
           setSongs([]);
           setStatus('error');
-          setMessage(res.message ?? '加载推荐失败');
+          setMessage(res.message ?? t('songs.loadFailed'));
           setEmptyHints([]);
         }
       })
       .catch(() => {
         setSongs([]);
         setStatus('error');
-        setMessage('加载推荐失败，请稍后重试');
+        setMessage(t('songs.loadFailedRetry'));
         setEmptyHints([]);
       });
-  }, [viewBandId, useAi, retryKey]);
+  }, [viewBandId, useAi, retryKey, t]);
 
   function handleUseAiChange(checked: boolean) {
     setUseAi(checked);
@@ -82,30 +84,32 @@ export function SongRecommendPage() {
     }
   }
 
-  if (loading) return <p className="text-slate-400">加载中…</p>;
+  if (loading) return <p className="text-slate-400">{t('common.loading')}</p>;
 
   if (!FEATURES.SONG_RECOMMENDATION) {
     return (
       <div className="space-y-6">
-        <PageHeader title="歌单推荐" lead="根据乐队成员水平与风格智能推荐曲目" />
+        <PageHeader title={t('songs.title')} lead={t('songs.lead')} />
         <div className="empty-state-panel rounded-xl p-12 text-center">
-          <p className="text-lg text-slate-300">功能开发中</p>
-          <p className="mt-2 text-sm text-slate-500">歌单推荐即将上线，敬请期待。</p>
+          <p className="text-lg text-slate-300">{t('songs.noResults')}</p>
         </div>
       </div>
     );
   }
 
   if (bands.length === 0) {
-    return (
-      <NoBandsEmptyState description="创建或加入乐队后，才能根据成员水平推荐曲目。" />
-    );
+    return <NoBandsEmptyState description={t('songs.emptyNoBandsHint')} />;
   }
+
+  const styleExplain =
+    viewBand?.stylePreferences && viewBand.stylePreferences.length > 0
+      ? t('songs.explainBandStyles')
+      : t('songs.explainMemberStyles');
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <PageHeader title="歌单推荐" lead="根据乐队成员水平与风格智能推荐曲目" />
+        <PageHeader title={t('songs.title')} lead={t('songs.lead')} />
       </div>
 
       {bands.length > 1 && (
@@ -113,28 +117,22 @@ export function SongRecommendPage() {
           bands={bands}
           selectedIds={viewBandId ? [viewBandId] : []}
           onChange={(ids) => setViewBandId(ids[0] ?? '')}
-          label="选择乐队"
-          hint="为哪个乐队查看推荐"
+          label={t('songs.selectBand')}
+          hint={t('songs.selectBandHint')}
         />
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <p className="text-slate-400">
-          根据 {viewBand?.name} 成员水平和
-          {viewBand?.stylePreferences && viewBand.stylePreferences.length > 0 ?
-            '乐队设置的风格偏好'
-          : '成员问卷中的风格（乐队未设置统一风格时）'}
-          ，推荐适合排练的歌曲。
+          {t('songs.explainPrefix', { name: viewBand?.name ?? '' })}
+          {styleExplain}
+          {t('songs.explainSuffix')}
         </p>
         <label
           className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${
             aiAvailable ? 'control-toggle cursor-pointer' : 'control-toggle-disabled'
           }`}
-          title={
-            aiAvailable ?
-              '勾选后使用 AI 生成个性化推荐理由'
-            : '服务端未配置 LLM_API_KEY，仅使用规则推荐'
-          }
+          title={aiAvailable ? t('songs.aiHintOn') : t('songs.aiHintOff')}
         >
           <input
             type="checkbox"
@@ -143,13 +141,13 @@ export function SongRecommendPage() {
             disabled={!aiAvailable}
             onChange={(e) => handleUseAiChange(e.target.checked)}
           />
-          使用 AI 推荐语
+          {t('songs.useAi')}
         </label>
       </div>
 
       {status === 'loading' && (
         <div className="empty-state-panel rounded-xl p-12 text-center text-slate-400">
-          {useAi && aiAvailable ? '正在生成 AI 推荐…' : '正在匹配曲库…'}
+          {useAi && aiAvailable ? t('songs.loadingAi') : t('songs.loadingMatch')}
         </div>
       )}
 
@@ -165,7 +163,9 @@ export function SongRecommendPage() {
 
       {(status === 'empty' || status === 'error') && (
         <div className="empty-state-panel rounded-xl p-12 text-center">
-          <p className="text-lg text-slate-300">{status === 'error' ? '加载失败' : '暂无推荐'}</p>
+          <p className="text-lg text-slate-300">
+            {status === 'error' ? t('songs.loadFailed') : t('songs.noResults')}
+          </p>
           <p className="mt-2 text-sm text-slate-500">{message}</p>
           {emptyHints.length > 0 && (
             <ul className="mx-auto mt-4 max-w-md space-y-2 text-left text-sm text-slate-400">
@@ -183,13 +183,13 @@ export function SongRecommendPage() {
                 to="/"
                 className="rounded-lg border border-accent-600 bg-accent-600 px-4 py-2 text-sm font-medium text-white hover:bg-accent-500"
               >
-                去首页完善成员资料
+                {t('songs.completeProfile')}
               </Link>
               <Link
                 to="/practice"
                 className="rounded-lg border border-slate-600 px-4 py-2 text-sm text-slate-300 hover:border-slate-500 hover:text-emphasis"
               >
-                查看练习页
+                {t('songs.viewPractice')}
               </Link>
             </div>
           )}
@@ -199,7 +199,7 @@ export function SongRecommendPage() {
               onClick={() => setRetryKey((k) => k + 1)}
               className="mt-6 rounded-lg border border-slate-600 px-4 py-2 text-sm text-slate-300 hover:border-slate-500"
             >
-              重试
+              {t('common.retry')}
             </button>
           )}
         </div>

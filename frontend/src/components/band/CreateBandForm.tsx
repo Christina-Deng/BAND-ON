@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useBand } from '../../hooks/useBand';
+import { useLocale } from '../../hooks/useLocale';
 import { StyleMultiSelect } from '../shared/StyleMultiSelect';
 
 export function CreateBandForm({ onSuccess }: { onSuccess?: () => void }) {
   const { createBand } = useBand();
+  const { t } = useLocale();
   const [name, setName] = useState('');
   const [stylePreferences, setStylePreferences] = useState<string[]>([]);
   const [error, setError] = useState('');
@@ -19,7 +21,7 @@ export function CreateBandForm({ onSuccess }: { onSuccess?: () => void }) {
       setStylePreferences([]);
       onSuccess?.();
     } catch {
-      setError('创建失败，请重试');
+      setError(t('common.requestFailed'));
     } finally {
       setLoading(false);
     }
@@ -27,17 +29,17 @@ export function CreateBandForm({ onSuccess }: { onSuccess?: () => void }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
-      <h3 className="font-semibold">创建乐队</h3>
+      <h3 className="font-semibold">{t('band.create.title')}</h3>
       <input
         className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
-        placeholder="乐队名称"
+        placeholder={t('band.create.namePlaceholder')}
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
       />
       <StyleMultiSelect
-        label="乐队风格偏好（可选）"
-        hint="可多选，帮助成员对齐排练方向"
+        label={t('band.create.styleLabel')}
+        hint={t('band.create.styleHint')}
         selected={stylePreferences}
         onChange={setStylePreferences}
       />
@@ -47,7 +49,7 @@ export function CreateBandForm({ onSuccess }: { onSuccess?: () => void }) {
         disabled={loading}
         className="rounded-lg bg-accent-600 px-4 py-2 font-medium hover:bg-accent-500 disabled:opacity-50"
       >
-        {loading ? '创建中…' : '创建'}
+        {loading ? t('common.creating') : t('band.create.submit')}
       </button>
     </form>
   );

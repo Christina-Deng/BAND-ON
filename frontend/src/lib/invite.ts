@@ -19,11 +19,15 @@ export function buildJoinUrl(inviteCode: string): string {
   return `${getInviteLinkOrigin()}/join?code=${encodeURIComponent(inviteCode)}`;
 }
 
-export function buildInviteShareText(bandName: string, inviteCode: string): string {
+export function buildInviteShareText(
+  bandName: string,
+  inviteCode: string,
+  t: (key: string, params?: Record<string, string | number>) => string,
+): string {
   return [
-    `来 BandMate 加入我们的乐队「${bandName}」吧！`,
-    `邀请码：${inviteCode}`,
-    `打开链接即可加入：${buildJoinUrl(inviteCode)}`,
+    t('band.invite.line1', { name: bandName }),
+    t('band.invite.line2', { code: inviteCode }),
+    t('band.invite.line3', { url: buildJoinUrl(inviteCode) }),
   ].join('\n');
 }
 

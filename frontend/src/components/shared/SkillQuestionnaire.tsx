@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
-  INSTRUMENT_LABELS,
-  INSTRUMENT_SKILL_QUESTIONS,
-  PLAYING_EXPERIENCE_OPTIONS,
+  getInstrumentLabel,
+  getInstrumentSkillQuestions,
+  getPlayingExperienceOptions,
   resolveStylePreferenceIds,
 } from '../../constants/music';
+import { useLocale } from '../../hooks/useLocale';
 import type { Instrument, PlayingExperience, QuestionnaireAnswers } from '../../types/band';
 import { StyleMultiSelect } from './StyleMultiSelect';
 
@@ -19,13 +20,26 @@ interface Props {
 }
 
 export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: Props) {
+  const { locale, t } = useLocale();
   const [instrument, setInstrument] = useState<Instrument>('GUITAR');
   const [playingExperience, setPlayingExperience] = useState<PlayingExperience>('1-3');
   const [stylePreferences, setStylePreferences] = useState<string[]>([]);
   const [skills, setSkills] = useState<boolean[]>([false, false, false, false, false]);
   const [loading, setLoading] = useState(false);
 
-  const questions = useMemo(() => INSTRUMENT_SKILL_QUESTIONS[instrument], [instrument]);
+  const questions = useMemo(
+    () => getInstrumentSkillQuestions(instrument, locale),
+    [instrument, locale],
+  );
+  const experienceOptions = useMemo(() => getPlayingExperienceOptions(locale), [locale]);
+  const instruments = useMemo(
+    () =>
+      (['GUITAR', 'BASS', 'DRUMS', 'VOCALS', 'KEYBOARD', 'OTHER'] as Instrument[]).map((value) => ({
+        value,
+        label: getInstrumentLabel(value, locale),
+      })),
+    [locale],
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -42,10 +56,10 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
     setInstrument(initialInstrument);
     setPlayingExperience(answers.playingExperience ?? answers.weeklyPracticeHours ?? '1-3');
     setStylePreferences(resolveStylePreferenceIds(answers));
-    const questionCount = INSTRUMENT_SKILL_QUESTIONS[initialInstrument].length;
+    const questionCount = getInstrumentSkillQuestions(initialInstrument, locale).length;
     const saved = answers.instrumentSkills ?? [];
     setSkills(Array.from({ length: questionCount }, (_, index) => saved[index] ?? false));
-  }, [open, initial]);
+  }, [open, initial, locale]);
 
   if (!open) return null;
 
@@ -69,13 +83,13 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
         onSubmit={handleSubmit}
         className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-slate-700 bg-slate-900 p-6"
       >
-        <h2 className="text-lg font-semibold">{initial ? '编辑我的资料' : '完善我的资料'}</h2>
-        <p className="mt-1 text-xs text-slate-400">
-          资料按乐队保存。加入新乐队时会自动带入你已有资料；在此修改仅影响当前乐队。
-        </p>
+        <h2 className="text-lg font-semibold">
+          {initial ? t('band.profile.titleEdit') : t('band.profile.titleComplete')}
+        </h2>
+        <p className="mt-1 text-xs text-slate-400">{t('band.profile.perBandHint')}</p>
 
         <section className="mt-4 space-y-2">
-          <h3 className="text-sm font-semibold text-emphasis">乐器</h3>
+          <h3 className="text-sm font-semibold text-emphasis">{t('band.profile.instrument')}</h3>
           <select
             className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
             value={instrument}
@@ -84,18 +98,18 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
               setSkills([false, false, false, false, false]);
             }}
           >
-            {(Object.keys(INSTRUMENT_LABELS) as Instrument[]).map((value) => (
+            {instruments.map(({ value, label }) => (
               <option key={value} value={value}>
-                {INSTRUMENT_LABELS[value]}
+                {label}
               </option>
             ))}
           </select>
         </section>
 
         <section className="mt-4 space-y-2">
-          <h3 className="text-sm font-semibold text-emphasis">学习年限（计入等级）</h3>
-          <p className="text-xs text-slate-400">请选择你系统学习或持续演奏该乐器的时长</p>
-          {PLAYING_EXPERIENCE_OPTIONS.map(([value, label]) => (
+          <h3 className="text-sm font-semibold text-emphasis">{t('band.profile.experience')}</h3>
+          <p className="text-xs text-slate-400">{t('band.profile.experienceHint')}</p>
+          {experienceOptions.map(([value, label]) => (
             <label key={value} className="flex items-center gap-2 text-sm">
               <input
                 type="radio"
@@ -110,16 +124,16 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
 
         <div className="mt-4">
           <StyleMultiSelect
-            label="个人风格偏好"
-            hint="乐队未设置统一风格时，歌单推荐会合并所有成员的风格偏好"
+            label={t('band.profile.personalStyles')}
+            hint={t('band.profile.personalStylesHint')}
             selected={stylePreferences}
             onChange={setStylePreferences}
           />
         </div>
 
         <section className="mt-4 space-y-2">
-          <h3 className="text-sm font-semibold text-emphasis">乐器技术（计入等级）</h3>
-          <p className="text-xs text-slate-400">勾选你已稳定掌握的项目</p>
+          <h3 className="text-sm font-semibold text-emphasis">{t('band.profile.skills')}</h3>
+          <p className="text-xs text-slate-400">{t('band.profile.skillsHint')}</p>
           {questions.map((label, index) => (
             <label key={label} className="flex items-center gap-2 text-sm">
               <input
@@ -131,21 +145,21 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
                   setSkills(next);
                 }}
               />
-              已掌握：{label}
+              {t('band.profile.skillMastered', { label })}
             </label>
           ))}
         </section>
 
         <div className="mt-6 flex justify-end gap-2">
           <button type="button" onClick={onClose} className="rounded-lg px-4 py-2 hover:bg-slate-800">
-            取消
+            {t('common.cancel')}
           </button>
           <button
             type="submit"
             disabled={loading}
             className="rounded-lg bg-accent-600 px-4 py-2 hover:bg-accent-500 disabled:opacity-50"
           >
-            {loading ? '保存中…' : '保存'}
+            {loading ? t('common.saving') : t('common.save')}
           </button>
         </div>
       </form>

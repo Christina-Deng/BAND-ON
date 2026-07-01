@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useLocale } from '../../hooks/useLocale';
 import { StyleMultiSelect } from '../shared/StyleMultiSelect';
 
 interface Props {
@@ -21,6 +22,7 @@ export function EditBandDialog({
   onClose,
   onSubmit,
 }: Props) {
+  const { t } = useLocale();
   const openedAtRef = useRef(0);
   const [name, setName] = useState(initialName);
   const [stylePreferences, setStylePreferences] = useState(initialStylePreferences);
@@ -63,13 +65,13 @@ export function EditBandDialog({
         onSubmit={handleSubmit}
       >
         <h2 id="edit-band-title" className="text-lg font-semibold text-emphasis">
-          编辑乐队资料
+          {t('band.edit.title')}
         </h2>
-        <p className="mt-1 text-sm text-slate-400">所有成员均可修改队名和风格偏好。</p>
+        <p className="mt-1 text-sm text-slate-400">{t('band.edit.subtitle')}</p>
 
         <div className="mt-4 space-y-4">
           <label className="block space-y-1">
-            <span className="text-sm font-medium text-slate-300">乐队名称</span>
+            <span className="text-sm font-medium text-slate-300">{t('band.edit.nameLabel')}</span>
             <input
               className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2"
               value={name}
@@ -79,8 +81,8 @@ export function EditBandDialog({
           </label>
 
           <StyleMultiSelect
-            label="乐队风格偏好（可选）"
-            hint="用于歌单推荐筛选；未设置时会合并成员问卷中的风格"
+            label={t('band.edit.styleLabel')}
+            hint={t('band.edit.styleHint')}
             selected={stylePreferences}
             onChange={setStylePreferences}
           />
@@ -99,14 +101,14 @@ export function EditBandDialog({
             disabled={loading}
             className="rounded-lg px-4 py-2 text-sm hover:bg-slate-800 disabled:opacity-50"
           >
-            取消
+            {t('common.cancel')}
           </button>
           <button
             type="submit"
             disabled={loading || !name.trim()}
             className="rounded-lg bg-accent-600 px-4 py-2 text-sm font-medium hover:bg-accent-500 disabled:opacity-50"
           >
-            {loading ? '保存中…' : '保存'}
+            {loading ? t('common.saving') : t('common.save')}
           </button>
         </div>
       </form>

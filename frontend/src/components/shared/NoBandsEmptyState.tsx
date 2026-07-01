@@ -1,23 +1,23 @@
 import { Link } from 'react-router-dom';
+import { useLocale } from '../../hooks/useLocale';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-export function NoBandsEmptyState({
-  title = '还没有加入乐队',
-  description = '创建或加入乐队后即可使用本功能。',
-}: Props) {
+export function NoBandsEmptyState({ title, description }: Props) {
+  const { t } = useLocale();
+
   return (
     <div className="empty-state-panel rounded-xl p-8 text-center">
-      <p className="text-lg text-slate-300">{title}</p>
-      <p className="mt-2 text-sm text-slate-500">{description}</p>
+      <p className="text-lg text-slate-300">{title ?? t('band.empty.title')}</p>
+      <p className="mt-2 text-sm text-slate-500">{description ?? t('band.empty.description')}</p>
       <Link
         to="/"
         className="mt-6 inline-flex rounded-lg border border-accent-600 bg-accent-600 px-4 py-2 text-sm font-medium text-white hover:bg-accent-500"
       >
-        去首页创建 / 加入乐队
+        {t('band.empty.cta')}
       </Link>
     </div>
   );

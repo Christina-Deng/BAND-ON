@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useAudioContext } from '../../../hooks/useAudioContext';
+import { useLocale } from '../../../hooks/useLocale';
 import {
   BASS_STRINGS,
   detectPitch,
@@ -11,11 +12,6 @@ import {
 } from '../../../lib/audio/pitch';
 
 type TunerState = 'idle' | 'listening' | 'error';
-
-const INSTRUMENT_LABELS = {
-  guitar: '吉他',
-  bass: '贝斯',
-} as const;
 
 function ReferenceStringButtons({
   title,
@@ -52,6 +48,7 @@ function ReferenceStringButtons({
 }
 
 export function Tuner() {
+  const { t } = useLocale();
   const { getContext } = useAudioContext();
   const [state, setState] = useState<TunerState>('idle');
   const [error, setError] = useState('');
@@ -66,6 +63,14 @@ export function Tuner() {
   const nearestMatch = useMemo(
     () => (note ? nearestTuningString(note.frequency) : null),
     [note],
+  );
+
+  const instrumentLabels = useMemo(
+    () => ({
+      guitar: t('practice.tuner.guitar'),
+      bass: t('practice.tuner.bass'),
+    }),
+    [t],
   );
 
   const stop = useCallback(() => {
@@ -117,10 +122,10 @@ export function Tuner() {
       setState('listening');
       rafRef.current = requestAnimationFrame(tick);
     } catch {
-      setError('无法访问麦克风，请检查浏览器权限');
+      setError(t('practice.tuner.micError'));
       setState('error');
     }
-  }, [getContext, tick]);
+  }, [getContext, tick, t]);
 
   useEffect(() => {
     return () => stop();
@@ -135,8 +140,8 @@ export function Tuner() {
     <div className="space-y-5">
       <div>
         <p className="rock-kicker">TUNER</p>
-        <h3 className="section-title mt-1">调音器</h3>
-        <p className="page-lead mt-1">对着麦克风拨弦，对准绿色区域</p>
+        <h3 className="section-title mt-1">{t('practice.tuner.title')}</h3>
+        <p className="page-lead mt-1">{t('practice.tuner.lead')}</p>
       </div>
 
       <div className="rounded-xl border border-slate-700 bg-slate-950/50 px-4 py-6 text-center">
@@ -148,14 +153,11 @@ export function Tuner() {
           {note?.name ?? '—'}
         </p>
         <p className="mt-2 text-sm text-slate-400 tabular-nums">
-          {note ? `${note.frequency.toFixed(1)} Hz` : '等待输入…'}
+          {note ? `${note.frequency.toFixed(1)} Hz` : '—'}
         </p>
         {nearestMatch && (
           <p className="mt-3 text-sm text-slate-300">
-            最接近{' '}
-            <span className="font-medium text-emphasis">
-              {INSTRUMENT_LABELS[nearestMatch.string.instrument]} {nearestMatch.string.label}
-            </span>
+            {instrumentLabels[nearestMatch.string.instrument]} {nearestMatch.string.label}
             <span className="ml-1 text-slate-500 tabular-nums">
               ({nearestMatch.diffHz > 0 ? '+' : ''}
               {nearestMatch.diffHz.toFixed(1)} Hz)
@@ -175,32 +177,28 @@ export function Tuner() {
           />
         </div>
         <div className="flex justify-between text-xs text-slate-500 tabular-nums">
-          <span>偏低</span>
-          <span>{note ? `${cents > 0 ? '+' : ''}${cents} ¢` : '0 ¢'}</span>
-          <span>偏高</span>
+          <span>{t('practice.tuner.flat')}</span>
+          <span>{note ? `${cents > 0 ? '+' : ''}${cents} ¢` : inTune ? t('practice.tuner.inTune') : '0 ¢'}</span>
+          <span>{t('practice.tuner.sharp')}</span>
         </div>
       </div>
 
       <div className="space-y-4 rounded-xl border border-slate-700/80 bg-slate-950/30 p-3">
-        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">参考音</p>
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
+          {t('practice.tuner.reference')}
+        </p>
         <ReferenceStringButtons
-          title="吉他标准调弦 (E A D G B E)"
+          title={t('practice.tuner.guitar')}
           strings={GUITAR_STRINGS}
           referenceHz={referenceHz}
           onSelect={setReferenceHz}
         />
         <ReferenceStringButtons
-          title="贝斯标准调弦 (E A D G)"
+          title={t('practice.tuner.bass')}
           strings={BASS_STRINGS}
           referenceHz={referenceHz}
           onSelect={setReferenceHz}
         />
-        {referenceHz !== null && (
-          <p className="text-xs text-slate-500 tabular-nums">
-            目标 {referenceHz.toFixed(2)} Hz
-            {note ? ` · 偏差 ${(note.frequency - referenceHz).toFixed(1)} Hz` : ''}
-          </p>
-        )}
       </div>
 
       {error && <p className="text-sm text-accent-400">{error}</p>}
@@ -214,7 +212,7 @@ export function Tuner() {
             : 'bg-accent-600 text-white hover:bg-accent-700'
         }`}
       >
-        {state === 'listening' ? '停止调音' : '开始调音'}
+        {state === 'listening' ? t('practice.tuner.stop') : t('practice.tuner.start')}
       </button>
     </div>
   );

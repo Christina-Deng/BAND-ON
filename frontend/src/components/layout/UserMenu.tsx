@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
+import { useLocale } from '../../hooks/useLocale';
 
 export function UserMenu() {
   const { user, logout } = useAuth();
+  const { t } = useLocale();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -56,7 +58,7 @@ export function UserMenu() {
         className="flex items-center gap-1.5 rounded-lg border border-slate-600 px-2.5 py-1.5 hover:border-slate-500 hover:bg-slate-800"
         aria-expanded={open}
         aria-haspopup="menu"
-        aria-label="账户菜单"
+        aria-label={t('nav.accountMenu')}
       >
         <span className="text-sm font-semibold text-emphasis">{user.displayName}</span>
         <ChevronIcon open={open} />
@@ -77,7 +79,7 @@ export function UserMenu() {
               className="block px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-emphasis"
               onClick={() => setOpen(false)}
             >
-              账户设置
+              {t('nav.accountSettings')}
             </Link>
             <button
               type="button"
@@ -85,7 +87,7 @@ export function UserMenu() {
               onClick={() => void handleLogout()}
               className="block w-full px-4 py-2.5 text-left text-sm text-slate-300 hover:bg-slate-800 hover:text-emphasis"
             >
-              退出登录
+              {t('nav.logout')}
             </button>
           </div>,
           document.body,

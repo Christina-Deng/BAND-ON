@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
+import { useLocale } from '../../hooks/useLocale';
 import { AppearanceMenu } from './AppearanceMenu';
 import { BrandWordmark } from './BrandWordmark';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { PosterBackground } from './PosterBackground';
 
 interface Props {
@@ -11,6 +13,8 @@ interface Props {
 }
 
 export function AuthPageLayout({ title, lead, children, footer }: Props) {
+  const { t } = useLocale();
+
   return (
     <div className="auth-shell relative min-h-screen px-4 py-8 md:py-12">
       <PosterBackground variant="auth" />
@@ -18,10 +22,10 @@ export function AuthPageLayout({ title, lead, children, footer }: Props) {
         <aside className="auth-brand relative hidden md:block">
           <BrandWordmark className="text-5xl leading-none lg:text-6xl" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
-            Your band, on. Rehearsals in sync.
+            {t('auth.taglineEn')}
           </p>
           <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-400">
-            乐队的排练小助手 — 选对歌，记录练习，看见队友。
+            {t('auth.taglineZh')}
           </p>
           <p className="auth-watermark" aria-hidden>
             BAND·ON
@@ -29,9 +33,12 @@ export function AuthPageLayout({ title, lead, children, footer }: Props) {
         </aside>
 
         <div className="relative z-[1] w-full justify-self-end">
-          <div className="mb-6 flex items-center justify-between md:justify-end">
+          <div className="mb-6 flex items-center justify-between md:justify-end md:gap-2">
             <BrandWordmark className="text-2xl md:hidden" />
-            <AppearanceMenu />
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher />
+              <AppearanceMenu />
+            </div>
           </div>
 
           <div className="poster-card rounded-xl p-6 md:p-8">

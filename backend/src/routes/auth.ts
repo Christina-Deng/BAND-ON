@@ -79,6 +79,7 @@ export async function registerAuthRoutes(app: FastifyInstance) {
     const body = request.body as {
       displayName?: string;
       themePreference?: string | null;
+      localePreference?: string | null;
     };
 
     try {
@@ -93,7 +94,9 @@ export async function registerAuthRoutes(app: FastifyInstance) {
             ? '昵称不能超过 50 个字符'
             : err.message === 'Invalid theme preference'
               ? '无效的外观主题'
-              : err.message === 'No fields to update'
+              : err.message === 'Invalid locale preference'
+                ? '无效的语言设置'
+                : err.message === 'No fields to update'
                 ? '没有可更新的内容'
                 : err.message;
       return reply.status(err.statusCode ?? 500).send({

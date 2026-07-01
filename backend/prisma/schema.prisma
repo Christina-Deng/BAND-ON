@@ -22,6 +22,7 @@ model User {
   passwordHash String   @map("password_hash")
   displayName  String   @map("display_name")
   themePreference String? @map("theme_preference")
+  localePreference String? @map("locale_preference")
   createdAt    DateTime @default(now()) @map("created_at")
 
   bandMembers  BandMember[]

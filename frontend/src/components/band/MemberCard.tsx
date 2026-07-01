@@ -1,9 +1,10 @@
 import {
   formatPlayingExperience,
   formatStylePreferences,
-  INSTRUMENT_LABELS,
+  getInstrumentLabel,
   resolveStylePreferenceIds,
 } from '../../constants/music';
+import { useLocale } from '../../hooks/useLocale';
 import type { BandMember } from '../../types/band';
 
 export function MemberCard({
@@ -13,11 +14,13 @@ export function MemberCard({
   member: BandMember;
   isSelf?: boolean;
 }) {
+  const { locale, t } = useLocale();
   const answers = member.questionnaireAnswers;
   const complete = answers !== null;
 
   const playingExperience = formatPlayingExperience(
     answers?.playingExperience ?? answers?.weeklyPracticeHours,
+    locale,
   );
   const styleIds = answers ? resolveStylePreferenceIds(answers) : [];
 
@@ -30,11 +33,11 @@ export function MemberCard({
       <div className="flex items-start justify-between gap-2">
         <div>
           <h3 className="font-semibold">{member.user.displayName}</h3>
-          <p className="text-sm text-slate-400">{INSTRUMENT_LABELS[member.instrument]}</p>
+          <p className="text-sm text-slate-400">{getInstrumentLabel(member.instrument, locale)}</p>
         </div>
         {!complete && (
           <span className="profile-incomplete-badge rounded px-2 py-0.5 text-xs">
-            资料未完善
+            {t('band.member.incomplete')}
           </span>
         )}
       </div>
@@ -46,11 +49,11 @@ export function MemberCard({
       {complete && (
         <div className="mt-3 space-y-2 rounded-lg border border-slate-800 bg-slate-950/60 px-3 py-2 text-xs">
           <p className="text-slate-400">
-            <span className="text-slate-500">琴龄 · </span>
-            {playingExperience ?? '未填写'}
+            <span className="text-slate-500">{t('band.member.experience')} · </span>
+            {playingExperience ?? t('common.notFilled')}
           </p>
           <div>
-            <p className="mb-1 text-slate-500">喜欢</p>
+            <p className="mb-1 text-slate-500">{t('band.member.styles')}</p>
             {styleIds.length > 0 ? (
               <div className="flex flex-wrap gap-1">
                 {styleIds.map((id) => (
@@ -58,12 +61,12 @@ export function MemberCard({
                     key={id}
                     className="rounded-full border border-slate-700 bg-slate-900 px-2 py-0.5 text-slate-300"
                   >
-                    {formatStylePreferences([id])}
+                    {formatStylePreferences([id], locale)}
                   </span>
                 ))}
               </div>
             ) : (
-              <p className="text-slate-400">未填写</p>
+              <p className="text-slate-400">{t('common.notFilled')}</p>
             )}
           </div>
         </div>

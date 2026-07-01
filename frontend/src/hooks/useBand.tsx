@@ -2,6 +2,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import { getApiErrorMessage } from '../api/client';
 import * as bandsApi from '../api/bands';
 import type { Band } from '../types/band';
+import { translate } from '../lib/i18n/translate';
+import { getStoredLocale } from '../lib/i18n/locale';
 import { useAuth } from './useAuth';
 
 interface BandContextValue {
@@ -36,7 +38,7 @@ export function BandProvider({ children }: { children: ReactNode }) {
       setBands(data);
     } catch (err) {
       setBands([]);
-      setError(getApiErrorMessage(err, '加载乐队失败，请确认 backend 已启动并已重启'));
+      setError(getApiErrorMessage(err, translate(getStoredLocale(), 'band.loadFailed')));
     } finally {
       setLoading(false);
     }

@@ -3,10 +3,12 @@ import { Link, Navigate } from 'react-router-dom';
 import { getApiErrorMessage } from '../api/client';
 import { AuthPageLayout } from '../components/layout/AuthPageLayout';
 import { useAuth } from '../hooks/useAuth';
+import { useLocale } from '../hooks/useLocale';
 import { getPendingInviteCode } from '../lib/invite';
 
 export function RegisterPage() {
   const { user, register } = useAuth();
+  const { t } = useLocale();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -22,26 +24,26 @@ export function RegisterPage() {
     try {
       await register(email, password, displayName);
     } catch (err) {
-      setError(getApiErrorMessage(err, '注册失败，请稍后重试'));
+      setError(getApiErrorMessage(err, t('common.registerFailed')));
     }
   }
 
   return (
     <AuthPageLayout
-      title="注册"
-      lead="创建账号，开始和队友一起练、一起进步。"
+      title={t('auth.register.title')}
+      lead={t('auth.register.lead')}
       footer={
         <>
-          已有账号？
+          {t('auth.register.hasAccount')}
           <Link to="/login" className="text-accent-500 hover:text-accent-400">
-            登录
+            {t('auth.register.loginLink')}
           </Link>
         </>
       }
     >
       <form onSubmit={handleSubmit} className="space-y-3">
         <input
-          placeholder="昵称"
+          placeholder={t('auth.register.name')}
           className="w-full rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2.5"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
@@ -49,7 +51,7 @@ export function RegisterPage() {
         />
         <input
           type="email"
-          placeholder="邮箱"
+          placeholder={t('auth.register.email')}
           className="w-full rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2.5"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -57,7 +59,7 @@ export function RegisterPage() {
         />
         <input
           type="password"
-          placeholder="密码"
+          placeholder={t('auth.register.password')}
           className="w-full rounded-lg border border-slate-700 bg-slate-950/80 px-3 py-2.5"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -68,7 +70,7 @@ export function RegisterPage() {
           type="submit"
           className="w-full rounded-lg bg-accent-600 py-2.5 font-medium hover:bg-accent-500"
         >
-          注册
+          {t('auth.register.submit')}
         </button>
       </form>
     </AuthPageLayout>

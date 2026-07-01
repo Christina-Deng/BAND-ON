@@ -18,6 +18,7 @@ import { NoBandsEmptyState } from '../components/shared/NoBandsEmptyState';
 import { createToast, ToastStack, type ToastMessage } from '../components/shared/ToastStack';
 import { useAuth } from '../hooks/useAuth';
 import { useBand } from '../hooks/useBand';
+import { useLocale } from '../hooks/useLocale';
 import { celebrateCheckIn, celebrateTeamComplete } from '../lib/celebration';
 import type { PracticeLog, PracticeStats, TodayMemberStatus } from '../types/practice';
 
@@ -29,6 +30,7 @@ function currentMonth() {
 export function PracticePage() {
   const { user } = useAuth();
   const { bands, loading } = useBand();
+  const { t } = useLocale();
   const [viewBandId, setViewBandId] = useState('');
   const [month, setMonth] = useState(currentMonth());
   const [practices, setPractices] = useState<PracticeLog[]>([]);
@@ -90,12 +92,10 @@ export function PracticePage() {
     return practices.filter((p) => p.date.slice(0, 10) === selectedDate);
   }, [practices, selectedDate]);
 
-  if (loading) return <p className="text-slate-400">加载中…</p>;
+  if (loading) return <p className="text-slate-400">{t('common.loading')}</p>;
 
   if (bands.length === 0) {
-    return (
-      <NoBandsEmptyState description="创建或加入乐队后，才能打卡并查看团队练习情况。" />
-    );
+    return <NoBandsEmptyState description={t('practice.emptyDescription')} />;
   }
 
   async function handleCheckIn(input: {
@@ -116,11 +116,11 @@ export function PracticePage() {
       if (input.audio) formData.append('audio', input.audio);
       try {
         await submitPractice(formData);
-        const bandName = bands.find((b) => b.id === bandId)?.name ?? '未知乐队';
+        const bandName = bands.find((b) => b.id === bandId)?.name ?? t('common.unknownBand');
         succeeded.push(bandName);
         succeededBandIds.push(bandId);
       } catch {
-        const bandName = bands.find((b) => b.id === bandId)?.name ?? '未知乐队';
+        const bandName = bands.find((b) => b.id === bandId)?.name ?? t('common.unknownBand');
         failed.push(bandName);
         failedBandIds.push(bandId);
       }
@@ -134,10 +134,9 @@ export function PracticePage() {
   async function handleCheckInSuccess(result: CheckInResult, durationMinutes: number) {
     celebrateCheckIn();
 
+    const listSep = t('common.listSep');
     const bandText =
-      result.succeeded.length === 1
-        ? result.succeeded[0]
-        : result.succeeded.join('、');
+      result.succeeded.length === 1 ? result.succeeded[0] : result.succeeded.join(listSep);
 
     let personalStats = stats?.personal;
     if (viewBandId) {
@@ -150,12 +149,12 @@ export function PracticePage() {
       }
     }
 
-    let toastText = `打卡成功！${bandText} · ${durationMinutes} 分钟`;
+    let toastText = t('practice.toast.success', { bands: bandText, minutes: durationMinutes });
     if (personalStats) {
       if (personalStats.streakDays > 0) {
-        toastText += ` · 连续 ${personalStats.streakDays} 天`;
+        toastText += t('practice.toast.streak', { days: personalStats.streakDays });
       }
-      toastText += ` · 本周 ${personalStats.weekMinutes} 分钟`;
+      toastText += t('practice.toast.weekMinutes', { minutes: personalStats.weekMinutes });
     }
 
     setToasts((prev) => [...prev, createToast(toastText)]);
@@ -164,11 +163,11 @@ export function PracticePage() {
       try {
         const bandStats = await getPracticeStats(bandId);
         if (bandStats.band.teamToday.allCheckedIn) {
-          const bandName = bands.find((b) => b.id === bandId)?.name ?? '乐队';
+          const bandName = bands.find((b) => b.id === bandId)?.name ?? t('common.bandFallback');
           celebrateTeamComplete();
           setToasts((prev) => [
             ...prev,
-            createToast(`🎉 ${bandName} 今日全员到齐！`),
+            createToast(t('practice.toast.allMembers', { band: bandName })),
           ]);
         }
       } catch {
@@ -179,7 +178,7 @@ export function PracticePage() {
     if (result.failed.length > 0) {
       setToasts((prev) => [
         ...prev,
-        createToast(`${result.failed.join('、')} 未能打卡（可能今日已打卡）`, 'warning'),
+        createToast(t('practice.toast.partialFail', { names: result.failed.join(listSep) }), 'warning'),
       ]);
     }
   }
@@ -190,99 +189,100 @@ export function PracticePage() {
 
   return (
     <PracticeToolsLayout>
-    <div className="space-y-6">
-      <ToastStack toasts={toasts} onDismiss={dismissToast} />
+      <div className="space-y-6">
+        <ToastStack toasts={toasts} onDismiss={dismissToast} />
 
-      <PageHeader
-        title="练习打卡"
-        lead={
-          bands.length > 1
-            ? '你加入了多个乐队，可分别打卡和查看团队状态'
-            : viewBand?.name
-        }
-      />
-
-      {stats && <PersonalStatsPanel stats={stats.personal} />}
-
-      <div className="grid gap-6 lg:grid-cols-2">
-        <CheckInForm
-          bands={bands}
-          checkedInBandIds={checkedInBandIds}
-          onSubmit={handleCheckIn}
-          onSuccess={(result, minutes) => void handleCheckInSuccess(result, minutes)}
+        <PageHeader
+          title={t('practice.title')}
+          lead={
+            bands.length > 1 ? t('practice.leadMulti') : viewBand?.name
+          }
         />
+
+        {stats && <PersonalStatsPanel stats={stats.personal} />}
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          <CheckInForm
+            bands={bands}
+            checkedInBandIds={checkedInBandIds}
+            onSubmit={handleCheckIn}
+            onSuccess={(result, minutes) => void handleCheckInSuccess(result, minutes)}
+          />
+
+          <div className="space-y-3">
+            <BandPicker
+              bands={bands}
+              selectedIds={viewBandId ? [viewBandId] : []}
+              onChange={(ids) => setViewBandId(ids[0] ?? '')}
+              label={t('practice.viewTeam')}
+              hint={t('practice.viewTeamHint')}
+            />
+            {stats && viewBand && <TeamStatsPanel stats={stats.band} bandName={viewBand.name} />}
+            <TeamStatusPanel members={todayMembers} currentUserId={user?.id} />
+          </div>
+        </div>
 
         <div className="space-y-3">
           <BandPicker
             bands={bands}
             selectedIds={viewBandId ? [viewBandId] : []}
             onChange={(ids) => setViewBandId(ids[0] ?? '')}
-            label="查看团队练习"
-            hint="选择要查看今日打卡情况的乐队"
+            label={t('practice.calendar')}
+            hint={t('practice.calendarHint')}
           />
-          {stats && viewBand && <TeamStatsPanel stats={stats.band} bandName={viewBand.name} />}
-          <TeamStatusPanel members={todayMembers} currentUserId={user?.id} />
+          <PracticeCalendar
+            month={month}
+            practices={practices}
+            selectedDate={selectedDate}
+            onSelectDate={setSelectedDate}
+            onMonthChange={setMonth}
+          />
+        </div>
+
+        {selectedDate && (
+          <div className="poster-card rounded-xl p-4">
+            <p className="rock-kicker">SESSION LOG</p>
+            <h3 className="section-title mt-1">
+              {viewBand?.name} · {selectedDate}
+            </h3>
+            {selectedDayLogs.length === 0 ? (
+              <p className="mt-2 text-sm text-slate-500">{t('practice.noLogsToday')}</p>
+            ) : (
+              <ul className="mt-3 space-y-3 text-sm">
+                {selectedDayLogs.map((log) => {
+                  const audioSrc = resolveMediaUrl(log.audioUrl);
+                  return (
+                    <li
+                      key={log.id}
+                      className="rounded-lg border border-slate-700/80 bg-slate-950/40 px-3 py-2"
+                    >
+                      <p>
+                        {t('practice.logEntry', {
+                          name: log.user.displayName,
+                          minutes: log.durationMinutes,
+                        })}
+                        {log.note ? ` · ${log.note}` : ''}
+                      </p>
+                      {audioSrc && (
+                        <audio controls preload="metadata" className="mt-2 w-full max-w-md" src={audioSrc}>
+                          {t('practice.audioUnsupported')}
+                        </audio>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        )}
+
+        <div className="poster-card rounded-xl border-dashed p-4 text-sm text-slate-500 space-y-2">
+          <p>
+            <span className="text-slate-400">{t('practice.toolsLabel')}</span>
+            {t('practice.toolsHint')}
+          </p>
         </div>
       </div>
-
-      <div className="space-y-3">
-        <BandPicker
-          bands={bands}
-          selectedIds={viewBandId ? [viewBandId] : []}
-          onChange={(ids) => setViewBandId(ids[0] ?? '')}
-          label="练习日历"
-          hint="选择要查看打卡记录的乐队"
-        />
-        <PracticeCalendar
-          month={month}
-          practices={practices}
-          selectedDate={selectedDate}
-          onSelectDate={setSelectedDate}
-          onMonthChange={setMonth}
-        />
-      </div>
-
-      {selectedDate && (
-        <div className="poster-card rounded-xl p-4">
-          <p className="rock-kicker">SESSION LOG</p>
-          <h3 className="section-title mt-1">
-            {viewBand?.name} · {selectedDate}
-          </h3>
-          {selectedDayLogs.length === 0 ? (
-            <p className="mt-2 text-sm text-slate-500">当天暂无打卡</p>
-          ) : (
-            <ul className="mt-3 space-y-3 text-sm">
-              {selectedDayLogs.map((log) => {
-                const audioSrc = resolveMediaUrl(log.audioUrl);
-                return (
-                  <li
-                    key={log.id}
-                    className="rounded-lg border border-slate-700/80 bg-slate-950/40 px-3 py-2"
-                  >
-                    <p>
-                      {log.user.displayName} — {log.durationMinutes} 分钟
-                      {log.note ? ` · ${log.note}` : ''}
-                    </p>
-                    {audioSrc && (
-                      <audio controls preload="metadata" className="mt-2 w-full max-w-md" src={audioSrc}>
-                        你的浏览器不支持音频播放
-                      </audio>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </div>
-      )}
-
-      <div className="poster-card rounded-xl border-dashed p-4 text-sm text-slate-500 space-y-2">
-        <p>
-          <span className="text-slate-400">练习工具：</span>
-          本页可使用节拍器与调音器（桌面端右侧栏，手机端底部按钮）。
-        </p>
-      </div>
-    </div>
     </PracticeToolsLayout>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useLocale } from '../../hooks/useLocale';
 
 interface Props {
   open: boolean;
@@ -20,6 +21,7 @@ export function LeaveBandConfirmDialog({
   onClose,
   onConfirm,
 }: Props) {
+  const { t } = useLocale();
   const openedAtRef = useRef(0);
 
   useEffect(() => {
@@ -35,7 +37,6 @@ export function LeaveBandConfirmDialog({
   if (!open) return null;
 
   function handleBackdropClick() {
-    // Ignore the click that opened the dialog (same event tick / ghost click).
     if (Date.now() - openedAtRef.current < 300) return;
     if (!loading) onClose();
   }
@@ -53,21 +54,19 @@ export function LeaveBandConfirmDialog({
         onMouseDown={(e) => e.stopPropagation()}
       >
         <h2 id="leave-band-title" className="text-lg font-semibold text-emphasis">
-          确认退出乐队
+          {t('band.leave.title')}
         </h2>
 
         <p className="mt-3 text-sm text-slate-300">
-          你即将退出乐队「<span className="font-semibold text-emphasis">{bandName}</span>」。
+          {t('band.leave.body', { name: bandName })}
         </p>
 
         {isLastMember ? (
           <p className="dialog-callout mt-2 rounded-lg px-3 py-2 text-sm">
-            你是最后一名成员，退出后乐队将被解散，此操作不可撤销。
+            {t('band.leave.lastMemberBody')}
           </p>
         ) : (
-          <p className="mt-2 text-sm text-slate-400">
-            退出后可以加入或创建其他乐队。你在该乐队的练习打卡记录将被清除。
-          </p>
+          <p className="mt-2 text-sm text-slate-400">{t('band.leave.normalHint')}</p>
         )}
 
         {error && (
@@ -83,7 +82,7 @@ export function LeaveBandConfirmDialog({
             disabled={loading}
             className="rounded-lg px-4 py-2 text-sm hover:bg-slate-800 disabled:opacity-50"
           >
-            取消
+            {t('common.cancel')}
           </button>
           <button
             type="button"
@@ -91,7 +90,7 @@ export function LeaveBandConfirmDialog({
             disabled={loading}
             className="rounded-lg bg-accent-600 px-4 py-2 text-sm font-medium hover:bg-accent-500 disabled:opacity-50"
           >
-            {loading ? '退出中…' : '确定退出'}
+            {loading ? t('band.leave.confirming') : t('band.leave.confirm')}
           </button>
         </div>
       </div>

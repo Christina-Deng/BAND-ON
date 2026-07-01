@@ -1,14 +1,10 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
+import { useLocale } from '../../../hooks/useLocale';
 import { Metronome } from './Metronome';
 import { Tuner } from './Tuner';
 
 export type PracticeToolId = 'metronome' | 'tuner';
-
-const TOOLS: { id: PracticeToolId; label: string; short: string }[] = [
-  { id: 'metronome', label: '节拍器', short: '拍' },
-  { id: 'tuner', label: '调音器', short: '调' },
-];
 
 const DESKTOP_TOOLS_QUERY = '(min-width: 1280px)';
 
@@ -21,8 +17,18 @@ function ToolContent({ tool }: { tool: PracticeToolId }) {
 }
 
 export function PracticeToolsLayout({ children }: Props) {
+  const { t } = useLocale();
   const isDesktop = useMediaQuery(DESKTOP_TOOLS_QUERY);
   const [activeTool, setActiveTool] = useState<PracticeToolId | null>(null);
+
+  const tools = useMemo(
+    () =>
+      [
+        { id: 'metronome' as const, label: t('practice.tools.metronome'), short: '♩' },
+        { id: 'tuner' as const, label: t('practice.tools.tuner'), short: '♯' },
+      ],
+    [t],
+  );
 
   useEffect(() => {
     if (!activeTool) return undefined;
@@ -49,8 +55,8 @@ export function PracticeToolsLayout({ children }: Props) {
 
       {isDesktop ? (
         <>
-          <aside className="practice-tools-rail" aria-label="练习工具">
-            {TOOLS.map((tool) => (
+          <aside className="practice-tools-rail" aria-label={t('practice.toolsLabel')}>
+            {tools.map((tool) => (
               <button
                 key={tool.id}
                 type="button"
@@ -76,7 +82,7 @@ export function PracticeToolsLayout({ children }: Props) {
                   onClick={closeTool}
                   className="mb-4 text-xs text-slate-500 hover:text-slate-300"
                 >
-                  关闭 ✕
+                  {t('common.close')} ✕
                 </button>
                 <ToolContent tool={activeTool} />
               </div>
@@ -86,7 +92,7 @@ export function PracticeToolsLayout({ children }: Props) {
       ) : (
         <>
           <div className="practice-tools-mobile-bar">
-            {TOOLS.map((tool) => (
+            {tools.map((tool) => (
               <button
                 key={tool.id}
                 type="button"
@@ -106,7 +112,7 @@ export function PracticeToolsLayout({ children }: Props) {
               <button
                 type="button"
                 className="practice-tools-mobile-backdrop"
-                aria-label="关闭工具面板"
+                aria-label={t('practice.tools.closePanel')}
                 onClick={closeTool}
               />
               <div className="practice-tools-mobile-sheet poster-card" role="dialog" aria-modal="true">
@@ -117,7 +123,7 @@ export function PracticeToolsLayout({ children }: Props) {
                     onClick={closeTool}
                     className="text-xs text-slate-500 hover:text-slate-300"
                   >
-                    关闭
+                    {t('common.close')}
                   </button>
                 </div>
                 <ToolContent tool={activeTool} />

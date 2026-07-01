@@ -1,4 +1,5 @@
 import type { Band } from '../../types/band';
+import { useLocale } from '../../hooks/useLocale';
 
 interface Props {
   bands: Band[];
@@ -19,6 +20,8 @@ export function BandPicker({
   multiple = false,
   disabledIds = [],
 }: Props) {
+  const { t } = useLocale();
+
   function toggle(id: string) {
     if (disabledIds.includes(id)) return;
     if (multiple) {
@@ -57,7 +60,11 @@ export function BandPicker({
               }`}
             >
               {band.name}
-              {disabled && <span className="ml-1 text-[10px] font-sans font-normal">已打卡</span>}
+              {disabled && (
+                <span className="ml-1 text-[10px] font-sans font-normal">
+                  {t('band.picker.alreadyCheckedIn')}
+                </span>
+              )}
             </button>
           );
         })}

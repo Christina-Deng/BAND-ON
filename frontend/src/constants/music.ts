@@ -1,52 +1,59 @@
+import type { Locale } from '../lib/i18n/locale';
 import type { Instrument } from '../types/band';
 
 /** Curated genres for band / rehearsal contexts (CN + international). */
 export const MUSIC_STYLES = [
-  { id: 'rock', label: '摇滚' },
-  { id: 'pop', label: '流行' },
-  { id: 'indie', label: '独立' },
-  { id: 'folk', label: '民谣' },
-  { id: 'punk', label: '朋克' },
-  { id: 'postpunk', label: '后朋' },
-  { id: 'hardcore', label: '硬核' },
-  { id: 'emo', label: 'Emo' },
-  { id: 'grunge', label: 'Grunge' },
-  { id: 'mathrock', label: '数摇' },
-  { id: 'postrock', label: '后摇' },
-  { id: 'prog', label: '前卫摇滚' },
-  { id: 'shoegaze', label: '自赏' },
-  { id: 'metal', label: '金属' },
-  { id: 'deathcore', label: '死旋 / 死核' },
-  { id: 'blues', label: '蓝调' },
-  { id: 'funk', label: '放克' },
-  { id: 'jazz', label: '爵士' },
-  { id: 'rnb', label: 'R&B / Soul' },
-  { id: 'reggae', label: '雷鬼' },
-  { id: 'acg', label: 'ACG（动漫/游戏）' },
-  { id: 'electronic', label: '电子' },
-  { id: 'country', label: '乡村' },
-  { id: 'classical', label: '古典 / 融合' },
-  { id: 'world', label: '世界音乐' },
+  { id: 'rock', label: '摇滚', labelEn: 'Rock' },
+  { id: 'pop', label: '流行', labelEn: 'Pop' },
+  { id: 'indie', label: '独立', labelEn: 'Indie' },
+  { id: 'folk', label: '民谣', labelEn: 'Folk' },
+  { id: 'punk', label: '朋克', labelEn: 'Punk' },
+  { id: 'postpunk', label: '后朋', labelEn: 'Post-punk' },
+  { id: 'hardcore', label: '硬核', labelEn: 'Hardcore' },
+  { id: 'emo', label: 'Emo', labelEn: 'Emo' },
+  { id: 'grunge', label: 'Grunge', labelEn: 'Grunge' },
+  { id: 'mathrock', label: '数摇', labelEn: 'Math rock' },
+  { id: 'postrock', label: '后摇', labelEn: 'Post-rock' },
+  { id: 'prog', label: '前卫摇滚', labelEn: 'Progressive rock' },
+  { id: 'shoegaze', label: '自赏', labelEn: 'Shoegaze' },
+  { id: 'metal', label: '金属', labelEn: 'Metal' },
+  { id: 'deathcore', label: '死旋 / 死核', labelEn: 'Deathcore / death metal' },
+  { id: 'blues', label: '蓝调', labelEn: 'Blues' },
+  { id: 'funk', label: '放克', labelEn: 'Funk' },
+  { id: 'jazz', label: '爵士', labelEn: 'Jazz' },
+  { id: 'rnb', label: 'R&B / Soul', labelEn: 'R&B / Soul' },
+  { id: 'reggae', label: '雷鬼', labelEn: 'Reggae' },
+  { id: 'acg', label: 'ACG（动漫/游戏）', labelEn: 'ACG (anime / games)' },
+  { id: 'electronic', label: '电子', labelEn: 'Electronic' },
+  { id: 'country', label: '乡村', labelEn: 'Country' },
+  { id: 'classical', label: '古典 / 融合', labelEn: 'Classical / fusion' },
+  { id: 'world', label: '世界音乐', labelEn: 'World' },
 ] as const;
 
 export type MusicStyleId = (typeof MUSIC_STYLES)[number]['id'];
 
-/** Retired ids still stored on older band/member profiles. */
-const LEGACY_STYLE_LABELS: Record<string, string> = {
-  hiphop: '嘻哈 / 说唱',
+const LEGACY_STYLE_LABELS: Record<string, { zh: string; en: string }> = {
+  hiphop: { zh: '嘻哈 / 说唱', en: 'Hip-hop / rap' },
 };
 
-const styleLabelMap = Object.fromEntries(MUSIC_STYLES.map((s) => [s.id, s.label])) as Record<
-  MusicStyleId,
-  string
->;
-
-export function formatStylePreferences(ids: string[] | null | undefined): string {
-  if (!ids?.length) return '';
-  return ids.map((id) => styleLabelMap[id as MusicStyleId] ?? LEGACY_STYLE_LABELS[id] ?? id).join('、');
+export function getStyleLabel(id: string, locale: Locale = 'zh'): string {
+  const style = MUSIC_STYLES.find((s) => s.id === id);
+  if (style) return locale === 'en' ? style.labelEn : style.label;
+  const legacy = LEGACY_STYLE_LABELS[id];
+  if (legacy) return locale === 'en' ? legacy.en : legacy.zh;
+  return id;
 }
 
-export const INSTRUMENT_LABELS: Record<Instrument, string> = {
+export function formatStylePreferences(
+  ids: string[] | null | undefined,
+  locale: Locale = 'zh',
+): string {
+  if (!ids?.length) return '';
+  const sep = locale === 'en' ? ', ' : '、';
+  return ids.map((id) => getStyleLabel(id, locale)).join(sep);
+}
+
+const INSTRUMENT_LABELS_ZH: Record<Instrument, string> = {
   GUITAR: '吉他',
   BASS: '贝斯',
   DRUMS: '鼓',
@@ -55,11 +62,22 @@ export const INSTRUMENT_LABELS: Record<Instrument, string> = {
   OTHER: '其他',
 };
 
-/**
- * Progressive skill checkpoints per instrument (aligned with common curricula /
- * ABRSM-adjacent milestones, adapted for self-assessment in a band context).
- */
-export const INSTRUMENT_SKILL_QUESTIONS: Record<Instrument, string[]> = {
+const INSTRUMENT_LABELS_EN: Record<Instrument, string> = {
+  GUITAR: 'Guitar',
+  BASS: 'Bass',
+  DRUMS: 'Drums',
+  VOCALS: 'Vocals',
+  KEYBOARD: 'Keyboard',
+  OTHER: 'Other',
+};
+
+export function getInstrumentLabel(instrument: Instrument, locale: Locale = 'zh'): string {
+  return locale === 'en' ? INSTRUMENT_LABELS_EN[instrument] : INSTRUMENT_LABELS_ZH[instrument];
+}
+
+export const INSTRUMENT_LABELS = INSTRUMENT_LABELS_ZH;
+
+const INSTRUMENT_SKILL_QUESTIONS_ZH: Record<Instrument, string[]> = {
   GUITAR: [
     '开放和弦与稳定扫弦/分解',
     '横按和弦与流畅转换',
@@ -104,23 +122,97 @@ export const INSTRUMENT_SKILL_QUESTIONS: Record<Instrument, string[]> = {
   ],
 };
 
-export const PLAYING_EXPERIENCE_OPTIONS = [
-  ['<1', '新手（不到 1 年）'],
-  ['1-3', '1–3 年'],
-  ['3-5', '3–5 年'],
-  ['5+', '5 年以上'],
-] as const;
+const INSTRUMENT_SKILL_QUESTIONS_EN: Record<Instrument, string[]> = {
+  GUITAR: [
+    'Open chords with steady strumming / picking',
+    'Barre chords and smooth changes',
+    'Pentatonic or lead solo improvisation',
+    'Bends, muting, slides, and articulation',
+    'Read notation or follow tabs accurately',
+  ],
+  BASS: [
+    'Root notes with basic groove',
+    'Scale positions and cross-string movement',
+    'Syncopation, fills, and ghost notes',
+    'Fingerstyle and pick technique',
+    'Read notation or follow charts',
+  ],
+  DRUMS: [
+    'Basic 4/4 and common rock-pop grooves',
+    'Snare technique and roll control',
+    'Limb independence (hi-hat + kick)',
+    'Odd meters and syncopated patterns',
+    'Dynamics and section fills',
+  ],
+  VOCALS: [
+    'Stable pitch',
+    'Breath support and long phrases',
+    'Chest / head / mixed voice transitions',
+    'Harmonies and two-part backing',
+    'Mic technique and stage presence',
+  ],
+  KEYBOARD: [
+    'Triads and basic broken chords',
+    'Hand independence and comping patterns',
+    'Major / minor scales and simple improv',
+    'Sustain pedal and touch dynamics',
+    'Read notation or follow charts',
+  ],
+  OTHER: [
+    'Basic tone and posture',
+    'Steady time with the band',
+    'Play simple songs end-to-end',
+    'Core technique on your instrument',
+    'Read notation or follow charts',
+  ],
+};
 
-const experienceLabelMap = Object.fromEntries(
-  PLAYING_EXPERIENCE_OPTIONS.map(([id, label]) => [id, label]),
-) as Record<string, string>;
+export const INSTRUMENT_SKILL_QUESTIONS = INSTRUMENT_SKILL_QUESTIONS_ZH;
 
-export function formatPlayingExperience(experience: string | undefined): string | null {
-  if (!experience) return null;
-  return experienceLabelMap[experience] ?? experience;
+export function getInstrumentSkillQuestions(
+  instrument: Instrument,
+  locale: Locale = 'zh',
+): string[] {
+  return locale === 'en'
+    ? INSTRUMENT_SKILL_QUESTIONS_EN[instrument]
+    : INSTRUMENT_SKILL_QUESTIONS_ZH[instrument];
 }
 
-/** Resolve style ids from current or legacy questionnaire fields. */
+const PLAYING_EXPERIENCE_ZH: Record<string, string> = {
+  '<1': '新手（不到 1 年）',
+  '1-3': '1–3 年',
+  '3-5': '3–5 年',
+  '5+': '5 年以上',
+};
+
+const PLAYING_EXPERIENCE_EN: Record<string, string> = {
+  '<1': 'Beginner (< 1 year)',
+  '1-3': '1–3 years',
+  '3-5': '3–5 years',
+  '5+': '5+ years',
+};
+
+export const PLAYING_EXPERIENCE_OPTIONS = [
+  ['<1', PLAYING_EXPERIENCE_ZH['<1']],
+  ['1-3', PLAYING_EXPERIENCE_ZH['1-3']],
+  ['3-5', PLAYING_EXPERIENCE_ZH['3-5']],
+  ['5+', PLAYING_EXPERIENCE_ZH['5+']],
+] as const;
+
+export function getPlayingExperienceOptions(locale: Locale = 'zh') {
+  const labels = locale === 'en' ? PLAYING_EXPERIENCE_EN : PLAYING_EXPERIENCE_ZH;
+  return (Object.keys(labels) as Array<keyof typeof labels>).map((id) => [id, labels[id]] as const);
+}
+
+export function formatPlayingExperience(
+  experience: string | undefined,
+  locale: Locale = 'zh',
+): string | null {
+  if (!experience) return null;
+  const labels = locale === 'en' ? PLAYING_EXPERIENCE_EN : PLAYING_EXPERIENCE_ZH;
+  return labels[experience] ?? experience;
+}
+
 export function resolveStylePreferenceIds(answers: {
   stylePreferences?: string[];
   stylePreference?: string;
@@ -130,4 +222,11 @@ export function resolveStylePreferenceIds(answers: {
     return [answers.stylePreference];
   }
   return [];
+}
+
+export function getMusicStyleOptions(locale: Locale = 'zh') {
+  return MUSIC_STYLES.map((s) => ({
+    id: s.id,
+    label: locale === 'en' ? s.labelEn : s.label,
+  }));
 }
