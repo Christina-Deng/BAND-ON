@@ -13,6 +13,11 @@ export function toHttpError(error: unknown): Error & { statusCode?: number } {
     if (error.code === 'P2002') {
       return Object.assign(new Error('该邮箱已被注册'), { statusCode: 409 });
     }
+    if (error.code === 'P2021' || error.code === 'P2022') {
+      return Object.assign(new Error('数据库表未初始化，请在服务器运行 npx prisma migrate deploy'), {
+        statusCode: 503,
+      });
+    }
   }
 
   if (typeof error === 'object' && error !== null && 'statusCode' in error) {
