@@ -3,6 +3,7 @@ export interface RecommendedSong {
   title: string;
   artist: string;
   style: string;
+  styles?: string[];
   bpm?: number;
   arrangementSummary: string;
   partsSummary: string;

@@ -1,4 +1,5 @@
 import { useLocale } from '../../hooks/useLocale';
+import { formatSongStyleDisplay } from '../../constants/music';
 import type { RecommendedSong } from '../../types/song';
 
 export function RecommendationCard({ song }: { song: RecommendedSong }) {
@@ -12,6 +13,13 @@ export function RecommendationCard({ song }: { song: RecommendedSong }) {
         <div>
           <h3 className="text-lg font-semibold text-emphasis">{song.title}</h3>
           <p className="text-sm text-slate-400">{song.artist}</p>
+          <p className="mt-1 text-xs text-slate-500">
+            {t('songs.card.genre')}
+            {labelSep}
+            <span className="text-slate-400">
+              {formatSongStyleDisplay(song.style, song.styles, locale)}
+            </span>
+          </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {song.isStretch && (

@@ -269,6 +269,7 @@ export const zh = {
     card: {
       tooHard: '偏难',
       styleMismatch: '风格略偏',
+      genre: '流派',
       lineup: '编制',
       difficulty: '难度',
       stretchHints: '技能挑战',

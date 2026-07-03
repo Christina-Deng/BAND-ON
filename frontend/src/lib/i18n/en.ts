@@ -273,6 +273,7 @@ export const en = {
     card: {
       tooHard: 'Stretch',
       styleMismatch: 'Style stretch',
+      genre: 'Genre',
       lineup: 'Lineup',
       difficulty: 'Difficulty',
       stretchHints: 'Skill stretch',

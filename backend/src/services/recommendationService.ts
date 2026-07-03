@@ -35,6 +35,7 @@ function mapCandidateToRecommendedSong(
     title: song.title,
     artist: song.artist,
     style: song.style,
+    styles: song.styles,
     bpm: song.bpm,
     arrangementSummary: formatArrangementSummary(song, locale),
     partsSummary: formatPartsSummary(song, locale),

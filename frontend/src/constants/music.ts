@@ -44,6 +44,23 @@ export function getStyleLabel(id: string, locale: Locale = 'zh'): string {
   return id;
 }
 
+/** Main style with up to two subsidiary style labels, e.g. 摇滚（独立、民谣） */
+export function formatSongStyleDisplay(
+  style: string,
+  styles: string[] | undefined,
+  locale: Locale = 'zh',
+): string {
+  const main = getStyleLabel(style, locale);
+  const subsidiary = (styles ?? []).filter((id) => id !== style);
+  if (subsidiary.length === 0) return main;
+
+  const sep = locale === 'en' ? ', ' : '、';
+  const shown = subsidiary.slice(0, 2).map((id) => getStyleLabel(id, locale));
+  const suffix = subsidiary.length > 2 ? (locale === 'en' ? ', …' : '等') : '';
+  const inner = `${shown.join(sep)}${suffix}`;
+  return locale === 'en' ? `${main} (${inner})` : `${main}（${inner}）`;
+}
+
 export function formatStylePreferences(
   ids: string[] | null | undefined,
   locale: Locale = 'zh',
