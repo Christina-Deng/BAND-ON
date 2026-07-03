@@ -25,7 +25,7 @@ export function LanguageSwitcher({ compact = false, className = '' }: Props) {
       <span aria-hidden className="text-base leading-none">
         🌐
       </span>
-      <span className="text-xs font-semibold tracking-wide">
+      <span className="hidden text-xs font-semibold tracking-wide sm:inline">
         {locale === 'zh' ? t('nav.switchToEn') : t('nav.switchToZh')}
       </span>
       {!compact && (

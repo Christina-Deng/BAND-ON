@@ -7,7 +7,7 @@ export function AppLayout() {
     <div className="app-shell min-h-screen">
       <PosterBackground variant="app" />
       <NavBar />
-      <main className="relative z-[1] mx-auto max-w-5xl px-4 py-8">
+      <main className="relative z-[1] mx-auto min-w-0 max-w-5xl px-4 py-8">
         <Outlet />
       </main>
     </div>

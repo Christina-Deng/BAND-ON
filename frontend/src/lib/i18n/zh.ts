@@ -38,6 +38,7 @@ export const zh = {
     accountSettings: '账户设置',
     logout: '退出登录',
     language: '语言',
+    menu: '菜单',
     switchToEn: 'English',
     switchToZh: '中文',
   },
@@ -188,8 +189,8 @@ export const zh = {
     },
     toast: {
       success: '打卡成功！{{bands}} · {{minutes}} 分钟',
-      streak: ' · 连续 {{days}} 天',
-      weekMinutes: ' · 本周 {{minutes}} 分钟',
+      streak: '连续打卡 {{days}} 天',
+      weekMinutes: '本周练习 {{minutes}} 分钟',
       allMembers: '🎉 {{band}} 今日全员到齐！',
       partialFail: '{{names}} 未能打卡（可能今日已打卡）',
     },

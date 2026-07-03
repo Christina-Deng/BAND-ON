@@ -53,7 +53,7 @@ function ToastItem({
   return (
     <div
       role="status"
-      className={`pointer-events-auto max-w-md rounded-xl border px-4 py-3 text-sm shadow-lg transition-all duration-200 ${
+      className={`pointer-events-auto w-[min(100%,28rem)] max-w-[calc(100vw-2rem)] break-words rounded-xl border px-4 py-3 text-sm shadow-lg transition-all duration-200 ${
         toast.tone === 'warning'
           ? 'toast-default shadow-lg'
           : 'border-accent-600/40 bg-slate-900 text-emphasis shadow-accent-600/10'

@@ -38,6 +38,7 @@ export const en = {
     accountSettings: 'Settings',
     logout: 'Log out',
     language: 'Language',
+    menu: 'Menu',
     switchToEn: 'English',
     switchToZh: '中文',
   },
@@ -192,8 +193,8 @@ export const en = {
     },
     toast: {
       success: 'Checked in! {{bands}} · {{minutes}} min',
-      streak: ' · {{days}}-day streak',
-      weekMinutes: ' · {{minutes}} min this week',
+      streak: '{{days}}-day streak',
+      weekMinutes: '{{minutes}} min this week',
       allMembers: '🎉 {{band}} — full band today!',
       partialFail: '{{names}} could not check in (may already be done today)',
     },

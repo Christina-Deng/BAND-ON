@@ -150,14 +150,16 @@ export function PracticePage() {
     }
 
     let toastText = t('practice.toast.success', { bands: bandText, minutes: durationMinutes });
+    const newToasts: ToastMessage[] = [createToast(toastText)];
+
     if (personalStats) {
       if (personalStats.streakDays > 0) {
-        toastText += t('practice.toast.streak', { days: personalStats.streakDays });
+        newToasts.push(createToast(t('practice.toast.streak', { days: personalStats.streakDays })));
       }
-      toastText += t('practice.toast.weekMinutes', { minutes: personalStats.weekMinutes });
+      newToasts.push(createToast(t('practice.toast.weekMinutes', { minutes: personalStats.weekMinutes })));
     }
 
-    setToasts((prev) => [...prev, createToast(toastText)]);
+    setToasts((prev) => [...prev, ...newToasts]);
 
     for (const bandId of result.succeededBandIds) {
       try {

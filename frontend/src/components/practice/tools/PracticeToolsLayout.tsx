@@ -92,19 +92,21 @@ export function PracticeToolsLayout({ children }: Props) {
       ) : (
         <>
           <div className="practice-tools-mobile-bar">
-            {tools.map((tool) => (
-              <button
-                key={tool.id}
-                type="button"
-                aria-pressed={activeTool === tool.id}
-                onClick={() => toggleTool(tool.id)}
-                className={`practice-tools-mobile-btn ${
-                  activeTool === tool.id ? 'practice-tools-mobile-btn-active' : ''
-                }`}
-              >
-                {tool.label}
-              </button>
-            ))}
+            <div className="practice-tools-mobile-bar-inner">
+              {tools.map((tool) => (
+                <button
+                  key={tool.id}
+                  type="button"
+                  aria-pressed={activeTool === tool.id}
+                  onClick={() => toggleTool(tool.id)}
+                  className={`practice-tools-mobile-btn ${
+                    activeTool === tool.id ? 'practice-tools-mobile-btn-active' : ''
+                  }`}
+                >
+                  {tool.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {panelOpen && activeTool && (

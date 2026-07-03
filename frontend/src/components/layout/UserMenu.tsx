@@ -55,12 +55,12 @@ export function UserMenu() {
         ref={triggerRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-lg border border-slate-600 px-2.5 py-1.5 hover:border-slate-500 hover:bg-slate-800"
+        className="flex max-w-[6.5rem] items-center gap-1 rounded-lg border border-slate-600 px-2 py-1.5 hover:border-slate-500 hover:bg-slate-800 sm:max-w-none sm:gap-1.5 sm:px-2.5"
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={t('nav.accountMenu')}
       >
-        <span className="text-sm font-semibold text-emphasis">{user.displayName}</span>
+        <span className="truncate text-sm font-semibold text-emphasis">{user.displayName}</span>
         <ChevronIcon open={open} />
       </button>
 
