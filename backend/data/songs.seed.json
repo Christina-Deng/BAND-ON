@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-30",
-  "description": "Phase 2 曲库 seed v2：编制 (arrangement)、分声部难度 (parts)、缺人方案 (fallbacks)。500 首。",
+  "generatedAt": "2026-07-03",
+  "description": "Phase 2 曲库 seed v2：编制 (arrangement)、分声部难度 (parts)、缺人方案 (fallbacks)。含小编制/器乐友好扩充。",
   "songs": [
     {
       "id": "song-001",
@@ -2935,7 +2935,6 @@
       "artist": "Queen",
       "style": "rock",
       "styles": [
-        "classical",
         "pop"
       ],
       "bpm": 72,
@@ -14307,54 +14306,6 @@
       }
     },
     {
-      "id": "song-321",
-      "title": "Let It Be",
-      "artist": "The Beatles",
-      "style": "pop",
-      "styles": [
-        "rock",
-        "classical"
-      ],
-      "bpm": 73,
-      "notes": "新手友好 · 小编制 · 钢琴/吉他皆可",
-      "arrangement": {
-        "vocals": "required",
-        "guitars": {
-          "count": 1,
-          "lead": "none",
-          "rhythm": "optional"
-        },
-        "bass": "optional",
-        "drums": "program_ok",
-        "keyboard": "optional_pad"
-      },
-      "parts": {
-        "vocals": {
-          "minLevel": 1
-        },
-        "rhythmGuitar": {
-          "minLevel": 1
-        },
-        "bass": {
-          "minLevel": 1
-        },
-        "keyboard": {
-          "minLevel": 1
-        },
-        "drums": {
-          "minLevel": 1
-        }
-      },
-      "fallbacks": {
-        "missingLeadGuitar": "not_applicable",
-        "missingRhythmGuitar": "program_rhythm",
-        "missingBass": "omit",
-        "missingDrums": "program_drums",
-        "missingKeyboard": "program_pad",
-        "missingVocals": "not_applicable"
-      }
-    },
-    {
       "id": "song-322",
       "title": "旅行的意义",
       "artist": "陈绮贞",
@@ -21936,6 +21887,2765 @@
         "missingDrums": "program_drums",
         "missingKeyboard": "program_pad",
         "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-502",
+      "title": "Walk Don't Run",
+      "artist": "The Ventures",
+      "style": "rock",
+      "styles": [
+        "pop",
+        "indie"
+      ],
+      "bpm": 165,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-503",
+      "title": "Wipe Out",
+      "artist": "The Surfaris",
+      "style": "rock",
+      "styles": [
+        "punk",
+        "indie"
+      ],
+      "bpm": 165,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-504",
+      "title": "Rumble",
+      "artist": "Link Wray",
+      "style": "rock",
+      "styles": [
+        "blues",
+        "punk"
+      ],
+      "bpm": 158,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-505",
+      "title": "Misirlou",
+      "artist": "Dick Dale",
+      "style": "rock",
+      "styles": [
+        "world"
+      ],
+      "bpm": 162,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-506",
+      "title": "Pipeline",
+      "artist": "The Ventures",
+      "style": "rock",
+      "styles": [
+        "pop",
+        "indie"
+      ],
+      "bpm": 176,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-507",
+      "title": "Apache",
+      "artist": "The Shadows",
+      "style": "rock",
+      "styles": [
+        "pop",
+        "indie"
+      ],
+      "bpm": 138,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-508",
+      "title": "Sleepwalk",
+      "artist": "Santo & Johnny",
+      "style": "rock",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 120,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-509",
+      "title": "Peter Gunn",
+      "artist": "Henry Mancini",
+      "style": "rock",
+      "styles": [
+        "jazz",
+        "blues"
+      ],
+      "bpm": 124,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-510",
+      "title": "Rebel Rouser",
+      "artist": "Duane Eddy",
+      "style": "rock",
+      "styles": [
+        "country"
+      ],
+      "bpm": 140,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-511",
+      "title": "Cannonball",
+      "artist": "Duane Eddy",
+      "style": "rock",
+      "styles": [
+        "country"
+      ],
+      "bpm": 132,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-512",
+      "title": "Telstar",
+      "artist": "The Tornados",
+      "style": "rock",
+      "styles": [
+        "electronic",
+        "pop"
+      ],
+      "bpm": 150,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-513",
+      "title": "Black Magic Woman",
+      "artist": "Santana",
+      "style": "rock",
+      "styles": [
+        "blues",
+        "world"
+      ],
+      "bpm": 120,
+      "notes": "器乐摇滚 · 主音吉他",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-514",
+      "title": "Europa",
+      "artist": "Santana",
+      "style": "rock",
+      "styles": [
+        "jazz",
+        "world"
+      ],
+      "bpm": 70,
+      "notes": "器乐摇滚 · 主音吉他",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-515",
+      "title": "Jessica",
+      "artist": "The Allman Brothers Band",
+      "style": "rock",
+      "styles": [
+        "blues",
+        "country"
+      ],
+      "bpm": 104,
+      "notes": "器乐摇滚 · 主音吉他",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-516",
+      "title": "YYZ",
+      "artist": "Rush",
+      "style": "rock",
+      "styles": [
+        "prog",
+        "metal"
+      ],
+      "bpm": 136,
+      "notes": "器乐摇滚 · 前卫 riff",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-517",
+      "title": "Eruption",
+      "artist": "Van Halen",
+      "style": "rock",
+      "styles": [
+        "metal"
+      ],
+      "bpm": 103,
+      "notes": "主音吉他 showcase",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-518",
+      "title": "Cliffs of Dover",
+      "artist": "Eric Johnson",
+      "style": "rock",
+      "styles": [
+        "blues",
+        "prog"
+      ],
+      "bpm": 138,
+      "notes": "器乐摇滚 · 主音吉他",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-519",
+      "title": "Ain't Talkin' 'Bout Love",
+      "artist": "Van Halen",
+      "style": "rock",
+      "styles": [
+        "metal",
+        "punk"
+      ],
+      "bpm": 136,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-520",
+      "title": "The Lonely Bull",
+      "artist": "Herb Alpert & The Tijuana Brass",
+      "style": "rock",
+      "styles": [
+        "jazz",
+        "world"
+      ],
+      "bpm": 120,
+      "notes": "器乐摇滚 · 小编制友好",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-521",
+      "title": "Green Onions",
+      "artist": "Booker T. & the M.G.'s",
+      "style": "blues",
+      "styles": [
+        "funk",
+        "rock"
+      ],
+      "bpm": 168,
+      "notes": "蓝调器乐 · 小编制",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-522",
+      "title": "Hideaway",
+      "artist": "Freddie King",
+      "style": "blues",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 120,
+      "notes": "蓝调器乐 · 小编制",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-523",
+      "title": "The Stumble",
+      "artist": "Freddie King",
+      "style": "blues",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 112,
+      "notes": "蓝调器乐 · 小编制",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-524",
+      "title": "Honky Tonk",
+      "artist": "Bill Doggett",
+      "style": "blues",
+      "styles": [
+        "funk",
+        "rock"
+      ],
+      "bpm": 120,
+      "notes": "蓝调器乐 · 小编制",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-525",
+      "title": "Banana Pancakes",
+      "artist": "Jack Johnson",
+      "style": "pop",
+      "styles": [
+        "folk",
+        "indie"
+      ],
+      "bpm": 92,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-526",
+      "title": "Better Together",
+      "artist": "Jack Johnson",
+      "style": "pop",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 100,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-527",
+      "title": "Heartbeats",
+      "artist": "José González",
+      "style": "indie",
+      "styles": [
+        "folk",
+        "acg"
+      ],
+      "bpm": 100,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-528",
+      "title": "Landslide",
+      "artist": "Fleetwood Mac",
+      "style": "folk",
+      "styles": [
+        "pop",
+        "rock"
+      ],
+      "bpm": 79,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-529",
+      "title": "Wild World",
+      "artist": "Cat Stevens",
+      "style": "folk",
+      "styles": [
+        "pop"
+      ],
+      "bpm": 76,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-530",
+      "title": "Bubbly",
+      "artist": "Colbie Caillat",
+      "style": "pop",
+      "styles": [
+        "folk",
+        "indie"
+      ],
+      "bpm": 96,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-531",
+      "title": "Bad Day",
+      "artist": "Daniel Powter",
+      "style": "pop",
+      "styles": [
+        "rock"
+      ],
+      "bpm": 76,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-532",
+      "title": "Holocene",
+      "artist": "Bon Iver",
+      "style": "indie",
+      "styles": [
+        "folk",
+        "postrock"
+      ],
+      "bpm": 92,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-533",
+      "title": "Such Great Heights",
+      "artist": "The Postal Service",
+      "style": "indie",
+      "styles": [
+        "electronic",
+        "pop"
+      ],
+      "bpm": 112,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-534",
+      "title": "1234",
+      "artist": "Feist",
+      "style": "indie",
+      "styles": [
+        "folk",
+        "pop"
+      ],
+      "bpm": 96,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-535",
+      "title": "米店",
+      "artist": "张玮玮",
+      "style": "folk",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 88,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-536",
+      "title": "关于郑州的记忆",
+      "artist": "李志",
+      "style": "folk",
+      "styles": [
+        "indie",
+        "rock"
+      ],
+      "bpm": 72,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-537",
+      "title": "小屋",
+      "artist": "赵雷",
+      "style": "folk",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 68,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-538",
+      "title": "再见杰克",
+      "artist": "痛仰",
+      "style": "rock",
+      "styles": [
+        "folk",
+        "reggae"
+      ],
+      "bpm": 104,
+      "notes": "乐队常备 · 四件编制",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-539",
+      "title": "安和桥",
+      "artist": "宋冬野",
+      "style": "folk",
+      "styles": [
+        "indie"
+      ],
+      "bpm": 63,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-540",
+      "title": "天空之城",
+      "artist": "久石让",
+      "style": "acg",
+      "styles": [
+        "classical",
+        "folk"
+      ],
+      "bpm": 72,
+      "notes": "古典吉他 · 乐队可改编",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-541",
+      "title": "城南花已开",
+      "artist": "三亩地",
+      "style": "acg",
+      "styles": [
+        "postrock",
+        "indie"
+      ],
+      "bpm": 80,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-542",
+      "title": "Animal Nitrate",
+      "artist": "Suede",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "postpunk"
+      ],
+      "bpm": 116,
+      "notes": "独立 · Britpop/indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-543",
+      "title": "1979",
+      "artist": "The Smashing Pumpkins",
+      "style": "grunge",
+      "styles": [
+        "rock",
+        "indie"
+      ],
+      "bpm": 126,
+      "notes": "Grunge · 90s",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-544",
+      "title": "Playing God",
+      "artist": "Polyphia",
+      "style": "mathrock",
+      "styles": [
+        "prog",
+        "metal"
+      ],
+      "bpm": 120,
+      "notes": "数摇 · 器乐编制",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 2,
+          "lead": "required",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 4
+        },
+        "leadGuitar": {
+          "minLevel": 4
+        },
+        "bass": {
+          "minLevel": 4
+        },
+        "drums": {
+          "minLevel": 4
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "program_lead",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-545",
+      "title": "ふわふわ時間",
+      "artist": "放課後ティータイム",
+      "style": "acg",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 138,
+      "notes": "ACG · 校园乐队编制",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-546",
+      "title": "Utauyo☆MIRACLE",
+      "artist": "放課後ティータイム",
+      "style": "acg",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 168,
+      "notes": "Don't say \"lazy\"",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-547",
+      "title": "Asturias (Leyenda)",
+      "artist": "Isaac Albéniz",
+      "style": "classical",
+      "styles": [
+        "rock",
+        "world"
+      ],
+      "bpm": 96,
+      "notes": "古典吉他 · 乐队可改编",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-548",
+      "title": "Romance Anónimo",
+      "artist": "Traditional",
+      "style": "classical",
+      "styles": [
+        "folk",
+        "world"
+      ],
+      "bpm": 72,
+      "notes": "古典吉他 · 乐队可改编",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-549",
+      "title": "Greensleeves",
+      "artist": "Traditional",
+      "style": "classical",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 68,
+      "notes": "古典吉他 · 乐队可改编",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-550",
+      "title": "Scarborough Fair",
+      "artist": "Traditional",
+      "style": "folk",
+      "styles": [
+        "classical"
+      ],
+      "bpm": 80,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-551",
+      "title": "Malagueña",
+      "artist": "Ernesto Lecuona",
+      "style": "classical",
+      "styles": [
+        "world",
+        "folk"
+      ],
+      "bpm": 120,
+      "notes": "古典吉他 · 乐队可改编",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-552",
+      "title": "Study in E minor",
+      "artist": "Francisco Tárrega",
+      "style": "classical",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 88,
+      "notes": "古典吉他 · 乐队可改编",
+      "arrangement": {
+        "vocals": "instrumental_ok",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "omit",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-553",
+      "title": "Bull in the Heather",
+      "artist": "Sonic Youth",
+      "style": "grunge",
+      "styles": [
+        "indie",
+        "punk"
+      ],
+      "bpm": 116,
+      "notes": "Grunge · 90s",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 2,
+          "lead": "optional",
+          "rhythm": "required"
+        },
+        "bass": "required",
+        "drums": "required",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 3
+        },
+        "rhythmGuitar": {
+          "minLevel": 3
+        },
+        "leadGuitar": {
+          "minLevel": 3
+        },
+        "bass": {
+          "minLevel": 3
+        },
+        "drums": {
+          "minLevel": 3
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "combine_into_rhythm",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-554",
+      "title": "Where Is My Mind?",
+      "artist": "Pixies",
+      "style": "indie",
+      "styles": [
+        "grunge",
+        "punk"
+      ],
+      "bpm": 84,
+      "notes": "独立 · Britpop/indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-555",
+      "title": "Debaser",
+      "artist": "Pixies",
+      "style": "indie",
+      "styles": [
+        "punk",
+        "grunge"
+      ],
+      "bpm": 168,
+      "notes": "独立 · Britpop/indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-556",
+      "title": "There She Goes",
+      "artist": "The La's",
+      "style": "indie",
+      "styles": [
+        "rock",
+        "pop"
+      ],
+      "bpm": 104,
+      "notes": "独立 · Britpop/indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-557",
+      "title": "Just Like Honey",
+      "artist": "The Jesus and Mary Chain",
+      "style": "shoegaze",
+      "styles": [
+        "indie",
+        "rock"
+      ],
+      "bpm": 116,
+      "notes": "独立 · Britpop/indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-558",
+      "title": "Wave of Mutilation",
+      "artist": "Pixies",
+      "style": "indie",
+      "styles": [
+        "punk"
+      ],
+      "bpm": 168,
+      "notes": "独立 · Britpop/indie",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "optional_pad"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "not_applicable"
+      }
+    },
+    {
+      "id": "song-559",
+      "title": "Three Little Birds",
+      "artist": "Bob Marley & The Wailers",
+      "style": "reggae",
+      "styles": [
+        "folk",
+        "pop"
+      ],
+      "bpm": 148,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-560",
+      "title": "No Woman, No Cry",
+      "artist": "Bob Marley & The Wailers",
+      "style": "reggae",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 80,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-561",
+      "title": "Redemption Song",
+      "artist": "Bob Marley & The Wailers",
+      "style": "reggae",
+      "styles": [
+        "folk"
+      ],
+      "bpm": 60,
+      "notes": "小编制 · 主唱可选/可器乐",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 1
+        },
+        "rhythmGuitar": {
+          "minLevel": 1
+        },
+        "bass": {
+          "minLevel": 1
+        },
+        "drums": {
+          "minLevel": 1
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-562",
+      "title": "Bésame Mucho",
+      "artist": "Consuelo Velázquez",
+      "style": "world",
+      "styles": [
+        "jazz",
+        "folk"
+      ],
+      "bpm": 72,
+      "notes": "世界音乐 · 融合小编制",
+      "arrangement": {
+        "vocals": "optional",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "optional"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "important"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "keyboard": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "program_pad",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-563",
+      "title": "Linger",
+      "artist": "The Cranberries",
+      "style": "rock",
+      "styles": [
+        "indie",
+        "folk"
+      ],
+      "bpm": 92,
+      "notes": "乐队常备 · 四件编制",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
+      }
+    },
+    {
+      "id": "song-564",
+      "title": "Dreams",
+      "artist": "Fleetwood Mac",
+      "style": "rock",
+      "styles": [
+        "pop",
+        "folk"
+      ],
+      "bpm": 120,
+      "notes": "乐队常备 · 四件编制",
+      "arrangement": {
+        "vocals": "required",
+        "guitars": {
+          "count": 1,
+          "lead": "none",
+          "rhythm": "required"
+        },
+        "bass": "optional",
+        "drums": "program_ok",
+        "keyboard": "none"
+      },
+      "parts": {
+        "vocals": {
+          "minLevel": 2
+        },
+        "rhythmGuitar": {
+          "minLevel": 2
+        },
+        "bass": {
+          "minLevel": 2
+        },
+        "drums": {
+          "minLevel": 2
+        }
+      },
+      "fallbacks": {
+        "missingLeadGuitar": "not_applicable",
+        "missingRhythmGuitar": "program_rhythm",
+        "missingBass": "omit",
+        "missingDrums": "program_drums",
+        "missingKeyboard": "not_applicable",
+        "missingVocals": "instrumental_ok"
       }
     }
   ]
