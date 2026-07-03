@@ -3,10 +3,12 @@ import { loadSongSeed } from '../lib/songSeedLoader.js';
 import { diagnoseEmptyRecommendations } from './recommendationDiagnosis.js';
 import {
   assignCoverage,
+  computeLineupFitScore,
   evaluateSong,
   rankCandidates,
   scoreCandidates,
   STYLE_MATCH_MIN,
+  allowsStyleStretchSong,
 } from './recommendationRuleEngine.js';
 
 const newbieBand = {
@@ -21,7 +23,7 @@ const newbieBand = {
 
 describe('recommendationRuleEngine', () => {
   it('returns candidates for a newbie rock band', () => {
-    const scored = rankCandidates(scoreCandidates(loadSongSeed(), newbieBand));
+    const scored = rankCandidates(scoreCandidates(loadSongSeed(), newbieBand), newbieBand.members);
     expect(scored.length).toBeGreaterThan(10);
     expect(scored.some((c) => c.song.title === '平凡之路')).toBe(true);
   });
@@ -37,6 +39,12 @@ describe('recommendationRuleEngine', () => {
           { displayName: 'D', instrument: 'VOCALS', skillLevel: 1 },
         ],
       }),
+      [
+        { displayName: 'A', instrument: 'GUITAR', skillLevel: 1 },
+        { displayName: 'B', instrument: 'BASS', skillLevel: 1 },
+        { displayName: 'C', instrument: 'DRUMS', skillLevel: 1 },
+        { displayName: 'D', instrument: 'VOCALS', skillLevel: 1 },
+      ],
     );
     expect(scored.some((c) => c.song.title === 'Stairway to Heaven')).toBe(false);
   });
@@ -52,16 +60,18 @@ describe('recommendationRuleEngine', () => {
     ], 0);
     expect(strict).toBeNull();
 
+    const members = [
+      { displayName: 'G', instrument: 'GUITAR' as const, skillLevel: 1 },
+      { displayName: 'V', instrument: 'VOCALS' as const, skillLevel: 1 },
+      { displayName: 'B', instrument: 'BASS' as const, skillLevel: 1 },
+      { displayName: 'D', instrument: 'DRUMS' as const, skillLevel: 1 },
+    ];
     const ranked = rankCandidates(
       scoreCandidates(seed, {
         stylePreferences: ['rock', 'pop'],
-        members: [
-          { displayName: 'G', instrument: 'GUITAR', skillLevel: 1 },
-          { displayName: 'V', instrument: 'VOCALS', skillLevel: 1 },
-          { displayName: 'B', instrument: 'BASS', skillLevel: 1 },
-          { displayName: 'D', instrument: 'DRUMS', skillLevel: 1 },
-        ],
+        members,
       }),
+      members,
     );
     const stretch = ranked.find((c) => c.song.title === 'Wonderwall');
     expect(stretch).toBeDefined();
@@ -70,14 +80,16 @@ describe('recommendationRuleEngine', () => {
   });
 
   it('ranks non-stretch candidates before stretch', () => {
+    const members = [
+      { displayName: 'G', instrument: 'GUITAR' as const, skillLevel: 1 },
+      { displayName: 'V', instrument: 'VOCALS' as const, skillLevel: 1 },
+    ];
     const ranked = rankCandidates(
       scoreCandidates(loadSongSeed(), {
         stylePreferences: ['pop'],
-        members: [
-          { displayName: 'G', instrument: 'GUITAR', skillLevel: 1 },
-          { displayName: 'V', instrument: 'VOCALS', skillLevel: 1 },
-        ],
+        members,
       }),
+      members,
     );
     const firstStretchIdx = ranked.findIndex((c) => c.isStretch);
     if (firstStretchIdx > 0) {
@@ -140,11 +152,72 @@ describe('recommendationRuleEngine', () => {
         { displayName: '主唱', instrument: 'VOCALS' as const, skillLevel: 3 },
       ],
     };
-    const hotel = rankCandidates(scoreCandidates(loadSongSeed(), indie)).find(
+    const hotel = rankCandidates(scoreCandidates(loadSongSeed(), indie), indie.members).find(
       (c) => c.song.title === 'Hotel California',
     );
     expect(hotel).toBeDefined();
     expect(hotel!.arrangementHints.length + hotel!.programHints.length).toBeGreaterThan(0);
+  });
+
+  it('prefers instrumental songs when the band has no vocalist', () => {
+    const seed = loadSongSeed();
+    const members = [
+      { displayName: 'G', instrument: 'GUITAR' as const, skillLevel: 2 },
+      { displayName: 'B', instrument: 'BASS' as const, skillLevel: 2 },
+      { displayName: 'D', instrument: 'DRUMS' as const, skillLevel: 2 },
+    ];
+    const ranked = rankCandidates(
+      scoreCandidates(seed, { stylePreferences: ['rock'], members }),
+      members,
+    );
+    const top = ranked.slice(0, 6);
+    const instrumental = top.filter((c) => c.song.arrangement.vocals === 'instrumental_ok');
+    expect(instrumental.length).toBeGreaterThan(0);
+    const firstInstrumentalIdx = ranked.findIndex(
+      (c) => c.song.arrangement.vocals === 'instrumental_ok',
+    );
+    const firstVocalRequiredIdx = ranked.findIndex(
+      (c) => c.song.arrangement.vocals === 'required' && c.styleScore > 0,
+    );
+    if (firstVocalRequiredIdx >= 0 && firstInstrumentalIdx >= 0) {
+      expect(firstInstrumentalIdx).toBeLessThan(firstVocalRequiredIdx);
+    }
+  });
+
+  it('penalizes keyboard-heavy songs when the band has no keyboardist', () => {
+    const seed = loadSongSeed();
+    const pianoSong = seed.find(
+      (s) => s.arrangement.keyboard === 'required' && s.style !== 'classical',
+    )!;
+    const guitarSong = seed.find(
+      (s) =>
+        s.arrangement.keyboard === 'none' &&
+        s.arrangement.vocals === 'instrumental_ok' &&
+        s.style === 'rock',
+    )!;
+    expect(computeLineupFitScore(pianoSong, [{ displayName: 'G', instrument: 'GUITAR', skillLevel: 2 }])).toBeLessThan(
+      computeLineupFitScore(guitarSong, [{ displayName: 'G', instrument: 'GUITAR', skillLevel: 2 }]),
+    );
+  });
+
+  it('excludes primary classical songs from style-stretch when classical is not preferred', () => {
+    const seed = loadSongSeed();
+    const classical = seed.find((s) => s.style === 'classical')!;
+    expect(allowsStyleStretchSong(classical, ['rock'])).toBe(false);
+    expect(allowsStyleStretchSong(classical, ['classical'])).toBe(true);
+
+    const scored = scoreCandidates(seed, {
+      stylePreferences: ['deathcore'],
+      members: [
+        { displayName: 'G', instrument: 'GUITAR', skillLevel: 2 },
+        { displayName: 'B', instrument: 'BASS', skillLevel: 2 },
+        { displayName: 'D', instrument: 'DRUMS', skillLevel: 2 },
+      ],
+    });
+    const stretchClassical = scored.filter(
+      (c) => c.isStyleStretch && c.song.style === 'classical',
+    );
+    expect(stretchClassical).toHaveLength(0);
   });
 });
 

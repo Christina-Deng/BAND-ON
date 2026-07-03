@@ -131,7 +131,7 @@ export async function getRecommendationsForBand(
   const { bandName, ...ruleInput } = profile;
   const engineInput = { ...ruleInput, locale };
 
-  const pool = rankCandidates(scoreCandidates(loadSongSeed(), engineInput)).slice(
+  const pool = rankCandidates(scoreCandidates(loadSongSeed(), engineInput), ruleInput.members).slice(
     0,
     RECOMMEND_CANDIDATE_POOL,
   );

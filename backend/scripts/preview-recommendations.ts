@@ -70,6 +70,7 @@ function previewProfile(profile: BandProfile, songs: ReturnType<typeof loadSongS
       stylePreferences: profile.stylePreferences,
       members: profile.members,
     }),
+    profile.members,
   );
 
   console.log(`\n📊 规则引擎 — ${ranked.length} 首候选`);

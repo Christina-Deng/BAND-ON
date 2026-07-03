@@ -31,6 +31,15 @@ export interface ScoredCandidate {
 /** When style-matched candidates fall below this, include skill-fit songs outside band styles. */
 export const STYLE_MATCH_MIN = 6;
 
+/** Ranking bonus when the band has no vocalist and the song works instrumentally. */
+const INSTRUMENTAL_VOCAL_BONUS = 2;
+const OPTIONAL_VOCAL_BONUS = 1;
+const VOCAL_REQUIRED_PENALTY = 1;
+
+/** Ranking penalty when the band has no keyboardist but the song expects keys. */
+const KEYBOARD_REQUIRED_PENALTY = 3;
+const KEYBOARD_IMPORTANT_PENALTY = 2;
+
 function resolveLocale(locale?: AppLocale): AppLocale {
   return locale ?? 'zh';
 }
@@ -223,21 +232,54 @@ export function scoreCandidates(songs: SeedSong[], input: RuleEngineInput): Scor
     return styleMatched;
   }
 
-  const styleStretch = [...strictStyleMiss, ...skillStretchStyleMiss].map((scored) => ({
-    ...scored,
-    isStyleStretch: true,
-  }));
+  const styleStretch = [...strictStyleMiss, ...skillStretchStyleMiss]
+    .filter((scored) => allowsStyleStretchSong(scored.song, preferences))
+    .map((scored) => ({
+      ...scored,
+      isStyleStretch: true,
+    }));
 
   return [...styleMatched, ...styleStretch];
 }
 
-export function rankCandidates(candidates: ScoredCandidate[]): ScoredCandidate[] {
+/** Higher = better fit for the band's actual lineup (used only for ranking). */
+export function computeLineupFitScore(song: SeedSong, members: RuleEngineMember[]): number {
+  const coverage = assignCoverage(members);
+  let score = 0;
+
+  if (!coverage.vocals) {
+    if (song.arrangement.vocals === 'instrumental_ok') score += INSTRUMENTAL_VOCAL_BONUS;
+    else if (song.arrangement.vocals === 'optional') score += OPTIONAL_VOCAL_BONUS;
+    else if (song.arrangement.vocals === 'required') score -= VOCAL_REQUIRED_PENALTY;
+  }
+
+  if (!coverage.keyboard) {
+    if (song.arrangement.keyboard === 'required') score -= KEYBOARD_REQUIRED_PENALTY;
+    else if (song.arrangement.keyboard === 'important') score -= KEYBOARD_IMPORTANT_PENALTY;
+  }
+
+  return score;
+}
+
+/** Style-stretch pool excludes primary classical unless the band asked for it. */
+export function allowsStyleStretchSong(song: SeedSong, preferences: string[]): boolean {
+  if (preferences.includes('classical')) return true;
+  return song.style !== 'classical';
+}
+
+export function rankCandidates(
+  candidates: ScoredCandidate[],
+  members: RuleEngineMember[] = [],
+): ScoredCandidate[] {
   return [...candidates].sort((a, b) => {
     if (a.isStretch !== b.isStretch) return a.isStretch ? 1 : -1;
     if (Boolean(a.isStyleStretch) !== Boolean(b.isStyleStretch)) {
       return a.isStyleStretch ? 1 : -1;
     }
     if (b.styleScore !== a.styleScore) return b.styleScore - a.styleScore;
+    const lineupA = computeLineupFitScore(a.song, members);
+    const lineupB = computeLineupFitScore(b.song, members);
+    if (lineupB !== lineupA) return lineupB - lineupA;
     if (b.headroom !== a.headroom) return b.headroom - a.headroom;
     return (a.song.bpm ?? 999) - (b.song.bpm ?? 999);
   });
