@@ -96,7 +96,7 @@ function main(): void {
   const { profiles } = loadJson<{ profiles: BandProfile[] }>('band-profiles.sample.json');
   const arg = process.argv[2];
 
-  console.log(`BandMate Phase 2 — ${songs.length} 首曲库`);
+  console.log(`BAND·ON — ${songs.length} 首曲库`);
 
   if (arg === '--all' || !arg) {
     for (const profile of profiles) previewProfile(profile, songs);

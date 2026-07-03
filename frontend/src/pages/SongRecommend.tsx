@@ -8,13 +8,15 @@ import { RecommendationCard } from '../components/songs/RecommendationCard';
 import { useBand } from '../hooks/useBand';
 import { useLocale } from '../hooks/useLocale';
 import { FEATURES } from '../config/features';
+import { readStorageWithLegacy } from '../lib/storage';
 import type { RecommendedSong } from '../types/song';
 
-const USE_AI_STORAGE_KEY = 'bandmate-use-ai-recommendations';
+const USE_AI_STORAGE_KEY = 'band-on-use-ai-recommendations';
+const LEGACY_USE_AI_STORAGE_KEY = 'bandmate-use-ai-recommendations';
 
 function readUseAiPreference(): boolean {
   try {
-    return localStorage.getItem(USE_AI_STORAGE_KEY) === 'true';
+    return readStorageWithLegacy(USE_AI_STORAGE_KEY, LEGACY_USE_AI_STORAGE_KEY) === 'true';
   } catch {
     return false;
   }

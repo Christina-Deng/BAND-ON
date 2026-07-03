@@ -1,6 +1,6 @@
-# BandMate
+# BAND·ON
 
-BandMate is a band rehearsal assistant web app — React frontend, Fastify backend, and PostgreSQL database.
+BAND·ON（Band On）is a band rehearsal assistant web app — React frontend, Fastify backend, and PostgreSQL database.
 
 ## Prerequisites
 

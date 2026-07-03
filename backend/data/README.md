@@ -1,6 +1,6 @@
 # Phase 2 歌单曲库 Seed（v2）
 
-BandMate 自有曲库，供**规则引擎筛候选** + **AI 写推荐语**。尚未写入 PostgreSQL。
+Band On 自有曲库，供**规则引擎筛候选** + **AI 写推荐语**。尚未写入 PostgreSQL。
 
 ## 文件
 

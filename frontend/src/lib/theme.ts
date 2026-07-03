@@ -1,6 +1,9 @@
+import { readStorageWithLegacy } from './storage';
+
 export type ThemeId = 'indigo' | 'rock' | 'paper' | 'light';
 
-export const THEME_STORAGE_KEY = 'bandmate-theme';
+export const THEME_STORAGE_KEY = 'band-on-theme';
+const LEGACY_THEME_STORAGE_KEY = 'bandmate-theme';
 
 export const THEMES: {
   id: ThemeId;
@@ -47,7 +50,7 @@ export function isThemeId(value: string | null): value is ThemeId {
 
 export function getStoredTheme(): ThemeId {
   try {
-    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    const stored = readStorageWithLegacy(THEME_STORAGE_KEY, LEGACY_THEME_STORAGE_KEY);
     const normalized = normalizeThemeId(stored);
     if (normalized) {
       if (stored !== normalized) {

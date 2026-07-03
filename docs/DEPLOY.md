@@ -27,7 +27,7 @@
 
 ## 第 2 步：Railway — 部署后端
 
-1. 同一 Project → **New** → **GitHub Repo** → 选 `bandmate` 仓库
+1. 同一 Project → **New** → **GitHub Repo** → 选 `band-on` 仓库（GitHub 重命名后；旧名 `bandmate` 会跳转）
 2. 新服务出现后在 **Settings**：
    - **Root Directory**：`backend`
    - **Start Command**（若有该字段）：
@@ -82,7 +82,7 @@
 ## 第 4 步：Vercel — 部署前端
 
 1. [Vercel Dashboard](https://vercel.com/dashboard) → **Add New… → Project**
-2. Import GitHub 仓库 `bandmate`
+2. Import GitHub 仓库 `band-on`（或 Settings 里把 Project 显示名改为 **BAND·ON**）
 3. **Configure Project**：
 
    | 项 | 值 |

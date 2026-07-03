@@ -14,12 +14,12 @@
     <script>
       (function () {
         try {
-          var t = localStorage.getItem('bandmate-theme');
+          var t = localStorage.getItem('band-on-theme') || localStorage.getItem('bandmate-theme');
           if (t === 'amber') t = 'paper';
           if (t === 'indigo' || t === 'rock' || t === 'paper' || t === 'light') {
             document.documentElement.setAttribute('data-theme', t);
-            if (t !== localStorage.getItem('bandmate-theme')) {
-              localStorage.setItem('bandmate-theme', t);
+            if (t !== localStorage.getItem('band-on-theme')) {
+              localStorage.setItem('band-on-theme', t);
             }
           } else {
             document.documentElement.setAttribute('data-theme', 'rock');

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "bandmate/songs.seed.schema.json",
-  "title": "BandMate Song Seed v2",
+  "$id": "band-on/songs.seed.schema.json",
+  "title": "BAND·ON Song Seed v2",
   "description": "Curated rehearsal song library for Phase 2 recommendations.",
   "type": "object",
   "required": ["version", "songs"],

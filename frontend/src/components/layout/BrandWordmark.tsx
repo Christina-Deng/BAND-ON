@@ -2,7 +2,7 @@ interface Props {
   className?: string;
 }
 
-/** Visual rebrand preview: BAND·ON wordmark (internal keys still use bandmate). */
+/** BAND·ON wordmark — product display name; internal infra may still use legacy hostnames. */
 export function BrandWordmark({ className = '' }: Props) {
   return (
     <span className={`font-display-heavy tracking-widest text-accent-600 ${className}`.trim()}>

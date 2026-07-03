@@ -1,6 +1,9 @@
 export type Locale = 'zh' | 'en';
 
-export const LOCALE_STORAGE_KEY = 'bandmate-locale';
+import { readStorageWithLegacy } from '../storage';
+
+export const LOCALE_STORAGE_KEY = 'band-on-locale';
+const LEGACY_LOCALE_STORAGE_KEY = 'bandmate-locale';
 export const DEFAULT_LOCALE: Locale = 'zh';
 export const VALID_LOCALES = new Set<Locale>(['zh', 'en']);
 
@@ -11,7 +14,10 @@ export function normalizeLocale(value: string | null | undefined): Locale | null
 
 export function getStoredLocale(): Locale {
   try {
-    return normalizeLocale(localStorage.getItem(LOCALE_STORAGE_KEY)) ?? DEFAULT_LOCALE;
+    return (
+      normalizeLocale(readStorageWithLegacy(LOCALE_STORAGE_KEY, LEGACY_LOCALE_STORAGE_KEY)) ??
+      DEFAULT_LOCALE
+    );
   } catch {
     return DEFAULT_LOCALE;
   }

@@ -1,5 +1,5 @@
 {
-  "name": "bandmate-backend",
+  "name": "band-on-backend",
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
