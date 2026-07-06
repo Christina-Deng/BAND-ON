@@ -1,6 +1,7 @@
 import { prisma } from '../lib/prisma.js';
 import {
   computeStreak,
+  endOfPracticeWeek,
   parsePracticeDate,
   practiceDateString,
   startOfPracticeMonth,
@@ -11,6 +12,8 @@ export interface PersonalPracticeStats {
   streakDays: number;
   weekMinutes: number;
   weekCheckInDays: number;
+  weekStartDate: string;
+  weekEndDate: string;
   monthMinutes: number;
   monthCheckInDays: number;
 }
@@ -37,6 +40,7 @@ export { computeStreak } from '../lib/practiceDates.js';
 export async function getPracticeStats(input: {
   userId: string;
   bandId: string;
+  timeZone: string;
 }): Promise<PracticeStats> {
   const membership = await prisma.bandMember.findUnique({
     where: { bandId_userId: { bandId: input.bandId, userId: input.userId } },
@@ -45,8 +49,9 @@ export async function getPracticeStats(input: {
     throw Object.assign(new Error('Not a band member'), { statusCode: 403 });
   }
 
-  const todayStr = practiceDateString();
-  const weekStart = startOfPracticeWeek(todayStr);
+  const todayStr = practiceDateString(new Date(), input.timeZone);
+  const weekStart = startOfPracticeWeek(todayStr, input.timeZone);
+  const weekEnd = endOfPracticeWeek(todayStr, input.timeZone);
   const monthStart = startOfPracticeMonth(todayStr);
 
   const [personalLogs, bandLogs, members] = await Promise.all([
@@ -69,7 +74,7 @@ export async function getPracticeStats(input: {
 
   const personalDaily = new Map<string, number>();
   for (const log of personalLogs) {
-    const key = practiceDateString(log.date);
+    const key = practiceDateString(log.date, input.timeZone);
     personalDaily.set(key, (personalDaily.get(key) ?? 0) + log.durationMinutes);
   }
 
@@ -96,11 +101,15 @@ export async function getPracticeStats(input: {
     streakDays,
     weekMinutes,
     weekCheckInDays,
+    weekStartDate: weekStart,
+    weekEndDate: weekEnd,
     monthMinutes,
     monthCheckInDays,
   };
 
-  const todayLogs = bandLogs.filter((log) => practiceDateString(log.date) === todayStr);
+  const todayLogs = bandLogs.filter(
+    (log) => practiceDateString(log.date, input.timeZone) === todayStr,
+  );
   const checkedInUserIds = new Set(todayLogs.map((log) => log.userId));
   const totalMembers = members.length;
   const teamTodayMinutes = todayLogs.reduce((sum, log) => sum + log.durationMinutes, 0);
@@ -109,7 +118,7 @@ export async function getPracticeStats(input: {
   const weekMemberDays = new Map<string, { displayName: string; days: Set<string> }>();
 
   for (const log of bandLogs) {
-    const date = practiceDateString(log.date);
+    const date = practiceDateString(log.date, input.timeZone);
     if (date > todayStr) continue;
     weekBandMinutes += log.durationMinutes;
 

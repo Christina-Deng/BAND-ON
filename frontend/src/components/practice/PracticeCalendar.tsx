@@ -1,3 +1,4 @@
+import { useLocale } from '../../hooks/useLocale';
 import type { PracticeLog } from '../../types/practice';
 
 interface Props {
@@ -13,6 +14,12 @@ function daysInMonth(month: string) {
   return new Date(y, m, 0).getDate();
 }
 
+/** Monday-first offset for the 1st of the month (0 = Monday). */
+function mondayOffset(year: number, month: number) {
+  const weekday = new Date(year, month - 1, 1).getDay();
+  return weekday === 0 ? 6 : weekday - 1;
+}
+
 export function PracticeCalendar({
   month,
   practices,
@@ -20,9 +27,12 @@ export function PracticeCalendar({
   onSelectDate,
   onMonthChange,
 }: Props) {
+  const { t } = useLocale();
   const days = daysInMonth(month);
   const [year, mon] = month.split('-').map(Number);
+  const leadingBlanks = mondayOffset(year, mon);
   const activeDates = new Set(practices.map((p) => p.date.slice(0, 10)));
+  const weekdayLabels = t('practice.calendarWeekdays').split(',');
 
   function shiftMonth(delta: number) {
     const d = new Date(year, mon - 1 + delta, 1);
@@ -44,6 +54,14 @@ export function PracticeCalendar({
         </button>
       </div>
       <div className="grid grid-cols-7 gap-1 text-center text-xs">
+        {weekdayLabels.map((label) => (
+          <div key={label} className="py-1 text-[10px] font-medium uppercase tracking-wide text-slate-500">
+            {label}
+          </div>
+        ))}
+        {Array.from({ length: leadingBlanks }, (_, i) => (
+          <div key={`blank-${i}`} aria-hidden className="py-2" />
+        ))}
         {Array.from({ length: days }, (_, i) => {
           const day = i + 1;
           const dateStr = `${month}-${String(day).padStart(2, '0')}`;

@@ -5,6 +5,7 @@ import type { FastifyInstance } from 'fastify';
 import { authenticate } from '../middleware/authenticate.js';
 import * as practiceService from '../services/practiceService.js';
 import * as practiceStatsService from '../services/practiceStats.js';
+import { readPracticeTimezoneHeader } from '../lib/practiceTimezone.js';
 
 const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
 
@@ -52,14 +53,19 @@ export async function registerPracticeRoutes(app: FastifyInstance) {
       });
     }
 
+    const timeZone = readPracticeTimezoneHeader(request.headers['x-practice-timezone']);
+
     try {
-      const practice = await practiceService.createPractice({
-        bandId,
-        userId: request.userId!,
-        durationMinutes,
-        note,
-        audioUrl,
-      });
+      const practice = await practiceService.createPractice(
+        {
+          bandId,
+          userId: request.userId!,
+          durationMinutes,
+          note,
+          audioUrl,
+        },
+        timeZone,
+      );
       return reply.status(201).send({ practice });
     } catch (error) {
       const err = error as Error & { statusCode?: number };
@@ -100,10 +106,13 @@ export async function registerPracticeRoutes(app: FastifyInstance) {
       });
     }
 
+    const timeZone = readPracticeTimezoneHeader(request.headers['x-practice-timezone']);
+
     try {
       const stats = await practiceStatsService.getPracticeStats({
         bandId: query.bandId,
         userId: request.userId!,
+        timeZone,
       });
       return { stats };
     } catch (error) {
@@ -122,8 +131,10 @@ export async function registerPracticeRoutes(app: FastifyInstance) {
       });
     }
 
+    const timeZone = readPracticeTimezoneHeader(request.headers['x-practice-timezone']);
+
     try {
-      const members = await practiceService.getTodayStatus(query.bandId, request.userId!);
+      const members = await practiceService.getTodayStatus(query.bandId, request.userId!, timeZone);
       return { members };
     } catch (error) {
       const err = error as Error & { statusCode?: number };

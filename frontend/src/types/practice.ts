@@ -25,6 +25,8 @@ export interface PersonalPracticeStats {
   streakDays: number;
   weekMinutes: number;
   weekCheckInDays: number;
+  weekStartDate: string;
+  weekEndDate: string;
   monthMinutes: number;
   monthCheckInDays: number;
 }

@@ -1,10 +1,16 @@
 import axios from 'axios';
 import { getStoredLocale } from '../lib/i18n/locale';
+import { getPracticeTimezone } from '../lib/practiceTimezone';
 import { translate } from '../lib/i18n/translate';
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:3000',
   withCredentials: true,
+});
+
+api.interceptors.request.use((config) => {
+  config.headers.set('X-Practice-Timezone', getPracticeTimezone());
+  return config;
 });
 
 /** Turn backend-relative upload paths into absolute URLs for media playback. */

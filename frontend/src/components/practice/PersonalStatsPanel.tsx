@@ -1,8 +1,18 @@
 import { useLocale } from '../../hooks/useLocale';
 import type { PersonalPracticeStats } from '../../types/practice';
 
+function formatWeekRange(start: string, end: string, locale: 'zh' | 'en'): string {
+  const [, startMonth, startDay] = start.split('-').map(Number);
+  const [, endMonth, endDay] = end.split('-').map(Number);
+  if (locale === 'zh') {
+    return `${startMonth}月${startDay}日–${endMonth}月${endDay}日`;
+  }
+  return `${startMonth}/${startDay}–${endMonth}/${endDay}`;
+}
+
 export function PersonalStatsPanel({ stats }: { stats: PersonalPracticeStats }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const weekRange = formatWeekRange(stats.weekStartDate, stats.weekEndDate, locale);
 
   return (
     <div className="poster-card poster-card-accent rounded-xl p-5">
@@ -22,7 +32,7 @@ export function PersonalStatsPanel({ stats }: { stats: PersonalPracticeStats }) 
           kicker="WEEK"
           number={String(stats.weekMinutes)}
           unit={t('common.minutes')}
-          sub={`${t('practice.stats.checkInDays')} ${stats.weekCheckInDays}`}
+          sub={`${weekRange} · ${t('practice.stats.checkInDays')} ${stats.weekCheckInDays}`}
         />
         <StatBlock
           label={t('practice.stats.thisMonth')}

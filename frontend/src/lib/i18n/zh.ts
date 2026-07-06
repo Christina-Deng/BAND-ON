@@ -165,6 +165,7 @@ export const zh = {
     viewTeamHint: '选择要查看今日打卡情况的乐队',
     calendar: '练习日历',
     calendarHint: '选择要查看打卡记录的乐队',
+    calendarWeekdays: '一,二,三,四,五,六,日',
     noLogsToday: '当天暂无打卡',
     logEntry: '{{name}} — {{minutes}} 分钟',
     audioUnsupported: '你的浏览器不支持音频播放',

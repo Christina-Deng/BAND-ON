@@ -1,13 +1,17 @@
 import { prisma } from '../lib/prisma.js';
 import { parsePracticeDate, practiceDateString } from '../lib/practiceDates.js';
+import { resolvePracticeTimezone } from '../lib/practiceTimezone.js';
 
-export async function createPractice(input: {
-  bandId: string;
-  userId: string;
-  durationMinutes: number;
-  note?: string;
-  audioUrl?: string;
-}) {
+export async function createPractice(
+  input: {
+    bandId: string;
+    userId: string;
+    durationMinutes: number;
+    note?: string;
+    audioUrl?: string;
+  },
+  timeZone: string = resolvePracticeTimezone(),
+) {
   const membership = await prisma.bandMember.findUnique({
     where: { bandId_userId: { bandId: input.bandId, userId: input.userId } },
   });
@@ -19,7 +23,7 @@ export async function createPractice(input: {
     throw Object.assign(new Error('Duration must be at least 1 minute'), { statusCode: 400 });
   }
 
-  const date = parsePracticeDate(practiceDateString());
+  const date = parsePracticeDate(practiceDateString(new Date(), timeZone));
 
   try {
     return await prisma.practiceLog.create({
@@ -72,7 +76,11 @@ export async function getMonthPractices(bandId: string, userId: string, month: s
   });
 }
 
-export async function getTodayStatus(bandId: string, userId: string) {
+export async function getTodayStatus(
+  bandId: string,
+  userId: string,
+  timeZone: string = resolvePracticeTimezone(),
+) {
   const membership = await prisma.bandMember.findUnique({
     where: { bandId_userId: { bandId, userId } },
   });
@@ -80,7 +88,7 @@ export async function getTodayStatus(bandId: string, userId: string) {
     throw Object.assign(new Error('Not a band member'), { statusCode: 403 });
   }
 
-  const today = parsePracticeDate(practiceDateString());
+  const today = parsePracticeDate(practiceDateString(new Date(), timeZone));
 
   const members = await prisma.bandMember.findMany({
     where: { bandId },

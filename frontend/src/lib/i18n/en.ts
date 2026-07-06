@@ -169,6 +169,7 @@ export const en = {
     viewTeamHint: 'Pick a band to see who practiced today',
     calendar: 'Practice calendar',
     calendarHint: 'Pick a band to browse practice history',
+    calendarWeekdays: 'Mon,Tue,Wed,Thu,Fri,Sat,Sun',
     noLogsToday: 'No check-ins on this day',
     logEntry: '{{name}} — {{minutes}} min',
     audioUnsupported: 'Your browser does not support audio playback',

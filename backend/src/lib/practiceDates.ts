@@ -1,7 +1,21 @@
-/** Practice logs use UTC calendar dates (YYYY-MM-DD at 00:00:00.000Z). */
+/** Practice logs use calendar dates (YYYY-MM-DD at 00:00:00.000Z) in the user's timezone. */
 
-export function practiceDateString(date: Date = new Date()): string {
-  return date.toISOString().slice(0, 10);
+import { resolvePracticeTimezone } from './practiceTimezone.js';
+
+export function formatPracticeDateInTimezone(date: Date, timeZone: string): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
+}
+
+export function practiceDateString(
+  date: Date = new Date(),
+  timeZone: string = resolvePracticeTimezone(),
+): string {
+  return formatPracticeDateInTimezone(date, timeZone);
 }
 
 export function parsePracticeDate(dateStr: string): Date {
@@ -11,13 +25,44 @@ export function parsePracticeDate(dateStr: string): Date {
 export function addPracticeDays(dateStr: string, delta: number): string {
   const date = parsePracticeDate(dateStr);
   date.setUTCDate(date.getUTCDate() + delta);
-  return practiceDateString(date);
+  return practiceDateString(date, 'UTC');
 }
 
-export function startOfPracticeWeek(dateStr: string): string {
-  const weekday = parsePracticeDate(dateStr).getUTCDay();
+export function practiceWeekday(dateStr: string, timeZone: string): number {
+  const date = parsePracticeDate(dateStr);
+  date.setUTCHours(12, 0, 0, 0);
+  const weekday = new Intl.DateTimeFormat('en-US', { timeZone, weekday: 'short' }).format(date);
+  const map: Record<string, number> = {
+    Sun: 0,
+    Mon: 1,
+    Tue: 2,
+    Wed: 3,
+    Thu: 4,
+    Fri: 5,
+    Sat: 6,
+  };
+  const value = map[weekday];
+  if (value === undefined) {
+    throw new Error(`Unknown weekday label: ${weekday}`);
+  }
+  return value;
+}
+
+/** Monday-start week in the given timezone. */
+export function startOfPracticeWeek(
+  dateStr: string,
+  timeZone: string = resolvePracticeTimezone(),
+): string {
+  const weekday = practiceWeekday(dateStr, timeZone);
   const diff = weekday === 0 ? -6 : 1 - weekday;
   return addPracticeDays(dateStr, diff);
+}
+
+export function endOfPracticeWeek(
+  dateStr: string,
+  timeZone: string = resolvePracticeTimezone(),
+): string {
+  return addPracticeDays(startOfPracticeWeek(dateStr, timeZone), 6);
 }
 
 export function startOfPracticeMonth(dateStr: string): string {
