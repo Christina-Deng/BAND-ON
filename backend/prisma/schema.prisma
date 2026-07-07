@@ -16,6 +16,12 @@ enum Instrument {
   OTHER
 }
 
+enum CommunityPostType {
+  ANNOUNCEMENT
+  RECRUITMENT
+  GIG_REQUEST
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -25,8 +31,11 @@ model User {
   localePreference String? @map("locale_preference")
   createdAt    DateTime @default(now()) @map("created_at")
 
-  bandMembers  BandMember[]
-  practiceLogs PracticeLog[]
+  bandMembers       BandMember[]
+  practiceLogs      PracticeLog[]
+  communityPosts    CommunityPost[]
+  postResponses     PostResponse[]
+  rehearsalPlans    RehearsalPlan[] @relation("RehearsalPlanCreator")
 
   @@map("users")
 }
@@ -39,8 +48,9 @@ model Band {
   createdById     String   @map("created_by_id")
   createdAt       DateTime @default(now()) @map("created_at")
 
-  members      BandMember[]
-  practiceLogs PracticeLog[]
+  members        BandMember[]
+  practiceLogs   PracticeLog[]
+  rehearsalPlans RehearsalPlan[]
 
   @@map("bands")
 }
@@ -76,4 +86,63 @@ model PracticeLog {
 
   @@unique([bandId, userId, date])
   @@map("practice_logs")
+}
+
+model CommunityPost {
+  id         String             @id @default(cuid())
+  authorId   String             @map("author_id")
+  type       CommunityPostType
+  title      String
+  body       String
+  eventAt    DateTime?          @map("event_at")
+  location   String?
+  budgetNote String?            @map("budget_note")
+  createdAt  DateTime           @default(now()) @map("created_at")
+  updatedAt  DateTime           @updatedAt @map("updated_at")
+
+  author    User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  responses PostResponse[]
+
+  @@map("community_posts")
+}
+
+model PostResponse {
+  id        String   @id @default(cuid())
+  postId    String   @map("post_id")
+  userId    String   @map("user_id")
+  message   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
+  @@map("post_responses")
+}
+
+model RehearsalPlan {
+  id          String   @id @default(cuid())
+  bandId      String   @map("band_id")
+  scheduledAt DateTime @map("scheduled_at")
+  note        String?
+  createdById String   @map("created_by_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  band    Band                @relation(fields: [bandId], references: [id], onDelete: Cascade)
+  creator User                @relation("RehearsalPlanCreator", fields: [createdById], references: [id], onDelete: Cascade)
+  songs   RehearsalPlanSong[]
+
+  @@map("rehearsal_plans")
+}
+
+model RehearsalPlanSong {
+  id        String @id @default(cuid())
+  planId    String @map("plan_id")
+  songTitle String @map("song_title")
+  songId    String? @map("song_id")
+  sortOrder Int    @default(0) @map("sort_order")
+
+  plan RehearsalPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@map("rehearsal_plan_songs")
 }

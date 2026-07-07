@@ -2,6 +2,7 @@ import { Instrument } from '@prisma/client';
 import type { FastifyInstance } from 'fastify';
 import { authenticate } from '../middleware/authenticate.js';
 import * as bandService from '../services/bandService.js';
+import * as rehearsalPlanService from '../services/rehearsalPlanService.js';
 import type { QuestionnaireAnswers } from '../services/skillAssessment.js';
 
 export async function registerBandRoutes(app: FastifyInstance) {
@@ -136,6 +137,95 @@ export async function registerBandRoutes(app: FastifyInstance) {
       const err = error as Error & { statusCode?: number };
       return reply.status(err.statusCode ?? 500).send({
         error: { code: 'LEAVE_BAND_FAILED', message: err.message },
+      });
+    }
+  });
+
+  app.get('/bands/:bandId/rehearsal-plans', { preHandler: authenticate }, async (request, reply) => {
+    const { bandId } = request.params as { bandId: string };
+    try {
+      const plans = await rehearsalPlanService.listPlans(bandId, request.userId!);
+      return { plans };
+    } catch (error) {
+      const err = error as Error & { statusCode?: number };
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'LIST_PLANS_FAILED', message: err.message },
+      });
+    }
+  });
+
+  app.post('/bands/:bandId/rehearsal-plans', { preHandler: authenticate }, async (request, reply) => {
+    const { bandId } = request.params as { bandId: string };
+    const body = request.body as {
+      scheduledAt?: string;
+      note?: string | null;
+      songs?: Array<{ songTitle?: string; songId?: string | null }>;
+    };
+
+    if (!body.scheduledAt) {
+      return reply.status(400).send({
+        error: { code: 'VALIDATION_ERROR', message: '请填写排练时间' },
+      });
+    }
+
+    try {
+      const plan = await rehearsalPlanService.createPlan({
+        bandId,
+        userId: request.userId!,
+        scheduledAt: new Date(body.scheduledAt),
+        note: body.note,
+        songs: body.songs?.map((song) => ({
+          songTitle: song.songTitle ?? '',
+          songId: song.songId,
+        })),
+      });
+      return reply.status(201).send({ plan });
+    } catch (error) {
+      const err = error as Error & { statusCode?: number };
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'CREATE_PLAN_FAILED', message: err.message },
+      });
+    }
+  });
+
+  app.patch('/bands/:bandId/rehearsal-plans/:planId', { preHandler: authenticate }, async (request, reply) => {
+    const { bandId, planId } = request.params as { bandId: string; planId: string };
+    const body = request.body as {
+      scheduledAt?: string;
+      note?: string | null;
+      songs?: Array<{ songTitle?: string; songId?: string | null }>;
+    };
+
+    try {
+      const plan = await rehearsalPlanService.updatePlan({
+        bandId,
+        planId,
+        userId: request.userId!,
+        scheduledAt: body.scheduledAt ? new Date(body.scheduledAt) : undefined,
+        note: body.note,
+        songs: body.songs?.map((song) => ({
+          songTitle: song.songTitle ?? '',
+          songId: song.songId,
+        })),
+      });
+      return { plan };
+    } catch (error) {
+      const err = error as Error & { statusCode?: number };
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'UPDATE_PLAN_FAILED', message: err.message },
+      });
+    }
+  });
+
+  app.delete('/bands/:bandId/rehearsal-plans/:planId', { preHandler: authenticate }, async (request, reply) => {
+    const { bandId, planId } = request.params as { bandId: string; planId: string };
+    try {
+      await rehearsalPlanService.deletePlan(bandId, planId, request.userId!);
+      return reply.status(204).send();
+    } catch (error) {
+      const err = error as Error & { statusCode?: number };
+      return reply.status(err.statusCode ?? 500).send({
+        error: { code: 'DELETE_PLAN_FAILED', message: err.message },
       });
     }
   });

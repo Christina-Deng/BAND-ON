@@ -7,6 +7,7 @@ import { registerAuthRoutes } from './routes/auth.js';
 import { registerBandRoutes } from './routes/bands.js';
 import { registerPracticeRoutes } from './routes/practices.js';
 import { registerSongRoutes } from './routes/songs.js';
+import { registerCommunityRoutes } from './routes/community.js';
 import { getFrontendUrl, isDevOriginAllowed } from './config/cors.js';
 
 export async function buildApp() {
@@ -37,6 +38,7 @@ export async function buildApp() {
   await registerBandRoutes(app);
   await registerPracticeRoutes(app);
   await registerSongRoutes(app);
+  await registerCommunityRoutes(app);
 
   app.register(import('@fastify/static'), {
     root: path.join(process.cwd(), 'uploads'),
