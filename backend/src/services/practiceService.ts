@@ -1,6 +1,7 @@
 import { prisma } from '../lib/prisma.js';
 import { parsePracticeDate, practiceDateString } from '../lib/practiceDates.js';
 import { resolvePracticeTimezone } from '../lib/practiceTimezone.js';
+import { notifyPracticeCheckIn } from './notificationService.js';
 
 export async function createPractice(
   input: {
@@ -26,7 +27,7 @@ export async function createPractice(
   const date = parsePracticeDate(practiceDateString(new Date(), timeZone));
 
   try {
-    return await prisma.practiceLog.create({
+    const practice = await prisma.practiceLog.create({
       data: {
         bandId: input.bandId,
         userId: input.userId,
@@ -39,6 +40,14 @@ export async function createPractice(
         user: { select: { id: true, displayName: true } },
       },
     });
+
+    await notifyPracticeCheckIn({
+      bandId: input.bandId,
+      actorUserId: input.userId,
+      durationMinutes: input.durationMinutes,
+    });
+
+    return practice;
   } catch (error) {
     if (
       typeof error === 'object' &&

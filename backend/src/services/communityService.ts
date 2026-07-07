@@ -1,5 +1,6 @@
 import type { CommunityPostType } from '@prisma/client';
 import { prisma } from '../lib/prisma.js';
+import { notifyPostResponse } from './notificationService.js';
 import type {
   CommunityPostDetail,
   CommunityPostSummary,
@@ -169,6 +170,11 @@ export async function addResponse(input: {
       message: input.message?.trim() || null,
     },
     include: { user: { select: { id: true, displayName: true } } },
+  });
+
+  await notifyPostResponse({
+    postId: input.postId,
+    responderUserId: input.userId,
   });
 
   return {
