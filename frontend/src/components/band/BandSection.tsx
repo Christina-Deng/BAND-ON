@@ -5,6 +5,7 @@ import { EditBandDialog } from './EditBandDialog';
 import { LeaveBandConfirmDialog } from './LeaveBandConfirmDialog';
 import { MemberCard } from './MemberCard';
 import { SkillQuestionnaire } from '../shared/SkillQuestionnaire';
+import { RehearsalPlanPanel } from './RehearsalPlanPanel';
 import { formatStylePreferences } from '../../constants/music';
 import { useLocale } from '../../hooks/useLocale';
 import { buildInviteShareText, copyText, isInviteLinkOriginConfigured } from '../../lib/invite';
@@ -159,6 +160,8 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
           {t('band.profileIncompleteBanner')}
         </p>
       )}
+
+      <RehearsalPlanPanel bandId={band.id} />
 
       {leaveError && !showLeaveConfirm && (
         <p className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-4 py-3 text-sm text-red-400">

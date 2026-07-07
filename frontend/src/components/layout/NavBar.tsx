@@ -78,6 +78,9 @@ export function NavBar() {
               <NavLink to="/practice" className={linkClass}>
                 {t('nav.practice')}
               </NavLink>
+              <NavLink to="/community" className={linkClass}>
+                {t('nav.community')}
+              </NavLink>
             </nav>
           )}
         </div>
@@ -99,6 +102,9 @@ export function NavBar() {
             </NavLink>
             <NavLink to="/practice" className={mobileLinkClass} onClick={closeMobileNav}>
               {t('nav.practice')}
+            </NavLink>
+            <NavLink to="/community" className={mobileLinkClass} onClick={closeMobileNav}>
+              {t('nav.community')}
             </NavLink>
           </nav>
         </div>
