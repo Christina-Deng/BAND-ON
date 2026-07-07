@@ -123,11 +123,18 @@ Quick checklist:
 - Optional LLM recommendation copy (`LLM_*` env vars)  
 - `/songs` UI with diagnosis hints when empty  
 
-### Planned
+### Done — Phase 3
+
+- **Community** tab: gig announcements, band recruitment, gig requests  
+- Post responses («我想参加») with author-only response list  
+- **Rehearsal plans** on band home (date, notes, songs to practice)  
+- **Gear shop UI shell** (static cards, no checkout)
+
+### Planned (post–Phase 3)
 
 - Practice email reminders  
 - Band rehearsal setlist / song voting  
 - Practice timezone (`Asia/Shanghai`) for China users  
 - Secure audio uploads for production  
 
-**Docs:** [Design spec](docs/superpowers/specs/2026-06-24-band-rehearsal-design.md)（文首「实现状态」）· [Phase 1 plan](docs/superpowers/plans/2026-06-24-bandmate-mvp.md)（superseded）· [Phase 2 plan](docs/superpowers/plans/2026-06-30-phase2-song-recommendation.md)（delivered）
+**Docs:** [Design spec](docs/superpowers/specs/2026-06-24-band-rehearsal-design.md)（文首「实现状态」）· [Phase 1 plan](docs/superpowers/plans/2026-06-24-bandmate-mvp.md)（superseded）· [Phase 2 plan](docs/superpowers/plans/2026-06-30-phase2-song-recommendation.md)（delivered）· [Phase 3 spec](docs/superpowers/specs/2026-07-07-phase3-community-design.md) · [Phase 3 plan](docs/superpowers/plans/2026-07-07-phase3-community.md)

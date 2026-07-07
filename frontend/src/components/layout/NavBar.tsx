@@ -6,6 +6,7 @@ import { AppearanceMenu } from './AppearanceMenu';
 import { BrandWordmark } from './BrandWordmark';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { UserMenu } from './UserMenu';
+import { NotificationBell } from './NotificationBell';
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
   `nav-tab px-3 py-2 text-sm font-semibold ${
@@ -87,6 +88,7 @@ export function NavBar() {
         <div className="flex shrink-0 items-center gap-1.5 text-sm sm:gap-3">
           <LanguageSwitcher />
           <AppearanceMenu />
+          {user && <NotificationBell />}
           {user && <UserMenu />}
         </div>
       </div>
