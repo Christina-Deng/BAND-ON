@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getApiErrorMessage } from '../../api/client';
 import { useBand } from '../../hooks/useBand';
 import { useLocale } from '../../hooks/useLocale';
 import { normalizeInviteCode } from '../../lib/invite';
@@ -18,8 +19,8 @@ export function JoinBandForm({ onSuccess }: { onSuccess?: () => void }) {
       await joinBand(normalizeInviteCode(inviteCode) ?? '');
       setInviteCode('');
       onSuccess?.();
-    } catch {
-      setError(t('band.joinForm.invalidCode'));
+    } catch (err) {
+      setError(getApiErrorMessage(err, t('band.joinForm.invalidCode')));
     } finally {
       setLoading(false);
     }

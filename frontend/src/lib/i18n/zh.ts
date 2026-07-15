@@ -112,7 +112,7 @@ export const zh = {
     },
     joinForm: {
       title: '加入乐队',
-      codePlaceholder: '输入 6 位邀请码',
+      codePlaceholder: '输入 8 位邀请码',
       invalidCode: '邀请码无效或乐队不存在',
       submit: '加入乐队',
     },

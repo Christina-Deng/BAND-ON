@@ -113,7 +113,7 @@ export const en = {
     },
     joinForm: {
       title: 'Join band',
-      codePlaceholder: 'Enter 6-character invite code',
+      codePlaceholder: 'Enter 8-character invite code',
       invalidCode: 'Invalid code or band not found',
       submit: 'Join band',
     },
