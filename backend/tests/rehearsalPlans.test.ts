@@ -213,6 +213,41 @@ describe('rehearsal plans', () => {
     expect(after.json().count).toBe(beforeCount);
   });
 
+  it('update keeps songId when client resends it', async () => {
+    const created = await app.inject({
+      method: 'POST',
+      url: `/bands/${bandId}/rehearsal-plans`,
+      cookies: { token: memberCookie },
+      payload: {
+        scheduledAt: '2026-09-01T10:00:00.000Z',
+        note: '带 songId',
+        songs: [{ songTitle: 'A', songId: 'song-001' }],
+      },
+    });
+    expect(created.statusCode).toBe(201);
+    const songIdPlanId = created.json().plan.id;
+
+    const updated = await app.inject({
+      method: 'PATCH',
+      url: `/bands/${bandId}/rehearsal-plans/${songIdPlanId}`,
+      cookies: { token: memberCookie },
+      payload: {
+        note: 'only note',
+        songs: [{ songTitle: 'A', songId: 'song-001' }],
+      },
+    });
+    expect(updated.statusCode).toBe(200);
+
+    const listed = await app.inject({
+      method: 'GET',
+      url: `/bands/${bandId}/rehearsal-plans`,
+      cookies: { token: memberCookie },
+    });
+    expect(listed.statusCode).toBe(200);
+    const plan = listed.json().plans.find((p: { id: string }) => p.id === songIdPlanId);
+    expect(plan.songs[0].songId).toBe('song-001');
+  });
+
   it('rejects non-member with 403', async () => {
     const list = await app.inject({
       method: 'GET',

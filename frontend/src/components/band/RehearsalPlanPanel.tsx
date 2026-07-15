@@ -16,6 +16,7 @@ interface Props {
 
 interface SongDraft {
   songTitle: string;
+  songId?: string | null;
 }
 
 function toDatetimeLocalValue(iso: string): string {
@@ -90,7 +91,7 @@ export function RehearsalPlanPanel({ bandId, isDeepLinkTarget = false }: Props) 
     setNote(plan.note ?? '');
     setSongs(
       plan.songs.length > 0
-        ? plan.songs.map((song) => ({ songTitle: song.songTitle }))
+        ? plan.songs.map((song) => ({ songTitle: song.songTitle, songId: song.songId }))
         : [{ songTitle: '' }],
     );
     setShowForm(true);
@@ -241,7 +242,7 @@ export function RehearsalPlanPanel({ bandId, isDeepLinkTarget = false }: Props) 
                 value={song.songTitle}
                 onChange={(e) => {
                   const next = [...songs];
-                  next[index] = { songTitle: e.target.value };
+                  next[index] = { ...next[index], songTitle: e.target.value };
                   setSongs(next);
                 }}
                 placeholder={t('rehearsalPlan.songPlaceholder')}
