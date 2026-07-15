@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { listCommunityPosts } from '../api/community';
 import { CommunityPostCard } from '../components/community/CommunityPostCard';
@@ -28,8 +28,11 @@ export function CommunityFeedPage() {
   const [posts, setPosts] = useState<CommunityPostSummary[]>([]);
   const [status, setStatus] = useState<'loading' | 'ok' | 'error'>('loading');
   const [error, setError] = useState('');
+  const [reloadKey, setReloadKey] = useState(0);
+  const reqIdRef = useRef(0);
 
   useEffect(() => {
+    const id = ++reqIdRef.current;
     setStatus('loading');
     void listCommunityPosts({
       type: filter === 'ALL' ? undefined : filter,
@@ -37,14 +40,16 @@ export function CommunityFeedPage() {
       mine: mineOnly,
     })
       .then((items) => {
+        if (id !== reqIdRef.current) return;
         setPosts(items);
         setStatus('ok');
       })
       .catch((err) => {
+        if (id !== reqIdRef.current) return;
         setError(getApiErrorMessage(err));
         setStatus('error');
       });
-  }, [filter, sort, mineOnly]);
+  }, [filter, sort, mineOnly, reloadKey]);
 
   return (
     <div className="space-y-6">
@@ -117,9 +122,16 @@ export function CommunityFeedPage() {
 
       {status === 'loading' && <p className="text-slate-400">{t('common.loading')}</p>}
       {status === 'error' && (
-        <p className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-4 py-3 text-sm text-red-400">
-          {error}
-        </p>
+        <div className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-4 py-3 text-sm text-red-400">
+          <p>{error}</p>
+          <button
+            type="button"
+            onClick={() => setReloadKey((k) => k + 1)}
+            className="mt-3 rounded-lg border border-slate-600 px-4 py-2 text-sm text-slate-300 hover:border-slate-500"
+          >
+            {t('common.retry')}
+          </button>
+        </div>
       )}
       {status === 'ok' && posts.length === 0 && (
         <p className="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 px-4 py-8 text-center text-slate-400">
