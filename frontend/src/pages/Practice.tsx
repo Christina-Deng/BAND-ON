@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { resolveMediaUrl } from '../api/client';
+import { getApiErrorMessage, resolveMediaUrl } from '../api/client';
 import {
   getMonthPractices,
   getPracticeStats,
@@ -39,6 +39,7 @@ export function PracticePage() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
   const [stats, setStats] = useState<PracticeStats | null>(null);
+  const [refreshError, setRefreshError] = useState('');
 
   useEffect(() => {
     if (bands.length === 0) {
@@ -58,26 +59,35 @@ export function PracticePage() {
       return;
     }
 
-    const results = await Promise.all(
-      bands.map(async (band) => {
-        const members = await getTodayStatus(band.id);
-        const me = members.find((member) => member.userId === user.id);
-        return me?.checkedIn ? band.id : null;
-      }),
-    );
-    setCheckedInBandIds(results.filter((id): id is string => id !== null));
-  }, [bands, user]);
+    try {
+      const results = await Promise.all(
+        bands.map(async (band) => {
+          const members = await getTodayStatus(band.id);
+          const me = members.find((member) => member.userId === user.id);
+          return me?.checkedIn ? band.id : null;
+        }),
+      );
+      setCheckedInBandIds(results.filter((id): id is string => id !== null));
+    } catch (err) {
+      setRefreshError(getApiErrorMessage(err, t('common.requestFailed')));
+    }
+  }, [bands, user, t]);
 
   const refresh = useCallback(async () => {
     if (!viewBandId) return;
-    const [monthData, todayData] = await Promise.all([
-      getMonthPractices(viewBandId, month),
-      getTodayStatus(viewBandId),
-      getPracticeStats(viewBandId).then(setStats),
-    ]);
-    setPractices(monthData);
-    setTodayMembers(todayData);
-  }, [viewBandId, month]);
+    try {
+      setRefreshError('');
+      const [monthData, todayData] = await Promise.all([
+        getMonthPractices(viewBandId, month),
+        getTodayStatus(viewBandId),
+        getPracticeStats(viewBandId).then(setStats),
+      ]);
+      setPractices(monthData);
+      setTodayMembers(todayData);
+    } catch (err) {
+      setRefreshError(getApiErrorMessage(err, t('common.requestFailed')));
+    }
+  }, [viewBandId, month, t]);
 
   const refreshAll = useCallback(async () => {
     await Promise.all([refresh(), refreshCheckInStatus()]);
@@ -200,6 +210,12 @@ export function PracticePage() {
             bands.length > 1 ? t('practice.leadMulti') : viewBand?.name
           }
         />
+
+        {refreshError && (
+          <p className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-3 py-2 text-sm text-red-400">
+            {refreshError}
+          </p>
+        )}
 
         {stats && <PersonalStatsPanel stats={stats.personal} />}
 

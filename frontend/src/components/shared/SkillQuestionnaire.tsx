@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { getApiErrorMessage } from '../../api/client';
 import {
   getInstrumentLabel,
   getInstrumentSkillQuestions,
@@ -26,6 +27,7 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
   const [stylePreferences, setStylePreferences] = useState<string[]>([]);
   const [skills, setSkills] = useState<boolean[]>([false, false, false, false, false]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const questions = useMemo(
     () => getInstrumentSkillQuestions(instrument, locale),
@@ -44,6 +46,7 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
   useEffect(() => {
     if (!open) return;
 
+    setError('');
     if (!initial) {
       setInstrument('GUITAR');
       setPlayingExperience('1-3');
@@ -66,12 +69,15 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
+    setError('');
     try {
       await onSubmit(
         { playingExperience, stylePreferences, instrumentSkills: skills },
         instrument,
       );
       onClose();
+    } catch (err) {
+      setError(getApiErrorMessage(err, t('common.saveFailed')));
     } finally {
       setLoading(false);
     }
@@ -149,6 +155,12 @@ export function SkillQuestionnaire({ open, onClose, onSubmit, initial = null }: 
             </label>
           ))}
         </section>
+
+        {error && (
+          <p className="mt-4 rounded-lg border border-accent-600/40 bg-accent-600/10 px-3 py-2 text-sm text-red-400">
+            {error}
+          </p>
+        )}
 
         <div className="mt-6 flex justify-end gap-2">
           <button type="button" onClick={onClose} className="rounded-lg px-4 py-2 hover:bg-slate-800">

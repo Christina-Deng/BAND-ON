@@ -21,6 +21,7 @@ export function NotificationBell() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [items, setItems] = useState<AppNotification[]>([]);
   const [loading, setLoading] = useState(false);
+  const [panelError, setPanelError] = useState('');
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -38,14 +39,18 @@ export function NotificationBell() {
   const loadPanel = useCallback(async () => {
     if (!user) return;
     setLoading(true);
+    setPanelError('');
     try {
       const notifications = await listNotifications();
       setItems(notifications);
       await refreshUnreadCount();
+    } catch {
+      setPanelError(t('common.requestFailed'));
+      setItems([]);
     } finally {
       setLoading(false);
     }
-  }, [user, refreshUnreadCount]);
+  }, [user, refreshUnreadCount, t]);
 
   useEffect(() => {
     if (!user) return;
@@ -83,27 +88,37 @@ export function NotificationBell() {
   }
 
   async function handleItemClick(notification: AppNotification) {
-    if (!notification.readAt) {
-      await markNotificationRead(notification.id);
-      setUnreadCount((count) => Math.max(0, count - 1));
-      setItems((prev) =>
-        prev.map((item) =>
-          item.id === notification.id
-            ? { ...item, readAt: new Date().toISOString() }
-            : item,
-        ),
-      );
+    try {
+      if (!notification.readAt) {
+        await markNotificationRead(notification.id);
+        setUnreadCount((count) => Math.max(0, count - 1));
+        setItems((prev) =>
+          prev.map((item) =>
+            item.id === notification.id
+              ? { ...item, readAt: new Date().toISOString() }
+              : item,
+          ),
+        );
+      }
+    } catch {
+      setPanelError(t('common.requestFailed'));
+      void refreshUnreadCount();
     }
     setOpen(false);
     navigate(notification.linkPath);
   }
 
   async function handleMarkAllRead() {
-    await markAllNotificationsRead();
-    setUnreadCount(0);
-    setItems((prev) =>
-      prev.map((item) => ({ ...item, readAt: item.readAt ?? new Date().toISOString() })),
-    );
+    try {
+      await markAllNotificationsRead();
+      setUnreadCount(0);
+      setItems((prev) =>
+        prev.map((item) => ({ ...item, readAt: item.readAt ?? new Date().toISOString() })),
+      );
+      setPanelError('');
+    } catch {
+      setPanelError(t('common.requestFailed'));
+    }
   }
 
   function formatMessage(notification: AppNotification): string {
@@ -205,6 +220,11 @@ export function NotificationBell() {
             </div>
 
             <div className="max-h-[min(24rem,60vh)] overflow-y-auto">
+              {panelError && (
+                <p className="border-b border-slate-800 px-4 py-3 text-sm text-red-400">
+                  {panelError}
+                </p>
+              )}
               {loading && (
                 <p className="px-4 py-6 text-sm text-slate-500">{t('common.loading')}</p>
               )}
