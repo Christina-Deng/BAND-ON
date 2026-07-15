@@ -1,6 +1,10 @@
 import { api } from './client';
 
-export type NotificationType = 'PRACTICE_CHECKIN' | 'POST_RESPONSE';
+export type NotificationType =
+  | 'PRACTICE_CHECKIN'
+  | 'POST_RESPONSE'
+  | 'REHEARSAL_PLAN_CREATED'
+  | 'REHEARSAL_PLAN_UPDATED';
 
 export interface NotificationMetadata {
   actorName?: string;

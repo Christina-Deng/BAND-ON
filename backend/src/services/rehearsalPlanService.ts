@@ -1,4 +1,8 @@
 import { prisma } from '../lib/prisma.js';
+import {
+  notifyRehearsalPlanCreated,
+  notifyRehearsalPlanUpdated,
+} from './notificationService.js';
 import type {
   CreateRehearsalPlanInput,
   RehearsalPlanView,
@@ -48,6 +52,10 @@ const planInclude = {
   songs: { orderBy: { sortOrder: 'asc' as const } },
 };
 
+function songTitlesKey(songs: Array<{ songTitle: string }>): string {
+  return songs.map((s) => s.songTitle.trim()).join('\u0000');
+}
+
 export async function listPlans(bandId: string, userId: string): Promise<RehearsalPlanView[]> {
   await assertBandMember(bandId, userId);
 
@@ -87,6 +95,11 @@ export async function createPlan(input: CreateRehearsalPlanInput): Promise<Rehea
     include: planInclude,
   });
 
+  await notifyRehearsalPlanCreated({
+    bandId: input.bandId,
+    actorUserId: input.userId,
+  });
+
   return mapPlan(plan);
 }
 
@@ -95,6 +108,7 @@ export async function updatePlan(input: UpdateRehearsalPlanInput): Promise<Rehea
 
   const existing = await prisma.rehearsalPlan.findFirst({
     where: { id: input.planId, bandId: input.bandId },
+    include: planInclude,
   });
   if (!existing) {
     throw Object.assign(new Error('排练计划不存在'), { statusCode: 404 });
@@ -107,6 +121,13 @@ export async function updatePlan(input: UpdateRehearsalPlanInput): Promise<Rehea
       }
     }
   }
+
+  const timeChanged =
+    input.scheduledAt !== undefined &&
+    input.scheduledAt.getTime() !== existing.scheduledAt.getTime();
+  const songsChanged =
+    input.songs !== undefined &&
+    songTitlesKey(input.songs) !== songTitlesKey(existing.songs);
 
   const plan = await prisma.$transaction(async (tx) => {
     if (input.songs) {
@@ -133,6 +154,13 @@ export async function updatePlan(input: UpdateRehearsalPlanInput): Promise<Rehea
       include: planInclude,
     });
   });
+
+  if (timeChanged || songsChanged) {
+    await notifyRehearsalPlanUpdated({
+      bandId: input.bandId,
+      actorUserId: input.userId,
+    });
+  }
 
   return mapPlan(plan);
 }

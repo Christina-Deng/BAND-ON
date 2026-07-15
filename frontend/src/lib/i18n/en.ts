@@ -363,6 +363,12 @@ export const en = {
     songPlaceholder: 'Song title',
     addSong: '+ Add another song',
     create: 'Save plan',
+    save: 'Save changes',
+    edit: 'Edit',
+    delete: 'Delete',
+    deleteConfirm: 'Delete this rehearsal plan?',
+    creating: 'New rehearsal plan',
+    editing: 'Edit rehearsal plan',
   },
   notifications: {
     openPanel: 'Open notifications',
@@ -373,6 +379,8 @@ export const en = {
     generic: 'You have a new notification',
     practiceCheckin: '{{name}} checked in for {{minutes}} min in “{{band}}”',
     postResponse: '{{name}} is interested in your post “{{title}}”',
+    rehearsalPlanCreated: '{{name}} created a rehearsal plan in “{{band}}”',
+    rehearsalPlanUpdated: '{{name}} updated the rehearsal plan for “{{band}}” (time or songs)',
     promoHint: 'Gear deals & gig picks coming soon',
   },
   settings: {

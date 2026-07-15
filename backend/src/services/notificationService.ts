@@ -86,6 +86,63 @@ export async function notifyPostResponse(input: {
   });
 }
 
+async function notifyBandMates(input: {
+  bandId: string;
+  actorUserId: string;
+  type: 'REHEARSAL_PLAN_CREATED' | 'REHEARSAL_PLAN_UPDATED';
+}) {
+  const band = await prisma.band.findUnique({
+    where: { id: input.bandId },
+    include: {
+      members: {
+        where: { userId: { not: input.actorUserId } },
+        select: { userId: true },
+      },
+    },
+  });
+  if (!band || band.members.length === 0) return;
+
+  const actor = await prisma.user.findUnique({
+    where: { id: input.actorUserId },
+    select: { displayName: true },
+  });
+  if (!actor) return;
+
+  const metadata: NotificationMetadata = {
+    actorName: actor.displayName,
+    bandName: band.name,
+  };
+
+  await prisma.notification.createMany({
+    data: band.members.map((member) => ({
+      userId: member.userId,
+      type: input.type,
+      metadata: metadata as Prisma.InputJsonValue,
+      linkPath: '/',
+    })),
+  });
+}
+
+export async function notifyRehearsalPlanCreated(input: {
+  bandId: string;
+  actorUserId: string;
+}) {
+  await notifyBandMates({
+    ...input,
+    type: 'REHEARSAL_PLAN_CREATED',
+  });
+}
+
+export async function notifyRehearsalPlanUpdated(input: {
+  bandId: string;
+  actorUserId: string;
+}) {
+  await notifyBandMates({
+    ...input,
+    type: 'REHEARSAL_PLAN_UPDATED',
+  });
+}
+
 function mapNotification(row: {
   id: string;
   type: NotificationType;

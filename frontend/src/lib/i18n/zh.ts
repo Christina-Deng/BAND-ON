@@ -359,6 +359,12 @@ export const zh = {
     songPlaceholder: '歌名',
     addSong: '+ 再加一首',
     create: '保存计划',
+    save: '保存修改',
+    edit: '编辑',
+    delete: '删除',
+    deleteConfirm: '确定删除这个排练计划吗？',
+    creating: '新建排练计划',
+    editing: '编辑排练计划',
   },
   notifications: {
     openPanel: '打开消息',
@@ -369,6 +375,8 @@ export const zh = {
     generic: '你有一条新消息',
     practiceCheckin: '{{name}} 在「{{band}}」打卡了 {{minutes}} 分钟',
     postResponse: '{{name}} 想参加你的帖子「{{title}}」',
+    rehearsalPlanCreated: '{{name}} 在「{{band}}」新建了排练计划',
+    rehearsalPlanUpdated: '{{name}} 更新了「{{band}}」的排练计划（时间或曲目有变）',
     promoHint: '器材优惠与演出推荐即将上线',
   },
   settings: {

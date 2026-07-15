@@ -25,6 +25,8 @@ enum CommunityPostType {
 enum NotificationType {
   PRACTICE_CHECKIN
   POST_RESPONSE
+  REHEARSAL_PLAN_CREATED
+  REHEARSAL_PLAN_UPDATED
 }
 
 model User {

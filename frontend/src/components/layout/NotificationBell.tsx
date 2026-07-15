@@ -121,6 +121,18 @@ export function NotificationBell() {
         title: metadata.postTitle ?? '',
       });
     }
+    if (type === 'REHEARSAL_PLAN_CREATED') {
+      return t('notifications.rehearsalPlanCreated', {
+        name: metadata.actorName ?? t('notifications.someone'),
+        band: metadata.bandName ?? t('common.bandFallback'),
+      });
+    }
+    if (type === 'REHEARSAL_PLAN_UPDATED') {
+      return t('notifications.rehearsalPlanUpdated', {
+        name: metadata.actorName ?? t('notifications.someone'),
+        band: metadata.bandName ?? t('common.bandFallback'),
+      });
+    }
     return t('notifications.generic');
   }
 
