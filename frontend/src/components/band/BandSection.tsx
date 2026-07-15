@@ -14,11 +14,18 @@ import type { Band, Instrument, QuestionnaireAnswers } from '../../types/band';
 interface Props {
   band: Band;
   currentUserId?: string;
+  isDeepLinkTarget?: boolean;
   onRefresh: () => Promise<void>;
   onLeave: (bandId: string) => Promise<{ disbanded: boolean; message: string }>;
 }
 
-export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) {
+export function BandSection({
+  band,
+  currentUserId,
+  isDeepLinkTarget = false,
+  onRefresh,
+  onLeave,
+}: Props) {
   const { locale, t } = useLocale();
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [showEditBand, setShowEditBand] = useState(false);
@@ -82,7 +89,10 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
   }
 
   return (
-    <section className="space-y-4 rounded-xl border border-slate-700 bg-slate-900 p-5">
+    <section
+      id={`band-${band.id}`}
+      className="space-y-4 rounded-xl border border-slate-700 bg-slate-900 p-5"
+    >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h2 className="text-2xl font-semibold text-emphasis">{band.name}</h2>
@@ -161,7 +171,7 @@ export function BandSection({ band, currentUserId, onRefresh, onLeave }: Props) 
         </p>
       )}
 
-      <RehearsalPlanPanel bandId={band.id} />
+      <RehearsalPlanPanel bandId={band.id} isDeepLinkTarget={isDeepLinkTarget} />
 
       {leaveError && !showLeaveConfirm && (
         <p className="rounded-lg border border-accent-600/40 bg-accent-600/10 px-4 py-3 text-sm text-red-400">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { PageHeader } from '../components/layout/PageHeader';
 import { CreateBandForm } from '../components/band/CreateBandForm';
 import { JoinBandForm } from '../components/band/JoinBandForm';
@@ -14,10 +14,15 @@ export function BandHomePage() {
   const { t } = useLocale();
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [showCreate, setShowCreate] = useState(false);
   const [showJoin, setShowJoin] = useState(false);
   const [leaveMessage, setLeaveMessage] = useState('');
   const [joinMessage, setJoinMessage] = useState('');
+
+  const deepLinkBandId = searchParams.get('bandId');
+  const deepLinkTargetExists =
+    Boolean(deepLinkBandId) && bands.some((band) => band.id === deepLinkBandId);
 
   useEffect(() => {
     const message = (location.state as { joinMessage?: string } | null)?.joinMessage;
@@ -26,6 +31,18 @@ export function BandHomePage() {
     navigate('.', { replace: true, state: null });
     void refresh();
   }, [location.state, navigate, refresh]);
+
+  useEffect(() => {
+    if (loading || !deepLinkTargetExists) return;
+
+    const timer = window.setTimeout(() => {
+      document
+        .getElementById('rehearsal-plan')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [loading, deepLinkTargetExists, deepLinkBandId]);
 
   if (loading) return <p className="text-slate-400">{t('common.loading')}</p>;
 
@@ -76,6 +93,7 @@ export function BandHomePage() {
               key={band.id}
               band={band}
               currentUserId={user?.id}
+              isDeepLinkTarget={band.id === deepLinkBandId}
               onRefresh={refresh}
               onLeave={handleLeave}
             />

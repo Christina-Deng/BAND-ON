@@ -118,7 +118,7 @@ async function notifyBandMates(input: {
       userId: member.userId,
       type: input.type,
       metadata: metadata as Prisma.InputJsonValue,
-      linkPath: '/',
+      linkPath: `/?bandId=${input.bandId}#rehearsal-plan`,
     })),
   });
 }

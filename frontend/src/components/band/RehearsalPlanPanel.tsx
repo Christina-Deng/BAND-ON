@@ -11,6 +11,7 @@ import type { RehearsalPlan } from '../../types/community';
 
 interface Props {
   bandId: string;
+  isDeepLinkTarget?: boolean;
 }
 
 interface SongDraft {
@@ -23,7 +24,7 @@ function toDatetimeLocalValue(iso: string): string {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 }
 
-export function RehearsalPlanPanel({ bandId }: Props) {
+export function RehearsalPlanPanel({ bandId, isDeepLinkTarget = false }: Props) {
   const { t, locale } = useLocale();
   const [plans, setPlans] = useState<RehearsalPlan[]>([]);
   const [loading, setLoading] = useState(true);
@@ -174,7 +175,10 @@ export function RehearsalPlanPanel({ bandId }: Props) {
   }
 
   return (
-    <section className="space-y-3 rounded-lg border border-slate-700/80 bg-slate-800/30 p-4">
+    <section
+      id={isDeepLinkTarget ? 'rehearsal-plan' : undefined}
+      className="space-y-3 rounded-lg border border-slate-700/80 bg-slate-800/30 p-4"
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
           {t('rehearsalPlan.title')}

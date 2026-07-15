@@ -128,11 +128,11 @@ describe('rehearsal plans', () => {
       cookies: { token: teammateCookie },
     });
     expect(notes.statusCode).toBe(200);
-    expect(
-      notes.json().notifications.some(
-        (n: { type: string }) => n.type === 'REHEARSAL_PLAN_CREATED',
-      ),
-    ).toBe(true);
+    const createdNotif = notes.json().notifications.find(
+      (n: { type: string }) => n.type === 'REHEARSAL_PLAN_CREATED',
+    );
+    expect(createdNotif).toBeTruthy();
+    expect(createdNotif.linkPath).toBe(`/?bandId=${bandId}#rehearsal-plan`);
   });
 
   it('notifies on song change but not on note-only update', async () => {
