@@ -125,4 +125,71 @@ describe('community posts', () => {
     expect(viewerView.json().post.hasResponded).toBe(true);
     expect(viewerView.json().post.responses).toBeNull();
   });
+
+  it('filters mine and sorts upcoming before latest', async () => {
+    const farFuture = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+    const nearFuture = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString();
+    const past = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+
+    const far = await app.inject({
+      method: 'POST',
+      url: '/community/posts',
+      cookies: { token: cookieA },
+      payload: {
+        type: 'ANNOUNCEMENT',
+        title: '下周演出',
+        body: '较远的时间',
+        eventAt: farFuture,
+      },
+    });
+    const near = await app.inject({
+      method: 'POST',
+      url: '/community/posts',
+      cookies: { token: cookieB },
+      payload: {
+        type: 'ANNOUNCEMENT',
+        title: '后天演出',
+        body: '更近的时间',
+        eventAt: nearFuture,
+      },
+    });
+    await app.inject({
+      method: 'POST',
+      url: '/community/posts',
+      cookies: { token: cookieA },
+      payload: {
+        type: 'ANNOUNCEMENT',
+        title: '已过期通告',
+        body: '过期',
+        eventAt: past,
+      },
+    });
+
+    expect(far.statusCode).toBe(201);
+    expect(near.statusCode).toBe(201);
+
+    const upcoming = await app.inject({
+      method: 'GET',
+      url: '/community/posts?sort=upcoming',
+      cookies: { token: cookieA },
+    });
+    expect(upcoming.statusCode).toBe(200);
+    const titles = upcoming.json().posts.map((p: { title: string }) => p.title);
+    const nearIdx = titles.indexOf('后天演出');
+    const farIdx = titles.indexOf('下周演出');
+    const pastIdx = titles.indexOf('已过期通告');
+    expect(nearIdx).toBeGreaterThanOrEqual(0);
+    expect(farIdx).toBeGreaterThan(nearIdx);
+    expect(pastIdx).toBeGreaterThan(farIdx);
+
+    const mine = await app.inject({
+      method: 'GET',
+      url: '/community/posts?mine=true&sort=latest',
+      cookies: { token: cookieA },
+    });
+    expect(mine.statusCode).toBe(200);
+    expect(
+      mine.json().posts.every((p: { author: { displayName: string } }) => p.author.displayName === '用户A'),
+    ).toBe(true);
+  });
 });

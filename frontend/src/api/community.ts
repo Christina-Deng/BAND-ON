@@ -7,9 +7,19 @@ import type {
   PostResponseView,
 } from '../types/community';
 
-export async function listCommunityPosts(type?: CommunityPostType) {
+export type CommunitySort = 'upcoming' | 'latest';
+
+export async function listCommunityPosts(options?: {
+  type?: CommunityPostType;
+  sort?: CommunitySort;
+  mine?: boolean;
+}) {
   const { data } = await api.get<{ posts: CommunityPostSummary[] }>('/community/posts', {
-    params: type ? { type } : undefined,
+    params: {
+      ...(options?.type ? { type: options.type } : {}),
+      ...(options?.sort ? { sort: options.sort } : {}),
+      ...(options?.mine ? { mine: 'true' } : {}),
+    },
   });
   return data.posts;
 }

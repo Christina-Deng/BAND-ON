@@ -300,7 +300,12 @@ export const zh = {
     responsePlaceholder: '简单介绍你的乐器或经验…',
     deletePost: '删除帖子',
     deleteConfirm: '确定删除这条帖子吗？',
-    filters: { all: '全部' },
+    filters: { all: '全部', mine: '我的帖子' },
+    sort: {
+      label: '排序',
+      upcoming: '即将开始',
+      latest: '最新发布',
+    },
     types: {
       announcement: '演出通告',
       recruitment: '乐队征集',

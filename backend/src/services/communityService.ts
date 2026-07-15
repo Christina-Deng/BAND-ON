@@ -18,23 +18,37 @@ function toIso(date: Date | null | undefined): string | null {
   return date ? date.toISOString() : null;
 }
 
+export type CommunitySort = 'upcoming' | 'latest';
+
 export async function listPosts(input?: {
   type?: CommunityPostType;
   limit?: number;
+  sort?: CommunitySort;
+  mine?: boolean;
+  viewerId?: string;
 }): Promise<CommunityPostSummary[]> {
   const limit = Math.min(input?.limit ?? 50, 100);
+  const sort: CommunitySort = input?.sort === 'latest' ? 'latest' : 'upcoming';
+
+  if (input?.mine && !input.viewerId) {
+    throw Object.assign(new Error('未登录'), { statusCode: 401 });
+  }
 
   const posts = await prisma.communityPost.findMany({
-    where: input?.type ? { type: input.type } : undefined,
+    where: {
+      ...(input?.type ? { type: input.type } : {}),
+      ...(input?.mine && input.viewerId ? { authorId: input.viewerId } : {}),
+    },
+    // Fetch more than limit when sorting upcoming so we can re-rank in memory.
     orderBy: { createdAt: 'desc' },
-    take: limit,
+    take: sort === 'upcoming' ? Math.min(limit * 3, 150) : limit,
     include: {
       author: { select: { id: true, displayName: true } },
       _count: { select: { responses: true } },
     },
   });
 
-  return posts.map((post) => ({
+  const mapped = posts.map((post) => ({
     id: post.id,
     type: post.type,
     title: post.title,
@@ -45,7 +59,24 @@ export async function listPosts(input?: {
     author: post.author,
     responseCount: post._count.responses,
     createdAt: post.createdAt.toISOString(),
+    _eventAtMs: post.eventAt?.getTime() ?? null,
+    _createdAtMs: post.createdAt.getTime(),
   }));
+
+  const now = Date.now();
+
+  if (sort === 'upcoming') {
+    mapped.sort((a, b) => {
+      const aUpcoming = a._eventAtMs != null && a._eventAtMs >= now;
+      const bUpcoming = b._eventAtMs != null && b._eventAtMs >= now;
+      if (aUpcoming && bUpcoming) return (a._eventAtMs ?? 0) - (b._eventAtMs ?? 0);
+      if (aUpcoming) return -1;
+      if (bUpcoming) return 1;
+      return b._createdAtMs - a._createdAtMs;
+    });
+  }
+
+  return mapped.slice(0, limit).map(({ _eventAtMs: _e, _createdAtMs: _c, ...post }) => post);
 }
 
 export async function createPost(input: CreateCommunityPostInput) {

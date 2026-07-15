@@ -10,13 +10,23 @@ function toHttpStatus(error: unknown): number {
 
 export async function registerCommunityRoutes(app: FastifyInstance) {
   app.get('/community/posts', { preHandler: authenticate }, async (request, reply) => {
-    const query = request.query as { type?: CommunityPostType; limit?: string };
+    const query = request.query as {
+      type?: CommunityPostType;
+      limit?: string;
+      sort?: 'upcoming' | 'latest';
+      mine?: string;
+    };
     const limit = query.limit ? Number.parseInt(query.limit, 10) : undefined;
+    const sort = query.sort === 'latest' ? 'latest' : query.sort === 'upcoming' ? 'upcoming' : 'upcoming';
+    const mine = query.mine === 'true' || query.mine === '1';
 
     try {
       const posts = await communityService.listPosts({
         type: query.type,
         limit: Number.isFinite(limit) ? limit : undefined,
+        sort,
+        mine,
+        viewerId: request.userId!,
       });
       return { posts };
     } catch (error) {

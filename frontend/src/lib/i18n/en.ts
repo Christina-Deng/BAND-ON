@@ -304,7 +304,12 @@ export const en = {
     responsePlaceholder: 'Your instrument or experience…',
     deletePost: 'Delete post',
     deleteConfirm: 'Delete this post?',
-    filters: { all: 'All' },
+    filters: { all: 'All', mine: 'My posts' },
+    sort: {
+      label: 'Sort',
+      upcoming: 'Upcoming',
+      latest: 'Latest',
+    },
     types: {
       announcement: 'Gig announcement',
       recruitment: 'Band recruitment',

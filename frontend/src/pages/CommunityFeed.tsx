@@ -6,6 +6,7 @@ import { PageHeader } from '../components/layout/PageHeader';
 import { useLocale } from '../hooks/useLocale';
 import { getApiErrorMessage } from '../api/client';
 import type { CommunityPostSummary, CommunityPostType } from '../types/community';
+import type { CommunitySort } from '../api/community';
 
 const FILTERS: Array<{ value: CommunityPostType | 'ALL'; labelKey: string }> = [
   { value: 'ALL', labelKey: 'community.filters.all' },
@@ -14,16 +15,27 @@ const FILTERS: Array<{ value: CommunityPostType | 'ALL'; labelKey: string }> = [
   { value: 'GIG_REQUEST', labelKey: 'community.types.gigRequest' },
 ];
 
+const SORTS: Array<{ value: CommunitySort; labelKey: string }> = [
+  { value: 'upcoming', labelKey: 'community.sort.upcoming' },
+  { value: 'latest', labelKey: 'community.sort.latest' },
+];
+
 export function CommunityFeedPage() {
   const { t } = useLocale();
   const [filter, setFilter] = useState<CommunityPostType | 'ALL'>('ALL');
+  const [sort, setSort] = useState<CommunitySort>('upcoming');
+  const [mineOnly, setMineOnly] = useState(false);
   const [posts, setPosts] = useState<CommunityPostSummary[]>([]);
   const [status, setStatus] = useState<'loading' | 'ok' | 'error'>('loading');
   const [error, setError] = useState('');
 
   useEffect(() => {
     setStatus('loading');
-    void listCommunityPosts(filter === 'ALL' ? undefined : filter)
+    void listCommunityPosts({
+      type: filter === 'ALL' ? undefined : filter,
+      sort,
+      mine: mineOnly,
+    })
       .then((items) => {
         setPosts(items);
         setStatus('ok');
@@ -32,7 +44,7 @@ export function CommunityFeedPage() {
         setError(getApiErrorMessage(err));
         setStatus('error');
       });
-  }, [filter]);
+  }, [filter, sort, mineOnly]);
 
   return (
     <div className="space-y-6">
@@ -57,7 +69,7 @@ export function CommunityFeedPage() {
         }
       />
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {FILTERS.map((item) => (
           <button
             key={item.value}
@@ -66,6 +78,35 @@ export function CommunityFeedPage() {
             className={`rounded-full px-3 py-1 text-sm ${
               filter === item.value
                 ? 'bg-accent-600 text-white'
+                : 'border border-slate-600 text-slate-400 hover:border-slate-500'
+            }`}
+          >
+            {t(item.labelKey)}
+          </button>
+        ))}
+        <button
+          type="button"
+          onClick={() => setMineOnly((v) => !v)}
+          className={`rounded-full px-3 py-1 text-sm ${
+            mineOnly
+              ? 'bg-accent-600 text-white'
+              : 'border border-slate-600 text-slate-400 hover:border-slate-500'
+          }`}
+        >
+          {t('community.filters.mine')}
+        </button>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2 text-sm">
+        <span className="text-slate-500">{t('community.sort.label')}</span>
+        {SORTS.map((item) => (
+          <button
+            key={item.value}
+            type="button"
+            onClick={() => setSort(item.value)}
+            className={`rounded-full px-3 py-1 ${
+              sort === item.value
+                ? 'bg-slate-700 text-emphasis'
                 : 'border border-slate-600 text-slate-400 hover:border-slate-500'
             }`}
           >
