@@ -20,6 +20,39 @@ function toIso(date: Date | null | undefined): string | null {
 
 export type CommunitySort = 'upcoming' | 'latest';
 
+const postListInclude = {
+  author: { select: { id: true, displayName: true } },
+  _count: { select: { responses: true } },
+} as const;
+
+type PostListRow = {
+  id: string;
+  type: CommunityPostType;
+  title: string;
+  body: string;
+  eventAt: Date | null;
+  location: string | null;
+  budgetNote: string | null;
+  createdAt: Date;
+  author: { id: string; displayName: string };
+  _count: { responses: number };
+};
+
+function toSummary(post: PostListRow): CommunityPostSummary {
+  return {
+    id: post.id,
+    type: post.type,
+    title: post.title,
+    bodyPreview: previewBody(post.body),
+    eventAt: toIso(post.eventAt),
+    location: post.location,
+    budgetNote: post.budgetNote,
+    author: post.author,
+    responseCount: post._count.responses,
+    createdAt: post.createdAt.toISOString(),
+  };
+}
+
 export async function listPosts(input?: {
   type?: CommunityPostType;
   limit?: number;
@@ -34,49 +67,44 @@ export async function listPosts(input?: {
     throw Object.assign(new Error('未登录'), { statusCode: 401 });
   }
 
-  const posts = await prisma.communityPost.findMany({
-    where: {
-      ...(input?.type ? { type: input.type } : {}),
-      ...(input?.mine && input.viewerId ? { authorId: input.viewerId } : {}),
-    },
-    // Fetch more than limit when sorting upcoming so we can re-rank in memory.
-    orderBy: { createdAt: 'desc' },
-    take: sort === 'upcoming' ? Math.min(limit * 3, 150) : limit,
-    include: {
-      author: { select: { id: true, displayName: true } },
-      _count: { select: { responses: true } },
-    },
+  const baseWhere = {
+    ...(input?.type ? { type: input.type } : {}),
+    ...(input?.mine && input.viewerId ? { authorId: input.viewerId } : {}),
+  };
+
+  if (sort === 'latest') {
+    const posts = await prisma.communityPost.findMany({
+      where: baseWhere,
+      orderBy: { createdAt: 'desc' },
+      take: limit,
+      include: postListInclude,
+    });
+    return posts.map(toSummary);
+  }
+
+  const now = new Date();
+  const upcomingRows = await prisma.communityPost.findMany({
+    where: { ...baseWhere, eventAt: { gte: now } },
+    orderBy: { eventAt: 'asc' },
+    take: limit,
+    include: postListInclude,
   });
 
-  const mapped = posts.map((post) => ({
-    id: post.id,
-    type: post.type,
-    title: post.title,
-    bodyPreview: previewBody(post.body),
-    eventAt: toIso(post.eventAt),
-    location: post.location,
-    budgetNote: post.budgetNote,
-    author: post.author,
-    responseCount: post._count.responses,
-    createdAt: post.createdAt.toISOString(),
-    _eventAtMs: post.eventAt?.getTime() ?? null,
-    _createdAtMs: post.createdAt.getTime(),
-  }));
-
-  const now = Date.now();
-
-  if (sort === 'upcoming') {
-    mapped.sort((a, b) => {
-      const aUpcoming = a._eventAtMs != null && a._eventAtMs >= now;
-      const bUpcoming = b._eventAtMs != null && b._eventAtMs >= now;
-      if (aUpcoming && bUpcoming) return (a._eventAtMs ?? 0) - (b._eventAtMs ?? 0);
-      if (aUpcoming) return -1;
-      if (bUpcoming) return 1;
-      return b._createdAtMs - a._createdAtMs;
+  const remaining = limit - upcomingRows.length;
+  let fillers: typeof upcomingRows = [];
+  if (remaining > 0) {
+    fillers = await prisma.communityPost.findMany({
+      where: {
+        ...baseWhere,
+        OR: [{ eventAt: null }, { eventAt: { lt: now } }],
+      },
+      orderBy: { createdAt: 'desc' },
+      take: remaining,
+      include: postListInclude,
     });
   }
 
-  return mapped.slice(0, limit).map(({ _eventAtMs: _e, _createdAtMs: _c, ...post }) => post);
+  return [...upcomingRows, ...fillers].map(toSummary);
 }
 
 export async function createPost(input: CreateCommunityPostInput) {

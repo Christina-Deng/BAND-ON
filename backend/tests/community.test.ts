@@ -192,4 +192,47 @@ describe('community posts', () => {
       mine.json().posts.every((p: { author: { displayName: string } }) => p.author.displayName === '用户A'),
     ).toBe(true);
   });
+
+  it('upcoming includes older near-future posts even when feed is busy with newer posts', async () => {
+    const nearFuture = new Date(Date.now() + 3 * 60 * 60 * 1000).toISOString();
+
+    const nearOld = await app.inject({
+      method: 'POST',
+      url: '/community/posts',
+      cookies: { token: cookieA },
+      payload: {
+        type: 'ANNOUNCEMENT',
+        title: '旧帖但临近',
+        body: 'created earlier, event soon',
+        eventAt: nearFuture,
+      },
+    });
+    expect(nearOld.statusCode).toBe(201);
+
+    // Flood with newer posts that have distant/no event so createdAt-window would drop the near one if limit is small.
+    // > limit*3 (30) so the old in-memory window truncates; brief used 12 which cannot fail against take=limit*3.
+    for (let i = 0; i < 35; i++) {
+      const res = await app.inject({
+        method: 'POST',
+        url: '/community/posts',
+        cookies: { token: cookieB },
+        payload: {
+          type: 'ANNOUNCEMENT',
+          title: `新噪声帖${i}`,
+          body: 'noise',
+        },
+      });
+      expect(res.statusCode).toBe(201);
+    }
+
+    const upcoming = await app.inject({
+      method: 'GET',
+      url: '/community/posts?sort=upcoming&limit=10',
+      cookies: { token: cookieA },
+    });
+    expect(upcoming.statusCode).toBe(200);
+    const titles = upcoming.json().posts.map((p: { title: string }) => p.title);
+    expect(titles).toContain('旧帖但临近');
+    expect(titles.indexOf('旧帖但临近')).toBe(0);
+  });
 });
